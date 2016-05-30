@@ -69,7 +69,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
 //start app
 server.listen(3010, function() {
     console.log('listening on port 3010!');
