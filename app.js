@@ -36,6 +36,11 @@ io.on('connection', function(socket) {
         // Todo: Server logic for getting data
         //////
         //////
+
+        socket.emit('broad', data);
+
+        // Send data to all sockets except addScore
+        //socket.broadcast.emit('broad', data);
     });
 
     // If disconnected with socket
