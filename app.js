@@ -24,12 +24,23 @@ app.use('/api/', api);
 // define static path
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Socket IO implementation
 io.on('connection', function(socket) {
-    socket.emit('news', {
-        hello: 'world'
-    });
-    socket.on('my other event', function(data) {
+    // Connection with socket
+    console.log("Connection succesfull");
+
+    // If addScore event is fired log data on server
+    socket.on('addScore', function(data) {
         console.log(data);
+
+        // Todo: Server logic for getting data
+        //////
+        //////
+    });
+
+    // If disconnected with socket
+    socket.on("disconnect", function () {
+        console.log("Connection lost");
     });
 });
 

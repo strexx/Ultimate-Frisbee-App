@@ -1,6 +1,20 @@
-var socket = io.connect("http://localhost:3010");
+// Connect with socket
+var socket = io.connect("http://localhost:3010"),
+    submit = document.querySelector("#submit");
 
-socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
+submit.addEventListener("click", function(e) {
+    e.preventDefault();
+    var team1 = document.querySelector("#team1").value,
+        team2 = document.querySelector("#team2").value
+    addScore(team1, team2);
 });
+
+// Add score (min or plus for teams)
+function addScore(score1, score2) {
+    // Send score to socket
+    socket.emit('addScore', {
+        score1: score1,
+        score2: score2,
+        time: Date.now()
+    });
+}
