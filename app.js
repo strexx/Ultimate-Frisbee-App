@@ -1,11 +1,12 @@
 var express = require('express'),
+    hbs = require('hbs'),
     path = require("path"),
     bodyParser = require('body-parser'),
     routes = require('./routes/index'),
     api = require('./routes/api'),
     app = express(),
     server = require('http').createServer(app),
-    io = require('socket.io').listen(server);
+    io = require('socket.io');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,30 +25,8 @@ app.use('/api/', api);
 // define static path
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Socket IO implementation
-io.on('connection', function(socket) {
-    // Connection with socket
-    console.log("Connection succesfull");
-
-    // If addScore event is fired log data on server
-    socket.on('addScore', function(data) {
-        console.log(data);
-
-        // Todo: Server logic for getting data
-        //////
-        //////
-
-        socket.emit('broad', data);
-
-        // Send data to all sockets except addScore
-        //socket.broadcast.emit('broad', data);
-    });
-
-    // If disconnected with socket
-    socket.on("disconnect", function () {
-        console.log("Connection lost");
-    });
-});
+// Require connection with socket
+require('./lib/sockets/connection.js')(server);
 
 // development error handler - will print stacktrace
 if (app.get('env') === 'development') {
@@ -68,7 +47,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 //start app
 server.listen(3010, function() {
