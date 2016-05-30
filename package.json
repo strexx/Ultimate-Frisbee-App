@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Ultimate Frisbee App",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node app.js"
   },

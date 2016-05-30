@@ -1,6 +1,8 @@
 var express = require('express'),
 	path = require("path"),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	routes = require('./routes/index'),
+	api = require('./routes/api');
 
 var app = express();
 
@@ -8,14 +10,18 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// bodyParser
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
-//define static path
-app.use(express.static(path.join(__dirname, 'public')));
+// set routes
+app.use('/', routes);
+app.use('/api/', api);
 
+// define static path
+app.use(express.static(path.join(__dirname, 'public')));
 
 // development error handler - will print stacktrace
 if (app.get('env') === 'development') {
