@@ -8,48 +8,38 @@ var gulp = require('gulp'),
     watch = require('gulp-watch');
 
 var inputPath = {
-    'css': './src/css/*.css',
-    'js': './src/js/*.js',
-	'lib': './src/lib/*.js',
-	'templates': './src/templates/*.mst',
-    'svg': './src/img/icons/svg/*.svg'
+    'css': './public/src/css/*.css',
+    'js': './public/src/js/*.js',
+	'lib': './public/src/lib/*.js'
 };
 
 var outputPath = {
-    'css': './dist/css/',
-    'js': './dist/js/',
-    'lib': './dist/lib/',
-    'img': './dist/img/',
-	'templates': './dist/templates/',
-    'icons': './dist/img/icons/'
+    'css': './public/dist/css/',
+    'js': './public/dist/js/',
+    'img': './public/dist/img/',
+	'lib': './public/dist/lib/'
 };
 
-gulp.task('scripts', ['clean-scripts'], function () {
+gulp.task('scripts', function () {
     gulp.src(inputPath.js)
-        .pipe(sourcemaps.init())
             .pipe(babel({
                 presets: ['es2015']
             }))
             .pipe(concat('app.min.js'))
             .pipe(uglify())
-            .pipe(sourcemaps.write())
         .pipe(gulp.dest(outputPath.js))
-        .pipe(filesize())
         .pipe(notify({
             message: 'Scripts task complete'
         }));
 });
 
 
-gulp.task('styles',['clean-styles'], function () {
+gulp.task('styles', function () {
     gulp.src(inputPath.css)
-        .pipe(sourcemaps.init())
             .pipe(autoprefixer())
             .pipe(concat('style.min.css'))
             .pipe(cssnano())
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest(outputPath.css))
-        .pipe(filesize())
         .pipe(notify({
             message: 'Styles task complete'
         }));
