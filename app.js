@@ -1,4 +1,5 @@
-var express = require('express'),
+var fs = require('fs'),
+    express = require('express'),
     hbs = require('hbs'),
     path = require("path"),
     bodyParser = require('body-parser'),
@@ -7,6 +8,10 @@ var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io');
+
+// register partials
+hbs.registerPartial('scripts', fs.readFileSync(__dirname + '/views/partials/scripts.hbs', 'utf8'));
+hbs.registerPartials(__dirname + '/views/partials');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
