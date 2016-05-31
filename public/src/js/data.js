@@ -4,11 +4,12 @@
 UFA.data = (() => {
 
     function socket() {
+
         // Connect with socket
         var socket = io.connect("http://localhost:3010"),
             submit = document.querySelector("#submit");
 
-        if(submit != null) {
+        if (submit !== null) {
             submit.addEventListener("click", function(e) {
                 e.preventDefault();
                 var score1 = document.querySelector("#team1").value,
