@@ -9,18 +9,18 @@ UFA.ux = ( () => {
 
     }
 
-    function hideLoader() {
+    function showLoader() {
       loader.classList.add("is-visible");
     }
 
-    function showLoader() {
+    function hideLoader() {
       loader.classList.add("hidden");
     }
 
     return {
         init: init,
-        hideLoader: hideLoader,
-        showLoader: showLoader
+        showLoader: showLoader,
+        hideLoader: hideLoader
     };
 
 })();
