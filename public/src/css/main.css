@@ -35,68 +35,73 @@
 # STRUCTURE
 --------------------------------------------------------------*/
 
-body {
-    background: #fff;
-}
-#wrapper {
-    position: relative;
-    overflow: hidden;
-}
-#header {
-    padding: .5em 2em .2em;
-    text-align: center;
-    color: #1e1e1e;
-    background: #f6b01a;
-    overflow: hidden;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-#content {
-    position: relative;
-}
 
-/*--------------------------------------------------------------
-## Header (+ NAV)
---------------------------------------------------------------*/
 
-#header .logo {
-    display: block;
-    float: left;
-}
-#header .logo img {
-    min-width: 2em;
-    max-width: 8em;
-}
-#header h1 {
-    color: #f9f9f9;
-}
-#header nav ul li a svg {
-    fill: #fff;
-}
-#header nav ul li a svg:hover {
-    fill: red;
-}
+
 
 /*--------------------------------------------------------------
 ## CONTENT
 --------------------------------------------------------------*/
 
-#content > ul {
-    list-style: outside;
-    margin-left: 1.2em;
+.match__item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.7em;
+    align-items: center;
+    justify-content: space-between;
 }
-#content > section {
-    position: relative;
+
+.matches__items {
+  padding: 1em;
 }
-#content > section h2 {
-    padding: .3em;
-    text-align: center;
-    background: #3788c5;
-    color: #fff;
-    width: 100%;
+
+table {
+  width: 70%;
 }
+
+.team-shirt {
+  position: relative;
+  padding-right: .7em;
+  top: 0.3em;
+}
+
+.team-name {
+  width: 100%;
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.score {
+  font-size: 1.3em;
+  font-weight: 500;
+  text-align: center;
+}
+
+.match-time {
+  font-size: 2em;
+  font-weight: 500;
+  color: #127ea5;
+  margin: auto;
+}
+
+.field {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+hr {
+  height: 1px;
+  width: 50%;
+  color: grey;
+  background-color: #e0e0e0;
+  border: none;
+  margin: auto;
+  margin-bottom: 0.7em;
+}
+
 
 /*--------------------------------------------------------------
 # MODIFIERS
