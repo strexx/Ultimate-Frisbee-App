@@ -65,15 +65,10 @@ caption, th, td {
 
 table {
     border-collapse: separate;
-    background: #f7f7f7;
 }
 
 table, th, td {
-    border: 1px solid #ececec;
-}
-
-th, td {
-    padding: 0.5em 0.7em;
+    border: none;
 }
 
 article,
@@ -135,7 +130,7 @@ button a {
 # TYPOGRAPHY
 --------------------------------------------------------------*/
 body, button, input, select, textarea   {
-    font-size: 16px; font: 1em/1.4 'Railway', 'Helvetica neue', sans-serif;
+    font-size: 16px; font: 1em/1.4 'Lato', 'Helvetica neue', sans-serif;
     font-weight: 300;
 }
 

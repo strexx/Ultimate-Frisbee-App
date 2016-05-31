@@ -1,0 +1,58 @@
+.siteheader {
+  display: flex;
+  flex-direction: column;
+}
+
+.siteheader h1 {
+  font-weight: 300;
+  letter-spacing: 5px;
+  font-size: 2em;
+  margin: auto;
+  padding: 0.3em;
+}
+
+.tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #f04b51;
+    border-bottom: 5px solid #f04b51;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* Float the list items side by side */
+.tabs li {
+  width: 100%;
+  text-align: center;
+}
+
+/* Style the links inside the list items */
+.tabs li a {
+    display: inline-block;
+    color: #f04b51;
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    width: 100%;
+}
+
+/* Change background color of links on hover */
+.tabs li:hover a {
+  background-color: #ccc;
+  /*color: white;*/
+}
+
+/* Create an active/current tablink class */
+.tabs li:focus, .active {
+  background-color: #f04b51;
+}
+
+a.tablinks.active {
+  color: white;
+}

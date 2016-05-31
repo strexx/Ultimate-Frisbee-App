@@ -7,9 +7,16 @@ UFA.router = ( () => {
             window.location = '/#matches/live';
         }
         routie({
+            'matches/recent': function() {
+                UFA.page.matchesRecent();
+            },
             'matches/live': function() {
                 UFA.page.matchesLive();
+            },
+            'matches/upcoming': function() {
+                UFA.page.matchesUpcoming();
             }
+
         });
     }
 
