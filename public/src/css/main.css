@@ -1,0 +1,155 @@
+/*--------------------------------------------------------------
+>>> ABOUT:
+----------------------------------------------------------------
+    AUTHOR:         Senny Kalidien
+    PROJECT:        WEBAPP FROM SCRATCH
+    VERSION:        0.2
+    EXTERNAL CSS:   reset.css, fonts.css
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> COLORS:
+----------------------------------------------------------------
+    BACKGROUND:     #ffffff;
+    NORMAL TEXT:    #1e1e1e;
+    ANCHORS:        #2980b9;
+    BUTTONS:        #2980b9;
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENT:
+----------------------------------------------------------------
+# STRUCTURE
+	## HEADER
+	## CONTENT
+    	### SPECIFIC ARTICLES
+    	### LOADER
+	## FOOTER
+# EXTRA CSS: MEDIA QUERIES
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# STRUCTURE
+--------------------------------------------------------------*/
+
+body {
+    background: #fff;
+}
+#wrapper {
+    position: relative;
+    overflow: hidden;
+}
+#header {
+    padding: .5em 2em .2em;
+    text-align: center;
+    color: #1e1e1e;
+    background: #f6b01a;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#content {
+    position: relative;
+}
+
+/*--------------------------------------------------------------
+## Header (+ NAV)
+--------------------------------------------------------------*/
+
+#header .logo {
+    display: block;
+    float: left;
+}
+#header .logo img {
+    min-width: 2em;
+    max-width: 8em;
+}
+#header h1 {
+    color: #f9f9f9;
+}
+#header nav ul li a svg {
+    fill: #fff;
+}
+#header nav ul li a svg:hover {
+    fill: red;
+}
+
+/*--------------------------------------------------------------
+## CONTENT
+--------------------------------------------------------------*/
+
+#content > ul {
+    list-style: outside;
+    margin-left: 1.2em;
+}
+#content > section {
+    position: relative;
+}
+#content > section h2 {
+    padding: .3em;
+    text-align: center;
+    background: #3788c5;
+    color: #fff;
+    width: 100%;
+}
+
+
+/*--------------------------------------------------------------
+## LOADER
+--------------------------------------------------------------*/
+
+#loader {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #f6b01a;
+    z-index: 999;
+    padding: 0 1em;
+}
+#loader div {
+    margin: auto;
+}
+#loader h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #fff;
+}
+#loader p {
+    text-align: center;
+    font-size: 2em;
+    color: #fff;
+    font-style: italic;
+    font-weight: 300;
+}
+#loader img {
+    display: block;
+    margin: 1.5em auto;
+}
+#loader img {
+    min-width: 10em;
+}
+#loader.active {
+    display: flex;
+}
+
+/*--------------------------------------------------------------
+# EXTRA CSS: MEDIA QUERIES
+--------------------------------------------------------------*/
+
+@media (min-width: 32em) {
+
+}
+@media (min-width: 55em) {
+
+}
+@media (min-width: 78em) {
+    
+}
