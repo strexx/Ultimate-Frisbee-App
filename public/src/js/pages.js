@@ -3,7 +3,7 @@
 *********************************************************/
 UFA.page = (function() {
 
-    var mainSelector = document.querySelector('main');
+    var bodySelector = document.querySelector('body');
 
     function request(method, url) { // src: http://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
         return new Promise(function(resolve, reject) {
@@ -29,18 +29,40 @@ UFA.page = (function() {
         });
     }
 
+    function matchesRecent() {
+      request('GET', 'api/matches/recent')
+      .then(function(APIdata) {
+        console.log("Asked for recents");
+        var template = APIdata;
+        bodySelector.innerHTML = template;
+        UFA.data.socket();
+      })
+    }
+
     function matchesLive() {
         request('GET', 'api/matches/live')
             .then(function(APIdata) {
                 var template = APIdata;
-                mainSelector.innerHTML = template;
+                bodySelector.innerHTML = template;
+                UFA.data.socket();
+            })
+    }
+
+
+    function matchesUpcoming() {
+        request('GET', 'api/matches/upcoming')
+            .then(function(APIdata) {
+                var template = APIdata;
+                bodySelector.innerHTML = template;
                 UFA.data.socket();
             })
     }
 
     return {
         request: request,
-        matchesLive: matchesLive
+        matchesRecent: matchesRecent,
+        matchesLive: matchesLive,
+        matchesUpcoming: matchesUpcoming
     };
 
 })();
