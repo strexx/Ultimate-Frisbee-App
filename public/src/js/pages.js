@@ -1,7 +1,7 @@
 /*********************************************************
 	PAGE MODULE [with Promise]
 *********************************************************/
-UFA.page = (function () {
+UFA.page = ( () => {
 
     var mainSelector = document.querySelector('main');
 
@@ -34,7 +34,8 @@ UFA.page = (function () {
             .then(function (APIdata) {
                 var template = APIdata;
                 mainSelector.innerHTML = template;
-				// remove loader
+                UFA.data.socket();
+                // remove loader
             })
     }
 
