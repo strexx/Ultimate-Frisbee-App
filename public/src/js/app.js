@@ -13,6 +13,7 @@ UFA.launcher = ( () => {
         document.addEventListener("DOMContentLoaded", function () {
             UFA.data.socket();
             UFA.ux.init();
+            UFA.router.init();
         });
     }
 
