@@ -1,17 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var request = require('request');
 
-router.get('/scores', function(req, res, next) {
-    fs.readFile('https://api.leaguevine.com/v1/games/?tournament_id=20059&starts_after=2016-06-04T15%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=20&access_token=6dc9d3795a', 'utf8', function(err, data) {
-        if(err) {
-            res.status(404);
-            next();
+router.get('/matches/live', function (req, res, next) {
+    request({url: 'https://api.leaguevine.com/v1/games/?sport=ultimate&limit=20&tournament_id=20059&access_token=bcfb4d45e5', json: true}, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+          console.log(data);
+          res.render('matches', { title: 'Matches', items: data.objects, layout: false });
         }
+    });
+});
 
-        console.log(data);
+router.get('/matches/recent', function (req, res, next) {
+    request({url: 'https://api.leaguevine.com/v1/games/?sport=ultimate&limit=20&tournament_id=20059&access_token=bcfb4d45e5', json: true}, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+          console.log(data);
+          res.render('matches', { title: 'Matches', items: data.objects, layout: false });
+        }
+    });
+});
 
-        res.render('matches', { title: 'Feed', items: JSON.parse(data), layout: false });
+router.get('/matches/upcoming', function (req, res, next) {
+    request({url: 'https://api.leaguevine.com/v1/games/?sport=ultimate&limit=20&tournament_id=20059&access_token=bcfb4d45e5', json: true}, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+          console.log(data);
+          res.render('matches', { title: 'Matches', items: data.objects, layout: false });
+        }
     });
 });
 

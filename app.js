@@ -10,7 +10,8 @@ var fs = require('fs'),
     io = require('socket.io');
 
 // register partials
-hbs.registerPartial('scripts', fs.readFileSync(__dirname + '/views/partials/scripts.hbs', 'utf8'));
+// hbs.registerPartial('scripts', fs.readFileSync(__dirname + '/views/partials/scripts.hbs', 'utf8'));
+// hbs.registerPartial('loader', fs.readFileSync(__dirname + '/views/partials/loader.hbs', 'utf8'));
 hbs.registerPartials(__dirname + '/views/partials');
 
 // view engine setup

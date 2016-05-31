@@ -98,46 +98,16 @@ body {
     width: 100%;
 }
 
-
 /*--------------------------------------------------------------
-## LOADER
+# MODIFIERS
 --------------------------------------------------------------*/
 
-#loader {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #f6b01a;
-    z-index: 999;
-    padding: 0 1em;
+.is-visible {
+  display: block;
 }
-#loader div {
-    margin: auto;
-}
-#loader h1 {
-    text-align: center;
-    font-size: 3em;
-    color: #fff;
-}
-#loader p {
-    text-align: center;
-    font-size: 2em;
-    color: #fff;
-    font-style: italic;
-    font-weight: 300;
-}
-#loader img {
-    display: block;
-    margin: 1.5em auto;
-}
-#loader img {
-    min-width: 10em;
-}
-#loader.active {
-    display: flex;
+
+.hidden {
+  display: none;
 }
 
 /*--------------------------------------------------------------
@@ -151,5 +121,5 @@ body {
 
 }
 @media (min-width: 78em) {
-    
+
 }
