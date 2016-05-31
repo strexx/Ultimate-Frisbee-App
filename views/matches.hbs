@@ -1,5 +1,6 @@
 
 <section id="matches" class="matches__items">
+    <div class="loader"></div>
     {{#each items}}
         <article class="match__item">
             <table style="margin-bottom: 2em; width: 100%;">
@@ -9,8 +10,8 @@
                     <td>{{start_time}}</td>
                 </tr>
                 <tr>
-                    <td>{{team_1.name}}</td>
-                    <td>{{team_1_score}}</td>
+                    <td>{{team_2.name}}</td>
+                    <td>{{team_2_score}}</td>
                     <td>{{game_site.name}}</td>
                 </tr>
             </table>

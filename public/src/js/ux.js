@@ -3,13 +3,24 @@
 *********************************************************/
 UFA.ux = ( () => {
 
-    function init() {
+    var loader  = document.querySelector(".loader");
 
+    function init() {
 
     }
 
+    function hideLoader() {
+      loader.classList.add("is-visible");
+    }
+
+    function showLoader() {
+      loader.classList.add("hidden");
+    }
+
     return {
-        init: init
+        init: init,
+        hideLoader: hideLoader,
+        showLoader: showLoader
     };
 
 })();

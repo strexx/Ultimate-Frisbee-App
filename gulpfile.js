@@ -10,14 +10,14 @@ var gulp = require('gulp'),
 var inputPath = {
     'css': './public/src/css/*.css',
     'js': './public/src/js/*.js',
-	'lib': './public/src/lib/*.js'
+		'lib': './public/src/lib/*.js'
 };
 
 var outputPath = {
     'css': './public/dist/css/',
     'js': './public/dist/js/',
     'img': './public/dist/img/',
-	'lib': './public/dist/lib/'
+		'lib': './public/dist/lib/'
 };
 
 gulp.task('scripts', function () {
