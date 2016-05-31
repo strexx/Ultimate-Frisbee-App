@@ -3,15 +3,13 @@ var fs = require('fs'),
     hbs = require('hbs'),
     path = require("path"),
     bodyParser = require('body-parser'),
-    routes = require('./routes/index'),
-    api = require('./routes/api'),
     app = express(),
     server = require('http').createServer(app),
-    io = require('socket.io');
+    io = require('socket.io'),
+    // Include routes
+    routes = require('./routes/index'),
+    api = require('./routes/api');
 
-// register partials
-// hbs.registerPartial('scripts', fs.readFileSync(__dirname + '/views/partials/scripts.hbs', 'utf8'));
-// hbs.registerPartial('loader', fs.readFileSync(__dirname + '/views/partials/loader.hbs', 'utf8'));
 hbs.registerPartials(__dirname + '/views/partials');
 
 // view engine setup
