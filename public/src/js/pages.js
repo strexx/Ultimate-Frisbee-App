@@ -1,9 +1,9 @@
 /*********************************************************
 	PAGE MODULE [with Promise]
 *********************************************************/
-UFA.page = ( () => {
+UFA.page = (() => {
 
-    var bodySelector = document.querySelector('body');
+    var wrapperSelector = document.querySelector('#wrapper');
 
     function request(method, url) { // src: http://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
         return new Promise(function(resolve, reject) {
@@ -30,22 +30,26 @@ UFA.page = ( () => {
     }
 
     function matchesRecent() {
-      request('GET', 'api/matches/recent')
-      .then(function(APIdata) {
-        console.log("Asked for recents");
-        var template = APIdata;
-        bodySelector.innerHTML = template;
-        UFA.data.socket();
-      })
+        request('GET', 'api/matches/recent')
+            .then(function(APIdata) {
+                console.log("Asked for recents");
+                var template = APIdata;
+                wrapperSelector.innerHTML = template;
+                UFA.data.socket();
+                // remove loader
+                UFA.ux.hideLoader();
+            });
     }
 
     function matchesLive() {
         request('GET', 'api/matches/live')
             .then(function(APIdata) {
                 var template = APIdata;
-                bodySelector.innerHTML = template;
+                wrapperSelector.innerHTML = template;
                 UFA.data.socket();
-            })
+                // remove loader
+                UFA.ux.hideLoader();
+            });
     }
 
 
@@ -53,10 +57,11 @@ UFA.page = ( () => {
         request('GET', 'api/matches/upcoming')
             .then(function(APIdata) {
                 var template = APIdata;
-                bodySelector.innerHTML = template;
+                wrapperSelector.innerHTML = template;
                 UFA.data.socket();
                 // remove loader
-            })
+                UFA.ux.hideLoader();
+            });
     }
 
     return {
