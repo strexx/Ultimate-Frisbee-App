@@ -198,7 +198,7 @@ hr {
 /* Scores tab */
 
 .match__content {
-  padding: 2em;
+  padding: 1em;
 }
 
 .match__content__title {
@@ -208,7 +208,7 @@ hr {
   margin-bottom: .5em;
   font-weight: bold;
   border-bottom: 1px solid black;
-  width: 6.5em;
+  width: 6.25em;
 }
 
 .match__content__info {
