@@ -67,11 +67,23 @@ UFA.page = (() => {
             });
     }
 
+    function match() {
+      request('GET', 'api/match')
+          .then(function(APIdata) {
+              var template = APIdata;
+              wrapperSelector.innerHTML = template;
+              UFA.data.socket();
+              // remove loader
+              UFA.ux.hideLoader();
+          });
+    }
+
     return {
         request: request,
         matchesRecent: matchesRecent,
         matchesLive: matchesLive,
-        matchesUpcoming: matchesUpcoming
+        matchesUpcoming: matchesUpcoming,
+        match: match
     };
 
 })();

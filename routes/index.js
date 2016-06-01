@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var fs = require('fs');
+var express = require('express'),
+    router = express.Router(),
+    fs = require('fs');
 
 router.get('/', function (req, res, next) {
     res.render('loadscreen', { title: 'feed' });

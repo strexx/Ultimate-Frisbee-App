@@ -46,4 +46,12 @@ router.get('/matches/upcoming', function (req, res, next) {
     });
 });
 
+router.get('/match', function (req, res, next) {
+  res.render('match', { title: 'Match', layout: false });
+});
+
+router.post('/match/score', function(req, res) {
+  res.redirect(req.get('referer'));
+});
+
 module.exports = router;

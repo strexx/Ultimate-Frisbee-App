@@ -18,8 +18,11 @@ UFA.router = ( () => {
             'matches/upcoming': function() {
                 UFA.ux.showLoader();
                 UFA.page.matchesUpcoming();
+            },
+            'match': function() {
+                UFA.ux.showLoader();
+                UFA.page.match();
             }
-
         });
     }
 
