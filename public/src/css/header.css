@@ -16,20 +16,18 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #f04b51;
     border-bottom: 5px solid #f04b51;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-/* Float the list items side by side */
 .tabs li {
   width: 100%;
   text-align: center;
+  border: 1px solid #f04b51;
 }
 
-/* Style the links inside the list items */
 .tabs li a {
     display: inline-block;
     color: #f04b51;
@@ -42,17 +40,14 @@
     width: 100%;
 }
 
-/* Change background color of links on hover */
-.tabs li:hover a {
-  background-color: #ccc;
-  /*color: white;*/
-}
-
-/* Create an active/current tablink class */
 .tabs li:focus, .active {
   background-color: #f04b51;
 }
 
-a.tablinks.active {
+.tabs li.active a {
   color: white;
+}
+
+.tabs li:hover a {
+  background-color: #ccc;
 }

@@ -1,4 +1,5 @@
 {{> header_matches}}
+
 <main id="main" role="main">
     <section id="matches" class="matches__items">
         {{#each items}}
@@ -62,9 +63,7 @@
                     </tr>
                 </table>
                 <div class="match-info">
-                  <!-- <p  class="match-time">15:30</p>
-                  <span class="field">Field 5</span> -->
-                  <p  class="match-time">{{start_time}}</p>
+                  <p class="match-time">{{start_time}}</p>
                   <span class="field">{{game_site.name}}</span>
                 </div>
             </article>
