@@ -54,7 +54,6 @@ UFA.page = (() => {
             });
     }
 
-
     function matchesUpcoming() {
         request('GET', 'api/matches/upcoming')
             .then(function(APIdata) {
@@ -67,11 +66,22 @@ UFA.page = (() => {
             });
     }
 
+    function tournaments() {
+        request('GET', 'api/tournaments')
+            .then(function(APIdata) {
+                var template = APIdata;
+                wrapperSelector.innerHTML = template;
+                // remove loader
+                UFA.ux.hideLoader();
+            });
+    }
+
     return {
         request: request,
         matchesRecent: matchesRecent,
         matchesLive: matchesLive,
-        matchesUpcoming: matchesUpcoming
+        matchesUpcoming: matchesUpcoming,
+        tournaments: tournaments
     };
 
 })();
