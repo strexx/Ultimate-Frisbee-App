@@ -3,7 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 
 router.get('/', function (req, res, next) {
-    res.render('loader', { title: 'feed' });
+    res.render('loadscreen', { title: 'feed' });
 });
 
 module.exports = router;

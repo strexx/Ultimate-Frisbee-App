@@ -8,12 +8,15 @@ UFA.router = ( () => {
         }
         routie({
             'matches/recent': function() {
+                UFA.ux.showLoader();
                 UFA.page.matchesRecent();
             },
             'matches/live': function() {
+                UFA.ux.showLoader();
                 UFA.page.matchesLive();
             },
             'matches/upcoming': function() {
+                UFA.ux.showLoader();
                 UFA.page.matchesUpcoming();
             }
 

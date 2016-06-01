@@ -10,11 +10,11 @@ UFA.ux = ( () => {
     }
 
     function showLoader() {
-      loader.classList.add("is-visible");
+        loader.classList.add("active");
     }
 
     function hideLoader() {
-      loader.classList.add("hidden");
+        loader.classList.remove("active");
     }
 
     return {

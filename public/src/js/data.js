@@ -4,7 +4,7 @@
 UFA.data = (() => {
 
     function socket() {
-      
+
         // Connect with socket
         var socket = io.connect("http://localhost:3010"),
             submit = document.querySelector("#submit");
