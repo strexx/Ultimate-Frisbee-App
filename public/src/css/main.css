@@ -30,17 +30,8 @@
 # EXTRA CSS: MEDIA QUERIES
 --------------------------------------------------------------*/
 
-
 /*--------------------------------------------------------------
-# STRUCTURE
---------------------------------------------------------------*/
-
-
-
-
-
-/*--------------------------------------------------------------
-## CONTENT
+## MATCHES
 --------------------------------------------------------------*/
 
 .match__item {
@@ -104,9 +95,53 @@ hr {
 
 
 /*--------------------------------------------------------------
+## TOURNAMENTS
+--------------------------------------------------------------*/
+.tournaments__item {
+    text-align: center;
+    padding: 7em 0;
+    position: relative;
+
+}
+
+.tournaments__item h2 {
+    font-size: 1.5em;
+
+}
+
+.tournaments__item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  border: solid 1px #000;
+  -webkit-transform: skew(0deg, 6deg);
+  -moz-transform: skew(0deg, 6deg);
+  -ms-transform: skew(0deg, 6deg);
+  -o-transform: skew(0deg, 6deg);
+  transform: skew(0deg, 6deg);
+}
+.tournaments__item:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  border: solid 1px #000;
+  -webkit-transform: skew(0deg, -6deg);
+  -moz-transform: skew(0deg, -6deg);
+  -ms-transform: skew(0deg, -6deg);
+  -o-transform: skew(0deg, -6deg);
+  transform: skew(0deg, -6deg);
+}​
+
+
+/*--------------------------------------------------------------
 # MODIFIERS
 --------------------------------------------------------------*/
-
 .is-visible {
   display: block;
 }
