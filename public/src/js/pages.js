@@ -38,6 +38,7 @@ UFA.page = (() => {
                 UFA.data.socket();
                 // remove loader
                 UFA.ux.hideLoader();
+                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -50,6 +51,7 @@ UFA.page = (() => {
                 UFA.data.socket();
                 // remove loader
                 UFA.ux.hideLoader();
+                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -63,6 +65,7 @@ UFA.page = (() => {
                 UFA.data.socket();
                 // remove loader
                 UFA.ux.hideLoader();
+                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }

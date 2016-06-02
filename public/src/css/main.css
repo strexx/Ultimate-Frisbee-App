@@ -42,6 +42,13 @@
 /*--------------------------------------------------------------
 ## CONTENT
 --------------------------------------------------------------*/
+#wrapper {
+  -webkit-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
 
 .match__item {
     display: flex;
