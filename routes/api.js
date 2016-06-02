@@ -67,8 +67,4 @@ router.get('/match/:gameID', function (req, res, next) {
     });
 });
 
-router.post('/match/score', function(req, res) {
-  res.redirect(req.get('referer'));
-});
-
 module.exports = router;
