@@ -93,6 +93,144 @@ hr {
   margin-bottom: 0.7em;
 }
 
+/*--------------------------------------------------------------
+## MATCH PAGE
+--------------------------------------------------------------*/
+
+#teams {
+  display: flex;
+  flex-direction: row;
+}
+
+#teams .team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#teams .btn {
+  font-size: 3em;
+  width: 100%;
+}
+
+#teams .btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#teams .btn-minus {
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#teams .btn-plus {
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+#teams .top {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+#teams .bottom {
+  width: 100%;
+  margin-top: 2em;
+}
+
+/* Team home */
+
+#teams .team__home {
+  background: #359776;
+  width: 50%;
+}
+
+#teams .team__home__info span {
+  display: block;
+}
+
+#teams .team__home__info__name {
+  font-size: 1.5em;
+  word-break: break-all;
+  text-transform: uppercase;
+  color: white;
+}
+
+#teams .team__home__info__score {
+  font-size: 6em;
+  text-align: center;
+  color: white;
+}
+
+/* Team away */
+
+#teams .team__away {
+  background: #e99c42;
+  width: 50%;
+}
+
+#teams .team__away__info span {
+  display: block;
+}
+
+#teams .team__away__info__name {
+  font-size: 1.5em;
+  word-break: break-all;
+  text-transform: uppercase;
+  color: white;
+}
+
+#teams .team__away__info__score {
+  font-size: 6em;
+  text-align: center;
+  color: white;
+}
+
+/* MATCH DETAIL CONTENT */
+
+/* Scores tab */
+
+.match__content {
+  padding: 1em;
+}
+
+.match__content__title {
+  /*font: 1em/1.4 Lato,Helvetica neue,sans-serif;*/
+  /*font-weight: 300;*/
+  font-size: 1.5em;
+  margin-bottom: .5em;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  width: 6.25em;
+}
+
+.match__content__info {
+  font-size: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.match__content__info td {
+  text-align: left;
+}
+
+.match__content__info td {
+  text-align: right;
+}
+
+.match__content input[type=submit] {
+  background: #e64a55;
+  padding: .5em 1em;
+  color: white;
+  text-align: center;
+  border: none;
+  float: right;
+  cursor: pointer;
+}
+
+.match__content input[type=submit]:hover {
+  background: #ab3841;
+}
 
 /*--------------------------------------------------------------
 ## TOURNAMENTS
