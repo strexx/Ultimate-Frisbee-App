@@ -16,7 +16,7 @@ UFA.data = (() => {
                     gameID = window.location.pathname.split('/')[2];
                 addScore(score1, score2, gameID);
                 UFA.ux.showLoader();
-                this.replaceScores(score1, score2);
+                replaceScores(score1, score2);
             });
         }
 
@@ -41,7 +41,7 @@ UFA.data = (() => {
                 score2 = updateScore2;
 
                 UFA.ux.hideLoader();
-          }
+          });
         }
 
         socket.on('broad', function(data) {
@@ -50,8 +50,7 @@ UFA.data = (() => {
     }
 
     return {
-        socket: socket,
-        replaceScores: replaceScores
+        socket: socket
     };
 
 })();

@@ -12,7 +12,6 @@ UFA.launcher = ( () => {
 
     function init() {
         document.addEventListener("DOMContentLoaded", function () {
-            UFA.ux.init();
             UFA.data.socket();
             UFA.ux.toggleMenu();
             UFA.router.init();

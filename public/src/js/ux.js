@@ -6,13 +6,6 @@ UFA.ux = (() => {
     var loader = document.querySelector('.loader');
     var tabLinks = document.getElementsByClassName('tablinks');
 
-
-
-
-    function init() {
-
-    }
-
     function toggleMenu() {
 
       var toggleInfo = document.querySelector('.toggleinfo'),
@@ -29,9 +22,7 @@ UFA.ux = (() => {
         function animateSidebar() {
             wrapperBody.classList.toggle('slideright');
             closeIcon.classList.toggle('rotateicon');
-        };
-
-
+        }
 
     }
 
@@ -62,7 +53,6 @@ UFA.ux = (() => {
 
 
     return {
-        init: init,
         showLoader: showLoader,
         hideLoader: hideLoader,
         toggleClass: toggleClass,

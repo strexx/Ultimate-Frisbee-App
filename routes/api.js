@@ -50,7 +50,6 @@ router.get('/tournaments', function (req, res, next) {
     request({url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50', json: true}, function (error, response, data) {
         if (!error && response.statusCode == 200) {
           var objects = data.objects;
-          console.log(objects);
           res.render('tournaments', { title: 'Tournaments', items: objects, layout: false });
         }
     });
@@ -61,7 +60,6 @@ router.get('/match/:gameID', function (req, res, next) {
     request({url: 'https://api.leaguevine.com/v1/games/'+ gameID +'/?access_token=3aa4afb621', json: true}, function (error, response, data) {
         if (!error && response.statusCode == 200) {
           var objects = data;
-          console.log(objects);
           res.render('match', { title: 'Match', items: objects, layout: false });
       }
     });
