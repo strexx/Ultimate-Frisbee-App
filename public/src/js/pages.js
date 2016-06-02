@@ -30,7 +30,7 @@ UFA.page = (() => {
     }
 
     function matchesRecent() {
-        request('GET', 'api/matches/recent')
+        request('GET', '/api/matches/recent')
             .then(function(APIdata) {
                 console.log("Asked for recents");
                 var template = APIdata;
@@ -44,7 +44,7 @@ UFA.page = (() => {
     }
 
     function matchesLive() {
-        request('GET', 'api/matches/live')
+        request('GET', '/api/matches/live')
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
@@ -57,7 +57,7 @@ UFA.page = (() => {
     }
 
     function matchesUpcoming() {
-        request('GET', 'api/matches/upcoming')
+        request('GET', '/api/matches/upcoming')
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
@@ -70,7 +70,7 @@ UFA.page = (() => {
     }
 
     function tournaments() {
-        request('GET', 'api/tournaments')
+        request('GET', '/api/tournaments')
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
@@ -80,7 +80,7 @@ UFA.page = (() => {
     }
 
     function match(ID) {
-      request('GET', 'api/match/' + ID)
+      request('GET', '/api/match/' + ID)
           .then(function(APIdata) {
               var template = APIdata;
               wrapperSelector.innerHTML = template;
