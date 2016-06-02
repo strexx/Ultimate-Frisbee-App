@@ -5,7 +5,7 @@ var express = require('express'),
     dateFormat = require('dateformat');
 
 router.get('/matches/live', function (req, res, next) {
-    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=20&access_token=6dc9d3795a', json: true}, function (error, response, data) {
+    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=5&access_token=6dc9d3795a', json: true}, function (error, response, data) {
         if (!error && response.statusCode == 200) {
           var objects = data.objects;
 
@@ -19,7 +19,7 @@ router.get('/matches/live', function (req, res, next) {
 });
 
 router.get('/matches/recent', function (req, res, next) {
-    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_before=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5B-start_time%5D&limit=20&access_token=6dc9d3795a', json: true}, function (error, response, data) {
+    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_before=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5B-start_time%5D&limit=5&access_token=6dc9d3795a', json: true}, function (error, response, data) {
         if (!error && response.statusCode == 200) {
           var objects = data.objects;
 
@@ -33,7 +33,7 @@ router.get('/matches/recent', function (req, res, next) {
 });
 
 router.get('/matches/upcoming', function (req, res, next) {
-    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T14%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=20&access_token=6dc9d3795a', json: true}, function (error, response, data) {
+    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T14%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=5&access_token=6dc9d3795a', json: true}, function (error, response, data) {
         if (!error && response.statusCode == 200) {
           var objects = data.objects;
 
@@ -56,8 +56,15 @@ router.get('/tournaments', function (req, res, next) {
     });
 });
 
-router.get('/match', function (req, res, next) {
-  res.render('match', { title: 'Match', layout: false });
+router.get('/match/:gameID', function (req, res, next) {
+    var gameID = req.params.gameID;
+    request({url: 'https://api.leaguevine.com/v1/games/'+ gameID +'/?access_token=3aa4afb621', json: true}, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+          var objects = data;
+          console.log(objects);
+          res.render('match', { title: 'Match', items: objects, layout: false });
+      }
+    });
 });
 
 router.post('/match/score', function(req, res) {
