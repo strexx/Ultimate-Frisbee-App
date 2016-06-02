@@ -46,6 +46,16 @@ router.get('/matches/upcoming', function (req, res, next) {
     });
 });
 
+router.get('/tournaments', function (req, res, next) {
+    request({url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50', json: true}, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+          var objects = data.objects;
+          console.log(objects);
+          res.render('tournaments', { title: 'Tournaments', items: objects, layout: false });
+        }
+    });
+});
+
 router.get('/match', function (req, res, next) {
   res.render('match', { title: 'Match', layout: false });
 });

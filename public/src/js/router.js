@@ -19,6 +19,10 @@ UFA.router = ( () => {
                 UFA.ux.showLoader();
                 UFA.page.matchesUpcoming();
             },
+            'tournaments': function() {
+                UFA.ux.showLoader();
+                UFA.page.tournaments();
+            },            
             'match': function() {
                 UFA.ux.showLoader();
                 UFA.page.match();
