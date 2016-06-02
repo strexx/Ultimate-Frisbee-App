@@ -1,12 +1,17 @@
-var express = require('express'),
+var fs = require('fs'),
+    express = require('express'),
     hbs = require('hbs'),
     path = require("path"),
     bodyParser = require('body-parser'),
-    routes = require('./routes/index'),
-    api = require('./routes/api'),
     app = express(),
     server = require('http').createServer(app),
-    io = require('socket.io');
+    io = require('socket.io'),
+    // Include routes
+    routes = require('./routes/index'),
+    api = require('./routes/api');
+
+hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/partials/header');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

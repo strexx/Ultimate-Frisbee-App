@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">
 	<title>Ultimate Frisbee App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="/dist/css/style.min.css">
 </head>
 <body>
-	<header>
-		<h1>Hello World!</h1>
-	</header>
-	<main id="main" role="main">
-		{{{body}}}
-	</main>
-	<footer>
-	</footer>
-	<script src="/src/lib/js/socket.io.js"></script>
-	<script src="/src/js/app.js"></script>
+	<div id="wrapper">
+		{{{ body }}}
+	</div>
+
+	{{> loader}}
+	{{> scripts}}
 </body>
 </html>

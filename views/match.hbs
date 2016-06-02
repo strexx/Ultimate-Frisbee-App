@@ -1,0 +1,78 @@
+{{> header_match }}
+
+<section class="match_items">
+	<!-- <article class="match__item"> -->
+		<form action="match/score" method="POST">
+
+			<div id="teams">
+
+				<div class="team team__home">
+
+					<div class="top">
+						<button class="btn btn-minus" name="team_home_minus" id="team__home__minus">-</button>
+					</div>
+
+					<div class="team__home__info">
+						<span class="team__home__info__name">{{items.team_1.short_name}}</span>
+						<span class="team__home__info__score">{{items.team_1_score}}</span>
+					</div>
+
+					<div class="bottom">
+						<button class="btn btn-plus" name="team__home__plus" id="team__home__plus">+</button>
+					</div>
+
+				</div>
+
+				<div class="team team__away">
+
+					<div class="top">
+						<button class="btn btn-minus" name="team_away_minus" id="team__away__minus">-</button>
+					</div>
+
+					<div class="team__away__info">
+						<span class="team__away__info__name">{{items.team_2.short_name}}</span>
+						<span class="team__away__info__score">{{items.team_2_score}}</span>
+					</div>
+
+					<div class="bottom">
+						<button class="btn btn-plus" name="team__away__plus" id="team__away__plus">+</button>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="match__content">
+
+				<h2 class="match__content__title">Match Details</h2>
+
+				<table class="match__content__info">
+					<tr>
+						<th>Time</th>
+						<td>{{items.start_time}} - 10:30</td>
+					</tr>
+					<tr>
+						<th>Field</th>
+						<td>{{items.game_site.name}}</td>
+					</tr>
+					<tr>
+						<th>Round</th>
+						<td>{{items.pool_round}}</td>
+					</tr>
+					<tr>
+						<th>Tournament</th>
+						<td>{{items.tournament.name}}</td>
+					</tr>
+				</table>
+
+				<!-- <input type="number" id="team1" name="score-team-1" value="5" />
+	      		<input type="number" id="team2" name="score-team-2" value="3" /> -->
+
+				<input type="submit" id="submit" name="submit" value="Final score" onClick="return confirm('Are you sure');" />
+
+			</div>
+
+		</form>
+	<!-- </article> -->
+
+</section>

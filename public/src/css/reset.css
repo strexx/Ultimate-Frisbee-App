@@ -1,0 +1,186 @@
+/*--------------------------------------------------------------
+# RESET
+--------------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    vertical-align: baseline;
+    font-size: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+}
+
+html {
+    font-size: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    background: #fff;
+}
+
+body {
+    color: 333;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a img {
+    border: 0;
+}
+a:hover, a:active, a:focus {
+    outline: 0;
+}
+
+img	{
+    vertical-align: none;
+    height: auto;
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+blockquote, q {
+    quotes: "" "";
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+}
+
+caption, th, td {
+    font-weight: normal;
+    text-align: left;
+}
+
+table {
+    border-collapse: separate;
+}
+
+table, th, td {
+    border: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary,
+svg
+{
+	display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+button {
+    box-shadow: 0;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+/*button {
+    box-shadow: 0;
+    outline: 0;
+    border: 0;
+    background: rgba(246, 176, 26, 1);
+    padding: 0.7em 1.4em;
+    margin: 1em 0 0.5em;
+    color: #f9f9f9;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(246, 176, 26, 0.9);
+}
+
+button.active {
+    background: rgba(231, 76, 60, 1);
+}
+
+button a {
+    display: block;
+    color: inherit;
+}*/
+
+/*--------------------------------------------------------------
+# TYPOGRAPHY
+--------------------------------------------------------------*/
+body, button, input, select, textarea   {
+    font-size: 16px; font: 1em/1.4 'Lato', 'Helvetica neue', sans-serif;
+    font-weight: 300;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #1e1e1e;
+    font-weight: 300;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a {
+    color: #1e1e1e;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 1.3em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+h4 {
+    font-size: 1.0em;
+}
+
+h5 {
+    font-size: 1.0em;
+    font-weight: bold;
+}
