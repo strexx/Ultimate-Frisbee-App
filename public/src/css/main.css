@@ -97,45 +97,70 @@ hr {
 /*--------------------------------------------------------------
 ## TOURNAMENTS
 --------------------------------------------------------------*/
+.tournaments__items {
+
+}
+
 .tournaments__item {
     text-align: center;
     padding: 7em 0;
     position: relative;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    margin: 0 0 0.2em;
 
+}
+
+.tournaments__item:nth-of-type(1), .tournaments__item:nth-of-type(3) {
 }
 
 .tournaments__item h2 {
     font-size: 1.5em;
+    color: #000;
+    position: relative;
+    z-index: 1;
+    margin-top: 2em;
 
+}
+
+.tournaments__item:before, .tournaments__item::after {
+    /* border-bottom: solid 3px #fff;*/
+}
+
+
+.tournaments__item:hover::before, .tournaments__item:hover::after {
+    background: #2980b9;
+    color: #fff;
 }
 
 .tournaments__item:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 51%;
-  border: solid 1px #000;
-  -webkit-transform: skew(0deg, 6deg);
-  -moz-transform: skew(0deg, 6deg);
-  -ms-transform: skew(0deg, 6deg);
-  -o-transform: skew(0deg, 6deg);
-  transform: skew(0deg, 6deg);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    -webkit-transform: skew(0deg, 10deg);
+    -moz-transform: skew(0deg, 10deg);
+    -ms-transform: skew(0deg, 10deg);
+    -o-transform: skew(0deg, 10deg);
+    transform: skew(0deg, 10deg);
+    background: #ddd;
 }
 .tournaments__item:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 50%;
-  border: solid 1px #000;
-  -webkit-transform: skew(0deg, -6deg);
-  -moz-transform: skew(0deg, -6deg);
-  -ms-transform: skew(0deg, -6deg);
-  -o-transform: skew(0deg, -6deg);
-  transform: skew(0deg, -6deg);
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    -webkit-transform: skew(0deg, -10deg);
+    -moz-transform: skew(0deg, -10deg);
+    -ms-transform: skew(0deg, -10deg);
+    -o-transform: skew(0deg, -10deg);
+    transform: skew(0deg, -10deg);
+    background: #ddd;
 }​
 
 
