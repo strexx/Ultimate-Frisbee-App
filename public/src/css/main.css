@@ -159,7 +159,8 @@ hr {
 }
 
 #teams .team__home__info__name {
-  font-size: 2em;
+  font-size: 1.5em;
+  word-break: break-all;
   text-transform: uppercase;
   color: white;
 }
@@ -182,7 +183,8 @@ hr {
 }
 
 #teams .team__away__info__name {
-  font-size: 2em;
+  font-size: 1.5em;
+  word-break: break-all;
   text-transform: uppercase;
   color: white;
 }
