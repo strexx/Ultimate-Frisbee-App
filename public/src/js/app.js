@@ -13,6 +13,7 @@ UFA.launcher = ( () => {
     function init() {
         document.addEventListener("DOMContentLoaded", function () {
             UFA.ux.init();
+            UFA.ux.toggleMenu();
             UFA.router.init();
         });
     }

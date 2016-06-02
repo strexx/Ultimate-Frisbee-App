@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
           var objects = data.objects;
 
           for(var key in objects) {
-            objects[key].start_time = dateFormat(objects[key].start_time, "h:MM TT");
+            objects[key].start_time = dateFormat(objects[key].start_time, "HH:MM");
             objects[key].game_site.name = objects[key].game_site.name.split('.')[0];
           }
           res.render('matches', { title: 'Matches', items: objects });

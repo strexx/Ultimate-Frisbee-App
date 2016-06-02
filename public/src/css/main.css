@@ -34,6 +34,13 @@
 ## MATCHES
 --------------------------------------------------------------*/
 
+.matches__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+}
+
 .matches__items a {
     color: inherit;
 }
@@ -43,6 +50,7 @@
 ## CONTENT
 --------------------------------------------------------------*/
 #wrapper {
+  min-height: 100vh;
   -webkit-transition: 0.5s ease-out;
   -moz-transition: 0.5s ease-out;
   -o-transition: 0.5s ease-out;
@@ -56,10 +64,6 @@
     margin-bottom: 0.7em;
     align-items: center;
     justify-content: space-between;
-}
-
-.matches__items {
-  padding: 1em;
 }
 
 table {
@@ -101,12 +105,9 @@ table {
 
 hr {
   height: 1px;
-  width: 50%;
   color: grey;
   background-color: #e0e0e0;
   border: none;
-  margin: auto;
-  margin-bottom: 0.7em;
 }
 
 /*--------------------------------------------------------------

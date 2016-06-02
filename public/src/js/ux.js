@@ -25,6 +25,7 @@ UFA.ux = (() => {
         function animateSidebar() {
             wrapperBody.classList.toggle('slideright');
             closeIcon.classList.toggle('rotateicon');
+            console.log("I animated!")
         };
 
 
