@@ -34,7 +34,11 @@
 ## MATCHES
 --------------------------------------------------------------*/
 
-.match__item {
+.matches__items a {
+    color: inherit;
+}
+
+.matches__item {
     display: flex;
     flex-direction: row;
     margin-bottom: 0.7em;

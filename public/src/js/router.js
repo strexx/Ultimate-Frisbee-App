@@ -3,9 +3,6 @@
 *********************************************************/
 UFA.router = ( () => {
     function init () {
-        if (!window.location.hash) {
-            window.location = '/#matches/live';
-        }
         routie({
             'matches/recent': function() {
                 UFA.ux.showLoader();
@@ -22,10 +19,10 @@ UFA.router = ( () => {
             'tournaments': function() {
                 UFA.ux.showLoader();
                 UFA.page.tournaments();
-            },            
-            'match': function() {
+            },
+            'match/:ID': function(ID) {
                 UFA.ux.showLoader();
-                UFA.page.match();
+                UFA.page.match(ID);
             }
         });
     }

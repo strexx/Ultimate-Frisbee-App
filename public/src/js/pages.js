@@ -76,8 +76,8 @@ UFA.page = (() => {
             });
     }
 
-    function match() {
-      request('GET', 'api/match')
+    function match(ID) {
+      request('GET', 'api/match/' + ID)
           .then(function(APIdata) {
               var template = APIdata;
               wrapperSelector.innerHTML = template;
