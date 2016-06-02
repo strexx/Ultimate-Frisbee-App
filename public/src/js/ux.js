@@ -16,23 +16,23 @@ UFA.ux = (() => {
     function toggleMenu() {
 
       var toggleInfo = document.querySelector('.toggleinfo'),
+          closeButton = document.querySelector('.closebutton'),
           closeIcon = document.querySelector('.close-icon'),
           menu = document.querySelector('#menu'),
           body = document.querySelector('body'),
           wrapperBody = document.querySelector('#wrapper');
 
+          toggleInfo.addEventListener('click', function() {
+              animateSidebar();
+          });
 
         function animateSidebar() {
             wrapperBody.classList.toggle('slideright');
             closeIcon.classList.toggle('rotateicon');
-            console.log("I animated!")
         };
 
 
-        toggleInfo.addEventListener('click', function() {
-            console.log('hoi');
-            animateSidebar();
-        });
+
     }
 
     function showLoader() {
