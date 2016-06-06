@@ -23,9 +23,9 @@ UFA.ux = (() => {
             wrapperBody.classList.toggle('content-slideright');
             menuWrapper.classList.toggle('menu-wrapperslide');
             closeIcon.classList.toggle('rotateicon');
-        }
+        };
 
-    }
+    };
 
     function showLoader() {
         loader.classList.add("active");
