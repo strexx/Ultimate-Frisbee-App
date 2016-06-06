@@ -24,6 +24,7 @@ html {
 
 body {
     color: 333;
+    overflow-x: hidden;
 }
 
 ul, ol {

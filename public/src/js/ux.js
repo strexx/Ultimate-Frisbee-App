@@ -19,11 +19,13 @@ UFA.ux = (() => {
           closeIcon = document.querySelector('.close-icon'),
           menu = document.querySelector('#menu'),
           body = document.querySelector('body'),
-          wrapperBody = document.querySelector('#wrapper');
+          wrapperBody = document.querySelector('#wrapper'),
+          menuWrapper = document.querySelector('.menu-wrapper')
 
 
         function animateSidebar() {
-            wrapperBody.classList.toggle('slideright');
+            wrapperBody.classList.toggle('content-slideright');
+            menuWrapper.classList.toggle('menu-wrapperslide');
             closeIcon.classList.toggle('rotateicon');
         };
 
