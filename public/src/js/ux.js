@@ -39,7 +39,7 @@ UFA.ux = (() => {
 
         // Get all menu items
         var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
-            hash = window.location.hash.substring(1).split('/');
+            hash = window.location.hash;
 
         // Remove active class
         links.forEach(function(item) {
@@ -48,7 +48,7 @@ UFA.ux = (() => {
 
         // Add active class to new hash
         if (hash != "") {
-            var link = document.querySelector('#' + hash[1]),
+            var link = document.querySelector(hash),
                 fullLink = link.childNodes[0].getAttribute("href");
             link.classList.add('active');
         } else {

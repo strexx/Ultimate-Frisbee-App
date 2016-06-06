@@ -67,12 +67,32 @@ UFA.page = (() => {
             });
     }
 
-    function match(ID) {
+    function matchInfo(ID) {
+      request('GET', '/api/match/' + ID)
+          .then(function(APIdata) {
+              var template = APIdata;
+              wrapperSelector.innerHTML = template;
+              UFA.ux.toggleClass();
+
+          });
+    }
+
+    function matchScores(ID) {
       request('GET', '/api/match/' + ID)
           .then(function(APIdata) {
               var template = APIdata;
               wrapperSelector.innerHTML = template;
               UFA.data.socket();
+              UFA.ux.toggleClass();
+
+          });
+    }
+
+    function matchLocation(ID) {
+      request('GET', '/api/match/' + ID)
+          .then(function(APIdata) {
+              var template = APIdata;
+              wrapperSelector.innerHTML = template;
               UFA.ux.toggleClass();
 
           });
@@ -84,7 +104,9 @@ UFA.page = (() => {
         matchesLive: matchesLive,
         matchesUpcoming: matchesUpcoming,
         tournaments: tournaments,
-        match: match
+        matchInfo: matchInfo,
+        matchScores: matchScores,
+        matchLocation: matchLocation
     };
 
 })();
