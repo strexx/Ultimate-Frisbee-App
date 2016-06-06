@@ -7,11 +7,13 @@ UFA.page = (() => {
 
     function request(method, url) { // src: http://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
         return new Promise(function(resolve, reject) {
+          UFA.ux.showLoader();
             var xhr = new XMLHttpRequest();
             xhr.open(method, url);
             xhr.onload = function() {
                 if (this.status >= 200 && this.status < 300) {
                     resolve(xhr.response);
+                    UFA.ux.hideLoader();
                 } else {
                     reject({
                         status: this.status,
@@ -34,10 +36,6 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                // remove loader
-                UFA.ux.hideLoader();
-                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -47,10 +45,6 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                // remove loader
-                UFA.ux.hideLoader();
-                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -60,10 +54,6 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                // remove loader
-                UFA.ux.hideLoader();
-                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -73,19 +63,38 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                // remove loader
-                UFA.ux.hideLoader();
+                UFA.ux.toggleClass();
             });
     }
 
-    function match(ID) {
+    function matchInfo(ID) {
+      request('GET', '/api/match/' + ID)
+          .then(function(APIdata) {
+              var template = APIdata;
+              wrapperSelector.innerHTML = template;
+              UFA.ux.toggleClass();
+
+          });
+    }
+
+    function matchScores(ID) {
       request('GET', '/api/match/' + ID)
           .then(function(APIdata) {
               var template = APIdata;
               wrapperSelector.innerHTML = template;
               UFA.data.socket();
-              // remove loader
-              UFA.ux.hideLoader();
+              UFA.ux.toggleClass();
+
+          });
+    }
+
+    function matchLocation(ID) {
+      request('GET', '/api/match/' + ID)
+          .then(function(APIdata) {
+              var template = APIdata;
+              wrapperSelector.innerHTML = template;
+              UFA.ux.toggleClass();
+
           });
     }
 
@@ -95,7 +104,9 @@ UFA.page = (() => {
         matchesLive: matchesLive,
         matchesUpcoming: matchesUpcoming,
         tournaments: tournaments,
-        match: match
+        matchInfo: matchInfo,
+        matchScores: matchScores,
+        matchLocation: matchLocation
     };
 
 })();
