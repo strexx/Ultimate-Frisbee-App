@@ -3,31 +3,15 @@
 *********************************************************/
 UFA.router = ( () => {
     function init () {
-        if (!window.location.hash) {
-            window.location = '/#matches/live';
-        }
-        routie({
-            'matches/recent': function() {
-                UFA.ux.showLoader();
-                UFA.page.matchesRecent();
-            },
-            'matches/live': function() {
-                UFA.ux.showLoader();
-                UFA.page.matchesLive();
-            },
-            'matches/upcoming': function() {
-                UFA.ux.showLoader();
-                UFA.page.matchesUpcoming();
-            },
-            'tournaments': function() {
-                UFA.ux.showLoader();
-                UFA.page.tournaments();
-            },
-            'match': function() {
-                UFA.ux.showLoader();
-                UFA.page.match();
-            }
-        });
+
+      if(window.location.hash)
+        UFA.ux.toggleClass(window.location.hash);
+
+      // Check if hash has changed and toggle actives on links
+      window.addEventListener("hashchange", function () {
+          UFA.ux.toggleClass(window.location.hash);
+      });
+
     }
 
     return {

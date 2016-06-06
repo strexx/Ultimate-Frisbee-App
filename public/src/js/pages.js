@@ -30,44 +30,46 @@ UFA.page = (() => {
     }
 
     function matchesRecent() {
-        request('GET', 'api/matches/recent')
+        request('GET', '/api/matches/recent')
             .then(function(APIdata) {
-                console.log("Asked for recents");
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
                 UFA.data.socket();
                 // remove loader
                 UFA.ux.hideLoader();
+                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
 
     function matchesLive() {
-        request('GET', 'api/matches/live')
+        request('GET', '/api/matches/live')
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
                 UFA.data.socket();
                 // remove loader
                 UFA.ux.hideLoader();
+                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
 
     function matchesUpcoming() {
-        request('GET', 'api/matches/upcoming')
+        request('GET', '/api/matches/upcoming')
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
                 UFA.data.socket();
                 // remove loader
                 UFA.ux.hideLoader();
+                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
 
     function tournaments() {
-        request('GET', 'api/tournaments')
+        request('GET', '/api/tournaments')
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
@@ -76,8 +78,8 @@ UFA.page = (() => {
             });
     }
 
-    function match() {
-      request('GET', 'api/match')
+    function match(ID) {
+      request('GET', '/api/match/' + ID)
           .then(function(APIdata) {
               var template = APIdata;
               wrapperSelector.innerHTML = template;
