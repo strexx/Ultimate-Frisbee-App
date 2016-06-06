@@ -32,7 +32,6 @@ UFA.page = (() => {
     function matchesRecent() {
         request('GET', '/api/matches/recent')
             .then(function(APIdata) {
-                console.log("Asked for recents");
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
                 UFA.data.socket();
