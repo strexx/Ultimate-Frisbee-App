@@ -24,6 +24,7 @@ html {
 
 body {
     color: 333;
+    overflow-x: hidden;
 }
 
 ul, ol {
@@ -106,6 +107,13 @@ button {
     box-shadow: 0;
     outline: 0;
     border: 0;
+    cursor: pointer;
+}
+
+/*button {
+    box-shadow: 0;
+    outline: 0;
+    border: 0;
     background: rgba(246, 176, 26, 1);
     padding: 0.7em 1.4em;
     margin: 1em 0 0.5em;
@@ -124,7 +132,7 @@ button.active {
 button a {
     display: block;
     color: inherit;
-}
+}*/
 
 /*--------------------------------------------------------------
 # TYPOGRAPHY

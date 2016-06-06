@@ -19,9 +19,11 @@
   "homepage": "https://github.com/strexx/Ultimate-Frisbee-App",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "dateformat": "^1.0.12",
     "express": "^4.13.4",
     "fs": "0.0.2",
     "gsap": "^1.18.2",
+    "gulp-sourcemaps": "^1.6.0",
     "hbs": "^4.0.0",
     "jsonfile": "^2.2.3",
     "momentjs": "^1.1.2",
@@ -36,6 +38,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.1",
     "gulp-notify": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
     "nodemon": "^1.9.1"

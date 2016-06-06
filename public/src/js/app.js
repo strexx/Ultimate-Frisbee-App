@@ -2,16 +2,16 @@
 	NAMESPACE
 *********************************************************/
 var UFA = UFA || {};
-'use strict';
 
 /*********************************************************
     LAUNCH APP
 *********************************************************/
 UFA.launcher = ( () => {
 
+    'use strict';
+
     function init() {
         document.addEventListener("DOMContentLoaded", function () {
-            UFA.ux.init();
             UFA.router.init();
         });
     }
