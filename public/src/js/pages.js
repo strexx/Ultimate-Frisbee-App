@@ -7,6 +7,7 @@ UFA.page = (() => {
 
     function request(method, url) { // src: http://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
         return new Promise(function(resolve, reject) {
+          UFA.ux.showLoader();
             var xhr = new XMLHttpRequest();
             xhr.open(method, url);
             xhr.onload = function() {

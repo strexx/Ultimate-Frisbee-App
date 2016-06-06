@@ -8,7 +8,17 @@ UFA.router = (() => {
         }
         // Check if hash has changed and toggle actives on links
         window.addEventListener("hashchange", function() {
-            UFA.ux.toggleClass(window.location.hash);
+            switch (window.location.hash) {
+                case "#matches/recent":
+                    UFA.page.matchesRecent();
+                    break;
+                case "#matches/live":
+                    UFA.page.matchesLive();
+                    break;
+                case "#matches/upcoming":
+                    UFA.page.matchesUpcoming();
+                    break;
+            }
         });
     }
 
