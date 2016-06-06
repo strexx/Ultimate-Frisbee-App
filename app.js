@@ -11,6 +11,7 @@ var fs = require('fs'),
     api = require('./routes/api');
 
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/partials/header');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

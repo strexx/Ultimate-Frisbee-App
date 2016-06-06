@@ -5,7 +5,8 @@ var gulp = require('gulp'),
 	cssnano = require('gulp-cssnano'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+	sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
     'css': './public/src/css/*.css',
@@ -22,11 +23,13 @@ var outputPath = {
 
 gulp.task('scripts', function () {
     gulp.src(inputPath.js)
-            .pipe(babel({
-                presets: ['es2015']
-            }))
-            .pipe(concat('app.min.js'))
-            .pipe(uglify())
+		.pipe(sourcemaps.init())
+			.pipe(babel({
+				presets: ['es2015']
+			}))
+			.pipe(concat('app.min.js'))
+			.pipe(uglify())
+		.pipe(sourcemaps.write())
         .pipe(gulp.dest(outputPath.js))
         .pipe(notify({
             message: 'Scripts task complete'
@@ -36,9 +39,11 @@ gulp.task('scripts', function () {
 
 gulp.task('styles', function () {
     gulp.src(inputPath.css)
-            .pipe(autoprefixer())
-            .pipe(concat('style.min.css'))
-            .pipe(cssnano())
+		.pipe(sourcemaps.init())
+			.pipe(autoprefixer())
+			.pipe(concat('style.min.css'))
+			.pipe(cssnano())
+		.pipe(sourcemaps.write())
         .pipe(gulp.dest(outputPath.css))
         .pipe(notify({
             message: 'Styles task complete'
