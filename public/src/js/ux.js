@@ -37,7 +37,6 @@ UFA.ux = (() => {
     function toggleClass(fullHash) {
 
         // Get all menu items
-
         var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
             hash = window.location.hash.substring(1).split('/');
 
@@ -57,10 +56,6 @@ UFA.ux = (() => {
 
         // Run functions when hash is changed
         switch (fullHash) {
-            case "":
-                UFA.ux.showLoader();
-                UFA.page.matchesLive();
-                break;
             case "#matches/recent":
                 UFA.ux.showLoader();
                 UFA.page.matchesRecent();
@@ -75,7 +70,7 @@ UFA.ux = (() => {
                 break;
         }
     }
-    
+
     return {
         showLoader: showLoader,
         hideLoader: hideLoader,
