@@ -8,19 +8,20 @@ UFA.ux = (() => {
 
     function toggleMenu() {
 
-        var toggleInfo = document.querySelector('.toggleinfo'),
-            closeButton = document.querySelector('.closebutton'),
-            closeIcon = document.querySelector('.close-icon'),
-            menu = document.querySelector('#menu'),
-            body = document.querySelector('body'),
-            wrapperBody = document.querySelector('#wrapper');
+      var toggleInfo = document.querySelector('.toggleinfo'),
+          closeIcon = document.querySelector('.close-icon'),
+          menu = document.querySelector('#menu'),
+          body = document.querySelector('body'),
+          wrapperBody = document.querySelector('#wrapper'),
+          menuWrapper = document.querySelector('.menu-wrapper');
 
         toggleInfo.addEventListener('click', function() {
             animateSidebar();
         });
 
         function animateSidebar() {
-            wrapperBody.classList.toggle('slideright');
+            wrapperBody.classList.toggle('content-slideright');
+            menuWrapper.classList.toggle('menu-wrapperslide');
             closeIcon.classList.toggle('rotateicon');
         }
 

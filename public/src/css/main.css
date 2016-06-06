@@ -50,11 +50,15 @@
 ## CONTENT
 --------------------------------------------------------------*/
 #wrapper {
-  min-height: 100vh;
-  -webkit-transition: 0.5s ease-out;
-  -moz-transition: 0.5s ease-out;
-  -o-transition: 0.5s ease-out;
-  transition: 0.5s ease-out;
+    min-height: 100vh;
+  overflow-x: hidden;
+  
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 }
 
 
