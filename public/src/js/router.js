@@ -3,12 +3,12 @@
 *********************************************************/
 UFA.router = (() => {
     function init() {
-        UFA.ux.toggleMenu();
         if (window.location.pathname == '/') {
             UFA.ux.toggleClass(window.location.hash);
         }
         // Check if hash has changed and toggle actives on links
         window.addEventListener("hashchange", function() {
+            var gameID = window.location.pathname.split('/')[2];
             switch (window.location.hash) {
                 case "#recent":
                     UFA.page.matchesRecent();
@@ -20,19 +20,17 @@ UFA.router = (() => {
                     UFA.page.matchesUpcoming();
                     break;
                 case "#info":
-                    var gameID = window.location.pathname.split('/')[2];
                     UFA.page.matchInfo(gameID);
                     break;
                 case "#scores":
-                    var gameID = window.location.pathname.split('/')[2];
                     UFA.page.matchScores(gameID);
                     break;
                 case "#location":
-                    var gameID = window.location.pathname.split('/')[2];
                     UFA.page.matchLocation(gameID);
                     break;
             }
         });
+        UFA.ux.toggleMenu();
     }
 
     return {
