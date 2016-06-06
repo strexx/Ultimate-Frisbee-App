@@ -13,6 +13,7 @@ UFA.page = (() => {
             xhr.onload = function() {
                 if (this.status >= 200 && this.status < 300) {
                     resolve(xhr.response);
+                    UFA.ux.hideLoader();
                 } else {
                     reject({
                         status: this.status,
@@ -35,10 +36,6 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                // remove loader
-                UFA.ux.hideLoader();
-                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -48,10 +45,6 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                // remove loader
-                UFA.ux.hideLoader();
-                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -61,10 +54,6 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                // remove loader
-                UFA.ux.hideLoader();
-                UFA.ux.toggleMenu();
                 UFA.ux.toggleClass();
             });
     }
@@ -74,8 +63,7 @@ UFA.page = (() => {
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
-                // remove loader
-                UFA.ux.hideLoader();
+                UFA.ux.toggleClass();
             });
     }
 
@@ -85,8 +73,8 @@ UFA.page = (() => {
               var template = APIdata;
               wrapperSelector.innerHTML = template;
               UFA.data.socket();
-              // remove loader
-              UFA.ux.hideLoader();
+              UFA.ux.toggleClass();
+
           });
     }
 

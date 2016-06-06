@@ -1,8 +1,9 @@
 /*********************************************************
-	ROUTER MODULE [with router lib: Routie]
+	ROUTER MODULE
 *********************************************************/
 UFA.router = (() => {
     function init() {
+      UFA.ux.toggleMenu();
         if (window.location.pathname == '/') {
             UFA.ux.toggleClass(window.location.hash);
         }
