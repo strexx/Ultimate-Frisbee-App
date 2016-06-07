@@ -1,15 +1,57 @@
 /*********************************************************
 	DATA REQUEST
 *********************************************************/
-UFA.ux = ( () => {
+UFA.ux = (() => {
 
-    var loader  = document.querySelector(".loader");
-    var tabLinks = document.getElementsByClassName("tablinks");
+    // Global vars
+    var loader = document.querySelector('.loader'),
+        tabLinks = document.getElementsByClassName('tablinks'),
+        toggleInfo = document.querySelector('.toggleinfo'),
+        closeIcon = document.querySelector('.close-icon'),
+        menu = document.querySelector('#menu'),
+        body = document.querySelector('body'),
+        wrapperBody = document.querySelector('#wrapper'),
+        menuWrapper = document.querySelector('.menu-wrapper');
 
+    function toggleMenu() {
+        toggleInfo.addEventListener('click', function() {
+            animateSidebar();
+        });
 
-    function init() {
+        function animateSidebar() {
+            wrapperBody.classList.toggle('content-slideright');
+            menuWrapper.classList.toggle('menu-wrapperslide');
+            closeIcon.classList.toggle('rotateicon');
+        };
+
+        // return {
+        //     wrapperBody: wrapperBody,
+        //     menuWrapper: menuWrapper,
+        //     closeIcon: closeIcon
+        // };
 
     }
+
+    function toggleClass() {
+        // Get all menu items
+        var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
+            hash = window.location.hash;
+
+        // Remove active class
+        links.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        // Add active class to new hash
+        if (hash != "") {
+            var link = document.querySelector(hash),
+                fullLink = link.childNodes[0].getAttribute("href");
+            link.classList.add('active');
+        } else {
+            document.querySelector('#live').classList.add('active');
+        }
+    }
+
 
     function showLoader() {
         loader.classList.add("active");
@@ -19,29 +61,11 @@ UFA.ux = ( () => {
         loader.classList.remove("active");
     }
 
-    function toggleClass() {
-
-                // Get all menu items
-
-                var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
-                    hash = window.location.hash.substring(1).split('/'),
-                    link = document.querySelector('#' + hash[1]);
-
-                // Remove active class
-                links.forEach(function(item) {
-                    item.classList.remove("active");
-                });
-
-                // Add active class to new hash
-                link.classList.add('active');
-            }
-
-
     return {
-        init: init,
+        toggleMenu: toggleMenu,
+        toggleClass: toggleClass,
         showLoader: showLoader,
-        hideLoader: hideLoader,
-        toggleClass: toggleClass
+        hideLoader: hideLoader
     };
 
 })();
