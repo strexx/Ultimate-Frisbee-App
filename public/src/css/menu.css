@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   z-index: 2;
-  /*left: -18em;*/
   transform: translateX(-18em);
   height: 100%;
   -webkit-transition: 0.5s;
@@ -26,17 +25,9 @@ transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     height: 100%;
 }
 
-/*.closebutton:hover,
-.closebutton:hover + #menu {
-  transform: translateX(0.5em);
-}*/
 .menu-wrapperslide {
     transform: translateX(0);
 }
-
-/*.menu-slideright {
-    transform: translateX(0) !important;
-}*/
 
 .content-slideright {
     transform: translateX(18em);
@@ -45,10 +36,6 @@ transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 .killoverflow {
   overflow-x: hidden;
 }
-
-/*.slideright {
-    transform: translateX(0);
-}*/
 
 .information {
     display: flex;
@@ -168,4 +155,84 @@ transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 
 .menusvg {
   margin-right: 0.5em;
+}
+
+/*menu icon styling*/
+.menu-icon {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin-right: 10px;
+  font-size: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon:focus {
+  outline: none;
+}
+
+.menu-icon span {
+  display: block;
+  position: absolute;
+  top: 23px;
+  left: 3px;
+  right: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 20px;
+}
+
+.menu-icon span::before,
+.menu-icon span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-color: #fff;
+  content: "";
+  border-radius: 20px;
+}
+
+ .menu-icon span::before {
+  top: -12px;
+}
+
+.menu-icon span::after {
+  bottom: -12px;
+}
+
+.menu-icon {
+  background-color: transparent;;
+}
+
+.menu-icon span::before {
+  transition: top 0.3s 0.3s, transform 0.3s 0s, width 0.3s 0s;
+}
+
+.menu-icon span::after {
+  transition: bottom 0.3s 0.3s, transform 0.3s 0s, width 0.3s 0s;
+}
+
+.menu-icon.active span::before {
+  top: -6px;
+  width: 50%;
+  transform: rotate(-35deg);
+}
+
+.menu-icon.active span::after {
+  bottom: -6px;
+  width: 50%;
+  transform: rotate(35deg);
+}
+
+.menu-icon.active span::before,
+.menu-icon.active span::after {
+  transition-delay: 0s, 0.3s;
 }
