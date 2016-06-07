@@ -26,6 +26,8 @@
     "hbs": "^4.0.0",
     "jsonfile": "^2.2.3",
     "momentjs": "^1.1.2",
+    "mongodb": "^2.1.21",
+    "mongoose": "^4.4.20",
     "path": "^0.12.7",
     "request": "^2.72.0",
     "socket.io": "^1.4.6"
