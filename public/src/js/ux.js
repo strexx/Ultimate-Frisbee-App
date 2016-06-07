@@ -6,22 +6,21 @@ UFA.ux = (() => {
     // Global vars
     var loader = document.querySelector('.loader'),
         tabLinks = document.getElementsByClassName('tablinks'),
-        toggleInfo = document.querySelector('.toggleinfo'),
-        closeIcon = document.querySelector('.close-icon'),
         menu = document.querySelector('#menu'),
+        menuIcon = document.querySelector('.menu-icon'),
         body = document.querySelector('body'),
         wrapperBody = document.querySelector('#wrapper'),
         menuWrapper = document.querySelector('.menu-wrapper');
 
     function toggleMenu() {
-        toggleInfo.addEventListener('click', function() {
+        menuIcon.addEventListener('click', function() {
             animateSidebar();
         });
 
         function animateSidebar() {
             wrapperBody.classList.toggle('content-slideright');
             menuWrapper.classList.toggle('menu-wrapperslide');
-            closeIcon.classList.toggle('rotateicon');
+            menuIcon.classList.toggle('active');
         };
 
         // return {

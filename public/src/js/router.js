@@ -5,7 +5,10 @@ UFA.router = (() => {
     function init() {
         if (window.location.pathname == '/') {
             UFA.ux.toggleClass(window.location.hash);
+        } else if (window.location.pathname.indexOf('match/')) {
+            UFA.data.socket();
         }
+
         // Check if hash has changed and toggle actives on links
         window.addEventListener("hashchange", function() {
             var gameID = window.location.pathname.split('/')[2];
