@@ -5,7 +5,7 @@ var express = require('express'),
     dateFormat = require('dateformat');
 
 router.get('/', function (req, res, next) {
-    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=5&access_token=6dc9d3795a', json: true, timeout: 4000}, function (error, response, data) {
+    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=5&access_token=6dc9d3795a', json: true, timeout: 6000}, function (error, response, data) {
         if (!error && response.statusCode == 200) {
           var objects = data.objects;
 

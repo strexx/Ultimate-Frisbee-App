@@ -110,19 +110,17 @@ transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     transform: rotate(90deg);
 }
 .information div {
-    padding: 45px 60px 6px;
-}
-.information div {
-    border-bottom: 3px solid white;
+    padding: 39px 60px 6px;
+    border-bottom: 6px solid #fff;
 }
 .information h2 {
     color: #FFFFFF;
     text-transform: uppercase;
     font-weight: 500;
-    /*margin: 0;*/
     margin-bottom: 0.8em;
     padding: 0;
     letter-spacing: 1px;
+    text-align: center;
 }
 .menutitle {
     font-size: 2em;
@@ -166,4 +164,8 @@ transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 }
 .nav-text {
     font-size: 1.8em;
+}
+
+.menusvg {
+  margin-right: 0.5em;
 }

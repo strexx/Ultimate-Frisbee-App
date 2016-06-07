@@ -7,7 +7,7 @@ UFA.page = (() => {
 
     function request(method, url) { // src: http://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
         return new Promise(function(resolve, reject) {
-          UFA.ux.showLoader();
+            UFA.ux.showLoader();
             var xhr = new XMLHttpRequest();
             xhr.open(method, url);
             xhr.onload = function() {
@@ -19,6 +19,7 @@ UFA.page = (() => {
                         status: this.status,
                         statusText: xhr.statusText
                     });
+                    UFA.ux.hideLoader();
                 }
             };
             xhr.onerror = function() {
@@ -58,44 +59,35 @@ UFA.page = (() => {
             });
     }
 
-    function tournaments() {
-        request('GET', '/api/tournaments')
+    function matchInfo(ID) {
+        request('GET', '/api/match/' + ID)
             .then(function(APIdata) {
                 var template = APIdata;
                 wrapperSelector.innerHTML = template;
                 UFA.ux.toggleClass();
+
             });
     }
 
-    function matchInfo(ID) {
-      request('GET', '/api/match/' + ID)
-          .then(function(APIdata) {
-              var template = APIdata;
-              wrapperSelector.innerHTML = template;
-              UFA.ux.toggleClass();
-
-          });
-    }
-
     function matchScores(ID) {
-      request('GET', '/api/match/' + ID)
-          .then(function(APIdata) {
-              var template = APIdata;
-              wrapperSelector.innerHTML = template;
-              UFA.data.socket();
-              UFA.ux.toggleClass();
+        request('GET', '/api/match/' + ID)
+            .then(function(APIdata) {
+                var template = APIdata;
+                wrapperSelector.innerHTML = template;
+                UFA.data.socket();
+                UFA.ux.toggleClass();
 
-          });
+            });
     }
 
     function matchLocation(ID) {
-      request('GET', '/api/match/' + ID)
-          .then(function(APIdata) {
-              var template = APIdata;
-              wrapperSelector.innerHTML = template;
-              UFA.ux.toggleClass();
+        request('GET', '/api/match/' + ID)
+            .then(function(APIdata) {
+                var template = APIdata;
+                wrapperSelector.innerHTML = template;
+                UFA.ux.toggleClass();
 
-          });
+            });
     }
 
     return {
@@ -103,7 +95,6 @@ UFA.page = (() => {
         matchesRecent: matchesRecent,
         matchesLive: matchesLive,
         matchesUpcoming: matchesUpcoming,
-        tournaments: tournaments,
         matchInfo: matchInfo,
         matchScores: matchScores,
         matchLocation: matchLocation
