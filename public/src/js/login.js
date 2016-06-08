@@ -7,7 +7,9 @@ UFA.login = (() => {
         placeholder = document.querySelector('.submit i'),
         feedback = document.querySelector('.feedback');
 
-    submit.addEventListener("click", loginSubmit, false);
+    function init() {
+      submit.addEventListener("click", loginSubmit, false);
+    }
 
     function loginSubmit(e) {
       placeholder.classList.remove("fa-long-arrow-right");
@@ -16,6 +18,7 @@ UFA.login = (() => {
     }
 
     return {
+        init: init,
         loginSubmit: loginSubmit
     };
 

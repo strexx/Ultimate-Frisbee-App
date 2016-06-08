@@ -52,7 +52,7 @@
 #wrapper {
     min-height: 100vh;
   overflow-x: hidden;
-  
+
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
@@ -121,6 +121,7 @@ hr {
 #teams {
   display: flex;
   flex-direction: row;
+  min-height: 60vh;
 }
 
 #teams .team {
@@ -142,11 +143,15 @@ hr {
 #teams .btn-minus {
   color: white;
   background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
 }
 
 #teams .btn-plus {
   background: rgba(0, 0, 0, 0.2);
   color: white;
+  position: absolute;
+  bottom: 0;
 }
 
 #teams .top {
@@ -164,6 +169,7 @@ hr {
 #teams .team__home {
   background: #359776;
   width: 50%;
+  position: relative;
 }
 
 #teams .team__home__info span {
@@ -188,6 +194,7 @@ hr {
 #teams .team__away {
   background: #e99c42;
   width: 50%;
+  position: relative;
 }
 
 #teams .team__away__info span {

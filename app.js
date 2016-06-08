@@ -3,9 +3,11 @@ var fs = require('fs'),
     hbs = require('hbs'),
     path = require("path"),
     bodyParser = require('body-parser'),
+    session = require('express-session'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io'),
+    fileStore = require('session-file-store')(session),
     // Include routes
     routes = require('./routes/index'),
     api = require('./routes/api'),
@@ -27,6 +29,16 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
+
+// set session with secret
+app.use(session({
+    cookieName: 'userSession',
+    secret: 'soSecureMuchEncryption',
+    store: new fileStore(),
+    saveUninitialized: true,
+    resave: false,
+    cookie: { secure: false }
+}));
 
 // set routes
 app.use('/', routes);
