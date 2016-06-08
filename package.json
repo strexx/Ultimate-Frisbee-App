@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/strexx/Ultimate-Frisbee-App",
   "dependencies": {
+    "assert": "^1.4.1",
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.3",
     "dateformat": "^1.0.12",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "fs": "0.0.2",
     "gsap": "^1.18.2",
     "hbs": "^4.0.0",

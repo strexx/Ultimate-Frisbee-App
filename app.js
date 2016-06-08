@@ -3,6 +3,7 @@ var fs = require('fs'),
     hbs = require('hbs'),
     path = require("path"),
     bodyParser = require('body-parser'),
+    session = require('express-session'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io'),
@@ -31,6 +32,17 @@ app.use(bodyParser.json());
 // set routes
 app.use('/', routes);
 app.use('/api/', api);
+
+// set session with secret
+app.use(session({
+    secret: 'soSecureMuchEncryption',
+    genid: function(req) {
+        return generateUUID() // use UUIDs for session IDs
+    },
+    store: new FileStore(),
+    saveUninitialized: true,
+    resave: false
+}));
 
 // define static path
 app.use(express.static(path.join(__dirname, 'public')));
