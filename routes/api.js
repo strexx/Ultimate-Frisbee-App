@@ -90,7 +90,8 @@ router.get('/tournaments', function(req, res) {
 });
 
 router.get('/match/:gameID', function(req, res) {
-    var gameID = req.params.gameID;
+    var gameID = req.params.gameID,
+        session = req.session.user_id;
     request({
         url: 'https://api.leaguevine.com/v1/games/' + gameID + '/?access_token=3aa4afb621',
         json: true
@@ -104,6 +105,7 @@ router.get('/match/:gameID', function(req, res) {
             res.render('match', {
                 title: 'Match',
                 items: objects,
+                user: session,
                 layout: false
             });
         }
