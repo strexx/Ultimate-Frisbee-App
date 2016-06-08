@@ -8,7 +8,12 @@ var fs = require('fs'),
     io = require('socket.io'),
     // Include routes
     routes = require('./routes/index'),
-    api = require('./routes/api');
+    api = require('./routes/api'),
+    // Include MongoDB
+    mongoDB = require('./lib/mongodb.js');
+
+    // Include Socket.io file
+    require('./lib/sockets/connection.js')(server);
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
@@ -29,9 +34,6 @@ app.use('/api/', api);
 
 // define static path
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Require connection with socket
-require('./lib/sockets/connection.js')(server);
 
 // development error handler - will print stacktrace
 if (app.get('env') === 'development') {
