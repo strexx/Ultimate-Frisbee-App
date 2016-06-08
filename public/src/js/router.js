@@ -7,6 +7,8 @@ UFA.router = (() => {
             UFA.ux.toggleClass(window.location.hash);
         } else if (window.location.pathname.indexOf('match/')) {
             UFA.data.socket();
+        } else if (window.location.pathname.indexOf('login')) {
+            UFA.login.init();
         }
 
         // Check if hash has changed and toggle actives on links
