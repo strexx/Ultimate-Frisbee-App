@@ -51,6 +51,31 @@ UFA.ux = (() => {
         }
     }
 
+    function toggleSection() {
+        var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
+            hash = window.location.hash;
+            console.log(hash);
+
+          var sections = document.querySelectorAll('.match_items');
+          var i;
+
+          console.log(sections);
+
+          for (i = 0; i < sections.length; i++) {
+              sections[i].classList.add('inactive');
+
+              if (!hash) {
+                  sections[0].classList.remove('inactive');
+                  console.log('inohash');
+              }
+
+          }
+          if (hash) {
+              document.querySelector(hash + "_sect").classList.remove('inactive');
+          }
+
+    }
+
 
     function showLoader() {
         loader.classList.add("active");
@@ -64,7 +89,8 @@ UFA.ux = (() => {
         toggleMenu: toggleMenu,
         toggleClass: toggleClass,
         showLoader: showLoader,
-        hideLoader: hideLoader
+        hideLoader: hideLoader,
+        toggleSection: toggleSection
     };
 
 })();
