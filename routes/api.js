@@ -2,7 +2,13 @@ var express = require('express'),
     router = express.Router(),
     fs = require('fs'),
     request = require('request'),
-    dateFormat = require('dateformat');
+    dateFormat = require('dateformat'),
+    session = require('express-session'),
+    mongodb = require('mongodb'),
+    ObjectId = require('mongodb').ObjectID,
+    MongoClient = mongodb.MongoClient,
+    assert = require('assert'),
+    url = 'mongodb://146.185.135.172:27017/ultifris';
 
 router.get('/matches/live', function (req, res, next) {
     request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=5&access_token=6dc9d3795a', json: true}, function (error, response, data) {
@@ -63,6 +69,48 @@ router.get('/match/:gameID', function (req, res, next) {
           res.render('match', { title: 'Match', items: objects, layout: false });
       }
     });
+});
+
+router.post('/login', function (req, res, next) {
+
+  var post = req.body,
+      email, password;
+
+  var session = req.session;
+  console.log(session);
+
+  if(post) {
+    email = req.body.email,
+    password = req.body.password;
+  } else {
+    console.log("error g");
+  }
+
+  MongoClient.connect(url, function(err, db) {
+      if (err) {
+          console.log('Unable to connect to the mongoDB server. Error:', err);
+      } else {
+
+          var collection = db.collection('accounts');
+
+          collection.findOne({email : email, password: password}, function(err, account){
+              if(err) throw err;
+              if(account) {
+                //console.log(email + " password: " + doc.password);
+                //req.session.user_id = account._id;
+                //console.log(req.session.user_id);
+                //res.redirect('/');
+              }
+              else {
+
+              }
+              db.close();
+          });
+
+          console.log('Connection established!');
+      }
+  });
+
 });
 
 module.exports = router;

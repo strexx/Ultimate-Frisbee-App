@@ -46,4 +46,9 @@ router.get('/login', function (req, res, next) {
     res.render('login', { title: 'Login' });
 });
 
+router.get('/logout', function (req, res) {
+  delete req.session.user_id;
+  res.redirect('/login');
+});
+
 module.exports = router;
