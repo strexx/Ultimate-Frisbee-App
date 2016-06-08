@@ -14,7 +14,7 @@ UFA.login = (() => {
     }
 
     return {
-        submitted: submitted
+        loginSubmit: loginSubmit
     };
 
 })();
