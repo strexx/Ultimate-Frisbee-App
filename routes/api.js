@@ -97,6 +97,10 @@ router.get('/match/:gameID', function(req, res) {
     }, function(error, response, data) {
         if (!error && response.statusCode == 200) {
             var objects = data;
+
+            objects.start_time = dateFormat(objects.start_time, "HH:MM");
+            objects.game_site.name = objects.game_site.name.split('.')[0];
+
             res.render('match', {
                 title: 'Match',
                 items: objects,
@@ -112,7 +116,6 @@ router.post('/login', function(req, res) {
         email, password;
 
     var session = req.session;
-    //console.log(session);
 
     if (post) {
         email = req.body.email,
