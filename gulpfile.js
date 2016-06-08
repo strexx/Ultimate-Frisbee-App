@@ -6,19 +6,21 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch'),
+	browserSync = require('browser-sync').create(),
+	nodemon = require('gulp-nodemon'),
 	sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
     'css': './public/src/css/*.css',
     'js': './public/src/js/*.js',
-		'lib': './public/src/lib/*.js'
+	'lib': './public/src/lib/*.js'
 };
 
 var outputPath = {
     'css': './public/dist/css/',
     'js': './public/dist/js/',
     'img': './public/dist/img/',
-		'lib': './public/dist/lib/'
+	'lib': './public/dist/lib/'
 };
 
 gulp.task('scripts', function () {
@@ -50,10 +52,34 @@ gulp.task('styles', function () {
         }));
 });
 
-gulp.task('watch', function () {
-    gulp.watch(inputPath.css, ['styles']);
-    gulp.watch(inputPath.js, ['scripts']);
+gulp.task('nodemon', function(cb) {
+    nodemon({
+            script: './app.js'
+        })
+        .on('start', function() {
+            if (!called) {
+                cb();
+            }
+            called = true;
+        })
+        .on('restart', function onRestart() {
+            setTimeout(function reload() {
+                browserSync.reload({
+                    stream: false
+                });
+            }, 500);
+        })
+        .on('error', function(err) {
+            // Make sure failure causes gulp to exit
+            throw err;
+        });
 });
 
+// Gulp watch changes
+gulp.task('watch', function () {
+    gulp.watch(inputPath.css, ['styles'], browserSync.reload);
+    gulp.watch(inputPath.js, ['scripts'], browserSync.reload);
+});
 
-gulp.task('default', ['scripts', 'styles', 'watch']);
+// Gulp default task
+gulp.task('default', ['scripts', 'styles', 'nodemon', 'watch']);
