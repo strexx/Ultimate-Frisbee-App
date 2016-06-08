@@ -7,6 +7,7 @@ var fs = require('fs'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io'),
+    fileStore = require('session-file-store')(session),
     // Include routes
     routes = require('./routes/index'),
     api = require('./routes/api'),
@@ -29,20 +30,19 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+// set session with secret
+app.use(session({
+    cookieName: 'userSession',
+    secret: 'soSecureMuchEncryption',
+    store: new fileStore(),
+    saveUninitialized: true,
+    resave: false,
+    cookie: { secure: false }
+}));
+
 // set routes
 app.use('/', routes);
 app.use('/api/', api);
-
-// set session with secret
-app.use(session({
-    secret: 'soSecureMuchEncryption',
-    genid: function(req) {
-        return generateUUID() // use UUIDs for session IDs
-    },
-    store: new FileStore(),
-    saveUninitialized: true,
-    resave: false
-}));
 
 // define static path
 app.use(express.static(path.join(__dirname, 'public')));
