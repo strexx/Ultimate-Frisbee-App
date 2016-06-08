@@ -4,4 +4,4 @@ npm-debug.log
 
 public/dist
 
-/lib/mongodb.js
+#lib/mongodb.js
