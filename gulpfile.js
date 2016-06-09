@@ -92,6 +92,6 @@ gulp.task('criticalcss', function (cb) { //src: http://fourkitchens.com/blog/art
         dest: './public/dist/css/critical.css',
         minify: true,
         extract: false
-            //ignore: ['font-face']
+        //ignore: ['font-face']
     });
 });
