@@ -1,21 +1,22 @@
-var fs = require('fs'),
-    express = require('express'),
+var express = require('express'),
+    app = express(),
     hbs = require('hbs'),
     path = require("path"),
+    mongodb = require('mongodb'),
+    MongoClient = mongodb.MongoClient,
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    app = express(),
-    server = require('http').createServer(app),
     io = require('socket.io'),
+    server = require('http').createServer(app),
     fileStore = require('session-file-store')(session),
     // Include routes
     routes = require('./routes/index'),
     api = require('./routes/api'),
-    // Include MongoDB
-    mongoDB = require('./lib/mongodb.js');
+    db;
 
     // Include Socket.io file
     require('./lib/sockets/connection.js')(server);
+    require('./lib/mongodb.js');
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
