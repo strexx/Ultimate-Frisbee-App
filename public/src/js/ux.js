@@ -56,7 +56,7 @@ UFA.ux = (() => {
             hash = window.location.hash;
             console.log(hash);
 
-          var sections = document.querySelectorAll('.match_items');
+          var sections = document.querySelectorAll('main > section');
           var i;
 
           console.log(sections);
@@ -71,7 +71,7 @@ UFA.ux = (() => {
 
           }
           if (hash) {
-              document.querySelector(hash + "_sect").classList.remove('inactive');
+              document.querySelector(hash + "-block").classList.remove('inactive');
           }
 
     }
