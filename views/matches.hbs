@@ -1,0 +1,19 @@
+{{> header_matches}}
+
+<main id="main" role="main">
+    <section id="live-block" class="matches__items">
+        {{#each liveMatches}}
+            {{> content_matches}}
+        {{/each}}
+    </section>
+    <section id="recent-block" class="matches__items">
+        {{#each recentMatches}}
+            {{> content_matches}}
+        {{/each}}
+    </section>
+    <section id="upcoming-block" class="matches__items">
+        {{#each upcomingMatches}}
+            {{> content_matches}}
+        {{/each}}
+    </section>
+</main>
