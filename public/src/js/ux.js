@@ -43,7 +43,7 @@ UFA.ux = (() => {
 
         // Add active class to new hash
         if (hash != "") {
-            var link = document.querySelector(hash),
+            var link = document.querySelector(hash+'-menu'),
                 fullLink = link.childNodes[0].getAttribute("href");
             link.classList.add('active');
         } else {
