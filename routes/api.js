@@ -90,16 +90,22 @@ router.get('/tournaments', function(req, res) {
 });
 
 router.get('/match/:gameID', function(req, res) {
-    var gameID = req.params.gameID;
+    var gameID = req.params.gameID,
+        session = req.session.user_id;
     request({
         url: 'https://api.leaguevine.com/v1/games/' + gameID + '/?access_token=3aa4afb621',
         json: true
     }, function(error, response, data) {
         if (!error && response.statusCode == 200) {
             var objects = data;
+
+            objects.start_time = dateFormat(objects.start_time, "HH:MM");
+            objects.game_site.name = objects.game_site.name.split('.')[0];
+
             res.render('match', {
                 title: 'Match',
                 items: objects,
+                user: session,
                 layout: false
             });
         }
@@ -112,7 +118,6 @@ router.post('/login', function(req, res) {
         email, password;
 
     var session = req.session;
-    //console.log(session);
 
     if (post) {
         email = req.body.email,
