@@ -82,4 +82,4 @@ gulp.task('watch', function () {
 });
 
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'nodemon', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'watch']);
