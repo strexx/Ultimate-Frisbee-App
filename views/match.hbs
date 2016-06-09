@@ -1,8 +1,9 @@
 {{> header_match }}
 
-<section id="scores_sect" class="match_items">
+<main id="main" role="main">
+	<section id="scores-block" class="match_items">
 
-	<!-- <article class="match__item"> -->
+		<!-- <article class="match__item"> -->
 
 		<form action="match/score" method="POST" onsubmit="event.preventDefault();">
 
@@ -23,7 +24,7 @@
 
 					{{#if user }}
 						<div class="bottom">
-								<button class="btn btn-plus" name="team__home__plus" id="team__home__plus">+</button>
+							<button class="btn btn-plus" name="team__home__plus" id="team__home__plus">+</button>
 						</div>
 					{{/if}}
 
@@ -60,46 +61,47 @@
 			{{/if}}
 		</form>
 
-	<!-- </article> -->
+		<!-- </article> -->
 
-</section>
+	</section>
 
-<section id="info_sect" class="match_items">
+	<section id="info-block" class="match_items">
 		<div class="match__content">
 
-				<h2 class="match__content__title">Match Details</h2>
+			<h2 class="match__content__title">Match Details</h2>
 
-				<table class="match__content__info">
-						<tr>
-								<th>Time</th>
-								<td>{{items.start_time}} - 10:30</td>
-						</tr>
-						<tr>
-								<th>Field</th>
-								<td>{{items.game_site.name}}</td>
-						</tr>
-						<tr>
-								<th>Round</th>
-								<td>{{items.pool_round}}</td>
-						</tr>
-						<tr>
-								<th>Tournament</th>
-								<td>{{items.tournament.name}}</td>
-						</tr>
-				</table>
+			<table class="match__content__info">
+				<tr>
+					<th>Time</th>
+					<td>{{items.start_time}} - 10:30</td>
+				</tr>
+				<tr>
+					<th>Field</th>
+					<td>{{items.game_site.name}}</td>
+				</tr>
+				<tr>
+					<th>Round</th>
+					<td>{{items.pool_round}}</td>
+				</tr>
+				<tr>
+					<th>Tournament</th>
+					<td>{{items.tournament.name}}</td>
+				</tr>
+			</table>
 
 		</div>
-</section>
+	</section>
 
 
-<section id="location_sect" class="match_items">
+	<section id="location-block" class="match_items">
 		<div class="match__content">
 
-				<h2 class="match__content__title">Match Location</h2>
+			<h2 class="match__content__title">Match Location</h2>
 
-				<table class="match__content__info">
+			<table class="match__content__info">
 
-				</table>
+			</table>
 
 		</div>
-</section>
+	</section>
+</main>

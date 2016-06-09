@@ -33,30 +33,36 @@ UFA.page = (() => {
     }
 
     function matchesRecent() {
-        request('GET', '/api/matches/recent')
-            .then(function(APIdata) {
-                var template = APIdata;
-                wrapperSelector.innerHTML = template;
-                UFA.ux.toggleClass();
-            });
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+        // request('GET', '/api/matches/recent')
+        //     .then(function(APIdata) {
+        //         var template = APIdata;
+        //         wrapperSelector.innerHTML = template;
+        //         UFA.ux.toggleClass();
+        //     });
     }
 
     function matchesLive() {
-        request('GET', '/api/matches/live')
-            .then(function(APIdata) {
-                var template = APIdata;
-                wrapperSelector.innerHTML = template;
-                UFA.ux.toggleClass();
-            });
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+        // request('GET', '/api/matches/live')
+        //     .then(function(APIdata) {
+        //         var template = APIdata;
+        //         wrapperSelector.innerHTML = template;
+        //         UFA.ux.toggleClass();
+        //     });
     }
 
     function matchesUpcoming() {
-        request('GET', '/api/matches/upcoming')
-            .then(function(APIdata) {
-                var template = APIdata;
-                wrapperSelector.innerHTML = template;
-                UFA.ux.toggleClass();
-            });
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+        // request('GET', '/api/matches/upcoming')
+        //     .then(function(APIdata) {
+        //         var template = APIdata;
+        //         wrapperSelector.innerHTML = template;
+        //         UFA.ux.toggleClass();
+        //     });
     }
 
     function matchInfo(ID) {

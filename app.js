@@ -19,6 +19,7 @@ var fs = require('fs'),
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
+hbs.registerPartials(__dirname + '/views/partials/content');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
