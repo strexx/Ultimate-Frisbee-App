@@ -2,10 +2,7 @@ var express = require('express'),
     router = express.Router(),
     fs = require('fs'),
     request = require('request'),
-    dateFormat = require('dateformat'),
-    mongodb = require('mongodb'),
-    MongoClient = mongodb.MongoClient,
-    url = 'mongodb://146.185.135.172:27017/ultifris';
+    dateFormat = require('dateformat');
 
 
 router.get('/', function(req, res, next) {
@@ -23,41 +20,29 @@ router.get('/', function(req, res, next) {
         });
     };
 
-    MongoClient.connect(url, function(err, db) {
-        if (err) {
-            console.log('Unable to connect to the mongoDB server. Error:', err);
-        } else {
-            console.log('Connection established!');
+    findMatches(db, function() {
+        var liveTime = "12:30";
+        //var recentTime = "10:00";
+        //var upcomingTime = "14:30";
 
-            findMatches(db, function() {
-                // console.log(match);
-                var recentTime = "10:00";
-                var liveTime = "12:30";
-                //var upcomingTime = "14:30";
+        var recentMatches = matchArray.filter(function(obj) {
+            return obj.start_time < liveTime;
+        });
+        var liveMatches = matchArray.filter(function(obj) {
+            return obj.start_time == liveTime;
+        });
+        var upcomingMatches = matchArray.filter(function(obj) {
+            return obj.start_time > liveTime;
+        });
 
-                var recentMatches = matchArray.filter(function(obj) {
-                    return obj.start_time < liveTime;
-                });
-                var liveMatches = matchArray.filter(function(obj) {
-                    return obj.start_time == liveTime;
-                });
-                var upcomingMatches = matchArray.filter(function(obj) {
-                    return obj.start_time > liveTime;
-                });
+        res.render('matches', {
+            title: 'Matches',
+            items: liveMatches,
+            recentMatches: recentMatches,
+            liveMatches: liveMatches,
+            upcomingMatches: upcomingMatches
 
-                //console.log(recentMatches);
-
-                res.render('matches', {
-                    title: 'Matches',
-                    items: liveMatches,
-                    recentMatches: recentMatches,
-                    liveMatches: liveMatches,
-                    upcomingMatches: upcomingMatches
-
-                });
-                db.close();
-            });
-        }
+        });
     });
 
 });
@@ -94,7 +79,6 @@ router.get('/tournaments', function(req, res) {
     }, function(error, response, data) {
         if (!error && response.statusCode == 200) {
             var objects = data.objects;
-            console.log(objects);
             res.render('tournaments', {
                 title: 'Tournaments',
                 items: objects
