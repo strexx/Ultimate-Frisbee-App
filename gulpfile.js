@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------
-	Gulp requirements
+	Gulp requirements + paths
 --------------------------------------------------------------*/
 var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
 	copy = require('gulp-copy'),
 	filesize = require('gulp-filesize'),
+	nodemon = require('gulp-nodemon'),
 	sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
@@ -28,10 +29,10 @@ var outputPath = {
 
 
 /*--------------------------------------------------------------
-	Main Gulp tasks
+	Default Gulp tasks
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'copy', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'copy', 'nodemon', 'watch']);
 
 // JS scripts task
 gulp.task('scripts', function () {
@@ -61,6 +62,22 @@ gulp.task('styles', function () {
 gulp.task('copy', function () {
     gulp.src([inputPath.lib])
         .pipe(gulp.dest((outputPath.lib)));
+});
+
+gulp.task('nodemon', function(cb) {
+    nodemon({
+        script: './app.js'
+    })
+    .on('start', function() {
+        if (!called) {
+            cb();
+        }
+        called = true;
+    })
+    .on('error', function(err) {
+        // Make sure failure causes gulp to exit
+        throw err;
+    });
 });
 
 // Watch file changes
