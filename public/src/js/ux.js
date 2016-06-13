@@ -6,34 +6,17 @@ UFA.ux = (() => {
     // Global vars
     var loader = document.querySelector('.loader'),
         tabLinks = document.getElementsByClassName('tablinks'),
-        menu = document.querySelector('#menu'),
-        menuIcon = document.querySelector('.menu-icon'),
         body = document.querySelector('body'),
         wrapperBody = document.querySelector('#wrapper'),
-        menuWrapper = document.querySelector('.menu-wrapper');
+        navHome = document.querySelector('#nav-home'),
+        navTournaments = document.querySelector('#nav-tournaments'),
+        navLogin = document.querySelector('#nav-login'),
+        mainNavLi = document.querySelectorAll(".main-nav-li");
 
-    function toggleMenu() {
-        menuIcon.addEventListener('click', function() {
-            animateSidebar();
-        });
-
-        function animateSidebar() {
-            wrapperBody.classList.toggle('content-slideright');
-            menuWrapper.classList.toggle('menu-wrapperslide');
-            menuIcon.classList.toggle('active');
-        };
-
-        // return {
-        //     wrapperBody: wrapperBody,
-        //     menuWrapper: menuWrapper,
-        //     closeIcon: closeIcon
-        // };
-
-    }
 
     function toggleClass() {
         // Get all menu items
-        var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
+        var links = Array.prototype.slice.call(document.querySelectorAll('#section-nav li')),
             hash = window.location.hash;
 
         // Remove active class
@@ -66,7 +49,6 @@ UFA.ux = (() => {
 
               if (!hash) {
                   sections[0].classList.remove('inactive');
-                  console.log('inohash');
               }
 
           }
@@ -76,6 +58,11 @@ UFA.ux = (() => {
 
     }
 
+    function toggleMenuClass () {
+      mainNavLi.forEach(function(item) {
+        item.classList.remove('active');
+      })
+    }
 
     function showLoader() {
         loader.classList.add("active");
@@ -86,11 +73,11 @@ UFA.ux = (() => {
     }
 
     return {
-        toggleMenu: toggleMenu,
         toggleClass: toggleClass,
         showLoader: showLoader,
         hideLoader: hideLoader,
-        toggleSection: toggleSection
+        toggleSection: toggleSection,
+        toggleMenuClass: toggleMenuClass
     };
 
 })();
