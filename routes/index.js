@@ -8,6 +8,8 @@ var express = require('express'),
 router.get('/', function (req, res, next) {
     var matchArray = [];
 
+    global.session = req.session;
+
     var findMatches = function (db, callback) {
         var collectionCursor = db.collection('matches').find();
         collectionCursor.each(function (err, match) {
@@ -40,7 +42,6 @@ router.get('/', function (req, res, next) {
             recentMatches: recentMatches,
             liveMatches: liveMatches,
             upcomingMatches: upcomingMatches
-
         });
     });
 });
