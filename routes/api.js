@@ -31,8 +31,7 @@ router.get('/matches', function(req, res) {
     });
 });
 
-<<<<<<< Updated upstream
-=======
+
 router.get('/matches/recent', function(req, res) {
     request({
         url: 'https://api.leaguevine.com/v1/games/?tournament_id=20058&starts_before=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5B-start_time%5D&limit=5&access_token=6dc9d3795a',
@@ -74,7 +73,6 @@ router.get('/matches/upcoming', function(req, res) {
         }
     });
 });
->>>>>>> Stashed changes
 
 router.get('/tournaments', function(req, res) {
     request({
