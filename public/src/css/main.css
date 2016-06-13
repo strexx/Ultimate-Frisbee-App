@@ -13,8 +13,8 @@
 ----------------------------------------------------------------
     BACKGROUND:     #ffffff;
     NORMAL TEXT:    #1e1e1e;
-    ANCHORS:        #2980b9;
-    BUTTONS:        #2980b9;
+    ANCHORS:        #e64a55;
+    BUTTONS:        #e64a55;
 --------------------------------------------------------------*/
 
 
@@ -52,7 +52,7 @@
 #wrapper {
     min-height: 100vh;
   overflow-x: hidden;
-  
+
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
@@ -121,6 +121,7 @@ hr {
 #teams {
   display: flex;
   flex-direction: row;
+  min-height: 60vh;
 }
 
 #teams .team {
@@ -142,11 +143,15 @@ hr {
 #teams .btn-minus {
   color: white;
   background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
 }
 
 #teams .btn-plus {
   background: rgba(0, 0, 0, 0.2);
   color: white;
+  position: absolute;
+  bottom: 0;
 }
 
 #teams .top {
@@ -164,6 +169,7 @@ hr {
 #teams .team__home {
   background: #359776;
   width: 50%;
+  position: relative;
 }
 
 #teams .team__home__info span {
@@ -188,6 +194,7 @@ hr {
 #teams .team__away {
   background: #e99c42;
   width: 50%;
+  position: relative;
 }
 
 #teams .team__away__info span {
@@ -239,7 +246,7 @@ hr {
   text-align: right;
 }
 
-.match__content input[type=submit] {
+form input[type=submit] {
   background: #e64a55;
   padding: .5em 1em;
   color: white;
@@ -247,10 +254,15 @@ hr {
   border: none;
   float: right;
   cursor: pointer;
+  margin-top: 1em;
 }
 
-.match__content input[type=submit]:hover {
+form input[type=submit]:hover {
   background: #ab3841;
+}
+
+.inactive {
+  display: none;
 }
 
 /*--------------------------------------------------------------
