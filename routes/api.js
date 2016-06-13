@@ -31,7 +31,6 @@ router.get('/matches', function(req, res) {
     });
 });
 
-
 router.get('/tournaments', function(req, res) {
     request({
         url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50',
