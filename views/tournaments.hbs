@@ -1,13 +1,16 @@
 {{> header_tournaments}}
 
 <main id="main" role="main">
-    <section id="tournaments" class="tournaments__items">
-        {{#each items}}
-            <article class="tournaments__item">
-                <header>
-                    <h2>{{name}}</h2>
-                </header>
-            </article>
-        {{/each}}
-    </section>
+    {{#each items}}
+    <a href="/tournament/{{id}}">
+        <section id="tournaments" class="tournaments__items">
+
+                <article class="tournaments__item">
+                    <header>
+                        <h2>{{name}}</h2>
+                    </header>
+                </article>
+        </section>
+    </a>
+    {{/each}}
 </main>

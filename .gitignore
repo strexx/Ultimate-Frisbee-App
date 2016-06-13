@@ -3,3 +3,7 @@ node_modules/
 npm-debug.log
 
 public/dist
+
+#lib/mongodb.js
+
+sessions

@@ -43,12 +43,37 @@ UFA.ux = (() => {
 
         // Add active class to new hash
         if (hash != "") {
-            var link = document.querySelector(hash),
+            var link = document.querySelector(hash+'-menu'),
                 fullLink = link.childNodes[0].getAttribute("href");
             link.classList.add('active');
         } else {
             document.querySelector('#live').classList.add('active');
         }
+    }
+
+    function toggleSection() {
+        var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
+            hash = window.location.hash;
+            console.log(hash);
+
+          var sections = document.querySelectorAll('main > section');
+          var i;
+
+          console.log(sections);
+
+          for (i = 0; i < sections.length; i++) {
+              sections[i].classList.add('inactive');
+
+              if (!hash) {
+                  sections[0].classList.remove('inactive');
+                  console.log('inohash');
+              }
+
+          }
+          if (hash) {
+              document.querySelector(hash + "-block").classList.remove('inactive');
+          }
+
     }
 
 
@@ -64,7 +89,8 @@ UFA.ux = (() => {
         toggleMenu: toggleMenu,
         toggleClass: toggleClass,
         showLoader: showLoader,
-        hideLoader: hideLoader
+        hideLoader: hideLoader,
+        toggleSection: toggleSection
     };
 
 })();
