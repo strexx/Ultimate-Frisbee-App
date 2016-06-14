@@ -38,7 +38,8 @@ nav ul li {
   margin-bottom: 0;
 }
 
-nav ul li:focus, .active {
+nav ul li:focus,
+nav ul li.active {
   border-bottom: 4px solid #f04b51;
 }
 
