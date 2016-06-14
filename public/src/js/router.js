@@ -6,7 +6,7 @@ UFA.router = (() => {
         var gameID = window.location.pathname.split('/')[2],
         navHome = document.querySelector('#nav-home'),
         navTournaments = document.querySelector('#nav-tournaments'),
-        navLogin = document.querySelector('#nav-login'),
+        navLogin = document.querySelector('.navlog'),
         mainNavLi = document.querySelectorAll(".main-nav-li");
 
         if (window.location.pathname == '/') {
