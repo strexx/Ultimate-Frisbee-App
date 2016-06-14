@@ -98,7 +98,7 @@ router.post('/login', function(req, res) {
                 if (err) throw err;
                 if (account) {
                     req.session.user_id = account._id;
-                    console.log("username" + email + " password: " + account.password + "user_id" + req.session.user_id);
+                    console.log("username" + email + " password: " + account.password + " user_id " + req.session.user_id);
                     res.redirect('/');
                 } else {
 
