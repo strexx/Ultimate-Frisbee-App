@@ -91,7 +91,25 @@ router.get('/', function (req, res, next) {
         });
 
         // push objects in new array
-        matchesfinal.push({"liveWomen": liveWomen}, {"liveMixed": liveMixed}, {"liveOpen": liveOpen}, {"recentWomen": recentWomen}, {"recentMixed": recentMixed}, {"recentOpen": recentOpen}, {"upcomingWomen": upcomingWomen}, {"upcomingMixed": upcomingMixed}, {"upcomingOpen": upcomingOpen});
+        matchesfinal.push({
+            "liveWomen": liveWomen
+        }, {
+            "liveMixed": liveMixed
+        }, {
+            "liveOpen": liveOpen
+        }, {
+            "recentWomen": recentWomen
+        }, {
+            "recentMixed": recentMixed
+        }, {
+            "recentOpen": recentOpen
+        }, {
+            "upcomingWomen": upcomingWomen
+        }, {
+            "upcomingMixed": upcomingMixed
+        }, {
+            "upcomingOpen": upcomingOpen
+        });
 
         //console.log(newMatchesArray);
 
@@ -103,44 +121,90 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/match/:gameID', function (req, res) {
+router.get('/match/:gameID', function(req, res) {
+    var gameID = parseInt(req.params.gameID),
+        session = req.session.user_id,
+        matchObject;
 
-    var gameID = req.params.gameID,
-        session = req.session.user_id;
+    var findMatches = function(db, callback) {
+        var collectionCursor = db.collection('matches').find({
+            id: gameID
+        });
+        collectionCursor.each(function(err, match) {
+            if (match != null) {
+                console.log(match);
+                matchObject = match;
+            } else {
+                callback();
+            }
+        });
+    };
 
-    request({
-        url: 'https://api.leaguevine.com/v1/games/' + gameID + '/?access_token=3aa4afb621',
-        json: true
-    }, function (error, response, data) {
-        if (!error && response.statusCode == 200) {
-            var objects = data;
+    findMatches(db, function() {
+        //console.log(matchObject);
 
-            objects.start_time = dateFormat(objects.start_time, "HH:MM");
-            objects.game_site.name = objects.game_site.name.split('.')[0];
-
-            res.render('match', {
-                title: 'Match',
-                items: objects,
-                user: session
-            });
-        }
+        res.render('match', {
+            title: 'Match',
+            items: matchObject,
+            user: session
+        });
     });
 });
 
 router.get('/tournaments', function (req, res) {
+    var tournamentsArray = [];
     var session = req.session.user_id;
-    request({
-        url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50',
-        json: true
-    }, function (error, response, data) {
-        if (!error && response.statusCode == 200) {
-            var objects = data.objects;
-            res.render('tournaments', {
-                title: 'Tournaments',
-                items: objects,
-                user: session
-            });
+
+    Array.prototype.contains = function(v) {
+        for(var i = 0; i < this.length; i++) {
+            if(this[i] === v) return true;
         }
+        return false;
+    };
+
+    Array.prototype.unique = function() {
+        var arr = [];
+        for (var i = 0; i < this.length; i++) {
+            if (!arr.contains(this[i])) {
+                arr.push(this[i]);
+            }
+        }
+        return arr;
+    };
+
+    var findTournaments = function(db, callback) {
+        var collectionCursor = db.collection('matches').find();
+
+        collectionCursor.each(function(err, match) {
+            if (match != null) {
+
+                //tournamentsArray.push(match);
+                // var tournament = match.tournament;
+                // var tournamentID = tournament.id;
+                // var tournamentName = tournament.name;
+                //
+                // tournamentIDs.push(tournamentID);
+                // tournamentNames.push(tournamentName);
+
+                //tournaments.push(tournamentIDs, tournamentName);
+            } else {
+                callback();
+            }
+        });
+    };
+
+
+    findTournaments(db, function() {
+        //var newTournamentIDs = tournamentIDs.unique();
+        //var newTournamentNames = tournamentNames.unique();
+
+        //console.log(tournamentsArray);
+
+        // res.render('tournament', {
+        //     title: 'Tournament',
+        //     items: objects,
+        //     user: session
+        // });
     });
 });
 
