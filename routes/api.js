@@ -63,8 +63,7 @@ router.get('/match/:gameID', function(req, res) {
             res.render('match', {
                 title: 'Match',
                 items: objects,
-                user: session,
-                layout: false
+                scorekeeperIsLoggedIn: session
             });
         }
     });
