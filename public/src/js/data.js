@@ -104,6 +104,7 @@ UFA.data = (() => {
             }
         }
 
+        // If submitted
         if (submit != null) {
             submit.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -114,7 +115,6 @@ UFA.data = (() => {
                 replaceScores(score1, score2);
             });
         }
-
 
         // Add score (min or plus for teams)
         function addScore(score1, score2, gameID, isFinal) {
@@ -129,7 +129,7 @@ UFA.data = (() => {
         }
 
         function replaceScores(score1, score2) {
-            socket.on("apiupdate", function(data) {
+            socket.on("dbupdate", function(data) {
 
               console.log(data);
 
@@ -138,14 +138,8 @@ UFA.data = (() => {
 
                 score1 = updateScore1;
                 score2 = updateScore2;
-
-                UFA.ux.hideLoader();
             });
         }
-
-        socket.on('broad', function(data) {
-            // Do stuff with data on the client
-        });
     }
 
     return {
