@@ -2,68 +2,87 @@
 
 <main id="main" class="matchesmain" role="main">
     <section id="live-block" class="matches__items">
+
         {{#items}}
             {{#if liveWomen}}
+            <div class="division">
                 <h1>Women</h1>
                 {{#each liveWomen}}
                     {{> content_matches}}
                 {{/each}}
+            </div>
             {{/if}}
             {{#if liveOpen}}
+              <div class="division">
                 <h1>Open</h1>
                 {{#each liveOpen}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
             {{#if liveMixed}}
+              <div class="division">
                 <h1>Mixed</h1>
                 {{#each liveMixed}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
         {{/items}}
     </section>
     <section id="recent-block" class="matches__items">
         {{#items}}
             {{#if recentWomen}}
+              <div class="division">
                 <h1>Women</h1>
                 {{#each recentWomen}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
             {{#if recentOpen}}
+              <div class="division">
                 <h1>Open</h1>
                 {{#each recentOpen}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
             {{#if recentMixed}}
+              <div class="division">
                 <h1>Mixed</h1>
                 {{#each recentMixed}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
         {{/items}}
     </section>
     <section id="upcoming-block" class="matches__items">
         {{#items}}
             {{#if upcomingWomen}}
+              <div class="division">
                 <h1>Women</h1>
                 {{#each upcomingWomen}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
             {{#if upcomingOpen}}
+              <div class="division">
                 <h1>Open</h1>
                 {{#each upcomingOpen}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
             {{#if upcomingMixed}}
+              <div class="division">
                 <h1>Mixed</h1>
                 {{#each upcomingMixed}}
                     {{> content_matches}}
                 {{/each}}
+              </div>
             {{/if}}
         {{/items}}
     </section>
