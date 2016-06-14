@@ -3,15 +3,33 @@
 *********************************************************/
 UFA.router = (() => {
     function init() {
-        var gameID = window.location.pathname.split('/')[2];
+        var gameID = window.location.pathname.split('/')[2],
+        navHome = document.querySelector('#nav-home'),
+        navTournaments = document.querySelector('#nav-tournaments'),
+        navLogin = document.querySelector('.navlog'),
+        mainNavLi = document.querySelectorAll(".main-nav-li");
+
         if (window.location.pathname == '/') {
             UFA.ux.toggleSection();
+            UFA.ux.toggleMenuClass();
+
+            navHome.classList.add('active');
+          } else if (window.location.pathname == '/login') {
+            UFA.login.init();
+            UFA.ux.toggleMenuClass();
+
+            navLogin.classList.add('active');
+
+        } else if (window.location.pathname == '/tournaments') {
+          UFA.ux.toggleMenuClass();
+
+          navTournaments.classList.add('active');
+
         } else if (window.location.pathname.indexOf('match/'+gameID)) {
             UFA.data.socket();
             UFA.ux.toggleSection();
-        } else if (window.location.pathname.indexOf('login')) {
-            UFA.login.init();
-        }
+            UFA.ux.toggleMenuClass();
+          }
 
         // Check if hash has changed and toggle actives on links
         window.addEventListener("hashchange", function() {
@@ -36,7 +54,6 @@ UFA.router = (() => {
                     break;
             }
         });
-        UFA.ux.toggleMenu();
     }
 
     return {

@@ -1,22 +1,17 @@
-var fs = require('fs'),
-    express = require('express'),
+var express = require('express'),
+    app = express(),
     hbs = require('hbs'),
     path = require("path"),
+    mongodb = require('mongodb'),
+    MongoClient = mongodb.MongoClient,
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    app = express(),
-    server = require('http').createServer(app),
     io = require('socket.io'),
-    fileStore = require('session-file-store')(session),
-    // Include routes
+    fileStore = require('session-file-store')(session);
     routes = require('./routes/index'),
-    api = require('./routes/api'),
-    // Include MongoDB
-    mongoDB = require('./lib/mongodb.js');
+    api = require('./routes/api');
 
-    // Include Socket.io file
-    require('./lib/sockets/connection.js')(server);
-
+// include partials
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
 hbs.registerPartials(__dirname + '/views/partials/content');
@@ -25,7 +20,7 @@ hbs.registerPartials(__dirname + '/views/partials/content');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// bodyParser
+// use bodyParser
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -38,14 +33,16 @@ app.use(session({
     store: new fileStore(),
     saveUninitialized: true,
     resave: false,
-    cookie: { secure: false }
+    cookie: {
+        secure: false
+    }
 }));
 
 // set routes
 app.use('/', routes);
 app.use('/api/', api);
 
-// define static path
+// define static path for client
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development error handler - will print stacktrace
@@ -68,7 +65,24 @@ app.use(function(err, req, res, next) {
     });
 });
 
-//start app
-server.listen(3010, function() {
-    console.log('listening on port 3010!');
+// Make mongodb connection & start server
+MongoClient.connect('mongodb://146.185.135.172:27017/ultifris', function(err, database) {
+    if (err) {
+        console.log('Unable to connect to the MongoDB server. Error:', err);
+    } else {
+        console.log('Connection with MongoDB established!');
+
+        // create global variables
+        global.db = database;
+        global.server = require('http').createServer(app);
+
+        // include lib files
+        require('./lib/sockets.js');
+        require('./lib/database.js');
+
+        // start app
+        server.listen(3010, function() {
+            console.log('listening on port 3010!');
+        });
+    }
 });
