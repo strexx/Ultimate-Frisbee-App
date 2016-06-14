@@ -14,7 +14,7 @@ nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #FFFFFF;
+    background-color: #F9F9F9;
 }
 
 nav ul li {
@@ -40,12 +40,14 @@ nav ul li {
 
 nav ul li:focus,
 nav ul li.active {
-  border-bottom: 4px solid #f04b51;
+  border-bottom: 6px solid #f04b51;
 }
 
 nav ul li.active a {
   color: #f04b51;
   font-weight: 400;
+  /*font-size: 1.2em;*/
+  font-weight: 600;
 }
 
 .main-nav-li:hover a {
