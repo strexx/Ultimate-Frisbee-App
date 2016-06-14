@@ -36,7 +36,10 @@ router.get('/', function (req, res, next) {
         });
 
         for (var key in matchesToday) {
-            matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
+            if(matchesToday[key].start_time !== undefined){
+                matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
+            }
+            //console.log(matchesToday[key].start_time);
         }
 
 
@@ -152,8 +155,10 @@ router.get('/match/:gameID', function(req, res) {
 });
 
 router.get('/tournaments', function (req, res) {
-    var tournamentsArray = [];
-    var session = req.session.user_id;
+    var tournamentIDs = [],
+        tournamentNames = [],
+        tournamentsArray = [],
+        session = req.session.user_id;
 
     Array.prototype.contains = function(v) {
         for(var i = 0; i < this.length; i++) {
@@ -176,17 +181,13 @@ router.get('/tournaments', function (req, res) {
         var collectionCursor = db.collection('matches').find();
 
         collectionCursor.each(function(err, match) {
-            if (match != null) {
+            if (match !== null) {
+                var tournament = match.tournament;
+                var tournamentID = tournament.id;
+                var tournamentName = tournament.name;
 
-                //tournamentsArray.push(match);
-                // var tournament = match.tournament;
-                // var tournamentID = tournament.id;
-                // var tournamentName = tournament.name;
-                //
-                // tournamentIDs.push(tournamentID);
-                // tournamentNames.push(tournamentName);
-
-                //tournaments.push(tournamentIDs, tournamentName);
+                tournamentIDs.push(tournamentID);
+                tournamentNames.push(tournamentName);
             } else {
                 callback();
             }
@@ -195,16 +196,19 @@ router.get('/tournaments', function (req, res) {
 
 
     findTournaments(db, function() {
-        //var newTournamentIDs = tournamentIDs.unique();
-        //var newTournamentNames = tournamentNames.unique();
+        var newTournamentIDs = tournamentIDs.unique();
+        var newTournamentNames = tournamentNames.unique();
 
-        //console.log(tournamentsArray);
+        newTournamentIDs.forEach(function(item, i){
+            var tournamentObj = { id: newTournamentIDs[i], name: newTournamentNames[i] };
+            tournamentsArray.push(tournamentObj);
+        });
 
-        // res.render('tournament', {
-        //     title: 'Tournament',
-        //     items: objects,
-        //     user: session
-        // });
+        res.render('tournaments', {
+            title: 'Tournaments',
+            items: tournamentsArray,
+            user: session
+        });
     });
 });
 
