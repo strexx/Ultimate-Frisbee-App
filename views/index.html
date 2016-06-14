@@ -9,12 +9,18 @@
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
 </head>
 <body>
-	<div id="wrapper">
-		{{{ body }}}
-		{{> menu}}
-	</div>
+  <header class="siteheader">
+      <h1><a href="/">MATCHES</a></h1>
+      <nav id="section-nav">
+          <ul class="tabs">
+              <li id="recent-menu"><a href="#recent" class="tablinks">Recent</a></li>
+              <li id="live-menu" class="active"><a href="#live" class="tablinks">Live</a></li>
+              <li id="upcoming-menu"><a href="#upcoming" class="tablinks">Upcoming</a></li>
+          </ul>
+      </nav>
+  </header>
 
-	{{> loader}}
-	{{> scripts}}
+
+	
 </body>
 </html>
