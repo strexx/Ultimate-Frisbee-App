@@ -7,11 +7,22 @@ UFA.data = (() => {
         // Connect with socket
         var socket = io.connect("http://localhost:3010"),
             submit = document.querySelector("#submit"),
-            btns = document.getElementsByTagName('button'),
-            gameID = window.location.pathname.split('/')[2];
+            btns = document.getElementsByTagName("button"),
+            inputs = document.getElementsByClassName("team-input"),
+            gameID = window.location.pathname.split('/')[2],
+            team1_score_span = document.getElementById("team__home__info__score__span"),
+            team2_score_span = document.getElementById("team__away__info__score__span");
+
+        if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
+          hideInputs();
+          showScores();
+          scoreButtonListeners();
+        }
 
         function scoreButtonListeners() {
             [].forEach.call(btns, function(button) {
+                button.classList.remove("hidden");
+                button.classList.add("is-visible");
                 button.addEventListener('click', function(index) {
                     return function() {
                         changeScore(index);
@@ -20,7 +31,26 @@ UFA.data = (() => {
             });
         }
 
-        scoreButtonListeners();
+        function showScores() {
+          team1_score_span.classList.remove("hidden");
+          team2_score_span.classList.remove("hidden");
+          team1_score_span.classList.add("is-visible");
+          team2_score_span.classList.add("is-visible");
+        }
+
+        // Testing
+        // function hideScores() {
+        //   team1_score_span.classList.remove("is-visible");
+        //   team2_score_span.classList.remove("is-visible");
+        //   team1_score_span.classList.add("hidden");
+        //   team2_score_span.classList.add("hidden");
+        // }
+
+        function hideInputs() {
+            [].forEach.call(inputs, function(input) {
+                input.classList.add("hidden");
+            });
+        }
 
         function changeScore(item) {
             var buttonId = item.id,
@@ -74,6 +104,7 @@ UFA.data = (() => {
             }
         }
 
+        // If submitted
         if (submit != null) {
             submit.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -84,7 +115,6 @@ UFA.data = (() => {
                 replaceScores(score1, score2);
             });
         }
-
 
         // Add score (min or plus for teams)
         function addScore(score1, score2, gameID, isFinal) {
@@ -99,7 +129,7 @@ UFA.data = (() => {
         }
 
         function replaceScores(score1, score2) {
-            socket.on("apiupdate", function(data) {
+            socket.on("dbupdate", function(data) {
 
               console.log(data);
 
@@ -108,14 +138,8 @@ UFA.data = (() => {
 
                 score1 = updateScore1;
                 score2 = updateScore2;
-
-                UFA.ux.hideLoader();
             });
         }
-
-        socket.on('broad', function(data) {
-            // Do stuff with data on the client
-        });
     }
 
     return {

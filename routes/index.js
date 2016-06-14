@@ -132,7 +132,6 @@ router.get('/match/:gameID', function(req, res) {
         });
         collectionCursor.each(function(err, match) {
             if (match != null) {
-                console.log(match);
                 matchObject = match;
             } else {
                 callback();
@@ -141,8 +140,6 @@ router.get('/match/:gameID', function(req, res) {
     };
 
     findMatches(db, function() {
-        //console.log(matchObject);
-
         res.render('match', {
             title: 'Match',
             items: matchObject,

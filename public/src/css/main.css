@@ -136,10 +136,42 @@ hr {
 ## MATCH PAGE
 --------------------------------------------------------------*/
 
+.match__location {
+  width: 100%;
+  min-height: 400px;
+}
+
+.match__location__image {
+  margin: 2em auto;
+  display: block;
+}
+
+.teams__match__information {
+  display: none;
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.divider {
+  border-bottom: 2px solid white;
+  width: 3em;
+  margin: 1em auto;
+}
+
 #teams {
+  position: relative;
   display: flex;
   flex-direction: row;
-  min-height: 60vh;
+  height: calc(100vh - 164px);
 }
 
 #teams .team {
@@ -190,8 +222,11 @@ hr {
   position: relative;
 }
 
-#teams .team__home__info span {
-  display: block;
+#teams .team__home__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #teams .team__home__info__name {
@@ -215,8 +250,15 @@ hr {
   position: relative;
 }
 
+#teams .team__away__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #teams .team__away__info span {
-  display: block;
+  /*display: block;*/
 }
 
 #teams .team__away__info__name {
@@ -230,6 +272,16 @@ hr {
   font-size: 6em;
   text-align: center;
   color: white;
+}
+
+#teams .team-input {
+  border: 1px solid white;
+  width: 1em;
+  color: white;
+  text-align: center;
+  font-size: 6em;
+  background: none;
+  border: none;
 }
 
 /* MATCH DETAIL CONTENT */
