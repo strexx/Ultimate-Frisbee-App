@@ -9,6 +9,13 @@
 
 			<div id="teams">
 
+				<div class="teams__match__information">
+					<p>{{items.start_time}}</p>
+					<div class="divider"></div>
+					<p>{{items.game_site.name}}</p>
+					<!-- <p>{{items.tournament.name}}</p> -->
+				</div>
+
 				<div class="team team__home">
 
 					<div class="top">
@@ -86,13 +93,9 @@
 
 	<section id="location-block" class="match_items">
 		<div class="match__content">
-
-			<h2 class="match__content__title">Match Location</h2>
-
-			<table class="match__content__info">
-
-			</table>
-
+			<div class="match__location">
+				<img class="match__location__image" src="{{ items.game_site.event_site.image_400 }}" alt="Map" />
+			</div>
 		</div>
 	</section>
 </main>
