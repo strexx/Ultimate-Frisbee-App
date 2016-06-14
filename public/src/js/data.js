@@ -13,7 +13,7 @@ UFA.data = (() => {
             team1_score_span = document.getElementById("team__home__info__score__span"),
             team2_score_span = document.getElementById("team__away__info__score__span");
 
-        if ((!document.querySelectorAll || !document.querySelector) && ('forEach' in Array.prototype)) {
+        if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
           hideInputs();
           showScores();
           scoreButtonListeners();

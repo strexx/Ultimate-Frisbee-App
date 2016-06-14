@@ -51,6 +51,17 @@ router.get('/match/:gameID', function (req, res) {
     var gameID = req.params.gameID,
         session = req.session.user_id;
 
+    var collectionCursor = db.collection('matches');
+
+    collectionCursor.findOne({"id": gameID}, function(err, doc) {
+      if(err) { console.log(err) };
+      if(doc) {
+        console.log(doc)
+      } else {
+        console.log("No match found by id: " + gameID);
+      };
+    });
+
     request({
         url: 'https://api.leaguevine.com/v1/games/' + gameID + '/?access_token=3aa4afb621',
         json: true
