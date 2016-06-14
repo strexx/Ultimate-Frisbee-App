@@ -1,0 +1,32 @@
+{{> header_login }}
+
+<section id="login">
+
+    <form class="login" action="/api/login" method="POST">
+
+        <fieldset>
+
+            <legend class="legend">Scorekeeper</legend>
+
+            <div class="input">
+                <input type="email" name="email" placeholder="Email" required autofocus />
+                <span><i class="fa fa-envelope-o"></i></span>
+            </div>
+
+            <div class="input">
+                <input type="password" name="password" placeholder="Password" required />
+                <span><i class="fa fa-lock"></i></span>
+            </div>
+
+            <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
+
+        </fieldset>
+
+        <div class="feedback">
+            Login successful
+            <br /> redirecting...
+        </div>
+
+    </form>
+
+</section>
