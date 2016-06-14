@@ -13,8 +13,8 @@
 ----------------------------------------------------------------
     BACKGROUND:     #ffffff;
     NORMAL TEXT:    #1e1e1e;
-    ANCHORS:        #2980b9;
-    BUTTONS:        #2980b9;
+    ANCHORS:        #e64a55;
+    BUTTONS:        #e64a55;
 --------------------------------------------------------------*/
 
 
@@ -246,7 +246,7 @@ hr {
   text-align: right;
 }
 
-.match__content input[type=submit] {
+form input[type=submit] {
   background: #e64a55;
   padding: .5em 1em;
   color: white;
@@ -254,9 +254,10 @@ hr {
   border: none;
   float: right;
   cursor: pointer;
+  margin-top: 1em;
 }
 
-.match__content input[type=submit]:hover {
+form input[type=submit]:hover {
   background: #ab3841;
 }
 

@@ -4,56 +4,126 @@ var express = require('express'),
     request = require('request'),
     dateFormat = require('dateformat');
 
-router.get('/', function (req, res, next) {
-    console.log(req.session.user_id);
-    request({url: 'https://api.leaguevine.com/v1/games/?tournament_id=19746&starts_after=2015-06-12T11%3A00%3A00%2B02%3A00&order_by=%5Bstart_time%5D&limit=5&access_token=6dc9d3795a', json: true, timeout: 6000}, function (error, response, data) {
-        if (!error && response.statusCode == 200) {
-          var objects = data.objects;
 
-          for(var key in objects) {
-            objects[key].start_time = dateFormat(objects[key].start_time, "HH:MM");
-            objects[key].game_site.name = objects[key].game_site.name.split('.')[0];
-          }
-          res.render('matches', { title: 'Matches', items: objects });
-        } else {
-          res.render('error', { title: 'Error', error: error });
-          console.log(error);
-        }
+router.get('/', function (req, res, next) {
+    var matchArray = [];
+
+    global.session = req.session;
+
+    var findMatches = function (db, callback) {
+        var collectionCursor = db.collection('matches').find();
+        collectionCursor.each(function (err, match) {
+            if (match != null) {
+                matchArray.push(match);
+            } else {
+                callback();
+            }
+        });
+    };
+
+    findMatches(db, function () {
+        var liveTime = "12:30";
+        //var recentTime = "10:00";
+        //var upcomingTime = "14:30";
+
+        var recentMatches = matchArray.filter(function (obj) {
+            return obj.start_time < liveTime;
+        });
+        var liveMatches = matchArray.filter(function (obj) {
+            return obj.start_time == liveTime;
+        });
+        var upcomingMatches = matchArray.filter(function (obj) {
+            return obj.start_time > liveTime;
+        });
+
+        res.render('matches', {
+            title: 'Matches',
+            items: liveMatches,
+            recentMatches: recentMatches,
+            liveMatches: liveMatches,
+            upcomingMatches: upcomingMatches
+        });
     });
 });
 
-router.get('/match/:gameID', function (req, res, next) {
+router.get('/match/:gameID', function (req, res) {
+
     var gameID = req.params.gameID,
         session = req.session.user_id;
 
-    console.log(session);
-
-    request({url: 'https://api.leaguevine.com/v1/games/'+ gameID +'/?access_token=3aa4afb621', json: true}, function (error, response, data) {
+    request({
+        url: 'https://api.leaguevine.com/v1/games/' + gameID + '/?access_token=3aa4afb621',
+        json: true
+    }, function (error, response, data) {
         if (!error && response.statusCode == 200) {
-          var objects = data;
-          //console.log(objects);
-          res.render('match', { title: 'Match', items: objects, user: session });
-      }
-    });
-});
+            var objects = data;
 
-router.get('/tournaments', function (req, res, next) {
-    request({url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50', json: true}, function (error, response, data) {
-        if (!error && response.statusCode == 200) {
-          var objects = data.objects;
-          console.log(objects);
-          res.render('tournaments', { title: 'Tournaments', items: objects });
+            objects.start_time = dateFormat(objects.start_time, "HH:MM");
+            objects.game_site.name = objects.game_site.name.split('.')[0];
+
+            res.render('match', {
+                title: 'Match',
+                items: objects,
+                user: session
+            });
         }
     });
 });
 
-router.get('/login', function (req, res, next) {
-    res.render('login', { title: 'Login' });
+router.get('/tournaments', function (req, res) {
+    request({
+        url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50',
+        json: true
+    }, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+            var objects = data.objects;
+            res.render('tournaments', {
+                title: 'Tournaments',
+                items: objects
+            });
+        }
+    });
+});
+
+router.get('/tournament/:tournamentID', function (req, res) {
+    var tournamentID = req.params.tournamentID;
+
+    request({
+        url: 'https://api.leaguevine.com/v1/games/?tournament_id=' + tournamentID + '&order_by=%5Bstart_time%5D&limit=100&access_token=6dc9d3795a',
+        json: true
+    }, function (error, response, data) {
+        if (!error && response.statusCode == 200) {
+            var objects = data.objects;
+
+            for (var key in objects) {
+                objects[key].start_time = dateFormat(objects[key].start_time, "HH:MM");
+                if (objects[key].game_site !== null) {
+                    objects[key].game_site.name = objects[key].game_site.name.split('.')[0];
+                }
+            }
+            res.render('tournament', {
+                title: 'Tournament',
+                items: objects
+            });
+        } else {
+            res.render('error', {
+                title: 'Error',
+                error: error
+            });
+            console.log(error);
+        }
+    });
+});
+
+router.get('/login', function (req, res) {
+    res.render('login', {
+        title: 'Login'
+    });
 });
 
 router.get('/logout', function (req, res) {
-  delete req.session.user_id;
-  res.redirect('/login');
+    delete req.session.user_id;
+    res.redirect('/login');
 });
 
 module.exports = router;
