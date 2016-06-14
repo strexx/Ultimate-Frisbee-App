@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     fs = require('fs'),
     request = require('request'),
+    session = require('express-session'),
     dateFormat = require('dateformat');
 
 
@@ -22,7 +23,11 @@ router.get('/', function (req, res, next) {
     };
 
     findMatches(db, function () {
-        var liveTime = "12:30";
+        var liveTime = "12:30",
+            session = req.session.user_id,
+            recentArray = [],
+            liveArray = [],
+            upcomingArray = [];
         //var recentTime = "10:00";
         //var upcomingTime = "14:30";
 
@@ -36,12 +41,60 @@ router.get('/', function (req, res, next) {
             return obj.start_time > liveTime;
         });
 
+
+      var recentWomen = recentMatches.filter(function (obj){
+        return obj.tournament_id == "20058";
+      });
+
+      var recentMixed = recentMatches.filter(function (obj){
+        return obj.tournament_id == "20059";
+      });
+
+      var recentOpen = recentMatches.filter(function (obj){
+        return obj.tournament_id == "20060";
+      })
+
+      var liveWomen = liveMatches.filter(function (obj){
+        return obj.tournament_id == "20058";
+      });
+
+      var liveMixed = liveMatches.filter(function (obj){
+        return obj.tournament_id == "20059";
+      });
+
+      var liveOpen = liveMatches.filter(function (obj){
+        return obj.tournament_id == "20060";
+      })
+
+      var upcomingWomen = upcomingMatches.filter(function (obj){
+        return obj.tournament_id == "20058";
+      });
+
+      var upcomingMixed = upcomingMatches.filter(function (obj){
+        return obj.tournament_id == "20059";
+      });
+
+      var upcomingOpen = upcomingMatches.filter(function (obj){
+        return obj.tournament_id == "20060";
+      })
+
+      // recentArray.push({"recentWomen": recentWomen}, {"recentMixed": recentMixed}, {"recentOpen": recentOpen});
+
         res.render('matches', {
             title: 'Matches',
             items: liveMatches,
-            recentMatches: recentMatches,
+            recentWomen: recentWomen,
+            recentMixed: recentMixed,
+            recentOpen: recentOpen,
+            liveWomen: liveWomen,
+            liveMixed: liveMixed,
+            liveOpen: liveOpen,
+            upcomingWomen: upcomingWomen,
+            upcomingMixed: upcomingMixed,
+            upcomingOpen: upcomingOpen,
             liveMatches: liveMatches,
-            upcomingMatches: upcomingMatches
+            upcomingMatches: upcomingMatches,
+            user: session
         });
     });
 });
@@ -71,6 +124,7 @@ router.get('/match/:gameID', function (req, res) {
 });
 
 router.get('/tournaments', function (req, res) {
+    var session = req.session.user_id;
     request({
         url: 'https://api.leaguevine.com/v1/tournaments/?tournament_ids=%5B19753%2C19751%2C19752%5D&access_token=bbe603bb50',
         json: true
@@ -79,15 +133,16 @@ router.get('/tournaments', function (req, res) {
             var objects = data.objects;
             res.render('tournaments', {
                 title: 'Tournaments',
-                items: objects
+                items: objects,
+                user: session
             });
         }
     });
 });
 
 router.get('/tournament/:tournamentID', function (req, res) {
-    var tournamentID = req.params.tournamentID;
-
+    var tournamentID = req.params.tournamentID,
+        session = req.session.user_id;
     request({
         url: 'https://api.leaguevine.com/v1/games/?tournament_id=' + tournamentID + '&order_by=%5Bstart_time%5D&limit=100&access_token=6dc9d3795a',
         json: true
@@ -103,7 +158,8 @@ router.get('/tournament/:tournamentID', function (req, res) {
             }
             res.render('tournament', {
                 title: 'Tournament',
-                items: objects
+                items: objects,
+                user: session
             });
         } else {
             res.render('error', {
