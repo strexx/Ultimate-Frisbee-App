@@ -7,11 +7,9 @@ var express = require('express'),
 
 
 router.get('/', function (req, res, next) {
-    var matchesArray = [],
-        newMatchesArray = [],
-        recentArray = [],
-        liveArray = [],
-        upcomingArray = [];
+    var matches = [],
+        matchesToday = []
+        matchesfinal = [];
 
     global.session = req.session;
 
@@ -19,7 +17,7 @@ router.get('/', function (req, res, next) {
         var collectionCursor = db.collection('matches').find();
         collectionCursor.each(function (err, match) {
             if (match != null) {
-                matchesArray.push(match);
+                matches.push(match);
             } else {
                 callback();
             }
@@ -28,16 +26,28 @@ router.get('/', function (req, res, next) {
 
     findMatches(db, function () {
         var liveTime = "12:30",
+            todayDate = "03-06-2016"
             session = req.session.user_id;
 
+        // Filter on today's date
+        var matchesToday = matches.filter(function (obj) {
+            var currentDate = obj.start_time.split(" ")[0];
+            return currentDate == todayDate;
+        });
+
+        for (var key in matchesToday) {
+            matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
+        }
+
+
         // Filter on time
-        var recentMatches = matchesArray.filter(function (obj) {
+        var recentMatches = matchesToday.filter(function (obj) {
             return obj.start_time < liveTime;
         });
-        var liveMatches = matchesArray.filter(function (obj) {
+        var liveMatches = matchesToday.filter(function (obj) {
             return obj.start_time == liveTime;
         });
-        var upcomingMatches = matchesArray.filter(function (obj) {
+        var upcomingMatches = matchesToday.filter(function (obj) {
             return obj.start_time > liveTime;
         });
 
@@ -81,13 +91,13 @@ router.get('/', function (req, res, next) {
         });
 
         // push objects in new array
-        newMatchesArray.push({"liveWomen": liveWomen}, {"liveMixed": liveMixed}, {"liveOpen": liveOpen}, {"recentWomen": recentWomen}, {"recentMixed": recentMixed}, {"recentOpen": recentOpen}, {"upcomingWomen": upcomingWomen}, {"upcomingMixed": upcomingMixed}, {"upcomingOpen": upcomingOpen});
+        matchesfinal.push({"liveWomen": liveWomen}, {"liveMixed": liveMixed}, {"liveOpen": liveOpen}, {"recentWomen": recentWomen}, {"recentMixed": recentMixed}, {"recentOpen": recentOpen}, {"upcomingWomen": upcomingWomen}, {"upcomingMixed": upcomingMixed}, {"upcomingOpen": upcomingOpen});
 
-        console.log(newMatchesArray);
+        //console.log(newMatchesArray);
 
         res.render('matches', {
             title: 'Matches',
-            items: newMatchesArray,
+            items: matchesfinal,
             user: session
         });
     });
