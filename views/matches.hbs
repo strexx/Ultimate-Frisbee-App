@@ -2,63 +2,69 @@
 
 <main id="main" class="matchesmain" role="main">
     <section id="live-block" class="matches__items">
-        <h1>Women</h1>
-        {{#if liveWomen}}
-            {{#each liveWomen}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
-        {{#if liveOpen}}
-            <h1>Open</h1>
-            {{#each liveOpen}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
-        {{#if liveMixed}}
-            <h1>Mixed</h1>
-            {{#each liveMixed}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
+        {{#items}}
+            {{#if liveWomen}}
+                <h1>Women</h1>
+                {{#each liveWomen}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+            {{#if liveOpen}}
+                <h1>Open</h1>
+                {{#each liveOpen}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+            {{#if liveMixed}}
+                <h1>Mixed</h1>
+                {{#each liveMixed}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+        {{/items}}
     </section>
     <section id="recent-block" class="matches__items">
-        {{#if recentWomen}}
-            <h1>Women</h1>
-            {{#each recentWomen}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
-        {{#if recentOpen}}
-            <h1>Open</h1>
-            {{#each recentOpen}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
-        {{#if recentMixed}}
-            <h1>Mixed</h1>
-            {{#each recentMixed}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
+        {{#items}}
+            {{#if recentWomen}}
+                <h1>Women</h1>
+                {{#each recentWomen}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+            {{#if recentOpen}}
+                <h1>Open</h1>
+                {{#each recentOpen}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+            {{#if recentMixed}}
+                <h1>Mixed</h1>
+                {{#each recentMixed}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+        {{/items}}
     </section>
     <section id="upcoming-block" class="matches__items">
-        {{#if upcomingWomen}}
-            <h1>Women</h1>
-            {{#each upcomingWomen}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
-        {{#if upcomingOpen}}
-            <h1>Open</h1>
-            {{#each upcomingOpen}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
-        {{#if upcomingMixed}}
-            <h1>Mixed</h1>
-            {{#each upcomingMixed}}
-                {{> content_matches}}
-            {{/each}}
-        {{/if}}
+        {{#items}}
+            {{#if upcomingWomen}}
+                <h1>Women</h1>
+                {{#each upcomingWomen}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+            {{#if upcomingOpen}}
+                <h1>Open</h1>
+                {{#each upcomingOpen}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+            {{#if upcomingMixed}}
+                <h1>Mixed</h1>
+                {{#each upcomingMixed}}
+                    {{> content_matches}}
+                {{/each}}
+            {{/if}}
+        {{/items}}
     </section>
 </main>
