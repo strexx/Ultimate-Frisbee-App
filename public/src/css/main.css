@@ -121,7 +121,8 @@ hr {
 #teams {
   display: flex;
   flex-direction: row;
-  min-height: 60vh;
+  height: 100%;
+  height: calc(100vh - 164px);
 }
 
 #teams .team {
@@ -172,8 +173,9 @@ hr {
   position: relative;
 }
 
-#teams .team__home__info span {
-  display: block;
+#teams .team__home__info {
+  display: flex;
+  flex-direction: column;
 }
 
 #teams .team__home__info__name {
@@ -197,8 +199,13 @@ hr {
   position: relative;
 }
 
+#teams .team__away__info {
+  display: flex;
+  flex-direction: column;
+}
+
 #teams .team__away__info span {
-  display: block;
+  /*display: block;*/
 }
 
 #teams .team__away__info__name {
@@ -212,6 +219,14 @@ hr {
   font-size: 6em;
   text-align: center;
   color: white;
+}
+
+#teams .team-input {
+  padding: 1em;
+  margin: 1em auto 0 auto;
+  width: 5em;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 /* MATCH DETAIL CONTENT */

@@ -7,11 +7,22 @@ UFA.data = (() => {
         // Connect with socket
         var socket = io.connect("http://localhost:3010"),
             submit = document.querySelector("#submit"),
-            btns = document.getElementsByTagName('button'),
-            gameID = window.location.pathname.split('/')[2];
+            btns = document.getElementsByTagName("button"),
+            inputs = document.getElementsByClassName("team-input"),
+            gameID = window.location.pathname.split('/')[2],
+            team1_score_span = document.getElementById("team__home__info__score__span"),
+            team2_score_span = document.getElementById("team__away__info__score__span");
+
+        if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
+          hideInputs();
+          showScores();
+          scoreButtonListeners();
+        }
 
         function scoreButtonListeners() {
             [].forEach.call(btns, function(button) {
+                button.classList.remove("hidden");
+                button.classList.add("is-visible");
                 button.addEventListener('click', function(index) {
                     return function() {
                         changeScore(index);
@@ -20,7 +31,26 @@ UFA.data = (() => {
             });
         }
 
-        scoreButtonListeners();
+        function showScores() {
+          team1_score_span.classList.remove("hidden");
+          team2_score_span.classList.remove("hidden");
+          team1_score_span.classList.add("is-visible");
+          team2_score_span.classList.add("is-visible");
+        }
+
+        // Testing
+        // function hideScores() {
+        //   team1_score_span.classList.remove("is-visible");
+        //   team2_score_span.classList.remove("is-visible");
+        //   team1_score_span.classList.add("hidden");
+        //   team2_score_span.classList.add("hidden");
+        // }
+
+        function hideInputs() {
+            [].forEach.call(inputs, function(input) {
+                input.classList.add("hidden");
+            });
+        }
 
         function changeScore(item) {
             var buttonId = item.id,
