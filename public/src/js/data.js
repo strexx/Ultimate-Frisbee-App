@@ -13,11 +13,31 @@ UFA.data = (() => {
             team1_score_span = document.getElementById("team__home__info__score__span"),
             team2_score_span = document.getElementById("team__away__info__score__span");
 
+
+        socket.on("dbupdate", function(json) {
+          var data = JSON.parse(json);
+          console.log(data);
+
+            var updateScore1 = data.team_1_score,
+                updateScore2 = data.team_2_score;
+
+            replaceScores(updateScore1, updateScore2);
+        });
+
+
+
+
         if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
           hideInputs();
           showScores();
           scoreButtonListeners();
         }
+
+        function replaceScores(score1, score2) {
+          console.log(score1, score2);
+          team1_score_span.innerHTML = score1;
+          team2_score_span.innerHTML = score2;
+        };
 
         function scoreButtonListeners() {
             [].forEach.call(btns, function(button) {
@@ -68,7 +88,6 @@ UFA.data = (() => {
                 console.log(newScore + " " + score2);
 
                 addScore(newScore, score2, gameID, isFinal, false);
-                replaceScores(score1, score2);
 
             } else if (buttonId === "team__away__minus") {
               var score2HTML = score2.innerHTML;
@@ -79,7 +98,6 @@ UFA.data = (() => {
               console.log(score1 + " " + newScore);
 
               addScore(score1, newScore, gameID, isFinal, false);
-              replaceScores(score1, score2);
 
             } else if (buttonId === "team__home__plus") {
               var score1HTML = score1.innerHTML;
@@ -90,7 +108,6 @@ UFA.data = (() => {
               console.log(newScore + " " + score2);
 
               addScore(newScore, score2, gameID, isFinal, false);
-              replaceScores(score1, score2);
 
             } else if (buttonId === "team__away__plus") {
               var score2HTML = score2.innerHTML;
@@ -101,7 +118,6 @@ UFA.data = (() => {
               console.log(score1 + " " + newScore);
 
               addScore(score1, newScore, gameID, isFinal, false);
-              replaceScores(score1, score2);
             }
         }
 
@@ -115,7 +131,6 @@ UFA.data = (() => {
                     isFinal = true;
                 addScore(score1, score2, gameID, isFinal, userID);
                 UFA.ux.showLoader();
-                replaceScores(score1, score2);
             });
         }
 
@@ -129,19 +144,6 @@ UFA.data = (() => {
                 isFinal: isFinal,
                 userID: userID,
                 time: Date.now()
-            });
-        }
-
-        function replaceScores(score1, score2) {
-            socket.on("dbupdate", function(data) {
-
-              console.log(data);
-
-                var updateScore1 = data.team_1_score,
-                    updateScore2 = data.team_2_score;
-
-                score1 = updateScore1;
-                score2 = updateScore2;
             });
         }
     }
