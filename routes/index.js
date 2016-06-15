@@ -144,13 +144,13 @@ router.get('/match/:gameID', function(req, res) {
         });
     };
 
-    findMatches(db, function() {
-        res.render('match', {
-            title: 'Match',
-            items: matchObject,
-            user: session
-        });
-    });
+	findMatches(db, function() {
+		res.render('match', {
+			title: 'Match',
+			items: matchObject,
+			user: session
+		});
+	});
 });
 
 router.get('/tournaments', function (req, res) {
