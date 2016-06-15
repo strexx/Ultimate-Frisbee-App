@@ -11,7 +11,9 @@ router.get('/', function (req, res, next) {
         matchesToday = []
         matchesfinal = [];
 
-    global.session = req.session;
+    var session = req.session;
+
+    console.log(session);
 
     var findMatches = function (db, callback) {
         var collectionCursor = db.collection('matches').find();
