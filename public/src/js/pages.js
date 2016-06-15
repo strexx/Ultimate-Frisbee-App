@@ -72,15 +72,8 @@ UFA.page = (() => {
     }
 
     function matchScores(ID) {
-        request('GET', '/api/match/' + ID)
-            .then(function(APIdata) {
-                var template = APIdata;
-                wrapperSelector.innerHTML = template;
-                UFA.data.socket();
-                UFA.ux.toggleSection();
-                UFA.ux.toggleClass();
-
-            });
+      UFA.ux.toggleSection();
+      UFA.ux.toggleClass();
     }
 
     function matchLocation(ID) {
