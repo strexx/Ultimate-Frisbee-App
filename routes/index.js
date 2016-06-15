@@ -38,7 +38,7 @@ router.get('/', function (req, res, next) {
         });
 
         for (var key in matchesToday) {
-            if(matchesToday[key].start_time !== undefined){
+            if (matchesToday[key].start_time !== undefined){
                 matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
             }
             //console.log(matchesToday[key].start_time);
@@ -223,7 +223,7 @@ router.get('/tournament/:tournamentID', function (req, res) {
 
             for (var key in objects) {
                 objects[key].start_time = dateFormat(objects[key].start_time, "HH:MM");
-                if (objects[key].game_site !== null) {
+                if (objects[key].game_site !== null || objects[key].game_site !== undefined ) {
                     objects[key].game_site.name = objects[key].game_site.name.split('.')[0];
                 }
             }
