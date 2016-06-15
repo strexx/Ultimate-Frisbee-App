@@ -80,8 +80,8 @@ transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 }
 
 .fonts-loaded .division h1 {
-    font-family: "Roboto Slab";
-    font-weight: 200;
+    font-family: "Roboto Slab", serif;
+    font-weight: 300;
     font-size: 2em;
     padding: 0.5em;
     padding-left: .5em;
