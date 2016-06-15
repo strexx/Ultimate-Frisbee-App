@@ -56,7 +56,8 @@ UFA.data = (() => {
             var buttonId = item.id,
                 score1 = document.querySelector('.team__home__info__score'),
                 score2 = document.querySelector('.team__away__info__score'),
-                gameID = window.location.pathname.split('/')[2];
+                gameID = window.location.pathname.split('/')[2],
+                isFinal = false;
 
             if (buttonId === "team__home__minus") {
                 var score1HTML = score1.innerHTML;
@@ -66,7 +67,7 @@ UFA.data = (() => {
 
                 console.log(newScore + " " + score2);
 
-                addScore(newScore, score2, gameID, true);
+                addScore(newScore, score2, gameID, isFinal, false);
                 replaceScores(score1, score2);
 
             } else if (buttonId === "team__away__minus") {
@@ -77,7 +78,7 @@ UFA.data = (() => {
 
               console.log(score1 + " " + newScore);
 
-              addScore(score1, newScore, gameID, true);
+              addScore(score1, newScore, gameID, isFinal, false);
               replaceScores(score1, score2);
 
             } else if (buttonId === "team__home__plus") {
@@ -88,7 +89,7 @@ UFA.data = (() => {
 
               console.log(newScore + " " + score2);
 
-              addScore(newScore, score2, gameID, true);
+              addScore(newScore, score2, gameID, isFinal, false);
               replaceScores(score1, score2);
 
             } else if (buttonId === "team__away__plus") {
@@ -99,7 +100,7 @@ UFA.data = (() => {
 
               console.log(score1 + " " + newScore);
 
-              addScore(score1, newScore, gameID, true);
+              addScore(score1, newScore, gameID, isFinal, false);
               replaceScores(score1, score2);
             }
         }
@@ -109,21 +110,24 @@ UFA.data = (() => {
             submit.addEventListener("click", function(e) {
                 e.preventDefault();
                 var score1 = document.querySelector(".team__home__info__score").innerHTML,
-                    score2 = document.querySelector(".team__away__info__score").innerHTML;
-                addScore(score1, score2, gameID, true);
+                    score2 = document.querySelector(".team__away__info__score").innerHTML,
+                    userID = document.querySelector("#user_id").value;
+                    isFinal = true;
+                addScore(score1, score2, gameID, isFinal, userID);
                 UFA.ux.showLoader();
                 replaceScores(score1, score2);
             });
         }
 
         // Add score (min or plus for teams)
-        function addScore(score1, score2, gameID, isFinal) {
+        function addScore(score1, score2, gameID, isFinal, userID) {
             // Send score to socket
             socket.emit('addScore', {
                 score1: score1,
                 score2: score2,
                 gameID: gameID,
                 isFinal: isFinal,
+                userID: userID,
                 time: Date.now()
             });
         }

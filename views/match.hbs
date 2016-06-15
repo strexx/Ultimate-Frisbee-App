@@ -54,7 +54,8 @@
 
 			</div>
 
-			{{#if scorekeeperIsLoggedIn }}
+			{{#if user }}
+				<input type="hidden" id="user_id" name="user_id" value="{{ user.user_id }}"/>
 				<input type="submit" id="submit" name="submit" value="Final score" onClick="return confirm('Are you sure');" />
 			{{/if}}
 		</form>
