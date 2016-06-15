@@ -12,6 +12,7 @@ UFA.router = (() => {
         if (window.location.pathname == '/') {
             UFA.ux.toggleSection();
             UFA.ux.toggleMenuClass();
+            UFA.ux.toggleSplash();
 
             navHome.classList.add('active');
           } else if (window.location.pathname == '/login') {
