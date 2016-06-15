@@ -6,34 +6,17 @@ UFA.ux = (() => {
     // Global vars
     var loader = document.querySelector('.loader'),
         tabLinks = document.getElementsByClassName('tablinks'),
-        menu = document.querySelector('#menu'),
-        menuIcon = document.querySelector('.menu-icon'),
         body = document.querySelector('body'),
         wrapperBody = document.querySelector('#wrapper'),
-        menuWrapper = document.querySelector('.menu-wrapper');
+        navHome = document.querySelector('#nav-home'),
+        navTournaments = document.querySelector('#nav-tournaments'),
+        navLogin = document.querySelector('#nav-login'),
+        mainNavLi = document.querySelectorAll(".main-nav-li");
 
-    function toggleMenu() {
-        menuIcon.addEventListener('click', function() {
-            animateSidebar();
-        });
-
-        function animateSidebar() {
-            wrapperBody.classList.toggle('content-slideright');
-            menuWrapper.classList.toggle('menu-wrapperslide');
-            menuIcon.classList.toggle('active');
-        };
-
-        // return {
-        //     wrapperBody: wrapperBody,
-        //     menuWrapper: menuWrapper,
-        //     closeIcon: closeIcon
-        // };
-
-    }
 
     function toggleClass() {
         // Get all menu items
-        var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
+        var links = Array.prototype.slice.call(document.querySelectorAll('#section-nav li')),
             hash = window.location.hash;
 
         // Remove active class
@@ -43,7 +26,7 @@ UFA.ux = (() => {
 
         // Add active class to new hash
         if (hash != "") {
-            var link = document.querySelector(hash),
+            var link = document.querySelector(hash+'-menu'),
                 fullLink = link.childNodes[0].getAttribute("href");
             link.classList.add('active');
         } else {
@@ -51,6 +34,35 @@ UFA.ux = (() => {
         }
     }
 
+    function toggleSection() {
+        var links = Array.prototype.slice.call(document.querySelectorAll('nav li')),
+            hash = window.location.hash;
+            console.log(hash);
+
+          var sections = document.querySelectorAll('main > section');
+          var i;
+
+          console.log(sections);
+
+          for (i = 0; i < sections.length; i++) {
+              sections[i].classList.add('inactive');
+
+              if (!hash) {
+                  sections[0].classList.remove('inactive');
+              }
+
+          }
+          if (hash) {
+              document.querySelector(hash + "-block").classList.remove('inactive');
+          }
+
+    }
+
+    function toggleMenuClass () {
+      mainNavLi.forEach(function(item) {
+        item.classList.remove('active');
+      })
+    }
 
     function showLoader() {
         loader.classList.add("active");
@@ -61,10 +73,11 @@ UFA.ux = (() => {
     }
 
     return {
-        toggleMenu: toggleMenu,
         toggleClass: toggleClass,
         showLoader: showLoader,
-        hideLoader: hideLoader
+        hideLoader: hideLoader,
+        toggleSection: toggleSection,
+        toggleMenuClass: toggleMenuClass
     };
 
 })();

@@ -1,30 +1,32 @@
-var fs = require('fs'),
-    express = require('express'),
+var express = require('express'),
+    app = express(),
     hbs = require('hbs'),
     path = require("path"),
+    mongodb = require('mongodb'),
+    MongoClient = mongodb.MongoClient,
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    app = express(),
-    server = require('http').createServer(app),
-    io = require('socket.io'),
     fileStore = require('session-file-store')(session),
-    // Include routes
+    server = require('http').createServer(app),
     routes = require('./routes/index'),
-    api = require('./routes/api'),
-    // Include MongoDB
-    mongoDB = require('./lib/mongodb.js');
+    api = require('./routes/api');
 
-    // Include Socket.io file
-    require('./lib/sockets/connection.js')(server);
+// include connections
+require('./connections/socket.js')(server);
+require('./connections/database.js')(mongodb, MongoClient);
 
+// Include routes
+
+// include partials
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
+hbs.registerPartials(__dirname + '/views/partials/content');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// bodyParser
+// use bodyParser
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -37,14 +39,16 @@ app.use(session({
     store: new fileStore(),
     saveUninitialized: true,
     resave: false,
-    cookie: { secure: false }
+    cookie: {
+        secure: false
+    }
 }));
 
 // set routes
 app.use('/', routes);
 app.use('/api/', api);
 
-// define static path
+// define static path for client
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development error handler - will print stacktrace
@@ -67,7 +71,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-//start app
+// start app
 server.listen(3010, function() {
     console.log('listening on port 3010!');
 });

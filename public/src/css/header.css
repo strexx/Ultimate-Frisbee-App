@@ -3,7 +3,6 @@
   flex-direction: column;
   position: relative;
   z-index: 1;
-  background: #fff;
 }
 
 .siteheader h1 {
@@ -14,43 +13,13 @@
   padding: 0.3em;
 }
 
-.tabs {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border-bottom: 5px solid #f04b51;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.tabs li {
-  width: 100%;
-  text-align: center;
-  border: 1px solid #f04b51;
-}
-
 .tabs li a {
     display: inline-block;
-    color: #f04b51;
+    color: grey;
     text-align: center;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding: 0.3em;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 1.1em;
     width: 100%;
-}
-
-.tabs li:focus, .active {
-  background-color: #f04b51;
-}
-
-.tabs li.active a {
-  color: white;
-}
-
-.tabs li:hover a {
-  background-color: #ccc;
 }
