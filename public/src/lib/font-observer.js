@@ -6,6 +6,9 @@
             weight: 300
         }, {
             weight: 700
+        }],
+        'Roboto Slab': [{
+            weight: 300
         }]
     };
 
