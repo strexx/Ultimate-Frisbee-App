@@ -64,7 +64,7 @@
   border-color: #2ecc71;
 }
 
-.submit {
+.login_submit {
     width: 45px;
     height: 45px;
     display: block;
@@ -78,7 +78,7 @@
     box-shadow: 0px 0px 0px 7px #fff;
     transition: 0.2s ease-out;
 }
-.submit:hover, .submit:focus {
+.login_submit:hover, .login_submit:focus {
     background: #f04b51;
     color: #fff;
     outline: 0;
