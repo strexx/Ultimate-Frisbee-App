@@ -3,7 +3,8 @@ var express = require('express'),
     fs = require('fs'),
     request = require('request'),
     session = require('express-session'),
-    dateFormat = require('dateformat');
+    dateFormat = require('dateformat'),
+    bla = require('../modules/unique.js')();
 
 
 router.get('/', function (req, res, next) {
@@ -159,23 +160,6 @@ router.get('/tournaments', function (req, res) {
         tournamentsArray = [],
         session = req.session.user_id;
 
-    Array.prototype.contains = function(v) {
-        for(var i = 0; i < this.length; i++) {
-            if(this[i] === v) return true;
-        }
-        return false;
-    };
-
-    Array.prototype.unique = function() {
-        var arr = [];
-        for (var i = 0; i < this.length; i++) {
-            if (!arr.contains(this[i])) {
-                arr.push(this[i]);
-            }
-        }
-        return arr;
-    };
-
     var findTournaments = function (db, callback) {
         var collectionCursor = db.collection('matches').find();
 
@@ -218,9 +202,11 @@ router.get('/tournament/:tournamentID', function(req, res) {
     var tournamentID = parseInt(req.params.tournamentID),
         session = req.session.user_id;
 
-    var matches = [],
-        ranking = [],
-    	rounds = [];
+    var tournamentMatches = [],
+        tournamentMatchesFinal = [],
+        tournamentDates = [],
+        tournamentRounds = [],
+        tournamentRanking = [];
 
     var findTournamentMatches = function(db, callback) {
         var collectionCursor = db.collection('matches').find({
@@ -228,32 +214,20 @@ router.get('/tournament/:tournamentID', function(req, res) {
         });
         collectionCursor.each(function(err, match) {
             if (match != null) {
-                matches.push(match);
+                if (match.start_time !== undefined){
+                    var tournamentDate = match.start_time.split(" ")[0]
+                    tournamentDates.push(tournamentDate);
+                }
+                tournamentMatches.push(match);
             } else {
                 callback();
             }
         });
     };
 
-    var findTournamentRanking = function (db, callback) {
-        var collectionCursor = db.collection('matches').find();
 
-        collectionCursor.each(function(err, match) {
-            if (match !== null) {
-                var tournament = match.tournament;
-                var tournamentID = tournament.id;
-                var tournamentName = tournament.name;
-
-                tournamentIDs.push(tournamentID);
-                tournamentNames.push(tournamentName);
-            } else {
-                callback();
-            }
-        });
-    };
-
-	var findTournamentSchedule = function (db, callback) {
-		var collectionCursor = db.collection('matches').find();
+    var findTournamentRounds = function (db, callback) {
+		var collectionCursor = db.collection('rounds').find();
 
 		collectionCursor.each(function(err, match) {
 			if (match !== null) {
@@ -269,30 +243,106 @@ router.get('/tournament/:tournamentID', function(req, res) {
 		});
 	};
 
-    findTournamentMatches(db, function() {
-        console.log(matches);
-        // var liveTime = "12:30",
-        //     todayDate = "03-06-2016",
-        //     session = req.session.user_id;
-        //
-        // // Filter on today's date
-        // var matchesToday = matches.filter(function (obj) {
-        //     var currentDate = obj.start_time.split(" ")[0];
-        //     return currentDate == todayDate;
-        // });
-        //
-        // for (var key in matchesToday) {
-        //     if (matchesToday[key].start_time !== undefined){
-        //         matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
-        //     }
-        //     //console.log(matchesToday[key].start_time);
-        // }
 
-		//findTournamentSchedule();
+    // var findTournamentRanking = function (db, callback) {
+    //     var collectionCursor = db.collection('matches').find();
+    //
+    //     collectionCursor.each(function(err, match) {
+    //         if (match !== null) {
+    //             var tournament = match.tournament;
+    //             var tournamentID = tournament.id;
+    //             var tournamentName = tournament.name;
+    //
+    //             tournamentIDs.push(tournamentID);
+    //             tournamentNames.push(tournamentName);
+    //         } else {
+    //             callback();
+    //         }
+    //     });
+    // };
+
+
+    findTournamentRounds(db, function() {
+        var session = req.session.user_id;
+
+        // Get all days from tournament
+        var tournamentDays = tournamentDates.unique();
+
+        for (var key in tournamentMatches) {
+            if (tournamentMatches[key].start_time !== undefined && tournamentMatches[key].start_time !== null){
+                tournamentMatches[key].start_date = tournamentMatches[key].start_time.split(" ")[0];
+                tournamentMatches[key].start_time = tournamentMatches[key].start_time.split(" ")[1];
+            }
+        }
+
+        var tournamentDayOne = tournamentMatches.filter(function(obj) {
+            var tournamentDay = obj.start_date;
+            return tournamentDay == tournamentDays[0];
+        });
+
+        var tournamentDayTwo = tournamentMatches.filter(function(obj) {
+            var tournamentDay = obj.start_date;
+            return tournamentDay == tournamentDays[1];
+        });
+
+        var tournamentDayThree = tournamentMatches.filter(function(obj) {
+            var tournamentDay = obj.start_date;
+            return tournamentDay == tournamentDays[2];
+        });
+
+        console.log(tournamentDayOne);
+
+        tournamentMatchesFinal.push({
+            "dayOne": tournamentDayOne
+        }, {
+            "dayTwo": tournamentDayTwo
+        }, {
+            "dayThree": tournamentDayThree
+        });
+    });
+
+
+    findTournamentMatches(db, function() {
+        var session = req.session.user_id;
+
+        // Get all days from tournament
+        var tournamentDays = tournamentDates.unique();
+
+        for (var key in tournamentMatches) {
+            if (tournamentMatches[key].start_time !== undefined && tournamentMatches[key].start_time !== null){
+                tournamentMatches[key].start_date = tournamentMatches[key].start_time.split(" ")[0];
+                tournamentMatches[key].start_time = tournamentMatches[key].start_time.split(" ")[1];
+            }
+        }
+
+        var tournamentDayOne = tournamentMatches.filter(function(obj) {
+            var tournamentDay = obj.start_date;
+            return tournamentDay == tournamentDays[0];
+        });
+
+        var tournamentDayTwo = tournamentMatches.filter(function(obj) {
+            var tournamentDay = obj.start_date;
+            return tournamentDay == tournamentDays[1];
+        });
+
+        var tournamentDayThree = tournamentMatches.filter(function(obj) {
+            var tournamentDay = obj.start_date;
+            return tournamentDay == tournamentDays[2];
+        });
+
+        //console.log(tournamentDayOne);
+
+        tournamentMatchesFinal.push({
+            "dayOne": tournamentDayOne
+        }, {
+            "dayTwo": tournamentDayTwo
+        }, {
+            "dayThree": tournamentDayThree
+        });
 
 		res.render('tournament', {
 			title: 'Tournament',
-			matches: matches,
+			items: tournamentMatchesFinal,
 			//ranking: ranking,
 			//schedule: schedule,
 			user: session
