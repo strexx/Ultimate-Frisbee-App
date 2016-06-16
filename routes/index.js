@@ -8,7 +8,7 @@ var express = require('express'),
 
 router.get('/', function (req, res, next) {
     var matches = [],
-        matchesToday = []
+        matchesToday = [],
         matchesfinal = [];
 
     var session = req.session;
@@ -28,7 +28,7 @@ router.get('/', function (req, res, next) {
 
     findMatches(db, function () {
         var liveTime = "12:30",
-            todayDate = "03-06-2016"
+            todayDate = "03-06-2016",
             session = req.session.user_id;
 
         // Filter on today's date
@@ -176,7 +176,7 @@ router.get('/tournaments', function (req, res) {
         return arr;
     };
 
-    var findTournaments = function(db, callback) {
+    var findTournaments = function (db, callback) {
         var collectionCursor = db.collection('matches').find();
 
         collectionCursor.each(function(err, match) {
@@ -193,52 +193,110 @@ router.get('/tournaments', function (req, res) {
         });
     };
 
+	findTournaments(db, function() {
+		var newTournamentIDs = tournamentIDs.unique();
+		var newTournamentNames = tournamentNames.unique();
 
-    findTournaments(db, function() {
-        var newTournamentIDs = tournamentIDs.unique();
-        var newTournamentNames = tournamentNames.unique();
+		newTournamentIDs.forEach(function(item, i){
+			var tournamentObj = { id: newTournamentIDs[i], name: newTournamentNames[i] };
+			tournamentsArray.push(tournamentObj);
+		});
 
-        newTournamentIDs.forEach(function(item, i){
-            var tournamentObj = { id: newTournamentIDs[i], name: newTournamentNames[i] };
-            tournamentsArray.push(tournamentObj);
-        });
+		console.log(tournamentsArray);
 
-        res.render('tournaments', {
-            title: 'Tournaments',
-            items: tournamentsArray,
-            user: session
-        });
-    });
+
+		res.render('tournaments', {
+			title: 'Tournaments',
+			items: tournamentsArray,
+			user: session
+		});
+
+	});
 });
 
-router.get('/tournament/:tournamentID', function (req, res) {
-    var tournamentID = req.params.tournamentID,
+router.get('/tournament/:tournamentID', function(req, res) {
+    var tournamentID = parseInt(req.params.tournamentID),
         session = req.session.user_id;
-    request({
-        url: 'https://api.leaguevine.com/v1/games/?tournament_id=' + tournamentID + '&order_by=%5Bstart_time%5D&limit=100&access_token=6dc9d3795a',
-        json: true
-    }, function (error, response, data) {
-        if (!error && response.statusCode == 200) {
-            var objects = data.objects;
 
-            for (var key in objects) {
-                objects[key].start_time = dateFormat(objects[key].start_time, "HH:MM");
-                if (objects[key].game_site !== null || objects[key].game_site !== undefined ) {
-                    objects[key].game_site.name = objects[key].game_site.name.split('.')[0];
-                }
+    var matches = [],
+        ranking = [],
+    	rounds = [];
+
+    var findTournamentMatches = function(db, callback) {
+        var collectionCursor = db.collection('matches').find({
+            "tournament.id": tournamentID
+        });
+        collectionCursor.each(function(err, match) {
+            if (match != null) {
+                matches.push(match);
+            } else {
+                callback();
             }
-            res.render('tournament', {
-                title: 'Tournament',
-                items: objects,
-                user: session
-            });
-        } else {
-            res.render('error', {
-                title: 'Error',
-                error: error
-            });
-            console.log(error);
-        }
+        });
+    };
+
+    var findTournamentRanking = function (db, callback) {
+        var collectionCursor = db.collection('matches').find();
+
+        collectionCursor.each(function(err, match) {
+            if (match !== null) {
+                var tournament = match.tournament;
+                var tournamentID = tournament.id;
+                var tournamentName = tournament.name;
+
+                tournamentIDs.push(tournamentID);
+                tournamentNames.push(tournamentName);
+            } else {
+                callback();
+            }
+        });
+    };
+
+	var findTournamentSchedule = function (db, callback) {
+		var collectionCursor = db.collection('matches').find();
+
+		collectionCursor.each(function(err, match) {
+			if (match !== null) {
+				var tournament = match.tournament;
+				var tournamentID = tournament.id;
+				var tournamentName = tournament.name;
+
+				tournamentIDs.push(tournamentID);
+				tournamentNames.push(tournamentName);
+			} else {
+				callback();
+			}
+		});
+	};
+
+    findTournamentMatches(db, function() {
+        console.log(matches);
+        // var liveTime = "12:30",
+        //     todayDate = "03-06-2016",
+        //     session = req.session.user_id;
+        //
+        // // Filter on today's date
+        // var matchesToday = matches.filter(function (obj) {
+        //     var currentDate = obj.start_time.split(" ")[0];
+        //     return currentDate == todayDate;
+        // });
+        //
+        // for (var key in matchesToday) {
+        //     if (matchesToday[key].start_time !== undefined){
+        //         matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
+        //     }
+        //     //console.log(matchesToday[key].start_time);
+        // }
+
+		//findTournamentSchedule();
+
+		res.render('tournament', {
+			title: 'Tournament',
+			matches: matches,
+			//ranking: ranking,
+			//schedule: schedule,
+			user: session
+		});
     });
 });
 
