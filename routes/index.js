@@ -193,7 +193,6 @@ router.get('/tournaments', function (req, res) {
         });
     };
 
-
     findTournaments(db, function() {
         var newTournamentIDs = tournamentIDs.unique();
         var newTournamentNames = tournamentNames.unique();
