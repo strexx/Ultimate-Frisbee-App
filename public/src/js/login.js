@@ -3,12 +3,12 @@
 *********************************************************/
 UFA.login = (() => {
     // Global vars
-    var submit = document.querySelector('.submit'),
-        placeholder = document.querySelector('.submit i'),
+    var loginSubmitBtn = document.querySelector('.login_submit'),
+        placeholder = document.querySelector('.login_submit i'),
         feedback = document.querySelector('.feedback');
 
     function init() {
-      submit.addEventListener("click", loginSubmit, false);
+      loginSubmitBtn.addEventListener("click", loginSubmit, false);
     }
 
     function loginSubmit(e) {
