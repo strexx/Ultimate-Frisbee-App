@@ -203,9 +203,10 @@ router.get('/tournament/:tournamentID', function(req, res) {
         session = req.session.user_id;
 
     var tournamentMatches = [],
-        tournamentMatchesFinal = [],
+        tournamentMatchesArray = [],
         tournamentDates = [],
         tournamentRounds = [],
+        tournamentRoundNumbers = [],
         tournamentRanking = [];
 
     var findTournamentMatches = function(db, callback) {
@@ -218,31 +219,28 @@ router.get('/tournament/:tournamentID', function(req, res) {
                     var tournamentDate = match.start_time.split(" ")[0]
                     tournamentDates.push(tournamentDate);
                 }
-                tournamentMatches.push(match);
+                tournamentMatchesArray.push(match);
             } else {
                 callback();
             }
         });
     };
 
-
     var findTournamentRounds = function (db, callback) {
 		var collectionCursor = db.collection('rounds').find();
 
 		collectionCursor.each(function(err, match) {
 			if (match !== null) {
-				var tournament = match.tournament;
-				var tournamentID = tournament.id;
-				var tournamentName = tournament.name;
-
-				tournamentIDs.push(tournamentID);
-				tournamentNames.push(tournamentName);
+                if (match.swiss_round !== undefined && match.swiss_round !== null){
+                    var tournamentRoundNumber = match.swiss_round.round_number;
+                    tournamentRoundNumbers.push(tournamentRoundNumber);
+                }
+				tournamentRounds.push(match);
 			} else {
 				callback();
 			}
 		});
 	};
-
 
     // var findTournamentRanking = function (db, callback) {
     //     var collectionCursor = db.collection('matches').find();
@@ -261,78 +259,54 @@ router.get('/tournament/:tournamentID', function(req, res) {
     //     });
     // };
 
+    // // Tournament Ranking callback
+    // findTournamentRanking(db, function() {
+    //     console.log(tournamentRounds);
+    // });
 
+    // Tournament Rounds callback
     findTournamentRounds(db, function() {
-        var session = req.session.user_id;
+        console.log(tournamentRoundNumbers);
+        var tournamentRounds = tournamentRoundNumbers.unique();
 
-        // Get all days from tournament
-        var tournamentDays = tournamentDates.unique();
-
-        for (var key in tournamentMatches) {
-            if (tournamentMatches[key].start_time !== undefined && tournamentMatches[key].start_time !== null){
-                tournamentMatches[key].start_date = tournamentMatches[key].start_time.split(" ")[0];
-                tournamentMatches[key].start_time = tournamentMatches[key].start_time.split(" ")[1];
-            }
-        }
-
-        var tournamentDayOne = tournamentMatches.filter(function(obj) {
-            var tournamentDay = obj.start_date;
-            return tournamentDay == tournamentDays[0];
+        tournamentRounds.forEach(function(round, i) {
+            var tournamentDayThree = tournamentMatchesArray.filter(function(obj) {
+                var tournamentDay = obj.start_date;
+                return tournamentDay == tournamentDays[2];
+            });
         });
 
-        var tournamentDayTwo = tournamentMatches.filter(function(obj) {
-            var tournamentDay = obj.start_date;
-            return tournamentDay == tournamentDays[1];
-        });
 
-        var tournamentDayThree = tournamentMatches.filter(function(obj) {
-            var tournamentDay = obj.start_date;
-            return tournamentDay == tournamentDays[2];
-        });
-
-        console.log(tournamentDayOne);
-
-        tournamentMatchesFinal.push({
-            "dayOne": tournamentDayOne
-        }, {
-            "dayTwo": tournamentDayTwo
-        }, {
-            "dayThree": tournamentDayThree
-        });
     });
 
-
+    // Tournament Matches callback
     findTournamentMatches(db, function() {
-        var session = req.session.user_id;
-
         // Get all days from tournament
         var tournamentDays = tournamentDates.unique();
 
-        for (var key in tournamentMatches) {
-            if (tournamentMatches[key].start_time !== undefined && tournamentMatches[key].start_time !== null){
-                tournamentMatches[key].start_date = tournamentMatches[key].start_time.split(" ")[0];
-                tournamentMatches[key].start_time = tournamentMatches[key].start_time.split(" ")[1];
+        for (var key in tournamentMatchesArray) {
+            if (tournamentMatchesArray[key].start_time !== undefined && tournamentMatchesArray[key].start_time !== null){
+                tournamentMatchesArray[key].start_date = tournamentMatchesArray[key].start_time.split(" ")[0];
+                tournamentMatchesArray[key].start_time = tournamentMatchesArray[key].start_time.split(" ")[1];
             }
         }
 
-        var tournamentDayOne = tournamentMatches.filter(function(obj) {
+        var tournamentDayOne = tournamentMatchesArray.filter(function(obj) {
             var tournamentDay = obj.start_date;
             return tournamentDay == tournamentDays[0];
         });
 
-        var tournamentDayTwo = tournamentMatches.filter(function(obj) {
+        var tournamentDayTwo = tournamentMatchesArray.filter(function(obj) {
             var tournamentDay = obj.start_date;
             return tournamentDay == tournamentDays[1];
         });
 
-        var tournamentDayThree = tournamentMatches.filter(function(obj) {
+        var tournamentDayThree = tournamentMatchesArray.filter(function(obj) {
             var tournamentDay = obj.start_date;
             return tournamentDay == tournamentDays[2];
         });
 
-        //console.log(tournamentDayOne);
-
-        tournamentMatchesFinal.push({
+        tournamentMatches.push({
             "dayOne": tournamentDayOne
         }, {
             "dayTwo": tournamentDayTwo
@@ -342,9 +316,9 @@ router.get('/tournament/:tournamentID', function(req, res) {
 
 		res.render('tournament', {
 			title: 'Tournament',
-			items: tournamentMatchesFinal,
-			//ranking: ranking,
-			//schedule: schedule,
+			matches: tournamentMatches,
+            rounds: tournamentRounds,
+            ranking: tournamentRanking,
 			user: session
 		});
     });
