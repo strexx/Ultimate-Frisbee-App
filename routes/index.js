@@ -4,8 +4,8 @@ var express = require('express'),
     request = require('request'),
     session = require('express-session'),
     dateFormat = require('dateformat'),
-    bla = require('../modules/unique.js')();
-
+    unqiueKeys = require('../modules/uniqueKeys.js')(),
+    formatDigits = require('../modules/formatDigits.js');
 
 router.get('/', function (req, res, next) {
     var matches = [],
@@ -204,17 +204,18 @@ router.get('/tournament/:tournamentID', function(req, res) {
 
     var tournamentMatches = [],
         tournamentMatchesArray = [],
-        tournamentDates = [],
         tournamentRounds = [],
-        tournamentRoundNumbers = [],
-        tournamentRanking = [];
+        tournamentRoundsArray = [],
+        tournamentRanking = [],
+        tournamentRankingArray = [],
+        tournamentDates = [];
 
     var findTournamentMatches = function(db, callback) {
         var collectionCursor = db.collection('matches').find({
             "tournament.id": tournamentID
         });
         collectionCursor.each(function(err, match) {
-            if (match != null) {
+            if (match !== null) {
                 if (match.start_time !== undefined){
                     var tournamentDate = match.start_time.split(" ")[0]
                     tournamentDates.push(tournamentDate);
@@ -227,57 +228,62 @@ router.get('/tournament/:tournamentID', function(req, res) {
     };
 
     var findTournamentRounds = function (db, callback) {
-		var collectionCursor = db.collection('rounds').find();
+		var collectionCursor = db.collection('tournaments').find();
 
-		collectionCursor.each(function(err, match) {
-			if (match !== null) {
-                if (match.swiss_round !== undefined && match.swiss_round !== null){
-                    var tournamentRoundNumber = match.swiss_round.round_number;
-                    tournamentRoundNumbers.push(tournamentRoundNumber);
-                }
-				tournamentRounds.push(match);
+		collectionCursor.each(function(err, rounds) {
+			if (rounds !== null) {
+				tournamentRoundsArray.push(rounds);
 			} else {
 				callback();
 			}
 		});
 	};
 
-    // var findTournamentRanking = function (db, callback) {
-    //     var collectionCursor = db.collection('matches').find();
-    //
-    //     collectionCursor.each(function(err, match) {
-    //         if (match !== null) {
-    //             var tournament = match.tournament;
-    //             var tournamentID = tournament.id;
-    //             var tournamentName = tournament.name;
-    //
-    //             tournamentIDs.push(tournamentID);
-    //             tournamentNames.push(tournamentName);
-    //         } else {
-    //             callback();
-    //         }
-    //     });
-    // };
+    var findTournamentRanking = function (db, callback) {
+		var collectionCursor = db.collection('tournaments').find();
 
-    // // Tournament Ranking callback
-    // findTournamentRanking(db, function() {
-    //     console.log(tournamentRounds);
-    // });
+		collectionCursor.each(function(err, ranking) {
+			if (ranking !== null) {
+				tournamentRankingArray.push(ranking);
+			} else {
+				callback();
+			}
+		});
+	};
 
     // Tournament Rounds callback
     findTournamentRounds(db, function() {
-        console.log(tournamentRoundNumbers);
-        var tournamentRounds = tournamentRoundNumbers.unique();
+        //console.log(tournamentRoundsArray);
 
-        tournamentRounds.forEach(function(round, i) {
-            var tournamentDayThree = tournamentMatchesArray.filter(function(obj) {
-                var tournamentDay = obj.start_date;
-                return tournamentDay == tournamentDays[2];
-            });
-        });
+        for (var key in tournamentRoundsArray) {
+            var gamesArray = tournamentRoundsArray[key].games;
 
+            for (var anotherKey in gamesArray) {
+                if (gamesArray[anotherKey].start_time !== undefined && gamesArray[anotherKey].start_time !== null) {
+                    gamesArray[anotherKey].start_time = gamesArray[anotherKey].start_time.split(" ")[1];
+                }
+            }
+        }
 
+        tournamentRounds = tournamentRoundsArray;
     });
+
+    // Tournament Ranking callback
+    findTournamentRanking(db, function() {
+
+        for (var key in tournamentRankingArray) {
+            var rankingArray = tournamentRankingArray[key].standings;
+
+            for (var anotherKey in rankingArray) {
+                if (rankingArray[anotherKey].ranking !== undefined && rankingArray[anotherKey].ranking !== null) {
+                    rankingArray[anotherKey].ranking = formatDigits(rankingArray[anotherKey].ranking);
+                }
+            }
+        }
+
+        tournamentRanking = tournamentRankingArray;
+    });
+
 
     // Tournament Matches callback
     findTournamentMatches(db, function() {
