@@ -248,6 +248,20 @@ router.get('/login', function (req, res) {
     });
 });
 
+router.get('/login-error', function (req, res) {
+    var errorType = parseInt(req.query.error), error;
+    console.log(errorType);
+    if(errorType == 1) {
+      error = "Login failed. Password or e-mail incorrect.";
+    } else if(errorType == 2) {
+      error = "Login failed. User not found.";
+    }
+    res.render('login-error', {
+        title: 'Login',
+        error: error
+    });
+});
+
 router.get('/logout', function (req, res) {
     delete req.session.user_id;
     res.redirect('/login');

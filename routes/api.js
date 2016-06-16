@@ -7,8 +7,8 @@ var express = require('express'),
     //ObjectId = require('mongodb').ObjectID,
     MongoClient = mongodb.MongoClient,
     //assert = require('assert'),
-    url = 'mongodb://146.185.135.172:27017/ultifris';
-
+    url = 'mongodb://146.185.135.172:27017/ultifris',
+    passwordHash = require('password-hash');
 
 router.get('/matches', function(req, res) {
   request({
@@ -78,9 +78,9 @@ router.post('/login', function(req, res) {
 
     if (post) {
         email = req.body.email,
-            password = req.body.password;
+        password = req.body.password;
     } else {
-        console.log("error g");
+        console.log("Error when posting data");
     }
 
     MongoClient.connect(url, function(err, db) {
@@ -89,18 +89,22 @@ router.post('/login', function(req, res) {
         } else {
             console.log('Connection established!');
             var collection = db.collection('accounts');
-
             collection.findOne({
-                email: email,
-                password: password
+                email: email
             }, function(err, account) {
                 if (err) throw err;
                 if (account) {
-                    req.session.user_id = account._id;
-                    console.log("username" + email + " password: " + account.password + " user_id " + req.session.user_id);
-                    res.redirect('/');
+                    if(passwordHash.verify(password, account.password)) {
+                      req.session.user_id = account._id;
+                      console.log("username" + email + " hashedPassword: " + account.password + " user_id " + req.session.user_id);
+                      res.redirect('/');
+                    } else {
+                      console.log(password + " is not matching with hash in database for user" + email);
+                      res.redirect('/login-error?error=1');
+                    }
                 } else {
-
+                  console.log(email + " not found in database");
+                  res.redirect('/login-error?error=2');
                 }
                 db.close();
                 console.log('Connection closed!');

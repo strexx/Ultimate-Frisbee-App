@@ -23,10 +23,7 @@ UFA.data = (() => {
 
             replaceScores(updateScore1, updateScore2);
         });
-
-
-
-
+        
         if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
           hideInputs();
           showScores();
