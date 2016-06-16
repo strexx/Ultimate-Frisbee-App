@@ -5,6 +5,6 @@
 
 var formatDigits = function(number) {
 	return (number < 10 ? '0' : '') + number
- }
+};
 
 module.exports = formatDigits;
