@@ -35,48 +35,44 @@ UFA.page = (() => {
     function matchesRecent() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        // request('GET', '/api/matches/recent')
-        //     .then(function(APIdata) {
-        //         var template = APIdata;
-        //         wrapperSelector.innerHTML = template;
-        //         UFA.ux.toggleClass();
-        //     });
     }
 
     function matchesLive() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        // request('GET', '/api/matches/live')
-        //     .then(function(APIdata) {
-        //         var template = APIdata;
-        //         wrapperSelector.innerHTML = template;
-        //         UFA.ux.toggleClass();
-        //     });
     }
 
     function matchesUpcoming() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        // request('GET', '/api/matches/upcoming')
-        //     .then(function(APIdata) {
-        //         var template = APIdata;
-        //         wrapperSelector.innerHTML = template;
-        //         UFA.ux.toggleClass();
-        //     });
     }
 
-    function matchInfo(ID) {
+    function matchInfo() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-
     }
 
-    function matchScores(ID) {
+    function matchScores() {
       UFA.ux.toggleSection();
       UFA.ux.toggleClass();
     }
 
-    function matchLocation(ID) {
+    function matchLocation() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+    }
+
+    function tournamentMatches() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+    }
+
+    function tournamentRounds() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+    }
+
+    function tournamentRanking() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
     }

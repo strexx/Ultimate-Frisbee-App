@@ -3,7 +3,7 @@
 *********************************************************/
 UFA.router = (() => {
     function init() {
-        var gameID = window.location.pathname.split('/')[2],
+        var ID = window.location.pathname.split('/')[2],
         navHome = document.querySelector('#nav-home'),
         navTournaments = document.querySelector('#nav-tournaments'),
         navLogin = document.querySelector('.navlog'),
@@ -13,24 +13,23 @@ UFA.router = (() => {
             UFA.ux.toggleSection();
             UFA.ux.toggleMenuClass();
             UFA.ux.splashVisited();
-
             navHome.classList.add('active');
-          } else if (window.location.pathname == '/login') {
+        } else if (window.location.pathname == '/login') {
             UFA.login.init();
             UFA.ux.toggleMenuClass();
-
             navLogin.classList.add('active');
-
         } else if (window.location.pathname == '/tournaments') {
           UFA.ux.toggleMenuClass();
-
           navTournaments.classList.add('active');
 
-        } else if (window.location.pathname.indexOf('match/'+gameID)) {
+      } else if (window.location.pathname.indexOf('match/'+ID)) {
             UFA.data.socket();
             UFA.ux.toggleSection();
             UFA.ux.toggleMenuClass();
-          }
+        } else if (window.location.pathname.indexOf('tournament/'+ID)) {
+            UFA.ux.toggleSection();
+            UFA.ux.toggleMenuClass();
+         }
 
         // Check if hash has changed and toggle actives on links
         window.addEventListener("hashchange", function() {
@@ -52,6 +51,15 @@ UFA.router = (() => {
                     break;
                 case "#location":
                     UFA.page.matchLocation();
+                    break;
+                case "#matches":
+                    UFA.page.tournamentMatches();
+                    break;
+                case "#rounds":
+                    UFA.page.tournamentRounds();
+                    break;
+                case "#ranking":
+                    UFA.page.tournamentRanking();
                     break;
             }
         });
