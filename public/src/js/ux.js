@@ -11,7 +11,8 @@ UFA.ux = (() => {
         navHome = document.querySelector('#nav-home'),
         navTournaments = document.querySelector('#nav-tournaments'),
         navLogin = document.querySelector('#nav-login'),
-        mainNavLi = document.querySelectorAll(".main-nav-li");
+        mainNavLi = document.querySelectorAll(".main-nav-li"),
+        splashScreen = document.querySelector(".splash");
 
 
     function toggleClass() {
@@ -72,10 +73,27 @@ UFA.ux = (() => {
         loader.classList.remove("active");
     }
 
+    function splashVisited () {
+        var splashShown = localStorage.getItem("splashShown");
+      if(!splashShown) {
+        toggleSplash();
+        localStorage.setItem("splashShown", "true");
+      }
+
+    }
+
+    function toggleSplash () {
+      splashScreen.classList.add('active');
+      setTimeout(function () {
+        splashScreen.classList.remove('active');
+      }, 4000)
+    }
+
     return {
         toggleClass: toggleClass,
         showLoader: showLoader,
         hideLoader: hideLoader,
+        splashVisited: splashVisited,
         toggleSection: toggleSection,
         toggleMenuClass: toggleMenuClass
     };
