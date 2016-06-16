@@ -32,9 +32,7 @@ UFA.data = (() => {
           showScores();
           scoreButtonListeners();
 
-          if(document.querySelector("#user_id")) {
-            hideCheckBoxes();
-          } else {
+          if(!document.querySelector("#user_id")) {
             hideFormSubmit();
             hideCheckBoxes();
           }
@@ -54,7 +52,8 @@ UFA.data = (() => {
                 button.classList.remove("hidden");
                 button.classList.add("is-visible");
                 button.addEventListener('click', function(index) {
-                    return function() {
+                    return function(e) {
+                        e.preventDefault();
                         changeScore(index);
                     };
                 }(button), false);

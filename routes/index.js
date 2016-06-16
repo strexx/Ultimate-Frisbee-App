@@ -152,6 +152,7 @@ router.get('/match/:gameID', function(req, res) {
 			user: session,
       gameID: gameID
 		});
+    console.log(session);
 	});
 });
 
