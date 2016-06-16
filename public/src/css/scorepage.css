@@ -236,6 +236,21 @@
 
 .score-submit {
   display: block;
-  width: 70%;
   margin: 0 auto;
+  text-align: center;
+}
+
+.score-submit input[type=submit] {
+  background: #e64a55;
+  padding: 1.5em 2em;
+  color: #fff;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  margin-top: 6em;
+  border-radius: 10px;
+}
+
+.score-submit input[type=submit]:hover {
+  background: #ab3841;
 }
