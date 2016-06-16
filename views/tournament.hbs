@@ -30,59 +30,23 @@
         {{/matches}}
     </section>
     <section id="rounds-block" class="matches__items">
-        {{#rounds}}
-            {{#if dayOne}}
+        {{#each rounds}}
             <div class="division">
-                <h1>{{dayOne.1.start_date}}</h1>
-                {{#each dayOne}}
+                <h1>Round {{round_number}}</h1>
+                {{#each games}}
                     {{> content_matches}}
                 {{/each}}
             </div>
-            {{/if}}
-            {{#if dayTwo}}
-              <div class="division">
-                <h1>{{dayTwo.1.start_date}}</h1>
-                {{#each dayTwo}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
-            {{/if}}
-            {{#if dayThree}}
-              <div class="division">
-                <h1>{{dayThree.1.start_date}}</h1>
-                {{#each dayThree}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
-            {{/if}}
-        {{/rounds}}
+        {{/each}}
     </section>
     <section id="ranking-block" class="matches__items">
-        {{#ranking}}
-            {{#if dayOne}}
+        {{#each ranking}}
             <div class="division">
-                <h1>{{dayOne.1.start_date}}</h1>
-                {{#each dayOne}}
-                    {{> content_matches}}
+                <h1>Round {{round_number}}</h1>
+                {{#each standings}}
+                    {{> content_rankings}}
                 {{/each}}
             </div>
-            {{/if}}
-            {{#if dayTwo}}
-              <div class="division">
-                <h1>{{dayTwo.1.start_date}}</h1>
-                {{#each dayTwo}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
-            {{/if}}
-            {{#if dayThree}}
-              <div class="division">
-                <h1>{{dayThree.1.start_date}}</h1>
-                {{#each dayThree}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
-            {{/if}}
-        {{/ranking}}
+        {{/each}}
     </section>
 </main>
