@@ -144,13 +144,13 @@ router.get('/match/:gameID', function(req, res) {
         });
     };
 
-    findMatches(db, function() {
-        res.render('match', {
-            title: 'Match',
-            items: matchObject,
-            user: session
-        });
-    });
+	findMatches(db, function() {
+		res.render('match', {
+			title: 'Match',
+			items: matchObject,
+			user: session
+		});
+	});
 });
 
 router.get('/tournaments', function (req, res) {
@@ -245,6 +245,20 @@ router.get('/tournament/:tournamentID', function (req, res) {
 router.get('/login', function (req, res) {
     res.render('login', {
         title: 'Login'
+    });
+});
+
+router.get('/login-error', function (req, res) {
+    var errorType = parseInt(req.query.error), error;
+    console.log(errorType);
+    if(errorType == 1) {
+      error = "Login failed. Password or e-mail incorrect.";
+    } else if(errorType == 2) {
+      error = "Login failed. User not found.";
+    }
+    res.render('login-error', {
+        title: 'Login',
+        error: error
     });
 });
 

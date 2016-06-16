@@ -13,7 +13,7 @@ UFA.data = (() => {
             team1_score_span = document.getElementById("team__home__info__score__span"),
             team2_score_span = document.getElementById("team__away__info__score__span");
 
-
+        // If scores are saved, update client
         socket.on("dbupdate", function(json) {
           var data = JSON.parse(json);
           console.log(data);
@@ -24,21 +24,21 @@ UFA.data = (() => {
             replaceScores(updateScore1, updateScore2);
         });
 
-
-
-
+        // Feature detection for vanilla js
         if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
           hideInputs();
           showScores();
           scoreButtonListeners();
         }
 
+        // Update scores
         function replaceScores(score1, score2) {
           console.log(score1, score2);
           team1_score_span.innerHTML = score1;
           team2_score_span.innerHTML = score2;
         };
 
+        // Add plus and minus button click events
         function scoreButtonListeners() {
             [].forEach.call(btns, function(button) {
                 button.classList.remove("hidden");
@@ -51,6 +51,7 @@ UFA.data = (() => {
             });
         }
 
+        // Show normal scores instead of inputs
         function showScores() {
           team1_score_span.classList.remove("hidden");
           team2_score_span.classList.remove("hidden");
@@ -66,12 +67,14 @@ UFA.data = (() => {
         //   team2_score_span.classList.add("hidden");
         // }
 
+        // Hide inputs when JS is disabled
         function hideInputs() {
             [].forEach.call(inputs, function(input) {
                 input.classList.add("hidden");
             });
         }
 
+        // Fire real time event to socket
         function changeScore(item) {
             var buttonId = item.id,
                 score1 = document.querySelector('.team__home__info__score'),
@@ -121,7 +124,7 @@ UFA.data = (() => {
             }
         }
 
-        // If submitted
+        // If submitted by scorekeeper
         if (submit != null) {
             submit.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -134,7 +137,7 @@ UFA.data = (() => {
             });
         }
 
-        // Add score (min or plus for teams)
+        // Add score (min or plus for teams) stream to socket
         function addScore(score1, score2, gameID, isFinal, userID) {
             // Send score to socket
             socket.emit('addScore', {
@@ -148,6 +151,7 @@ UFA.data = (() => {
         }
     }
 
+    // Return functions
     return {
         socket: socket
     };

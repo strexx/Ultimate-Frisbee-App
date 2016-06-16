@@ -29,6 +29,7 @@
     "momentjs": "^1.1.2",
     "mongo-express": "^0.30.59",
     "mongodb": "^2.1.21",
+    "password-hash": "^1.2.2",
     "path": "^0.12.7",
     "request": "^2.72.0",
     "session-file-store": "^0.2.0",
