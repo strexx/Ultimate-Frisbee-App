@@ -28,7 +28,7 @@ app.set('view engine', 'hbs');
 
 // use bodyParser
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 app.use(bodyParser.json());
 
