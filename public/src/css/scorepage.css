@@ -156,6 +156,8 @@
   width: 47%;
   max-width: 20em;
   background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 3px 9px rgba(0,0,0,0.16), 0 3px 4px rgba(0,0,0,0.23);
 }
 
 #teams .team .btn {
@@ -183,7 +185,6 @@
 }
 
 #teams .team .btn-plus {
-  /*box-shadow: 0 3px 9px rgba(0,0,0,0.16), 0 3px 4px rgba(0,0,0,0.23);*/
   border-bottom-left-radius: 22px;
   border-bottom-right-radius: 22px;
 }
@@ -234,23 +235,22 @@
   height: 1em;
 }
 
-/* TEAMS HOME */
-
-#teams .teams__home {
-
-}
-
-/* TEAMS AWAY */
-
-#teams .teams__away {
-
+#teams .team-input {
+  border: 1px solid rgba(49,48,43, 0.3);
+  color: black;
+  width: 1.5em;
+  text-align: center;
+  font-size: 7em;
+  padding-left: .2em;
+  margin-bottom: .2em;
 }
 
 /* SUBMIT BUTTON */
 
 .score-submit {
-  display: block;
-  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -274,4 +274,38 @@
 .score-submit input[type=submit]:hover {
   box-shadow: inset 0 0 0 10em rgba(49,48,43, 0.3);
   color: #fff;
+}
+
+.score-submit input[type=checkbox] + label {
+  margin: 3em 0 0 0;
+  cursor: pointer;
+  height: 0.5em;
+}
+
+.score-submit input[type=checkbox] + label::before { /*Will function as styled checkbox*/
+    content: '\a0';
+    display: inline-block;
+    vertical-align: .1em;
+    width: 1.25em;
+    height: 1.2em;
+    font-size: 1.2em;
+    margin-right: .2em;
+    border-radius: .2em;
+    background: silver;
+    text-indent: .10em;
+    line-height: 1.1;
+}
+
+.score-submit input[type=checkbox]:checked + label::before {
+    font-family: FontAwesome;
+    content: '\f00c';
+    font-size: 1.2em;
+    line-height: 1.2;
+    background: yellowgreen;
+    color: white;
+}
+
+.score-submit input[type=checkbox] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
 }
