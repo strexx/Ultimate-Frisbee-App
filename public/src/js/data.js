@@ -9,6 +9,7 @@ UFA.data = (() => {
             submit = document.querySelector("#submit"),
             btns = document.getElementsByTagName("button"),
             inputs = document.getElementsByClassName("team-input"),
+            // checkboxes = document.getElementsByClassName("checkFinal"),
             gameID = window.location.pathname.split('/')[2],
             team1_score_span = document.getElementById("team__home__info__score__span"),
             team2_score_span = document.getElementById("team__away__info__score__span");
@@ -27,8 +28,12 @@ UFA.data = (() => {
         // Feature detection for vanilla js
         if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
           hideInputs();
+          // hideFormSubmit();
           showScores();
           scoreButtonListeners();
+
+          if(document.querySelector("#user_id"))
+            hideFormSubmit();
         }
 
         // Update scores
@@ -72,6 +77,13 @@ UFA.data = (() => {
             [].forEach.call(inputs, function(input) {
                 input.classList.add("hidden");
             });
+        }
+
+        function hideFormSubmit() {
+          // [].forEach.call(checkboxes, function(checkbox) {
+          //     checkbox.classList.add("hidden");
+          // });
+          submit.classList.add("hidden");
         }
 
         // Fire real time event to socket
@@ -130,10 +142,18 @@ UFA.data = (() => {
                 e.preventDefault();
                 var score1 = document.querySelector(".team__home__info__score").innerHTML,
                     score2 = document.querySelector(".team__away__info__score").innerHTML,
-                    userID = document.querySelector("#user_id").value;
-                    isFinal = true;
-                addScore(score1, score2, gameID, isFinal, userID);
-                UFA.ux.showLoader();
+                    checkFinal = document.querySelector("#check:checked"),
+                    isFinal = false,
+                    userID = null;
+
+                if(document.querySelector("#user_id"))
+                  userID = document.querySelector("#user_id").value;
+
+                if(checkFinal && checkFinal.value == "true")
+                  isFinal = true;
+
+                //addScore(score1, score2, gameID, isFinal, userID);
+                //UFA.ux.showLoader();
             });
         }
 
