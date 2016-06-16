@@ -89,9 +89,9 @@
     bottom: -80px;
     width: 100%;
     text-align: center;
-    color: #fff;
+    color: blac;
     opacity: 0;
-    background: #2ecc71;
+    background: #eee;
     padding: 10px 0;
     font-size: 12px;
 }
@@ -109,8 +109,45 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-color: rgba(46, 204, 113, 0);
-    border-bottom-color: #2ecc71;
+    border-color: rgba(238, 238, 238, 0);
+    border-bottom-color: #eee;
     border-width: 10px;
     margin-left: -10px;
+}
+
+.errorMsg {
+  position: absolute;
+  bottom: -80px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background: #f04b51;
+  padding: 10px 0;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.errorMsg:before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(240, 75, 81, 0);
+    border-bottom-color: #f04b51;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.fa-exclamation-circle {
+  margin: .1em .4em 0 0;
+  font-size: 1.2em;
+}
+
+.fa-lock {
+  margin: .1em .4em 0 0;
+  font-size: 1.2em;
 }

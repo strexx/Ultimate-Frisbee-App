@@ -76,13 +76,11 @@ router.post('/login', function(req, res) {
 
     var session = req.session;
 
-    console.log(post);
-
     if (post) {
         email = req.body.email,
         password = req.body.password;
     } else {
-        console.log("error g");
+        console.log("Error when posting data");
     }
 
     MongoClient.connect(url, function(err, db) {
@@ -96,14 +94,17 @@ router.post('/login', function(req, res) {
             }, function(err, account) {
                 if (err) throw err;
                 if (account) {
-                    console.log("Account found..");
                     if(passwordHash.verify(password, account.password)) {
                       req.session.user_id = account._id;
                       console.log("username" + email + " hashedPassword: " + account.password + " user_id " + req.session.user_id);
                       res.redirect('/');
+                    } else {
+                      console.log(password + " is not matching with hash in database for user" + email);
+                      res.redirect('/login-error?error=1');
                     }
                 } else {
-                  console.log('No user found  with email');
+                  console.log(email + " not found in database");
+                  res.redirect('/login-error?error=2');
                 }
                 db.close();
                 console.log('Connection closed!');
