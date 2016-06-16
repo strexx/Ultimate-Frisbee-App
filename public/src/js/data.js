@@ -9,7 +9,7 @@ UFA.data = (() => {
             submit = document.querySelector("#submit"),
             btns = document.getElementsByTagName("button"),
             inputs = document.getElementsByClassName("team-input"),
-            // checkboxes = document.getElementsByClassName("checkFinal"),
+            checkboxes = document.getElementsByClassName("checkFinal"),
             gameID = window.location.pathname.split('/')[2],
             team1_score_span = document.getElementById("team__home__info__score__span"),
             team2_score_span = document.getElementById("team__away__info__score__span");
@@ -32,8 +32,13 @@ UFA.data = (() => {
           showScores();
           scoreButtonListeners();
 
-          if(document.querySelector("#user_id"))
+          if(document.querySelector("#user_id")) {
+            hideCheckBoxes();
+          } else {
             hideFormSubmit();
+            hideCheckBoxes();
+          }
+
         }
 
         // Update scores
@@ -80,10 +85,13 @@ UFA.data = (() => {
         }
 
         function hideFormSubmit() {
-          // [].forEach.call(checkboxes, function(checkbox) {
-          //     checkbox.classList.add("hidden");
-          // });
           submit.classList.add("hidden");
+        }
+
+        function hideCheckBoxes() {
+          [].forEach.call(checkboxes, function(checkbox) {
+            checkbox.classList.add("hidden");
+          });
         }
 
         // Fire real time event to socket
@@ -146,13 +154,14 @@ UFA.data = (() => {
                     isFinal = false,
                     userID = null;
 
+                    console.log(checkFinal);
                 if(document.querySelector("#user_id"))
                   userID = document.querySelector("#user_id").value;
 
                 if(checkFinal && checkFinal.value == "true")
                   isFinal = true;
 
-                //addScore(score1, score2, gameID, isFinal, userID);
+                addScore(score1, score2, gameID, isFinal, userID);
                 //UFA.ux.showLoader();
             });
         }

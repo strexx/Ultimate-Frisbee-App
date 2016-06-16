@@ -5,7 +5,7 @@
 
 		<!-- <article class="match__item"> -->
 
-		<form action="match/score" method="POST" onsubmit="event.preventDefault();">
+		<form action="/api/match/score" method="POST">
 
 			<!-- TEAMS -->
 			<div id="teams">
@@ -56,9 +56,10 @@
 
 				<div class="score-submit">
 					{{#if user }}
-						<input type="hidden" id="user_id" name="user_id" value="{{ user.user_id }}"/>
-						<input type="checkbox" id="check" class="checkFinal" value="true" /><label class="checkFinal" for="check"> Final score</label>
+						<input type="hidden" id="user_id" name="user_id" value="{{ user }}"/>
+						<input type="checkbox" id="check" name="isFinal" class="checkFinal" value="true" /><label class="checkFinal" for="check"> Final score</label>
 					{{/if }}
+					<input type="hidden" id="gameID" name="gameID" value="{{ gameID }}"/>
 					<input type="submit" id="submit" name="submit" value="Submit result" onClick="return confirm('Are you sure');" />
 				</div>
 

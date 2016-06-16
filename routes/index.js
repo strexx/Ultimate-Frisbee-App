@@ -149,7 +149,8 @@ router.get('/match/:gameID', function(req, res) {
 		res.render('match', {
 			title: 'Match',
 			items: matchObject,
-			user: session
+			user: session,
+      gameID: gameID
 		});
 	});
 });
