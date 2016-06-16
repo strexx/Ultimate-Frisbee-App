@@ -12,8 +12,8 @@ var express = require('express'),
     api = require('./routes/api');
 
 // include connections
-require('./connections/socket.js')(server);
 require('./connections/database.js')(mongodb, MongoClient);
+require('./connections/socket.js')(server);
 
 // Include routes
 
