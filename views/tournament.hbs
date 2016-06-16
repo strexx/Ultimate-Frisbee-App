@@ -1,8 +1,8 @@
 {{> header_tournament}}
 
 <main id="main" class="matchesmain" role="main">
-    <section id="matches-block" class="matches__items">
-        {{#items}}
+    <section id="scores-block" class="matches__items">
+        {{#matches}}
             {{#if dayOne}}
             <div class="division">
                 <h1>{{dayOne.1.start_date}}</h1>
@@ -27,6 +27,62 @@
                 {{/each}}
               </div>
             {{/if}}
-        {{/items}}
+        {{/matches}}
+    </section>
+    <section id="rounds-block" class="matches__items">
+        {{#rounds}}
+            {{#if dayOne}}
+            <div class="division">
+                <h1>{{dayOne.1.start_date}}</h1>
+                {{#each dayOne}}
+                    {{> content_matches}}
+                {{/each}}
+            </div>
+            {{/if}}
+            {{#if dayTwo}}
+              <div class="division">
+                <h1>{{dayTwo.1.start_date}}</h1>
+                {{#each dayTwo}}
+                    {{> content_matches}}
+                {{/each}}
+              </div>
+            {{/if}}
+            {{#if dayThree}}
+              <div class="division">
+                <h1>{{dayThree.1.start_date}}</h1>
+                {{#each dayThree}}
+                    {{> content_matches}}
+                {{/each}}
+              </div>
+            {{/if}}
+        {{/rounds}}
+    </section>
+    <section id="ranking-block" class="matches__items">
+        {{#ranking}}
+            {{#if dayOne}}
+            <div class="division">
+                <h1>{{dayOne.1.start_date}}</h1>
+                {{#each dayOne}}
+                    {{> content_matches}}
+                {{/each}}
+            </div>
+            {{/if}}
+            {{#if dayTwo}}
+              <div class="division">
+                <h1>{{dayTwo.1.start_date}}</h1>
+                {{#each dayTwo}}
+                    {{> content_matches}}
+                {{/each}}
+              </div>
+            {{/if}}
+            {{#if dayThree}}
+              <div class="division">
+                <h1>{{dayThree.1.start_date}}</h1>
+                {{#each dayThree}}
+                    {{> content_matches}}
+                {{/each}}
+              </div>
+            {{/if}}
+        {{/ranking}}
     </section>
 </main>
