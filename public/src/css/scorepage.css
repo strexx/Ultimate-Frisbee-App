@@ -140,27 +140,34 @@
 
 #teams {
   display: flex;
+  flex-direction: column;
+}
+
+#teams .wrapper-teams {
+  width: 100%;
+  margin: 2em 0 0 0;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin: 2em 0 0 0;
 }
 
 #teams .team {
-  width: 40%;
-  background: white;
-  border-radius: 6px;
+  font-family: Lato,Helvetica neue,sans-serif;
+  width: 45%;
+  max-width: 20em;
+  background: #fff;
 }
 
 #teams .team .btn {
   width: 100%;
   font-weight: 700;
-  border: none;
-  padding: .5em 0;
-  font-size: 1.5em;
+  border: 2px solid #f04b51;
+  padding-bottom: 0.2em;
+  font-size: 2.7em;
   background: #f04b51;
-  color: white;
+  color: #fff;
+  line-height: 1;
 }
 
 #teams .team .btn:hover {
@@ -170,19 +177,65 @@
 }
 
 #teams .team .btn-minus {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
 }
 
 #teams .team .btn-plus {
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  box-shadow: 0 3px 9px rgba(0,0,0,0.16), 0 3px 4px rgba(0,0,0,0.23);
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
 }
+
+/* TEAMS GLOBAL */
+
+#teams .team__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3em 0;
+}
+
+#teams .team__name {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+#teams .team__score {
+  font-weight: 300;
+  font-size: 10em;
+  padding: .2em 0;
+}
+
+#teams .match_start_time {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #357ba6;
+}
+
+#teams .match_field {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #357ba6;
+}
+
+/* TEAMS HOME */
 
 #teams .teams__home {
   margin: 0 2em 0 0;
 }
 
+/* TEAMS AWAY */
+
 #teams .teams__away {
 
+}
+
+/* SUBMIT BUTTON */
+
+.score-submit {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
 }
