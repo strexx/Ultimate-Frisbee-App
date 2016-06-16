@@ -73,6 +73,14 @@ UFA.ux = (() => {
         loader.classList.remove("active");
     }
 
+    function splashVisited () {
+        var splashShown = localStorage.getItem("splashShown");
+      if(!splashShown) {
+        toggleSplash();
+        localStorage.setItem("splashShown", "true");
+      }
+
+    }
 
     function toggleSplash () {
       splashScreen.classList.add('active');
@@ -85,7 +93,7 @@ UFA.ux = (() => {
         toggleClass: toggleClass,
         showLoader: showLoader,
         hideLoader: hideLoader,
-        toggleSplash: toggleSplash,
+        splashVisited: splashVisited,
         toggleSection: toggleSection,
         toggleMenuClass: toggleMenuClass
     };
