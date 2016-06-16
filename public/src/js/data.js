@@ -9,11 +9,12 @@ UFA.data = (() => {
             submit = document.querySelector("#submit"),
             btns = document.getElementsByTagName("button"),
             inputs = document.getElementsByClassName("team-input"),
+            checkboxes = document.getElementsByClassName("checkFinal"),
             gameID = window.location.pathname.split('/')[2],
             team1_score_span = document.getElementById("team__home__info__score__span"),
             team2_score_span = document.getElementById("team__away__info__score__span");
 
-
+        // If scores are saved, update client
         socket.on("dbupdate", function(json) {
           var data = JSON.parse(json);
           console.log(data);
@@ -23,31 +24,43 @@ UFA.data = (() => {
 
             replaceScores(updateScore1, updateScore2);
         });
-        
+
+        // Feature detection for vanilla js
         if ((document.querySelectorAll || document.querySelector) && ('forEach' in Array.prototype)) {
           hideInputs();
+          // hideFormSubmit();
           showScores();
           scoreButtonListeners();
+
+          if(!document.querySelector("#user_id")) {
+            hideFormSubmit();
+            hideCheckBoxes();
+          }
+
         }
 
+        // Update scores
         function replaceScores(score1, score2) {
           console.log(score1, score2);
           team1_score_span.innerHTML = score1;
           team2_score_span.innerHTML = score2;
         };
 
+        // Add plus and minus button click events
         function scoreButtonListeners() {
             [].forEach.call(btns, function(button) {
                 button.classList.remove("hidden");
                 button.classList.add("is-visible");
                 button.addEventListener('click', function(index) {
-                    return function() {
+                    return function(e) {
+                        e.preventDefault();
                         changeScore(index);
                     };
                 }(button), false);
             });
         }
 
+        // Show normal scores instead of inputs
         function showScores() {
           team1_score_span.classList.remove("hidden");
           team2_score_span.classList.remove("hidden");
@@ -63,12 +76,24 @@ UFA.data = (() => {
         //   team2_score_span.classList.add("hidden");
         // }
 
+        // Hide inputs when JS is disabled
         function hideInputs() {
             [].forEach.call(inputs, function(input) {
                 input.classList.add("hidden");
             });
         }
 
+        function hideFormSubmit() {
+          submit.classList.add("hidden");
+        }
+
+        function hideCheckBoxes() {
+          [].forEach.call(checkboxes, function(checkbox) {
+            checkbox.classList.add("hidden");
+          });
+        }
+
+        // Fire real time event to socket
         function changeScore(item) {
             var buttonId = item.id,
                 score1 = document.querySelector('.team__home__info__score'),
@@ -118,20 +143,29 @@ UFA.data = (() => {
             }
         }
 
-        // If submitted
+        // If submitted by scorekeeper
         if (submit != null) {
             submit.addEventListener("click", function(e) {
                 e.preventDefault();
                 var score1 = document.querySelector(".team__home__info__score").innerHTML,
                     score2 = document.querySelector(".team__away__info__score").innerHTML,
-                    userID = document.querySelector("#user_id").value;
-                    isFinal = true;
+                    checkFinal = document.querySelector("#check:checked"),
+                    isFinal = false,
+                    userID = null;
+
+                    console.log(checkFinal);
+                if(document.querySelector("#user_id"))
+                  userID = document.querySelector("#user_id").value;
+
+                if(checkFinal && checkFinal.value == "true")
+                  isFinal = true;
+
                 addScore(score1, score2, gameID, isFinal, userID);
-                UFA.ux.showLoader();
+                //UFA.ux.showLoader();
             });
         }
 
-        // Add score (min or plus for teams)
+        // Add score (min or plus for teams) stream to socket
         function addScore(score1, score2, gameID, isFinal, userID) {
             // Send score to socket
             socket.emit('addScore', {
@@ -145,6 +179,7 @@ UFA.data = (() => {
         }
     }
 
+    // Return functions
     return {
         socket: socket
     };

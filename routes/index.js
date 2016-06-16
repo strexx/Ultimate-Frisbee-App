@@ -7,7 +7,7 @@ var express = require('express'),
     unqiueKeys = require('../modules/uniqueKeys.js')(),
     formatDigits = require('../modules/formatDigits.js');
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
     var matches = [],
         matchesToday = [],
         matchesfinal = [];
@@ -16,9 +16,9 @@ router.get('/', function (req, res, next) {
 
     console.log(session);
 
-    var findMatches = function (db, callback) {
+    var findMatches = function(db, callback) {
         var collectionCursor = db.collection('matches').find();
-        collectionCursor.each(function (err, match) {
+        collectionCursor.each(function(err, match) {
             if (match != null) {
                 matches.push(match);
             } else {
@@ -27,19 +27,19 @@ router.get('/', function (req, res, next) {
         });
     };
 
-    findMatches(db, function () {
+    findMatches(db, function() {
         var liveTime = "12:30",
             todayDate = "03-06-2016",
             session = req.session.user_id;
 
         // Filter on today's date
-        var matchesToday = matches.filter(function (obj) {
+        var matchesToday = matches.filter(function(obj) {
             var currentDate = obj.start_time.split(" ")[0];
             return currentDate == todayDate;
         });
 
         for (var key in matchesToday) {
-            if (matchesToday[key].start_time !== undefined){
+            if (matchesToday[key].start_time !== undefined) {
                 matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
             }
             //console.log(matchesToday[key].start_time);
@@ -47,13 +47,13 @@ router.get('/', function (req, res, next) {
 
 
         // Filter on time
-        var recentMatches = matchesToday.filter(function (obj) {
+        var recentMatches = matchesToday.filter(function(obj) {
             return obj.start_time < liveTime;
         });
-        var liveMatches = matchesToday.filter(function (obj) {
+        var liveMatches = matchesToday.filter(function(obj) {
             return obj.start_time == liveTime;
         });
-        var upcomingMatches = matchesToday.filter(function (obj) {
+        var upcomingMatches = matchesToday.filter(function(obj) {
             return obj.start_time > liveTime;
         });
 
@@ -138,6 +138,7 @@ router.get('/match/:gameID', function(req, res) {
         });
         collectionCursor.each(function(err, match) {
             if (match != null) {
+                match.start_time = dateFormat(match.start_time, "HH:MM");
                 matchObject = match;
             } else {
                 callback();
@@ -145,22 +146,24 @@ router.get('/match/:gameID', function(req, res) {
         });
     };
 
-	findMatches(db, function() {
-		res.render('match', {
-			title: 'Match',
-			items: matchObject,
-			user: session
-		});
-	});
+    findMatches(db, function() {
+        res.render('match', {
+            title: 'Match',
+            items: matchObject,
+            user: session,
+            gameID: gameID
+        });
+        console.log(session);
+    });
 });
 
-router.get('/tournaments', function (req, res) {
+router.get('/tournaments', function(req, res) {
     var tournamentIDs = [],
         tournamentNames = [],
         tournamentsArray = [],
         session = req.session.user_id;
 
-    var findTournaments = function (db, callback) {
+    var findTournaments = function(db, callback) {
         var collectionCursor = db.collection('matches').find();
 
         collectionCursor.each(function(err, match) {
@@ -177,25 +180,25 @@ router.get('/tournaments', function (req, res) {
         });
     };
 
-	findTournaments(db, function() {
-		var newTournamentIDs = tournamentIDs.unique();
-		var newTournamentNames = tournamentNames.unique();
+    findTournaments(db, function() {
+        var newTournamentIDs = tournamentIDs.unique();
+        var newTournamentNames = tournamentNames.unique();
 
-		newTournamentIDs.forEach(function(item, i){
-			var tournamentObj = { id: newTournamentIDs[i], name: newTournamentNames[i] };
-			tournamentsArray.push(tournamentObj);
-		});
+        newTournamentIDs.forEach(function(item, i) {
+            var tournamentObj = {
+                id: newTournamentIDs[i],
+                name: newTournamentNames[i]
+            };
+            tournamentsArray.push(tournamentObj);
+        });
 
-		console.log(tournamentsArray);
+        res.render('tournaments', {
+            title: 'Tournaments',
+            items: tournamentsArray,
+            user: session
+        });
 
-
-		res.render('tournaments', {
-			title: 'Tournaments',
-			items: tournamentsArray,
-			user: session
-		});
-
-	});
+    });
 });
 
 router.get('/tournament/:tournamentID', function(req, res) {
@@ -216,7 +219,7 @@ router.get('/tournament/:tournamentID', function(req, res) {
         });
         collectionCursor.each(function(err, match) {
             if (match !== null) {
-                if (match.start_time !== undefined){
+                if (match.start_time !== undefined) {
                     var tournamentDate = match.start_time.split(" ")[0]
                     tournamentDates.push(tournamentDate);
                 }
@@ -227,29 +230,29 @@ router.get('/tournament/:tournamentID', function(req, res) {
         });
     };
 
-    var findTournamentRounds = function (db, callback) {
-		var collectionCursor = db.collection('tournaments').find();
+    var findTournamentRounds = function(db, callback) {
+        var collectionCursor = db.collection('tournaments').find();
 
-		collectionCursor.each(function(err, rounds) {
-			if (rounds !== null) {
-				tournamentRoundsArray.push(rounds);
-			} else {
-				callback();
-			}
-		});
-	};
+        collectionCursor.each(function(err, rounds) {
+            if (rounds !== null) {
+                tournamentRoundsArray.push(rounds);
+            } else {
+                callback();
+            }
+        });
+    };
 
-    var findTournamentRanking = function (db, callback) {
-		var collectionCursor = db.collection('tournaments').find();
+    var findTournamentRanking = function(db, callback) {
+        var collectionCursor = db.collection('tournaments').find();
 
-		collectionCursor.each(function(err, ranking) {
-			if (ranking !== null) {
-				tournamentRankingArray.push(ranking);
-			} else {
-				callback();
-			}
-		});
-	};
+        collectionCursor.each(function(err, ranking) {
+            if (ranking !== null) {
+                tournamentRankingArray.push(ranking);
+            } else {
+                callback();
+            }
+        });
+    };
 
     // Tournament Rounds callback
     findTournamentRounds(db, function() {
@@ -291,7 +294,7 @@ router.get('/tournament/:tournamentID', function(req, res) {
         var tournamentDays = tournamentDates.unique();
 
         for (var key in tournamentMatchesArray) {
-            if (tournamentMatchesArray[key].start_time !== undefined && tournamentMatchesArray[key].start_time !== null){
+            if (tournamentMatchesArray[key].start_time !== undefined && tournamentMatchesArray[key].start_time !== null) {
                 tournamentMatchesArray[key].start_date = tournamentMatchesArray[key].start_time.split(" ")[0];
                 tournamentMatchesArray[key].start_time = tournamentMatchesArray[key].start_time.split(" ")[1];
             }
@@ -320,29 +323,30 @@ router.get('/tournament/:tournamentID', function(req, res) {
             "dayThree": tournamentDayThree
         });
 
-		res.render('tournament', {
-			title: 'Tournament',
-			matches: tournamentMatches,
+        res.render('tournament', {
+            title: 'Tournament',
+            matches: tournamentMatches,
             rounds: tournamentRounds,
             ranking: tournamentRanking,
-			user: session
-		});
+            user: session
+        });
     });
 });
 
-router.get('/login', function (req, res) {
+router.get('/login', function(req, res) {
     res.render('login', {
         title: 'Login'
     });
 });
 
-router.get('/login-error', function (req, res) {
-    var errorType = parseInt(req.query.error), error;
+router.get('/login-error', function(req, res) {
+    var errorType = parseInt(req.query.error),
+        error;
     console.log(errorType);
-    if(errorType == 1) {
-      error = "Login failed. Password or e-mail incorrect.";
-    } else if(errorType == 2) {
-      error = "Login failed. User not found.";
+    if (errorType == 1) {
+        error = "Login failed. Password or e-mail incorrect.";
+    } else if (errorType == 2) {
+        error = "Login failed. User not found.";
     }
     res.render('login-error', {
         title: 'Login',
@@ -350,7 +354,7 @@ router.get('/login-error', function (req, res) {
     });
 });
 
-router.get('/logout', function (req, res) {
+router.get('/logout', function(req, res) {
     delete req.session.user_id;
     res.redirect('/login');
 });

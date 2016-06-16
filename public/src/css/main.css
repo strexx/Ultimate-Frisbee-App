@@ -155,7 +155,7 @@ hr {
   display: block;
 }
 
-.teams__match__information {
+/*.teams__match__information {
   display: none;
   position: absolute;
   margin: auto;
@@ -223,7 +223,7 @@ hr {
   margin-top: 2em;
 }
 
-/* Team home */
+/* Team home
 
 #teams .team__home {
   background: #359776;
@@ -251,7 +251,7 @@ hr {
   color: white;
 }
 
-/* Team away */
+/* Team away
 
 #teams .team__away {
   background: #e99c42;
@@ -267,7 +267,7 @@ hr {
 }
 
 #teams .team__away__info span {
-  /*display: block;*/
+  /*display: block;
 }
 
 #teams .team__away__info__name {
@@ -291,6 +291,21 @@ hr {
   font-size: 6em;
   background: none;
   border: none;
+}*/
+
+/* Match page new */
+
+#teams {
+  display: flex;
+  flex-direction: row;
+}
+
+.teams__home {
+
+}
+
+.teams__home {
+
 }
 
 /* MATCH DETAIL CONTENT */
@@ -344,7 +359,7 @@ form input[type=submit]:hover {
   display: none;
 }
 
-.matchesmain {
+main {
   margin-bottom: 63px;
 }
 
