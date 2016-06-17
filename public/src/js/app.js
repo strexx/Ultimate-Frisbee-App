@@ -22,4 +22,5 @@ UFA.launcher = ( () => {
 
 })();
 
+// Feature detection for vanilla js
 UFA.launcher.init();

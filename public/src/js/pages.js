@@ -40,6 +40,8 @@ UFA.page = (() => {
     function matchesLive() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
+        UFA.ux.splashVisited();
+        UFA.ux.toggleMenuClassHome();
     }
 
     function matchesUpcoming() {
@@ -53,8 +55,10 @@ UFA.page = (() => {
     }
 
     function matchScores() {
-      UFA.ux.toggleSection();
-      UFA.ux.toggleClass();
+        UFA.scores.init();
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+        UFA.ux.toggleMenuClass();
     }
 
     function matchLocation() {
@@ -62,9 +66,15 @@ UFA.page = (() => {
         UFA.ux.toggleClass();
     }
 
+    function tournaments() {
+        UFA.ux.toggleMenuClass();
+        UFA.ux.toggleMenuClassTournaments();
+    }
+
     function tournamentMatches() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
+        UFA.ux.toggleMenuClass();
     }
 
     function tournamentRounds() {
@@ -77,6 +87,12 @@ UFA.page = (() => {
         UFA.ux.toggleClass();
     }
 
+    function login() {
+        UFA.ux.loginSubmitListener();
+        UFA.ux.toggleMenuClass();
+        UFA.ux.toggleMenuClassLogin();
+    }
+
     return {
         request: request,
         matchesRecent: matchesRecent,
@@ -84,7 +100,12 @@ UFA.page = (() => {
         matchesUpcoming: matchesUpcoming,
         matchInfo: matchInfo,
         matchScores: matchScores,
-        matchLocation: matchLocation
+        matchLocation: matchLocation,
+        tournaments: tournaments,
+        tournamentMatches: tournamentMatches,
+        tournamentRounds: tournamentRounds,
+        tournamentRanking: tournamentRanking,
+        login: login
     };
 
 })();
