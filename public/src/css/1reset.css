@@ -137,11 +137,12 @@ button a {
 # TYPOGRAPHY
 --------------------------------------------------------------*/
 body, button, input, select, textarea   {
-  font-family: 'Helvetica neue', sans-serif;
+  font-family: sans-serif;
 }
 
 .fonts-loaded body, button, input, select, textarea   {
-    font-size: 16px; font: 1em/1.4 'Lato', 'Helvetica neue', sans-serif;
+    font-size: 16px;
+    font: 'Lato', 'Helvetica neue', sans-serif;
     font-weight: 300;
 }
 

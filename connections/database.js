@@ -6,11 +6,10 @@ function init (mongoDB, MongoClient) {
 	    } else {
 	        console.log('Connected with MongoDB');
 
-	        // create global variables
-	        global.db = database;
+	        var db = database;
 
 			// Include lib
-			require('../lib/mongodb.js');
+			require('../lib/mongodb.js')(db);
 	    }
 	});
 }
