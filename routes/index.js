@@ -28,6 +28,10 @@ router.get('/', function(req, res, next) {
     };
 
     findMatches(db, function() {
+
+        // var now = dateFormat(Date.now(), "HH:MM");
+        // var liveTime = String(now);
+
         var liveTime = "12:30",
             todayDate = "03-06-2016",
             session = req.session.user_id;
