@@ -35,50 +35,62 @@ UFA.page = (() => {
     function matchesRecent() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        // request('GET', '/api/matches/recent')
-        //     .then(function(APIdata) {
-        //         var template = APIdata;
-        //         wrapperSelector.innerHTML = template;
-        //         UFA.ux.toggleClass();
-        //     });
     }
 
     function matchesLive() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        // request('GET', '/api/matches/live')
-        //     .then(function(APIdata) {
-        //         var template = APIdata;
-        //         wrapperSelector.innerHTML = template;
-        //         UFA.ux.toggleClass();
-        //     });
+        UFA.ux.splashVisited();
+        UFA.ux.toggleMenuClassHome();
     }
 
     function matchesUpcoming() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        // request('GET', '/api/matches/upcoming')
-        //     .then(function(APIdata) {
-        //         var template = APIdata;
-        //         wrapperSelector.innerHTML = template;
-        //         UFA.ux.toggleClass();
-        //     });
     }
 
-    function matchInfo(ID) {
+    function matchInfo() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-
     }
 
-    function matchScores(ID) {
-      UFA.ux.toggleSection();
-      UFA.ux.toggleClass();
-    }
-
-    function matchLocation(ID) {
+    function matchScores() {
+        UFA.scores.init();
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
+        UFA.ux.toggleMenuClass();
+    }
+
+    function matchLocation() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+    }
+
+    function tournaments() {
+        UFA.ux.toggleMenuClass();
+        UFA.ux.toggleMenuClassTournaments();
+    }
+
+    function tournamentMatches() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+        UFA.ux.toggleMenuClass();
+    }
+
+    function tournamentRounds() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+    }
+
+    function tournamentRanking() {
+        UFA.ux.toggleSection();
+        UFA.ux.toggleClass();
+    }
+
+    function login() {
+        UFA.ux.loginSubmitListener();
+        UFA.ux.toggleMenuClass();
+        UFA.ux.toggleMenuClassLogin();
     }
 
     return {
@@ -88,7 +100,12 @@ UFA.page = (() => {
         matchesUpcoming: matchesUpcoming,
         matchInfo: matchInfo,
         matchScores: matchScores,
-        matchLocation: matchLocation
+        matchLocation: matchLocation,
+        tournaments: tournaments,
+        tournamentMatches: tournamentMatches,
+        tournamentRounds: tournamentRounds,
+        tournamentRanking: tournamentRanking,
+        login: login
     };
 
 })();

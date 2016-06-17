@@ -119,13 +119,13 @@ router.post('/match/score', function(req, res) {
 
     var post = req.body;
 
-    console.log(post);
-
     if (post) {
 
-      var score1 = post.score1,
-          score2 = post.score2,
-          gameID = post.gameID,
+      console.log(post);
+
+      var score1 = parseInt(post.score_team_1),
+          score2 = parseInt(post.score_team_2),
+          gameID = parseInt(post.gameID),
           isFinal = false,
           user_id = null;
 
@@ -143,58 +143,58 @@ router.post('/match/score', function(req, res) {
           user_id: user_id
       });
 
-
-        var updateMatch = function(db, callback) {
-            var matchesCollection = db.collection('matches');
-            matchesCollection.updateOne({
-                    id: parseInt(gameID)
-                }, {
-                    $set: {
-                        team_1_score: score1,
-                        team_2_score: score2
-                    }
-                },
-                function(err, results) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        callback();
-                    }
-                });
-        };
-
-        updateMatch(db, function() {
-            // Log if match is updated in database
-            console.log("Match " + gameID + " updated");
-
-            //If scorekeeper is logged in and score is final score > post to API
-            if (user_id && isFinal == true) {
-
-                // Post url and headers
-                var url = "https://api.leaguevine.com/v1/game_scores/",
-                    headers = {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Authorization': 'bearer 40e50065ad'
-                    };
-
-                // Post request
-                request.post({
-                    url: url,
-                    body: postData,
-                    headers: headers
-                }, function(req, res, body) {
-                    console.log("Scorekeeper " + user_id + " added new score");
-                });
-            } else {
-                console.log("Regular user added new score");
-                res.redirect('/match/' + gameID);
-            }
-        });
-
     } else {
         console.log("Error when posting data");
     }
+
+    var updateMatch = function(db, callback) {
+        var matchesCollection = db.collection('matches');
+        matchesCollection.updateOne({
+                id: gameID
+            }, {
+                $set: {
+                    team_1_score: score1,
+                    team_2_score: score2
+                }
+            },
+            function(err, results) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    callback();
+                }
+            });
+    };
+
+    updateMatch(db, function() {
+        // Log if match is updated in database
+        console.log("Match " + gameID + " updated.. new scores are " + score1 + " and " + score2);
+
+        //If scorekeeper is logged in and score is final score > post to API
+        if (user_id && isFinal == true) {
+
+            // Post url and headers
+            var url = "https://api.leaguevine.com/v1/game_scores/",
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'bearer 40e50065ad'
+                };
+
+            // Post request
+            request.post({
+                url: url,
+                body: postData,
+                headers: headers
+            }, function(req, res, body) {
+                console.log("Scorekeeper " + user_id + " added new score");
+            });
+
+        } else {
+            console.log("Regular user added new score");
+            res.redirect('/match/' + gameID);
+        }
+    });
 });
 
 module.exports = router;
