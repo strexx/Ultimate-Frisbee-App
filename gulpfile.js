@@ -94,7 +94,7 @@ gulp.task('watch', function () {
 gulp.task('criticalcss', function (cb) { //src: http://fourkitchens.com/blog/article/use-gulp-automate-your-critical-path-css
     critical.generate({
         base: './',
-        src: 'views/partials/menu.hbs',
+        src: 'views/index.html',
         css: ['./public/dist/css/style.min.css'],
         dimensions: [{
             width: 320,
