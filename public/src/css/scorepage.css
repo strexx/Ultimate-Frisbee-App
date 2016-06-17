@@ -192,20 +192,11 @@
 /* TEAMS GLOBAL */
 
 #teams .team__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  padding: 3em 0;
+  padding-top: 2em;
 }
 
 #teams .team__name {
@@ -217,32 +208,34 @@
 
 #teams .team__score {
   font-weight: 300;
-  font-size: 7em;
-  padding: .2em 0;
+  font-size: 4em;
+  margin-bottom: 0.3em;
+  padding: 0.2em 0;
 }
 
 #teams .match_start_time {
-  font-size: 2em;
+  font-size: 1.4em;
   font-weight: 600;
   color: #357ba6;
   height: 1em;
+  margin-bottom: 1.3em;
 }
 
 #teams .match_field {
-  font-size: 2em;
+  font-size: 1.4em;
   font-weight: 600;
   color: #357ba6;
   height: 1em;
+  margin-bottom: 1.3em;
 }
 
 #teams .team-input {
-  border: 1px solid rgba(49,48,43, 0.3);
-  color: black;
-  width: 1.5em;
+  border: 1px solid rgba(49,48,43,.3);
+  color: #000;
   text-align: center;
-  font-size: 7em;
+  font-size: 4em;
   padding-left: .2em;
-  margin-bottom: .2em;
+  margin-bottom: .3em;
 }
 
 /* SUBMIT BUTTON */
