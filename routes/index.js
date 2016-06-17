@@ -28,11 +28,15 @@ router.get('/', function(req, res, next) {
     };
 
     findMatches(db, function() {
+
+        // var now = dateFormat(Date.now(), "HH:MM");
+        // var liveTime = String(now);
+
         var liveTime = "12:30",
             todayDate = "03-06-2016",
             session = req.session.user_id;
 
-        // Filter on today's date
+        //Filter on today's date
         var matchesToday = matches.filter(function(obj) {
             var currentDate = obj.start_time.split(" ")[0];
             return currentDate == todayDate;
@@ -44,7 +48,6 @@ router.get('/', function(req, res, next) {
             }
             //console.log(matchesToday[key].start_time);
         }
-
 
         // Filter on time
         var recentMatches = matchesToday.filter(function(obj) {
@@ -153,7 +156,6 @@ router.get('/match/:gameID', function(req, res) {
             user: session,
             gameID: gameID
         });
-        console.log(session);
     });
 });
 

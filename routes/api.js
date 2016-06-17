@@ -127,20 +127,20 @@ router.post('/match/score', function(req, res) {
           score2 = parseInt(post.score_team_2),
           gameID = parseInt(post.gameID),
           isFinal = false,
-          user_id = null;
+          userID = null;
 
       if (post.isFinal)
         isFinal = true;
 
-      if (post.user_id)
-        user_id = post.user_id;
+      if (post.userID)
+        userID = post.userID;
 
       var postData = JSON.stringify({
-          game_id: parseInt(gameID),
+          gameID: parseInt(gameID),
           team_1_score: score1,
           team_2_score: score2,
-          is_final: isFinal,
-          user_id: user_id
+          isFinal: isFinal,
+          userID: userID
       });
 
     } else {
@@ -171,7 +171,7 @@ router.post('/match/score', function(req, res) {
         console.log("Match " + gameID + " updated.. new scores are " + score1 + " and " + score2);
 
         //If scorekeeper is logged in and score is final score > post to API
-        if (user_id && isFinal == true) {
+        if (userID && isFinal == true) {
 
             // Post url and headers
             var url = "https://api.leaguevine.com/v1/game_scores/",
@@ -187,7 +187,7 @@ router.post('/match/score', function(req, res) {
                 body: postData,
                 headers: headers
             }, function(req, res, body) {
-                console.log("Scorekeeper " + user_id + " added new score");
+                console.log("Scorekeeper " + userID + " added new score");
             });
 
         } else {
