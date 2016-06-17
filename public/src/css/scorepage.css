@@ -107,7 +107,7 @@
   flex-direction: column;
   margin: 0 auto;
   text-align: center;
-  max-width: 50%;
+  max-width: 60%;
 }
 
 .score-submit input[type=submit] {
