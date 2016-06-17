@@ -19,7 +19,8 @@ UFA.scores = (() => {
             var updateScore1 = data.team_1_score,
                 updateScore2 = data.team_2_score;
 
-            replaceScores(updateScore1, updateScore2);
+            if(data.gameID == gameID)
+              replaceScores(updateScore1, updateScore2);
         });
 
         // If JS is enabled, fire these functions to add enhanced functionality
