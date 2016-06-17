@@ -254,40 +254,6 @@ router.get('/tournament/:tournamentID', function(req, res) {
         });
     };
 
-    // Tournament Rounds callback
-    findTournamentRounds(db, function() {
-        //console.log(tournamentRoundsArray);
-
-        for (var key in tournamentRoundsArray) {
-            var gamesArray = tournamentRoundsArray[key].games;
-
-            for (var anotherKey in gamesArray) {
-                if (gamesArray[anotherKey].start_time !== undefined && gamesArray[anotherKey].start_time !== null) {
-                    gamesArray[anotherKey].start_time = gamesArray[anotherKey].start_time.split(" ")[1];
-                }
-            }
-        }
-
-        tournamentRounds = tournamentRoundsArray;
-    });
-
-    // Tournament Ranking callback
-    findTournamentRanking(db, function() {
-
-        for (var key in tournamentRankingArray) {
-            var rankingArray = tournamentRankingArray[key].standings;
-
-            for (var anotherKey in rankingArray) {
-                if (rankingArray[anotherKey].ranking !== undefined && rankingArray[anotherKey].ranking !== null) {
-                    rankingArray[anotherKey].ranking = formatDigits(rankingArray[anotherKey].ranking);
-                }
-            }
-        }
-
-        tournamentRanking = tournamentRankingArray;
-    });
-
-
     // Tournament Matches callback
     findTournamentMatches(db, function() {
         // Get all days from tournament
@@ -322,14 +288,49 @@ router.get('/tournament/:tournamentID', function(req, res) {
         }, {
             "dayThree": tournamentDayThree
         });
+    });
 
-        res.render('tournament', {
-            title: 'Tournament',
-            matches: tournamentMatches,
-            rounds: tournamentRounds,
-            ranking: tournamentRanking,
-            user: session
-        });
+    // Tournament Ranking callback
+    findTournamentRanking(db, function() {
+        for (var key in tournamentRankingArray) {
+            var rankingArray = tournamentRankingArray[key].standings;
+
+            for (var anotherKey in rankingArray) {
+                if (rankingArray[anotherKey].ranking !== undefined && rankingArray[anotherKey].ranking !== null) {
+                    rankingArray[anotherKey].ranking = formatDigits(rankingArray[anotherKey].ranking);
+                }
+            }
+        }
+
+        tournamentRanking = tournamentRankingArray;
+    });
+
+    // Tournament Rounds callback
+    findTournamentRounds(db, function() {
+        //console.log(tournamentRoundsArray);
+
+        for (var key in tournamentRoundsArray) {
+            var gamesArray = tournamentRoundsArray[key].games;
+
+            for (var anotherKey in gamesArray) {
+                if (gamesArray[anotherKey].start_time !== undefined && gamesArray[anotherKey].start_time !== null) {
+                    gamesArray[anotherKey].start_time = gamesArray[anotherKey].start_time.split(" ")[1];
+                }
+            }
+        }
+
+        tournamentRounds = tournamentRoundsArray;
+
+        setTimeout(function () {
+            res.render('tournament', {
+                title: 'Tournament',
+                matches: tournamentMatches,
+                rounds: tournamentRounds,
+                ranking: tournamentRanking,
+                user: session
+            });
+        }, 1000);
+
     });
 });
 
