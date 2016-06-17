@@ -58,12 +58,6 @@ UFA.ux = (() => {
 
     }
 
-    function toggleMenuClass() {
-        mainNavLi.forEach(function(item) {
-            item.classList.remove('active');
-        });
-    }
-
     function toggleMenuClassHome() {
         navHome.classList.add('active');
     }
@@ -117,7 +111,6 @@ UFA.ux = (() => {
         hideLoader: hideLoader,
         splashVisited: splashVisited,
         toggleSection: toggleSection,
-        toggleMenuClass: toggleMenuClass,
         toggleMenuClassHome: toggleMenuClassHome,
         toggleMenuClassTournaments: toggleMenuClassTournaments,
         toggleMenuClassLogin: toggleMenuClassLogin,

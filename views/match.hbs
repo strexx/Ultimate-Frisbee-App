@@ -6,7 +6,9 @@
 		<!-- <article class="match__item"> -->
 
 		<form action="/api/match/score" method="POST">
-
+			{{#if items.winner_id}}
+				<h1 class="final-label fonts-loaded">This game has finished</h1>
+			{{/if}}
 			<!-- TEAMS -->
 			<div id="teams">
 

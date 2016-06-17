@@ -58,7 +58,6 @@ UFA.page = (() => {
         UFA.scores.init();
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        UFA.ux.toggleMenuClass();
     }
 
     function matchLocation() {
@@ -67,14 +66,12 @@ UFA.page = (() => {
     }
 
     function tournaments() {
-        UFA.ux.toggleMenuClass();
         UFA.ux.toggleMenuClassTournaments();
     }
 
     function tournamentMatches() {
         UFA.ux.toggleSection();
         UFA.ux.toggleClass();
-        UFA.ux.toggleMenuClass();
     }
 
     function tournamentRounds() {
@@ -89,7 +86,6 @@ UFA.page = (() => {
 
     function login() {
         UFA.ux.loginSubmitListener();
-        UFA.ux.toggleMenuClass();
         UFA.ux.toggleMenuClassLogin();
     }
 
