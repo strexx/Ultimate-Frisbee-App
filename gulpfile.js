@@ -32,7 +32,7 @@ var outputPath = {
 	Default Gulp tasks
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'copy', 'nodemon', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'copy', 'watch']);
 
 // JS scripts task
 gulp.task('scripts', function () {
