@@ -88,6 +88,10 @@ svg
 	display: block;
 }
 
+svg {
+    max-height: 3em;
+}
+
 audio,
 canvas,
 progress,
@@ -113,14 +117,22 @@ button {
 /*--------------------------------------------------------------
 # TYPOGRAPHY
 --------------------------------------------------------------*/
-body, button, input, select, textarea   {
+body, button, input, select, textarea  {
   font-family: sans-serif;
 }
 
-.fonts-loaded body, button, input, select, textarea   {
+.fonts-loaded body,
+.fonts-loaded button,
+.fonts-loaded input,
+.fonts-loaded select,
+.fonts-loaded textarea {
     font-size: 16px;
     font-family: 'Lato', 'Helvetica neue', sans-serif;
     font-weight: 300;
+}
+
+.fonts-loaded .division h1 {
+    font-family: "Roboto Slab", serif;
 }
 
 p {
