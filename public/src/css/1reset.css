@@ -109,29 +109,6 @@ button {
     cursor: pointer;
 }
 
-/*button {
-    box-shadow: 0;
-    outline: 0;
-    border: 0;
-    background: rgba(246, 176, 26, 1);
-    padding: 0.7em 1.4em;
-    margin: 1em 0 0.5em;
-    color: #f9f9f9;
-    cursor: pointer;
-}
-
-button:hover {
-    background: rgba(246, 176, 26, 0.9);
-}
-
-button.active {
-    background: rgba(231, 76, 60, 1);
-}
-
-button a {
-    display: block;
-    color: inherit;
-}*/
 
 /*--------------------------------------------------------------
 # TYPOGRAPHY
