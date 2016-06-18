@@ -1,7 +1,7 @@
 {{> header_tournament}}
 
 <main id="main" class="matchesmain" role="main">
-    <section id="matches-block" class="matches__items">
+    <section id="matches" class="matches__items">
         {{#matches}}
             {{#if dayOne}}
             <div class="division">
@@ -29,7 +29,7 @@
             {{/if}}
         {{/matches}}
     </section>
-    <section id="rounds-block" class="matches__items">
+    <section id="rounds" class="matches__items">
         {{#each rounds}}
             <div class="division">
                 <h1>Round {{round_number}}</h1>
@@ -39,7 +39,7 @@
             </div>
         {{/each}}
     </section>
-    <section id="ranking-block" class="matches__items">
+    <section id="ranking" class="matches__items">
         {{#each ranking}}
             <div class="division">
                 <h1>Round {{round_number}}</h1>
