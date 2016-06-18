@@ -1,5 +1,3 @@
-'use strict';
-
 var currentCacheName = 'UFA-assets-1.0';
 
 this.addEventListener('install', function (event) {
@@ -9,10 +7,13 @@ this.addEventListener('install', function (event) {
       return cache.addAll([
         './',
         '/dist/css/style.min.css',
-        '/dist/lib/fontfaceobserver.js',
-        '/dist/lib/socket.io.js',
         '/dist/js/app.min.js',
-        '/sw.js'
+        '/dist/lib/fontfaceobserver.min.js',
+        '/dist/lib/socket.io.min.js',
+        '/sw.js',
+        'https://fonts.googleapis.com/css?family=Lato:400,300,700',
+        'https://fonts.googleapis.com/css?family=Roboto+Slab:300',
+        'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
       ]);
     })
   );
@@ -44,10 +45,10 @@ this.addEventListener('fetch', function(event) {
         caches.match(event.request)
             .then(function(response) {
                 if(response) {
-                    //console.log('found cached response', response);
+                    console.log('found cached response', response);
                     return response;
                 } else {
-                    //console.log('response not in cache, fetching it');
+                    console.log('response not in cache, fetching it');
                     //return fetch(event.request);
                     return fetchAndCache(event);
                 }
