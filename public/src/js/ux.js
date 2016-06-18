@@ -13,21 +13,21 @@ UFA.ux = (() => {
     // toggle tabs + section
     function toggleClass() {
         // Get all menu items
-        var links = Array.prototype.slice.call(document.querySelectorAll('.header__tab__list')),
+        var links = Array.prototype.slice.call(document.querySelectorAll('.header__tab__link')),
             hash = window.location.hash;
 
         // Remove active class
-        links.forEach(function(item) {
-            item.classList.remove("active");
+        links.forEach(function(link) {
+            link.classList.remove("header__tab__link--active");
         });
 
         // Add active class to new hash
-        if (hash != "") {
-            var link = document.querySelector(hash + '-menu'),
-                fullLink = link.childNodes[0].getAttribute("href");
-            link.classList.add('active');
+        if (hash !== "") {
+            var hashName = hash.substr(1)
+            var link = document.querySelector('.header__tab__list__'+hashName+ ' .header__tab__link');
+            link.classList.add('header__tab__link--active');
         } else {
-            links[1].classList.add('active');
+            links[1].classList.add('header__tab__link--active');
         }
 
         toggleSection();
@@ -44,11 +44,13 @@ UFA.ux = (() => {
 
             if (!hash) {
                 sections[0].classList.remove('inactive');
+                sections[0].classList.add('active');
             }
 
         }
         if (hash) {
-            document.querySelector(hash + "-block").classList.remove('inactive');
+            document.querySelector(hash).classList.remove('inactive');
+            document.querySelector(hash).classList.add('active');
         }
 
     }
