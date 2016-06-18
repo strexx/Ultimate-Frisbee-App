@@ -1,5 +1,3 @@
-'use strict';
-
 var currentCacheName = 'UFA-assets-1.0';
 
 this.addEventListener('install', function (event) {
@@ -9,9 +7,9 @@ this.addEventListener('install', function (event) {
       return cache.addAll([
         './',
         '/dist/css/style.min.css',
+        '/dist/js/app.min.js',
         '/dist/lib/fontfaceobserver.js',
         '/dist/lib/socket.io.js',
-        '/dist/js/app.min.js',
         '/sw.js'
       ]);
     })
