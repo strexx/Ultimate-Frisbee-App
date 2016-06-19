@@ -59,7 +59,7 @@ gulp.task('styles',['clean-styles'], function () {
 });
 
 // Copy files task
-gulp.task('copy-lib',['clean-lib'], function () {
+gulp.task('copy-lib', function () {
 	return gulp.src([inputPath.lib])
         .pipe(gulp.dest((outputPath.lib)));
 });
