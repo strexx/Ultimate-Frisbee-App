@@ -54,6 +54,7 @@
 
 #main {
     display: block;
+    margin-bottom: 75px;
 }
 
 #footer { }
@@ -486,9 +487,6 @@ form input[type=submit]:hover {
 }
 .inactive {
     display: none;
-}
-main {
-    margin-bottom: 75px;
 }
 
 /*--------------------------------------------------------------
