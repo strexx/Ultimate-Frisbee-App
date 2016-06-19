@@ -4,11 +4,11 @@
 UFA.ux = (() => {
 
     // global vars
-    var loader = document.querySelector('.loader'),
-        splashScreen = document.querySelector(".splash"),
-        loginSubmitBtn = document.querySelector('.login_submit'),
-        placeholder = document.querySelector('.login_submit i'),
-        feedback = document.querySelector('.feedback');
+    var loader = document.querySelector('#loader'),
+        splashScreen = document.querySelector("#splash"),
+        loginSubmitBtn = document.querySelector('.login__submit'),
+        placeholder = document.querySelector('.login__submit i'),
+        feedback = document.querySelector('.login__feedback');
 
     // toggle tabs + section
     function toggleClass() {
