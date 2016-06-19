@@ -13,7 +13,7 @@ this.addEventListener('install', function (event) {
         '/sw.js',
         'https://fonts.googleapis.com/css?family=Lato:400,300,700',
         'https://fonts.googleapis.com/css?family=Roboto+Slab:300',
-        'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
+        'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
       ]);
     })
   );
