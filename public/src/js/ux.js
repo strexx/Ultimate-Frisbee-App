@@ -4,8 +4,8 @@
 UFA.ux = (() => {
 
     // global vars
-    var loader = document.querySelector('.loader'),
-        splashScreen = document.querySelector(".splash"),
+    var loader = document.querySelector('#loader'),
+        splashScreen = document.querySelector("#splash"),
         loginSubmitBtn = document.querySelector('.login_submit'),
         placeholder = document.querySelector('.login_submit i'),
         feedback = document.querySelector('.feedback');
