@@ -19,11 +19,11 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     background: #fff;
+    overflow-x: hidden;
 }
 
 body {
     background: #f9f9f9;
-    overflow-x: hidden;
 }
 
 ul, ol {
@@ -131,7 +131,8 @@ body, button, input, select, textarea  {
     font-weight: 300;
 }
 
-.fonts-loaded .division h1 {
+.fonts-loaded .division h1,
+.fonts-loaded .final-label {
     font-family: "Roboto Slab", serif;
 }
 
