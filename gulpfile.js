@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 var inputPath = {
     'css': './public/src/css/*.css',
     'js': './public/src/js/*.js',
-	'lib': './public/src/lib/*.js'
+	'lib': './public/src/lib/*.**'
 };
 
 var outputPath = {
@@ -32,10 +32,10 @@ var outputPath = {
 	Default Gulp tasks [add return before src to async tasks]
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['clean-scripts', 'clean-styles', 'clean-lib', 'scripts', 'styles', 'copy-lib']);
+gulp.task('default', ['scripts', 'styles', 'copy-lib']);
 
 // JS scripts task
-gulp.task('scripts', function () {
+gulp.task('scripts',['clean-scripts'], function () {
     return gulp.src(inputPath.js)
 		.pipe(sourcemaps.init())
 			.pipe(babel({
@@ -48,7 +48,7 @@ gulp.task('scripts', function () {
 });
 
 // CSS styles task
-gulp.task('styles', function () {
+gulp.task('styles',['clean-styles'], function () {
     return gulp.src(inputPath.css)
 		.pipe(sourcemaps.init())
 			.pipe(autoprefixer())
@@ -58,7 +58,13 @@ gulp.task('styles', function () {
         .pipe(gulp.dest(outputPath.css))
 });
 
-// CLEAN
+// Copy files task
+gulp.task('copy-lib',['clean-lib'], function () {
+	return gulp.src([inputPath.lib])
+        .pipe(gulp.dest((outputPath.lib)));
+});
+
+// Clean files first
 gulp.task('clean-scripts', function () {
   gulp.src(outputPath.js, {read: false})
     .pipe(clean());
@@ -72,12 +78,6 @@ gulp.task('clean-styles', function () {
 gulp.task('clean-lib', function () {
   gulp.src(outputPath.lib, {read: false})
     .pipe(clean());
-});
-
-// Copy files task
-gulp.task('copy-lib', function () {
-	gulp.src([inputPath.lib])
-        .pipe(gulp.dest((outputPath.lib)));
 });
 
 // Watch file changes
