@@ -7,7 +7,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     fileStore = require('session-file-store')(session),
-    server = require('http').createServer(app),
+    server = require('https').createServer(app),
     routes = require('./routes/index'),
     api = require('./routes/api');
 
