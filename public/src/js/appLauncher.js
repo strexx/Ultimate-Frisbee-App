@@ -14,7 +14,6 @@ UFA.launcher = ( () => {
         document.addEventListener("DOMContentLoaded", function () {
             UFA.router.init();
             UFA.fontFaceObserver.init();
-            //UFA.sw.init();
         });
     }
 
