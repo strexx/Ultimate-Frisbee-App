@@ -45,12 +45,15 @@ this.addEventListener('fetch', function(event) {
         caches.match(event.request)
             .then(function(response) {
                 if(response) {
-                    console.log('found cached response', response);
+                    //console.log('found cached response', response);
                     return response;
                 } else {
-                    console.log('response not in cache, fetching it');
-                    //return fetch(event.request);
-                    return fetchAndCache(event);
+                    if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
+                        return fetch(event.request);
+                    } else {
+                        console.log('response not in cache, fetching it');
+                        return fetchAndCache(event);
+                    }
                 }
             })
     );
