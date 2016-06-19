@@ -1,28 +1,29 @@
+
 {{> header_login }}
 
 <section id="login">
 
-    <form class="login" action="/api/login" method="POST">
+    <form class="login__form" action="/api/login" method="POST">
 
-        <fieldset>
+        <fieldset class="login__fieldset">
 
-            <legend class="legend">Scorekeeper</legend>
+            <legend class="login__title">Scorekeeper</legend>
 
-            <div class="input">
+            <div class="login__input">
                 <input type="email" name="email" placeholder="Email" required autofocus />
                 <span><i class="fa fa-envelope-o"></i></span>
             </div>
 
-            <div class="input">
+            <div class="login__input">
                 <input type="password" name="password" placeholder="Password" required />
                 <span><i class="fa fa-lock"></i></span>
             </div>
 
-            <button type="submit" class="login_submit"><i class="fa fa-long-arrow-right"></i></button>
+            <button type="submit" class="login__submit"><i class="fa fa-long-arrow-right"></i></button>
 
         </fieldset>
 
-        <div class="feedback errorMsg is-visible">
+        <div class="login__feedback login__feedback_error is-visible">
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>{{ error }}
         </div>
 
