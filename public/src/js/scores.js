@@ -6,8 +6,8 @@ UFA.scores = (() => {
     var socket = io.connect("http://localhost:3010"),
         submit = document.querySelector("#submit"),
         btns = document.getElementsByTagName("button"),
-        inputs = document.getElementsByClassName("team-input"),
-        checkboxes = document.getElementsByClassName("checkFinal"),
+        inputs = document.getElementsByClassName("match__team__info__input"),
+        checkboxes = document.getElementsByClassName("match__item__submit__checkbox"),
         gameID = window.location.pathname.split('/')[2],
         team1_score_span = document.getElementById("team__home__info__score__span"),
         team2_score_span = document.getElementById("team__away__info__score__span");
@@ -82,8 +82,8 @@ UFA.scores = (() => {
     // Fire real time event to socket
     function changeScore(item) {
         var buttonId = item.id,
-            score1 = document.querySelector('.team__home__info__score'),
-            score2 = document.querySelector('.team__away__info__score'),
+            score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
+            score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
             gameID = window.location.pathname.split('/')[2],
             isFinal = false;
 
@@ -125,8 +125,8 @@ UFA.scores = (() => {
     if (submit != null) {
         submit.addEventListener("click", function(e) {
             e.preventDefault();
-            var score1 = document.querySelector(".team__home__info__score").innerHTML,
-                score2 = document.querySelector(".team__away__info__score").innerHTML,
+            var score1 = document.querySelector(".match__item__team__home .match__item__team__info__score").innerHTML,
+                score2 = document.querySelector(".match__item__team__away .match__item__team__info__score").innerHTML,
                 checkFinal = document.querySelector("#check:checked"),
                 isFinal = false,
                 userID = null;

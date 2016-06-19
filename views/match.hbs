@@ -1,134 +1,79 @@
 {{> header_match }}
 
 <main id="main" role="main">
-	<section id="scores-block" class="match_items">
+	<section id="scores" class="match_items">
 
-		<!-- <article class="match__item"> -->
+		<article class="match__item">
 
-		<form action="/api/match/score" method="POST">
-			{{#if items.winner_id}}
-				<h1 class="final-label fonts-loaded">This game has finished</h1>
-			{{/if}}
-			<!-- TEAMS -->
-			<div id="teams">
+			<form class="match__item__form" action="/api/match/score" method="POST">
+				{{#if items.winner_id}}
+					<h1 class="match__item__final__label">This game has finished</h1>
+				{{/if}}
+				<!-- TEAMS -->
+				<section class="match__item__teams">
 
-				<div class="wrapper-teams">
+					<!-- TEAMS HOME -->
+					<div class="match__item__team match__item__team__home">
 
-					<!-- TEAMS AWAY -->
-					<div class="team teams__home">
-
-						<div class="top">
-							<button class="btn btn-minus hidden" name="team_home_minus" id="team__home__minus">-</button>
+						<div class="match__item__team__button__top">
+							<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
 						</div>
 
-						<div class="team__info">
-							<span class="team__name team__home__info__name">{{items.team_1.short_name}}</span>
-							<span id="team__home__info__score__span" class="team__score team__home__info__score hidden">{{items.team_1_score}}</span>
-							<input type="number" id="team1-input" class="team-input" name="score_team_1" min="0" max="99" value="{{items.team_1_score}}" />
-							<span class="match_start_time">{{items.start_time}}</span>
+						<div class="match__item__team__info">
+							<span class="match__item__team__info__name">{{items.team_1.short_name}}</span>
+							<span id="team__home__info__score__span" class="match__item__team__info__score hidden">{{items.team_1_score}}</span>
+							<input type="number" id="team1-input" class="match__team__info__input" name="score_team_1" min="0" max="99" value="{{items.team_1_score}}" />
+							<span class="match__item__team__info__time">{{items.start_time}}</span>
 						</div>
 
-						<div class="bottom">
-							<button class="btn btn-plus hidden" name="team__home__plus" id="team__home__plus">+</button>
+						<div class="match__item__team__button__bottom">
+							<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
 						</div>
 
 					</div>
 
 					<!-- TEAMS AWAY -->
-					<div class="team teams__away">
+					<div class="match__item__team match__item__team__away">
 
-						<div class="top">
-							<button class="btn btn-minus hidden" name="team_away_minus" id="team__away__minus">-</button>
+						<div class="match__item__team__button__top">
+							<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
 						</div>
 
-						<div class="team__info">
-							<span class="team__name team__away__info__name">{{items.team_2.short_name}}</span>
-							<span id="team__away__info__score__span" class="team__score team__away__info__score hidden">{{items.team_2_score}}</span>
-							<input type="number" id="team2-input" class="team-input" name="score_team_2" min="0" max="99" value="{{items.team_2_score}}" />
-							<span class="match_field">{{items.game_site.name}}</span>
+						<div class="match__item__team__info">
+							<span class="match__item__team__info__name">{{items.team_2.short_name}}</span>
+							<span id="team__away__info__score__span" class="match__item__team__info__score hidden">{{items.team_2_score}}</span>
+							<input type="number" id="team2-input" class="match__team__info__input" name="score_team_2" min="0" max="99" value="{{items.team_2_score}}" />
+							<span class="match__item__team__info__field">{{items.game_site.name}}</span>
 						</div>
 
-						<div class="bottom">
-							<button class="btn btn-plus hidden" name="team__away__plus" id="team__away__plus">+</button>
+						<div class="match__item__team__button__bottom">
+							<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
 						</div>
 
 					</div>
+				</section>
 
-				</div>
-
-				<div class="score-submit">
+				<div class="match__item__submit">
 					{{#if user }}
-						<input type="hidden" id="user_id" name="userID" value="{{ user }}"/>
-						<input type="checkbox" id="check" name="isFinal" class="checkFinal" value="true" /><label class="checkFinal" for="check"> Final score</label>
+						<input type="hidden" id="user_id" name="userID" value="{{ user }}" />
+						<input type="checkbox" id="check" name="isFinal" class="match__item__submit__checkbox" value="true" />
+						<label class="match__item__final" for="check"> Final score</label>
 					{{/if }}
-					<input type="hidden" id="gameID" name="gameID" value="{{ gameID }}"/>
-					<input type="submit" id="submit" name="submit" value="Submit result" onClick="return confirm('Are you sure');" />
+					<input type="hidden" id="gameID" name="gameID" value="{{ gameID }}" />
+					<input class="match__item__submit__input" type="submit" id="submit" name="submit" value="Submit result" onClick="return confirm('Are you sure');" />
 				</div>
+			</form>
 
-			</div>
-
-
-			<!--
-				<div class="teams__match__information">
-					<p>{{items.start_time}}</p>
-					<div class="divider"></div>
-					<p>{{items.game_site.name}}</p>
-					<!-- <p>{{items.tournament.name}}</p> -->
-				<!-- </div>
-
-				<div class="team team__home">
-
-					<div class="top">
-						<button class="btn btn-minus hidden" name="team_home_minus" id="team__home__minus">-</button>
-					</div>
-
-					<div class="team__home__info">
-						<span class="team__home__info__name">{{items.team_1.short_name}}</span>
-						<span id="team__home__info__score__span" class="team__home__info__score hidden">{{items.team_1_score}}</span>
-						<input type="number" id="team1-input" class="team-input" name="score-team-1" value="{{items.team_1_score}}" />
-					</div>
-
-					<div class="bottom">
-						<button class="btn btn-plus hidden" name="team__home__plus" id="team__home__plus">+</button>
-					</div>
-
-				</div>
-
-				<div class="team team__away">
-
-						<div class="top">
-							<button class="btn btn-minus hidden" name="team_away_minus" id="team__away__minus">-</button>
-						</div>
-
-					<div class="team__away__info">
-						<span class="team__away__info__name">{{items.team_2.short_name}}</span>
-						<span id="team__away__info__score__span" class="team__away__info__score hidden">{{items.team_2_score}}</span>
-						<input type="number" id="team2-input" class="team-input" name="score-team-2" value="{{items.team_2_score}}" />
-					</div>
-
-					<div class="bottom">
-						<button class="btn btn-plus hidden" name="team__away__plus" id="team__away__plus">+</button>
-					</div>
-
-				</div>
-			-->
-
-			<!-- {{#if user }}
-				<input type="hidden" id="user_id" name="user_id" value="{{ user.user_id }}"/>
-				<input type="submit" id="submit" name="submit" value="Final score" onClick="return confirm('Are you sure');" />
-			{{/if}} -->
-		</form>
-
-		<!-- </article> -->
+		</article>
 
 	</section>
 
-	<section id="info-block" class="match_items">
-		<div class="match__content">
+	<section id="info" class="match_items">
+		<article class="match__item">
 
-			<h2 class="match__content__title">Match Details</h2>
+			<h2 class="match__item__title">Match Details</h2>
 
-			<table class="match__content__info">
+			<table class="match__item__info">
 				<tr>
 					<th>Time</th>
 					<td>{{items.start_time}} - 10:30</td>
@@ -147,15 +92,17 @@
 				</tr>
 			</table>
 
-		</div>
+		</article>
 	</section>
 
 
-	<section id="location-block" class="match_items">
-		<div class="match__content">
-			<div class="match__location">
-				<img class="match__location__image" src="{{ items.game_site.event_site.image_400 }}" alt="Map" />
+	<section id="location" class="match_items">
+		<article class="match__item">
+			<div class="match__item__location">
+				<img class="match__item__location__image" src="{{ items.game_site.event_site.image_400 }}" alt="Map" />
 			</div>
-		</div>
+		</article>
 	</section>
 </main>
+
+{{> footer_matches}}
