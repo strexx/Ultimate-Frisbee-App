@@ -2,4 +2,9 @@
 
 ssh -t -t root@146.185.135.172 <<EOF
   cd /var/www/meesterproef.directzichtbaar.nl/Ultimate-Frisbee-App/
+  git pull
+  npm install
+  gulp
+  pm2 restart all
+  exit
 EOF
