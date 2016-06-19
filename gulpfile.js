@@ -2,6 +2,7 @@
 	Gulp requirements + paths
 --------------------------------------------------------------*/
 var gulp = require('gulp'),
+	clean = require('gulp-clean'),
 	autoprefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
 	cssnano = require('gulp-cssnano'),
@@ -11,13 +12,12 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
 	copy = require('gulp-copy'),
 	filesize = require('gulp-filesize'),
-	nodemon = require('gulp-nodemon'),
 	sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
     'css': './public/src/css/*.css',
     'js': './public/src/js/*.js',
-	'lib': './public/src/lib/*.js'
+	'lib': './public/src/lib/*.**'
 };
 
 var outputPath = {
@@ -29,14 +29,14 @@ var outputPath = {
 
 
 /*--------------------------------------------------------------
-	Default Gulp tasks
+	Default Gulp tasks [add return before src to async tasks]
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'copy', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'copy-lib']);
 
 // JS scripts task
-gulp.task('scripts', function () {
-    gulp.src(inputPath.js)
+gulp.task('scripts',['clean-scripts'], function () {
+    return gulp.src(inputPath.js)
 		.pipe(sourcemaps.init())
 			.pipe(babel({
 				presets: ['es2015']
@@ -48,8 +48,8 @@ gulp.task('scripts', function () {
 });
 
 // CSS styles task
-gulp.task('styles', function () {
-    gulp.src(inputPath.css)
+gulp.task('styles',['clean-styles'], function () {
+    return gulp.src(inputPath.css)
 		.pipe(sourcemaps.init())
 			.pipe(autoprefixer())
 			.pipe(concat('style.min.css'))
@@ -59,25 +59,25 @@ gulp.task('styles', function () {
 });
 
 // Copy files task
-gulp.task('copy', function () {
-    gulp.src([inputPath.lib])
+gulp.task('copy-lib',['clean-lib'], function () {
+	return gulp.src([inputPath.lib])
         .pipe(gulp.dest((outputPath.lib)));
 });
 
-gulp.task('nodemon', function(cb) {
-    nodemon({
-        script: './app.js'
-    })
-    .on('start', function() {
-        if (!called) {
-            cb();
-        }
-        called = true;
-    })
-    .on('error', function(err) {
-        // Make sure failure causes gulp to exit
-        throw err;
-    });
+// Clean files first
+gulp.task('clean-scripts', function () {
+  gulp.src(outputPath.js, {read: false})
+    .pipe(clean());
+});
+
+gulp.task('clean-styles', function () {
+  gulp.src(outputPath.css, {read: false})
+    .pipe(clean());
+});
+
+gulp.task('clean-lib', function () {
+  gulp.src(outputPath.lib, {read: false})
+    .pipe(clean());
 });
 
 // Watch file changes
