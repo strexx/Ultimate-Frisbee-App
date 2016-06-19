@@ -1,5 +1,5 @@
 /*********************************************************
-	NAMESPACE
+	NAMESPACE [UFA = Ultimate Frisbee App]
 *********************************************************/
 var UFA = UFA || {};
 
@@ -13,6 +13,8 @@ UFA.launcher = ( () => {
     function init() {
         document.addEventListener("DOMContentLoaded", function () {
             UFA.router.init();
+            UFA.fontFaceObserver.init();
+            //UFA.sw.init();
         });
     }
 
@@ -22,5 +24,5 @@ UFA.launcher = ( () => {
 
 })();
 
-// Feature detection for vanilla js
+// Feature detection
 UFA.launcher.init();

@@ -88,6 +88,10 @@ svg
 	display: block;
 }
 
+svg {
+    max-height: 3em;
+}
+
 audio,
 canvas,
 progress,
@@ -109,41 +113,26 @@ button {
     cursor: pointer;
 }
 
-/*button {
-    box-shadow: 0;
-    outline: 0;
-    border: 0;
-    background: rgba(246, 176, 26, 1);
-    padding: 0.7em 1.4em;
-    margin: 1em 0 0.5em;
-    color: #f9f9f9;
-    cursor: pointer;
-}
-
-button:hover {
-    background: rgba(246, 176, 26, 0.9);
-}
-
-button.active {
-    background: rgba(231, 76, 60, 1);
-}
-
-button a {
-    display: block;
-    color: inherit;
-}*/
 
 /*--------------------------------------------------------------
 # TYPOGRAPHY
 --------------------------------------------------------------*/
-body, button, input, select, textarea   {
+body, button, input, select, textarea  {
   font-family: sans-serif;
 }
 
-.fonts-loaded body, button, input, select, textarea   {
+.fonts-loaded body,
+.fonts-loaded button,
+.fonts-loaded input,
+.fonts-loaded select,
+.fonts-loaded textarea {
     font-size: 16px;
-    font: 'Lato', 'Helvetica neue', sans-serif;
+    font-family: 'Lato', 'Helvetica neue', sans-serif;
     font-weight: 300;
+}
+
+.fonts-loaded .division h1 {
+    font-family: "Roboto Slab", serif;
 }
 
 p {

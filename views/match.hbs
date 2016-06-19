@@ -1,7 +1,7 @@
 {{> header_match }}
 
 <main id="main" role="main">
-	<section id="scores-block" class="match_items">
+	<section id="scores" class="match_items">
 
 		<!-- <article class="match__item"> -->
 
@@ -123,7 +123,7 @@
 
 	</section>
 
-	<section id="info-block" class="match_items">
+	<section id="info" class="match_items">
 		<div class="match__content">
 
 			<h2 class="match__content__title">Match Details</h2>
@@ -151,7 +151,7 @@
 	</section>
 
 
-	<section id="location-block" class="match_items">
+	<section id="location" class="match_items">
 		<div class="match__content">
 			<div class="match__location">
 				<img class="match__location__image" src="{{ items.game_site.event_site.image_400 }}" alt="Map" />
@@ -159,3 +159,5 @@
 		</div>
 	</section>
 </main>
+
+{{> footer_matches}}

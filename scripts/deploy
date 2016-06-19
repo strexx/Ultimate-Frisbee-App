@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ssh root@146.185.135.172 <<EOF
+  cd /var/www/meesterproef.directzichtbaar.nl/ultimate-frisbee-app/
+  git pull
+  npm install
+  gulp
+  pm2 restart all
+  exit
+EOF

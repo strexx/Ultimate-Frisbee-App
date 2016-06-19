@@ -7,7 +7,7 @@
 	<title>Ultimate Frisbee App</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
 
-	<style>h1,h1 a{color:#1e1e1e}.tabs li a,a,h1 a{text-decoration:none}.siteheader,nav ul{-webkit-box-direction:normal}.tabs li a,nav ul li{width:100%;text-align:center}*{margin:0;padding:0;outline:0;vertical-align:baseline;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}*,html{font-size:100%}html{overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background:#fff}body,html{overflow-x:hidden}body{background:#f9f9f9;font:1em/1.4 Lato,Helvetica neue,sans-serif;font-weight:300;line-height:1}h1{font-weight:300;font-size:1.3em}.siteheader{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;position:relative;z-index:1}.siteheader h1{font-weight:300;letter-spacing:5px;font-size:2em;margin:auto;padding:.3em}.tabs li a{display:inline-block;color:grey;padding:.3em;font-size:1.1em}header,nav{display:block;z-index: 1;}ul{list-style:none}nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:distribute;justify-content:space-around;background-color:#f9f9f9}nav ul li{border-bottom:4px solid grey}nav ul li.active{border-bottom:6px solid #f04b51}nav ul li.active a{color:#f04b51;font-weight:400;font-weight:600}</style>
+	<style>footer,header,main,nav,svg{display:block}#wrapper,body,html{overflow-x:hidden}.footer__menu__link,.header__tab__link,a{text-decoration:none}body{line-height:1;background:#f9f9f9;font-family:sans-serif}*{margin:0;padding:0;outline:0;vertical-align:baseline;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}*,html{font-size:100%}html{overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background:#fff}ul{list-style:none}svg{max-height:3em}h1{color:#1e1e1e;font-weight:300;font-size:1.3em}#wrapper{min-height:100vh}#header{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative;z-index:1}.header__title{font-weight:300;letter-spacing:5px;font-size:2em;margin:auto;padding:.3em;text-align:center;text-transform:uppercase}.footer__menu__row,.header__tabs__row{list-style-type:none;margin:0;overflow:hidden;-webkit-box-orient:horizontal;-webkit-box-direction:normal;background-color:#f9f9f9}.header__tabs__row{padding:0;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:distribute;justify-content:space-around}.header__tab__link,.header__tab__list{width:100%;text-align:center}.header__tab__link{display:block;color:grey;padding:.3em;font-size:1.1em;border-bottom:4px solid grey}.header__tab__link--active{color:#f04b51;font-weight:600;border-bottom:4px solid #f04b51}.footer__menu{margin-bottom:0;bottom:0;position:fixed;width:100%;box-shadow:0 11px 11px 12px RGBA(67,67,67,.5)}.footer__menu__row{padding:0;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:distribute;justify-content:space-around}.footer__menu__list{text-align:center;width:33.33%}.footer__menu__link{display:inline-block;color:#aaa;text-align:center;padding:.3em;font-size:.9em;width:100%;border-top:4px solid grey}.footer__menu__link--active{border-top:4px solid #f04b51;color:#f04b51;font-weight:400;font-weight:600}.footer__menu__svg{margin:0 auto .1em;fill:grey;height:2.2em}.footer__menu__link--active .footer__menu__svg{fill:#f04b51}.footer__menu__text{margin:.2em 0 0}#main{display: none; margin-bottom:75px}</style>
 
     <link rel="preload" href="/dist/css/style.min.css" as="style" onload="this.rel='stylesheet'">
     <noscript>
@@ -22,13 +22,10 @@
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
 </head>
 <body>
-	{{> splash}}
 	<div id="wrapper">
-		{{> menu}}
 		{{{ body }}}
 	</div>
-
-	{{> loader}}
+	{{> splash}}
 	{{> scripts}}
 </body>
 </html>
