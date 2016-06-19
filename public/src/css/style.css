@@ -493,28 +493,30 @@ body {
     font-size: 1.5em;
     color: #000;
     position: relative;
+    background: #ddd;
+    border-bottom: solid 4px #fff;
 }
 
-.tournaments__item:hover {
+.tournaments__items a .tournaments__item:hover {
     background: #2980b9;
     color: #fff;
 }
 
-.tournaments__item:hover h2 {
+.tournaments__items a .tournaments__item:hover h2 {
     color: #fff;
 }
 
-.tournaments__item:hover:first-of-type {
+.tournaments__items a:first-of-type .tournaments__item:hover {
     background: #F47983;
     color: #fff;
 }
 
-.tournaments__item:hover:nth-of-type(2) {
+.tournaments__items a:nth-of-type(2) .tournaments__item:hover {
     background: #9b59b6;
     color: #fff;
 }
 
-.tournaments__item:hover:last-of-type {
+.tournaments__items a:last-of-type .tournaments__item:hover {
     background: #2980b9;
     color: #fff;
 }

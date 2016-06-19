@@ -3,13 +3,13 @@
 <main id="main" role="main">
     <section id="tournaments" class="tournaments__items">
         {{#each items}}
-            <article class="tournaments__item">
-                <a href="/tournament/{{id}}/">
+            <a href="/tournament/{{id}}/">
+                <article class="tournaments__item">
                     <header>
                         <h2>{{name}}</h2>
                     </header>
-                </a>
-            </article>
+                </article>
+            </a>
         {{/each}}
     </section>
 </main>
