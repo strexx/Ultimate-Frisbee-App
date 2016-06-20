@@ -35,7 +35,7 @@ var outputPath = {
 gulp.task('default', ['scripts', 'styles', 'copy-lib']);
 
 // JS scripts task
-gulp.task('scripts', ['clean-scripts'], function() {
+gulp.task('scripts', function() {
     return gulp.src(inputPath.js)
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -48,7 +48,7 @@ gulp.task('scripts', ['clean-scripts'], function() {
 });
 
 // CSS styles task
-gulp.task('styles', ['clean-styles'], function() {
+gulp.task('styles', function() {
     return gulp.src(inputPath.css)
         .pipe(sourcemaps.init())
         .pipe(autoprefixer())
