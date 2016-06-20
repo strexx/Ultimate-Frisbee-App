@@ -15,12 +15,11 @@ var express = require('express'),
 require('./connections/database.js')(mongodb, MongoClient);
 require('./connections/socket.js')(server);
 
-// Include routes
-
 // include partials
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
 hbs.registerPartials(__dirname + '/views/partials/content');
+hbs.registerPartials(__dirname + '/views/partials/footer');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +34,7 @@ app.use(bodyParser.json());
 // set session with secret
 app.use(session({
     cookieName: 'userSession',
-    secret: 'soSecureMuchEncryption',
+    secret: 'SsssttItsASecret',
     store: new fileStore(),
     saveUninitialized: true,
     resave: false,

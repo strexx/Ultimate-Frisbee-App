@@ -1,48 +1,48 @@
 {{> header_tournament}}
 
 <main id="main" class="matchesmain" role="main">
-    <section id="matches-block" class="matches__items">
+    <section id="matches" class="matches__items">
         {{#matches}}
             {{#if dayOne}}
-            <div class="division">
-                <h1>{{dayOne.1.start_date}}</h1>
-                {{#each dayOne}}
-                    {{> content_matches}}
-                {{/each}}
-            </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">{{dayOne.1.start_date}}</h1>
+                    {{#each dayOne}}
+                        {{> content_matches}}
+                    {{/each}}
+                </div>
             {{/if}}
             {{#if dayTwo}}
-              <div class="division">
-                <h1>{{dayTwo.1.start_date}}</h1>
-                {{#each dayTwo}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">{{dayTwo.1.start_date}}</h1>
+                    {{#each dayTwo}}
+                        {{> content_matches}}
+                    {{/each}}
+                </div>
             {{/if}}
             {{#if dayThree}}
-              <div class="division">
-                <h1>{{dayThree.1.start_date}}</h1>
-                {{#each dayThree}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">{{dayThree.1.start_date}}</h1>
+                    {{#each dayThree}}
+                        {{> content_matches}}
+                    {{/each}}
+                </div>
             {{/if}}
         {{/matches}}
     </section>
-    <section id="rounds-block" class="matches__items">
+    <section id="rounds" class="matches__items">
         {{#each rounds}}
-            <div class="division">
-                <h1>Round {{round_number}}</h1>
+            <div class="matches__division">
+                <h1 class="matches__division__title">Round {{round_number}}</h1>
                 {{#each games}}
                     {{> content_matches}}
                 {{/each}}
             </div>
         {{/each}}
     </section>
-    <section id="ranking-block" class="matches__items">
+    <section id="ranking" class="matches__items">
         {{#each ranking}}
-            <div class="division">
-                <h1>Round {{round_number}}</h1>
+            <div class="matches__division">
+                <h1 class="matches__division__title">Round {{round_number}}</h1>
                 {{#each standings}}
                     {{> content_rankings}}
                 {{/each}}
@@ -50,3 +50,5 @@
         {{/each}}
     </section>
 </main>
+
+{{> footer_tournaments}}

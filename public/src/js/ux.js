@@ -3,39 +3,34 @@
 *********************************************************/
 UFA.ux = (() => {
 
-    // Global vars
-    var loader = document.querySelector('.loader'),
-        tabLinks = document.getElementsByClassName('tablinks'),
-        body = document.querySelector('body'),
-        wrapperBody = document.querySelector('#wrapper'),
-        navHome = document.querySelector('#nav-home'),
-        navTournaments = document.querySelector('#nav-tournaments'),
-        navLogin = document.querySelector('#nav-login'),
-        mainNavLi = document.querySelectorAll(".main-nav-li"),
-        splashScreen = document.querySelector(".splash"),
-        loginSubmitBtn = document.querySelector('.login_submit'),
-        placeholder = document.querySelector('.login_submit i'),
-        feedback = document.querySelector('.feedback');
+    // global vars
+    var loader = document.querySelector('#loader'),
+        splashScreen = document.querySelector("#splash"),
+        loginSubmitBtn = document.querySelector('.login__submit'),
+        placeholder = document.querySelector('.login__submit i'),
+        feedback = document.querySelector('.login__feedback');
 
+    // toggle tabs + section
     function toggleClass() {
         // Get all menu items
-        var links = Array.prototype.slice.call(document.querySelectorAll('#section-nav li')),
+        var links = Array.prototype.slice.call(document.querySelectorAll('.header__tab__link')),
             hash = window.location.hash;
 
         // Remove active class
-        links.forEach(function(item) {
-            item.classList.remove("active");
+        links.forEach(function(link) {
+            link.classList.remove("header__tab__link--active");
         });
 
         // Add active class to new hash
-        if (hash != "") {
-            var link = document.querySelector(hash + '-menu'),
-                fullLink = link.childNodes[0].getAttribute("href");
-            link.classList.add('active');
+        if (hash !== "") {
+            var hashName = hash.substr(1)
+            var link = document.querySelector('.header__tab__list__'+hashName+ ' .header__tab__link');
+            link.classList.add('header__tab__link--active');
         } else {
-            //document.querySelector('#live').classList.add('active');
-            links[1].classList.add('active');
+            links[1].classList.add('header__tab__link--active');
         }
+
+        toggleSection();
     }
 
     function toggleSection() {
@@ -49,27 +44,18 @@ UFA.ux = (() => {
 
             if (!hash) {
                 sections[0].classList.remove('inactive');
+                sections[0].classList.add('active');
             }
 
         }
         if (hash) {
-            document.querySelector(hash + "-block").classList.remove('inactive');
+            document.querySelector(hash).classList.remove('inactive');
+            document.querySelector(hash).classList.add('active');
         }
 
     }
 
-    function toggleMenuClassHome() {
-        navHome.classList.add('active');
-    }
-
-    function toggleMenuClassTournaments() {
-        navTournaments.classList.add('active');
-    }
-
-    function toggleMenuClassLogin() {
-        navLogin.classList.add('active');
-    }
-
+    // loaders
     function showLoader() {
         loader.classList.add("active");
     }
@@ -81,40 +67,38 @@ UFA.ux = (() => {
     function splashVisited() {
         var splashShown = localStorage.getItem("splashShown");
         if (!splashShown) {
-            toggleSplash();
+            showSplash();
             localStorage.setItem("splashShown", "true");
         }
     }
 
-    function toggleSplash() {
+    // splash screen
+    function showSplash() {
         splashScreen.classList.add('active');
         setTimeout(function() {
             splashScreen.classList.remove('active');
         }, 4000)
     }
 
-    // Login
-    function loginSubmitListener() {
-        loginSubmitBtn.addEventListener("click", loginSubmit, false);
-    }
+    // login
+    function loginSubmit() {
+        loginSubmitBtn.addEventListener("click", loginSubmitAction, false);
 
-    function loginSubmit(e) {
-        placeholder.classList.remove("fa-long-arrow-right");
-        placeholder.classList.add("fa-check");
-        feedback.classList.remove("errorMsg");
-        feedback.classList.add("is-visible");
+        function loginSubmitAction(e) {
+            placeholder.classList.remove("fa-long-arrow-right");
+            placeholder.classList.add("fa-check");
+            feedback.classList.remove("errorMsg");
+            feedback.classList.add("is-visible");
+        }
     }
 
     return {
         toggleClass: toggleClass,
+        toggleSection: toggleSection,
         showLoader: showLoader,
         hideLoader: hideLoader,
         splashVisited: splashVisited,
-        toggleSection: toggleSection,
-        toggleMenuClassHome: toggleMenuClassHome,
-        toggleMenuClassTournaments: toggleMenuClassTournaments,
-        toggleMenuClassLogin: toggleMenuClassLogin,
-        loginSubmitListener: loginSubmitListener
+        loginSubmit: loginSubmit
     };
 
 })();
