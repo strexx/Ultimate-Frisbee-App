@@ -286,6 +286,72 @@ body { }
     border: none;
 }
 
+/* RANKING PAGE */
+
+.ranking__item {
+    padding: 1em 1.2em 1.8em;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ranking__item__table {
+    width: 70%;
+}
+
+.matches__item__table__row {
+    height: 2em;
+}
+
+.ranking__item__shirt {
+    position: relative;
+    padding-right: .7em;
+    top: 0.4em;
+}
+
+.ranking__item__shirt__svg {
+    width: 30px;
+}
+
+.ranking__item__name {
+    width: 100%;
+    font-size: 1.3em;
+    font-weight: 300;
+}
+
+.ranking__item__score {
+    font-size: 1.3em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.ranking__item__info {
+    position: relative;
+    margin: 1.2em 0 0;
+}
+
+.ranking__item__info__time {
+    font-size: 2em;
+    font-weight: 500;
+    color: #127ea5;
+    margin: 0 0 0.1em;
+}
+.ranking__item__info__field {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.ranking__divider {
+    height: 1px;
+    color: grey;
+    background-color: #e0e0e0;
+    border: none;
+}
+
 
 /*--------------------------------------------------------------
 ### MATCH (SCORE PAGE)
