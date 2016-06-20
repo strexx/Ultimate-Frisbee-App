@@ -106,7 +106,8 @@ body { }
     transition: 0.3s;
     font-size: 1.1em;
     width: 100%;
-    border-bottom: 4px solid grey;
+    border-bottom: 4px solid #cecaca;
+    transition: border .4s ease-in-out;
 }
 
 .header__tab__link--active {
