@@ -19,7 +19,7 @@ UFA.scores = (() => {
             var updateScore1 = data.team_1_score,
                 updateScore2 = data.team_2_score;
 
-            if(data.gameID == gameID)
+            if(data.game_id == gameID)
               replaceScores(updateScore1, updateScore2);
         });
 
@@ -29,7 +29,9 @@ UFA.scores = (() => {
         scoreButtonListeners();
 
         if (!document.querySelector("#user_id")) {
+          if(document.querySelector("#submit")) {
             hideFormSubmit();
+          }
             hideCheckBoxes();
         }
     }
