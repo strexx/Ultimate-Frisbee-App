@@ -106,8 +106,11 @@ body { }
     transition: 0.3s;
     font-size: 1.1em;
     width: 100%;
-    border-bottom: 4px solid #cecaca;
-    transition: border .4s ease-in-out;
+}
+
+.header__tab__link, .footer__menu__link {
+  border-bottom: 4px solid #cecaca;
+  transition: border .4s ease-in-out;
 }
 
 .header__tab__link--active {
@@ -129,7 +132,7 @@ body { }
     bottom: 0;
     position: fixed;
     width: 100%;
-    box-shadow: 0 11px 11px 12px RGBA(67,67,67,.5);
+    /*box-shadow: 0 11px 11px 12px RGBA(67,67,67,.5);*/
 }
 
 .footer__menu__row {
@@ -157,7 +160,7 @@ body { }
     transition: 0.3s;
     font-size: 0.9em;
     width: 100%;
-    border-top: 4px solid grey;
+    border-top: 4px solid #cecaca;
 }
 
 .footer__menu__link:hover {
@@ -504,36 +507,37 @@ body { }
     padding: 7em 0;
     position: relative;
     font-size: 1.5em;
-    color: #000;
     position: relative;
-    background: #ddd;
     border-bottom: solid 4px #fff;
 }
 
-.tournaments__items a .tournaments__item:hover {
-    background: #2980b9;
+.tournaments__items a .tournaments__item h2 {
     color: #fff;
 }
 
 .tournaments__items a .tournaments__item:hover h2 {
-    color: #fff;
+    color: #000;
 }
 
-.tournaments__items a:first-of-type .tournaments__item:hover {
+.tournaments__items a:first-of-type .tournaments__item {
     background: #F47983;
     color: #fff;
 }
 
-.tournaments__items a:nth-of-type(2) .tournaments__item:hover {
+.tournaments__items a:nth-of-type(2) .tournaments__item {
     background: #9b59b6;
     color: #fff;
 }
 
-.tournaments__items a:last-of-type .tournaments__item:hover {
+.tournaments__items a:last-of-type .tournaments__item {
     background: #2980b9;
     color: #fff;
 }
 
+.tournaments__items a .tournaments__item:hover {
+    background: #ddd;
+    color: #fff;
+}
 
 /*--------------------------------------------------------------
 ### LOGIN
