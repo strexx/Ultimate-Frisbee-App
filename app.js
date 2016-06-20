@@ -6,15 +6,20 @@ var express = require('express'),
     MongoClient = mongodb.MongoClient,
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    io = require('socket.io'),
-    fileStore = require('session-file-store')(session);
+    fileStore = require('session-file-store')(session),
+    server = require('http').createServer(app),
     routes = require('./routes/index'),
     api = require('./routes/api');
+
+// include connections
+require('./connections/database.js')(mongodb, MongoClient);
+require('./connections/socket.js')(server);
 
 // include partials
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartials(__dirname + '/views/partials/header');
 hbs.registerPartials(__dirname + '/views/partials/content');
+hbs.registerPartials(__dirname + '/views/partials/footer');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,14 +27,14 @@ app.set('view engine', 'hbs');
 
 // use bodyParser
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 app.use(bodyParser.json());
 
 // set session with secret
 app.use(session({
     cookieName: 'userSession',
-    secret: 'soSecureMuchEncryption',
+    secret: 'SsssttItsASecret',
     store: new fileStore(),
     saveUninitialized: true,
     resave: false,
@@ -65,24 +70,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// Make mongodb connection & start server
-MongoClient.connect('mongodb://146.185.135.172:27017/ultifris', function(err, database) {
-    if (err) {
-        console.log('Unable to connect to the MongoDB server. Error:', err);
-    } else {
-        console.log('Connection with MongoDB established!');
-
-        // create global variables
-        global.db = database;
-        global.server = require('http').createServer(app);
-
-        // include lib files
-        require('./lib/sockets.js');
-        require('./lib/database.js');
-
-        // start app
-        server.listen(3010, function() {
-            console.log('listening on port 3010!');
-        });
-    }
+// start app
+server.listen(3010, function() {
+    console.log('listening on port 3010!');
 });

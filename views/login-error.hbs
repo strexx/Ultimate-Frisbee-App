@@ -1,3 +1,4 @@
+
 {{> header_login }}
 
 <section id="login">
@@ -22,8 +23,8 @@
 
         </fieldset>
 
-        <div class="login__feedback">
-          <i class="fa fa-lock" aria-hidden="true"></i>Checking login..
+        <div class="login__feedback login__feedback_error is-visible">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>{{ error }}
         </div>
 
     </form>
