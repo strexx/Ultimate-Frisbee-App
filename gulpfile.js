@@ -51,7 +51,7 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
     return gulp.src(inputPath.css)
         .pipe(sourcemaps.init())
-        .pipe(autoprefixer())
+        .pipe(autoprefixer({browsers: ['last 2 versions', 'ie 6-8']}))
         .pipe(concat('style.min.css'))
         .pipe(cssnano())
         .pipe(sourcemaps.write())
