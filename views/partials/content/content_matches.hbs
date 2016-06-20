@@ -1,4 +1,4 @@
-<article class="matches__item">
+<article class="matches__item" id="{{id}}">
     <a href="/match/{{id}}/">
         <table class="matches__item__table">
             <tr class="matches__item__table__row">
@@ -16,7 +16,7 @@
                     </svg>
                 </td>
                 <td class="matches__item__name">{{team_1.short_name}}</td>
-                <td class="matches__item__score">{{team_1_score}}</td>
+                <td class="matches__item__score team_1_score_realtime">{{team_1_score}}</td>
             </tr>
             <tr class="matches__item__table__row">
                 <td class="matches__item__shirt">
@@ -33,7 +33,7 @@
                     </svg>
                 </td>
                 <td class="matches__item__name">{{team_2.short_name}}</td>
-                <td class="matches__item__score">{{team_2_score}}</td>
+                <td class="matches__item__score team_2_score_realtime">{{team_2_score}}</td>
             </tr>
         </table>
         <div class="matches__item__info">

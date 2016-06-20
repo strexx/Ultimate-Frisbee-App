@@ -34,6 +34,24 @@ UFA.scores = (() => {
         }
     }
 
+    function changeHomeScores() {
+      socket.on("dbupdate", function(json) {
+          var data = JSON.parse(json);
+
+          // Get new scores
+          var updateScoreHome1 = data.team_1_score,
+              updateScoreHome2 = data.team_2_score,
+              // Get article with match id
+              target = document.getElementById(data.gameID),
+              tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
+              tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
+
+          // Assign to html
+          tdTeam1.innerHTML = updateScoreHome1;
+          tdTeam2.innerHTML = updateScoreHome2;
+      });
+    }
+
     // Update scores
     function replaceScores(score1, score2) {
         team1_score_span.innerHTML = score1;
@@ -158,7 +176,8 @@ UFA.scores = (() => {
 
     // Return functions
     return {
-        init: init
+        init: init,
+        changeHomeScores: changeHomeScores
     };
 
 })();
