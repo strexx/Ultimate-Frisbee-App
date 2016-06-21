@@ -1,0 +1,46 @@
+/*Flexbox fallback*/
+
+/*Header*/
+
+
+/*header and footer menus*/
+.no-flexbox .footer__menu__row,
+.no-flexbox .header__tabs__row {
+  display: block;
+  width: 100%;
+}
+
+.no-flexbox  .footer__menu__list,
+.no-flexbox  .header__tab__list{
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+/*Splash Screen*/
+.no-flexbox #splash.active {
+  display: block;
+}
+
+.no-flexbox .splash__text {
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+
+.no-flexbox .matches__items a {
+   display: block;
+}
+
+.no-flexbox .matches__item__table {
+  display: inline-block;
+}
+
+.no-flexbox .matches__item__info {
+  position: relative;
+  display: inline-block;
+  bottom: 0.7em;
+  left: 0.7em;
+}
