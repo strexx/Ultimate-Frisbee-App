@@ -54,9 +54,6 @@ body { }
 }
 
 #header {
-    display: flex;
-    flex-direction: column;
-    position: relative;
     z-index: 1;
 }
 
@@ -81,22 +78,6 @@ body { }
     text-transform: uppercase;
 }
 
-.header__tabs__row {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #F9F9F9;
-}
-
-.header__tab__list {
-    width: 100%;
-    text-align: center;
-}
-
 .header__tab__link {
     display: block;
     color: grey;
@@ -106,10 +87,10 @@ body { }
     transition: 0.3s;
     font-size: 1.1em;
     width: 100%;
+    border-bottom: 4px solid #cecaca;
 }
 
 .header__tab__link, .footer__menu__link {
-  border-bottom: 4px solid #cecaca;
   transition: border .4s ease-in-out;
 }
 
@@ -132,10 +113,11 @@ body { }
     bottom: 0;
     position: fixed;
     width: 100%;
+    background-color: #f9f9f9;
     /*box-shadow: 0 11px 11px 12px RGBA(67,67,67,.5);*/
 }
 
-.footer__menu__row {
+.footer__menu__row, .header__tabs__row {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -143,15 +125,14 @@ body { }
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #F9F9F9;
 }
 
-.footer__menu__list {
+.footer__menu__list, .header__tab__list {
     text-align: center;
     width: 33.33%;
 }
 
-.footer__menu__link {
+.footer__menu__link{
     display: inline-block;
     color: #aaa;
     text-align: center;
@@ -194,6 +175,12 @@ body { }
     margin: 0.2em 0 0;
 }
 
+.fallback_icon {
+    margin: 0 auto .1em;
+    fill: grey;
+    height: 2.2em;
+    display: block;
+}
 
 /*--------------------------------------------------------------
 ## CONTENT
@@ -217,9 +204,6 @@ body { }
     padding-left: .5em;
     padding-bottom: 0.1em;
     color: #434343;
-}
-
-.matches__item {
 }
 
 .matches__items a {
@@ -262,7 +246,7 @@ body { }
 
 .matches__item__info {
     position: relative;
-    margin: 1.2em 0 0;
+    margin: 0.7em 0 0;
 }
 
 .matches__item__info__time {
@@ -773,9 +757,11 @@ body { }
 #splash {
   display: none;
   position: relative;
-  height: 100vh;
+  height: 100%;
   background: #f04b51;
+  top: 0;
   z-index: 10;
+  padding: 0.4em;
 }
 
 #splash.active {
