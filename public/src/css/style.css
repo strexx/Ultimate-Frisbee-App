@@ -465,6 +465,9 @@ body { }
   text-align: center;
   border: none;
   cursor: pointer;
+  width: 50%;
+  max-width: 20em;
+  margin: auto;
   margin-top: 2em;
   -webkit-box-shadow: inset 20em 0 0 0 rgba(49,48,43, 0);
   box-shadow: inset 20em 0 0 0 rgba(49,48,43, 0);
