@@ -111,14 +111,61 @@ function addMatches(objects) {
     });
 }
 
+function updateMatchFromApi(gameID) {
+  var object = [];
+  request({url: 'https://api.leaguevine.com/v1/games/?game_ids=%5B' + gameID + '%5D&access_token=e9f0c8fd67'}, function (error, response, data) {
+      if (!error && response.statusCode == 200) {
+
+        var parsedResponse = JSON.parse(response.body);
+        var responsesObj = parsedResponse.objects; // [{x80}],
+
+        for (var key in responsesObj) {
+            if (responsesObj[key].start_time !== undefined && responsesObj[key].start_time !== null) {
+                responsesObj[key].start_time = dateFormat(responsesObj[key].start_time, "dd-mm-yyyy HH:MM");
+            }
+            if (responsesObj[key].game_site !== undefined && responsesObj[key].game_site !== null) {
+                responsesObj[key].game_site.name = responsesObj[key].game_site.name.slice(0, 8);
+            }
+            object.push(responsesObj[key]);
+        }
+
+        deleteMatch(gameID);
+        addMatch(object[0]);
+
+      } else {
+        console.log(error);
+      }
+ });
+}
+
+function deleteMatch(gameID) {
+  var matchesCollection = db.collection('matches');
+  matchesCollection.remove({id: gameID},
+    function(err, result) {
+      if (err) {
+          console.log(err);
+      } else {
+          console.log('Deleted document into the "matches" collection. The document deleted with "_id" is:', result.length, result);
+      }
+  });
+}
+
+function addMatch(data) {
+  var matchesCollection = db.collection('matches');
+  matchesCollection.insertOne(data, function(err, result) {
+      if (err) {
+          console.log(err);
+      } else {
+          console.log('Inserted document into the "matches" collection. The document inserted with "_id" is:', result.length, result);
+      }
+  });
+}
 
 router.post('/match/score', function(req, res) {
 
     var post = req.body;
 
     if (post) {
-
-        console.log(post);
 
         var score1 = parseInt(post.score_team_1),
             score2 = parseInt(post.score_team_2),
@@ -186,14 +233,17 @@ router.post('/match/score', function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    updateMatches();
+                    updateMatchFromApi(gameID);
                     console.log("Scorekeeper " + userID + " added new score");
+                    var destination = '?message=Match is succesfully updated with final score';
+                    io.emit('redirect', destination);
                 }
             });
 
         } else {
             console.log("Regular user added new score");
-            res.redirect('/match/' + gameID);
+            var destination = '?message=Match is succesfully updated';
+            io.emit('redirect', destination);
         }
     });
 });
