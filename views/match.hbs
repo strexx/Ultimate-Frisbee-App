@@ -9,6 +9,9 @@
 				{{#if items.winner_id}}
 					<h1 class="match__item__final__label">This game has finished</h1>
 				{{/if}}
+				{{#if feedbackMsg}}
+					<h1 class="match__item__success__label"><i class="fa fa-check-circle" aria-hidden="true"></i> {{ feedbackMsg }}</h1>
+				{{/if}}
 				<!-- TEAMS -->
 				<section class="match__item__teams">
 
