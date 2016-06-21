@@ -170,12 +170,14 @@ router.get('/tournaments', function(req, res) {
 
         collectionCursor.each(function(err, match) {
             if (match !== null) {
-                var tournament = match.tournament;
-                var tournamentID = tournament.id;
-                var tournamentName = tournament.name;
+                if (match.tournament !== null){
+                    var tournament = match.tournament;
+                    var tournamentID = tournament.id;
+                    var tournamentName = tournament.name;
 
-                tournamentIDs.push(tournamentID);
-                tournamentNames.push(tournamentName);
+                    tournamentIDs.push(tournamentID);
+                    tournamentNames.push(tournamentName);
+                }
             } else {
                 callback();
             }
