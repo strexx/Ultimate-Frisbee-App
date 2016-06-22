@@ -28,13 +28,12 @@ router.get('/', function(req, res, next) {
     };
 
     findMatches(db, function() {
-        console.log(matches);
 
         // var now = dateFormat(Date.now(), "HH:MM");
         // var liveTime = String(now);
 
-        var liveTime = "13:00",
-            todayDate = "16-01-2015",
+        var liveTime = "12:30",
+            todayDate = "03-06-2016",
             session = req.session.user_id;
 
         //Filter on today's date
@@ -63,50 +62,69 @@ router.get('/', function(req, res, next) {
 
         // Filter on recent matches
         var recentWomen = recentMatches.filter(function(obj) {
-            return obj.tournament_id == "19753";
+            return obj.tournament_id == "20058";
         });
 
         var recentMixed = recentMatches.filter(function(obj) {
-            return obj.tournament_id == "19752";
+            return obj.tournament_id == "20059";
         });
 
         var recentOpen = recentMatches.filter(function(obj) {
-            return obj.tournament_id == "19751";
+            return obj.tournament_id == "20060";
         });
+
+        var recentCMD = recentMatches.filter(function(obj) {
+            return obj.tournament_id == "20297";
+        });
+
 
         // Filter on live matches
         var liveWomen = liveMatches.filter(function(obj) {
-            return obj.tournament_id == "19753";
+            return obj.tournament_id == "20058";
         });
 
         var liveMixed = liveMatches.filter(function(obj) {
-            return obj.tournament_id == "19752";
+            return obj.tournament_id == "20059";
         });
 
         var liveOpen = liveMatches.filter(function(obj) {
-            return obj.tournament_id == "19751";
+            return obj.tournament_id == "20060";
         });
+
+        var liveCMD = liveMatches.filter(function(obj) {
+            return obj.tournament_id == "20297";
+        });
+
 
         // Filter on upcoming matches
         var upcomingWomen = upcomingMatches.filter(function(obj) {
-            return obj.tournament_id == "19753";
+            return obj.tournament_id == "20058";
         });
 
         var upcomingMixed = upcomingMatches.filter(function(obj) {
-            return obj.tournament_id == "19752";
+            return obj.tournament_id == "20059";
         });
 
         var upcomingOpen = upcomingMatches.filter(function(obj) {
-            return obj.tournament_id == "19751";
+            return obj.tournament_id == "20060";
         });
+
+        var upcomingCMD = upcomingMatches.filter(function(obj) {
+            return obj.tournament_id == "20297";
+        });
+
 
         // push objects in new array
         matchesfinal.push({
+            "liveCMD": liveCMD
+        },{
             "liveWomen": liveWomen
         }, {
             "liveMixed": liveMixed
         }, {
             "liveOpen": liveOpen
+        }, {
+            "recentCMD": recentCMD
         }, {
             "recentWomen": recentWomen
         }, {
@@ -114,14 +132,14 @@ router.get('/', function(req, res, next) {
         }, {
             "recentOpen": recentOpen
         }, {
+            "upcomingCMD": upcomingCMD
+        }, {
             "upcomingWomen": upcomingWomen
         }, {
             "upcomingMixed": upcomingMixed
         }, {
             "upcomingOpen": upcomingOpen
         });
-
-        //console.log(newMatchesArray);
 
         res.render('matches', {
             title: 'Matches',
