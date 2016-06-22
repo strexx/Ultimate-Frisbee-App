@@ -215,8 +215,6 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 
 ![Trello-board](readme/screenshots/trello.png)
 
-Things I've done to contribute to this project:
-
 #### Week 1
 
 - Briefing meeting with client (Christian Schaffner)
@@ -291,7 +289,8 @@ Things I've done to contribute to this project:
 
 ## Used techniques from courses in minor
 
-Things I've done to contribute to this project:
+Things I've done to contribute to this project can be found at https://github.com/strexx/Ultimate-Frisbee-App/commits?author=strexx
+Besides these commits I also contributed to a lot of commits done by Melvin and Senny.
 
 ### CSS to the rescue
 
@@ -385,7 +384,7 @@ Made the application's core functionality available without JavaScript. The user
 #### Accessibility
 
 
-#### Browser and device compatability
+#### Browser and device compatibility
 The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the university. Including an old version of Chrome for Android and the foreign UC Browser. The application looked fine and worked good on these browsers and most devices.
 
 ![Device Lab](readme/device-lab.png)
@@ -407,10 +406,12 @@ The application was tested on a multitude of devices and browsers on our own mac
 ## Screenshots
 ![Live page](readme/screenshots/matches_live.png)
 ![Match detail page](readme/screenshots/match_detail_score.png)
-
+![Tournaments](readme/screenshots/tournaments.png)
+![Tournament matches](readme/screenshots/tournament_matches.png)
+![Matches live responive](readme/screenshots/matches_live_responsive.png)
+![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 ## Communication and planning tools
-
 - [Trello](http://www.trello.com)
 - [Google Drive](http://www.drive.google.com)
 - [Telegram](http://www.telegram.com)
