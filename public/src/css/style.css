@@ -528,12 +528,24 @@ body {}
 .tournaments__items a .tournaments__item:hover h2 {
     color: #000;
 }
-.tournaments__items a:first-of-type .tournaments__item {
-    background: #F47983;
-    color: #fff;
+.tournaments__items a:first-of-type .tournaments__item h2 {
+    color: black;
 }
+
+.tournaments__items a:first-of-type .tournaments__item {
+    background: #ffcc00;
+}
+
+.tournaments__items a:first-of-type .tournaments__item h2:hover {
+    color: white;
+}
+
 .tournaments__items a:nth-of-type(2) .tournaments__item {
     background: #9b59b6;
+    color: #fff;
+}
+.tournaments__items a:nth-of-type(3) .tournaments__item {
+    background: #F47983;
     color: #fff;
 }
 .tournaments__items a:last-of-type .tournaments__item {
