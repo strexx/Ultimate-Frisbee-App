@@ -134,7 +134,8 @@ router.get('/match/:gameID', function(req, res) {
     var gameID = parseInt(req.params.gameID),
         session = req.session.user_id,
         matchObject,
-        winner = null;
+        winner = null,
+        feedbackMsg = req.query.message;
 
     var findMatches = function(db, callback) {
         var collectionCursor = db.collection('matches').find({
@@ -144,7 +145,6 @@ router.get('/match/:gameID', function(req, res) {
             if (match != null) {
                 match.start_time = dateFormat(match.start_time, "HH:MM");
                 matchObject = match;
-                console.log(matchObject);
                 if (matchObject.winner_id)
                   winner = matchObject.winner_id;
             } else {
@@ -159,7 +159,8 @@ router.get('/match/:gameID', function(req, res) {
             items: matchObject,
             user: session,
             gameID: gameID,
-            winner: winner
+            winner: winner,
+            feedbackMsg: feedbackMsg
         });
     });
 

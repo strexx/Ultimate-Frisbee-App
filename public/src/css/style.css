@@ -471,6 +471,15 @@ body {}
     line-height: 2em;
 }
 
+.match__item__success__label {
+  width: 100%;
+  background: lightgreen;
+  color: #ffffff;
+  text-align: center;
+  height: 2em;
+  line-height: 2em;
+}
+
 /*--------------------------------------------------------------
 #### MATCH [INFO]
 --------------------------------------------------------------*/

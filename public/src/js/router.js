@@ -39,7 +39,7 @@ UFA.router = (() => {
                     UFA.page.matchInfo();
                     break;
                 case "#scores":
-                    UFA.page.matchScores(gameID);
+                    UFA.page.matchScores();
                     break;
                 case "#location":
                     UFA.page.matchLocation();
