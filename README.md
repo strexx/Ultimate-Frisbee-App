@@ -213,6 +213,10 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 
 ## Tasks per week
 
+We used Trello to manage and keep track of our tasks based on the MoSCow method. 
+Therefore we assigned labels to each task with their own level of priority.
+
+![MoSCow](readme/screenshots/MoSCow.png)
 ![Trello-board](readme/screenshots/trello.png)
 
 #### Week 1
