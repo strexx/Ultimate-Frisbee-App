@@ -213,7 +213,7 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 
 ## Tasks per week
 
-[!Trello-board](readme/screenshots/trello.png)
+![Trello-board](readme/screenshots/trello.png)
 
 Things I've done to contribute to this project:
 
@@ -367,12 +367,12 @@ When working alone on a single project, organizing styles usually isn't a big co
 #### SocketIO
 We decided to use the SocketIO real time engine because it works on every platform, browser or device, focusing equally on reliability and speed. SocketIO listens to events fired from client-side. I've setup and used this for live data results on match pages.
 
-[!Socket.IO](readme/logos/socket-io.svg)
+![Socket.IO](readme/logos/socket-io.png)
 
 #### MongoDB
 Along with Senny, I've implemented and setup MongoDB on local machine and remote server. The reason we used MongoDB is because it's highly scalable and we had never worked with MongoDB on a Node Server. So this was a challenge for us. We spent a lot of time with this because we wanted this to work on a remote database. We created a droplet on Digital Ocean and tried to install this from multiple web tutorials. However this wasn't as easy as we thought and struggled with this for a couple of days. We were happy when we finally set this up.
 
-[!MongoDB](readme/logos/mongodb.svg)
+![MongoDB](readme/logos/mongodb.png)
 
 #### Collections
 When using MongoDB you need to work with collections. Therefore we created user, matches and tournaments collections where we store data requested from the API.
@@ -388,7 +388,7 @@ Made the application's core functionality available without JavaScript. The user
 #### Browser and device compatability
 The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the university. Including an old version of Chrome for Android and the foreign UC Browser. The application looked fine and worked good on these browsers and most devices.
 
-[!Device Lab](readme/device-lab.png)
+![Device Lab](readme/device-lab.png)
 
 ## Changes made based on user testing and feedback:
 
@@ -405,8 +405,8 @@ The application was tested on a multitude of devices and browsers on our own mac
 
 
 ## Screenshots
-[!Live page](readme/screenshots/matches_live.png)
-[!Match detail page](readme/screenshots/match_detail_score.png)
+![Live page](readme/screenshots/matches_live.png)
+![Match detail page](readme/screenshots/match_detail_score.png)
 
 
 ## Communication and planning tools
