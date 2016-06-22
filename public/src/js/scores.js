@@ -189,7 +189,6 @@ UFA.scores = (() => {
         });
     }
 
-
     // Return functions
     return {
         init: init,
