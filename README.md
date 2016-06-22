@@ -382,7 +382,7 @@ When using MongoDB you need to work with collections. Therefore we created user,
 Made the application's core functionality available without JavaScript. The user gets a better experience with extra functionalities if JavaScript is turned on or the browser supports it. For the scorepage I've created the core functionality by showing input fields instead of plus and min buttons to add scores.
 
 #### Accessibility
-
+For this project we've done some minor accessibility fixes. For example on the login page I've made it possible to tab through the input fields and add an active class to the submit button when reached in the hierarchy. We also added some aria-elements to define roles described by their characteristics.
 
 #### Browser and device compatibility
 The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the university. Including an old version of Chrome for Android and the foreign UC Browser. The application looked fine and worked good on these browsers and most devices.
