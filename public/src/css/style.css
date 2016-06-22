@@ -701,9 +701,9 @@ body {}
     padding: 0.4em;
 }
 #splash.active {
-    display: flex;
-    position: fixed;
-    width: 100%;
+  display: flex;
+  position: fixed;
+  width: 100%;
 }
 .splash__text {
     margin: 0;

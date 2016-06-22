@@ -3,6 +3,7 @@ var express = require('express'),
     request = require('request'),
     dateFormat = require('dateformat'),
     session = require('express-session'),
+    matchesLogic = require('../modules/matches.js'),
     passwordHash = require('password-hash');
 
 
@@ -42,33 +43,101 @@ router.post('/login', function(req, res) {
 
 });
 
+function updateMatches() {
+
+    var urls = ["https://api.leaguevine.com/v1/games/?tournament_id=20058&order_by=%5Bstart_time%5D&limit=100&access_token=6dc9d3795a", "https://api.leaguevine.com/v1/games/?tournament_id=20059&order_by=%5Bstart_time%5D&limit=100&access_token=6dc9d3795a", "https://api.leaguevine.com/v1/games/?tournament_id=20060&order_by=%5Bstart_time%5D&limit=100&access_token=6dc9d3795a"];
+
+    multiRequest(urls, function(responses) {
+
+        var url,
+            responses,
+            objects = [];
+
+        for (url in responses) {
+
+            response = responses[url];
+
+            // find errors
+            if (response.error) {
+                console.log("Error", url, response.error);
+                return;
+            }
+
+            // render body
+            if (response.body) {
+                var parsedResponse = JSON.parse(response.body);
+                var responsesObj = parsedResponse.objects; // [{x80}],
+
+                for (var key in responsesObj) {
+                    if (responsesObj[key].start_time !== undefined && responsesObj[key].start_time !== null) {
+                        responsesObj[key].start_time = dateFormat(responsesObj[key].start_time, "dd-mm-yyyy HH:MM");
+                    }
+                    if (responsesObj[key].game_site !== undefined && responsesObj[key].game_site !== null) {
+                        responsesObj[key].game_site.name = responsesObj[key].game_site.name.slice(0, 8);
+                    }
+                    objects.push(responsesObj[key]);
+                }
+            }
+            //console.log(objects);
+        }
+
+
+        deleteMatches();
+        addMatches(objects);
+        console.log("database updated from api");
+    });
+}
+
+function deleteMatches() {
+    matchesCollection.drop(function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Removed documents from the "matches" collection.', result);
+        }
+    });
+}
+
+function addMatches(objects) {
+    matchesCollection.insert(objects, {
+        keepGoing: true,
+        continueOnError: true
+    }, function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Inserted documents into the "objects" collection. The documents inserted with "_id" are:', result.length, result);
+        }
+    });
+}
+
+
 router.post('/match/score', function(req, res) {
 
     var post = req.body;
 
     if (post) {
 
-      console.log(post);
+        console.log(post);
 
-      var score1 = parseInt(post.score_team_1),
-          score2 = parseInt(post.score_team_2),
-          gameID = parseInt(post.gameID),
-          isFinal = false,
-          userID = null;
+        var score1 = parseInt(post.score_team_1),
+            score2 = parseInt(post.score_team_2),
+            gameID = parseInt(post.gameID),
+            isFinal = false,
+            userID = null;
 
-      if (post.isFinal)
-        isFinal = true;
+        if (post.isFinal)
+            isFinal = true;
 
-      if (post.userID)
-        userID = post.userID;
+        if (post.userID)
+            userID = post.userID;
 
-      var postData = JSON.stringify({
-          gameID: parseInt(gameID),
-          team_1_score: score1,
-          team_2_score: score2,
-          isFinal: isFinal,
-          userID: userID
-      });
+        var postData = JSON.stringify({
+            game_id: parseInt(gameID),
+            team_1_score: score1,
+            team_2_score: score2,
+            is_final: isFinal
+        });
 
     } else {
         console.log("Error when posting data");
@@ -113,8 +182,13 @@ router.post('/match/score', function(req, res) {
                 url: url,
                 body: postData,
                 headers: headers
-            }, function(req, res, body) {
-                console.log("Scorekeeper " + userID + " added new score");
+            }, function(req, res, body, err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    updateMatches();
+                    console.log("Scorekeeper " + userID + " added new score");
+                }
             });
 
         } else {
