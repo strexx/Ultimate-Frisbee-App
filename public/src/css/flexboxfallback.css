@@ -1,0 +1,67 @@
+/*Flexbox fallback*/
+
+
+/*Header*/
+
+
+/*header and footer menus*/
+
+.no-flexbox .footer__menu__row, .no-flexbox .header__tabs__row {
+    display: block;
+    width: 100%;
+}
+.no-flexbox .footer__menu__list, .no-flexbox .header__tab__list {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+/*Splash Screen*/
+
+.no-flexbox #splash.active {
+    display: block;
+}
+.no-flexbox .splash__text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.no-flexbox .matches__items a, .no-flexbox .ranking__item {
+    display: block;
+}
+.no-flexbox .matches__item__table, .no-flexbox .ranking__item__table {
+    display: inline-block;
+}
+.no-flexbox .matches__item__info, .no-flexbox .ranking__item__info {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+/*Tournaments page*/
+
+.no-flexbox .ranking__item__info {
+    bottom: 0.7em;
+}
+
+/*Score page*/
+
+.no-flexbox .match__item__teams {
+    display: block;
+}
+.no-flexbox .match__item__team {
+    display: inline-block;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+
+.no-flexbox .match__item__team__info {
+  display: block;
+  padding-bottom: 1em;
+}
+
+.no-flexbox .match__item__submit,
+.no-flexbox .match__item__final {
+  display: block;
+}
