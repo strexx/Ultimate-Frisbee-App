@@ -290,7 +290,7 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 ## Used techniques from courses in minor
 
 Things I've done to contribute to this project can be found at https://github.com/strexx/Ultimate-Frisbee-App/commits?author=strexx.
-Besides these commits I also contributed to a lot of commits done by Melvin and Senny.
+Besides these commits I also contributed to a lot of commits done by Melvin and Senny. Below you see an overview with detailed descriptions of what I've done for each course in this project covered in the minor.
 
 ### CSS to the rescue
 
