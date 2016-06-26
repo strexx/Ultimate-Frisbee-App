@@ -45,10 +45,10 @@ The problem that exist is the lack of solution for the public who visits the Ult
 The client needs to have a fast and secure digital solution to confirm and store the final scores in the Leaguevine API, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
 
 ### Design problem
-How can a webapp allows the client to serve real-time updates about the matches to the public and to make a
+*How can a mobile web application allow the client to receive the final scores of a finished match instantly and at the same time serve the public viewers real-time (score) updates about the matches?*
 
 ### Assignment
-Built an real-time, progressive enhanced and responsive web application.
+Built a real-time, progressive enhanced and responsive web application.
 
 ### Target audience
 - **The public** who want to be updated with the latest scores.
@@ -59,16 +59,16 @@ Built an real-time, progressive enhanced and responsive web application.
 What are the most important cases of the users for this app?
 
 #### Must haves
-1. As a user I want to have real-time updates about a match or multiple matches that I'm interested in.
+1. As a user I want to view real-time scores about a match or multiple matches that I'm interested in.
 2. As a user I want to have an overview of matches that have been finished, are being played right now or that are upcoming.
 3. As a user I want to update the score of my (favourite) team(s).
+4. As a user I want to follow my favourite teams
 4. As a scorekeeper of a game I want to confirm the final score, so he score can be updated in the system (Leaguevine API).
 5. As a scorekeeper I want to see the matches that are relevent to me.
 
 #### Could haves
-1. As a user I want to follow my favourite teams
-2. As a user I want to be notified if my favourite team scores
-3. As a scorekeeper I want to have an overview of all the relevent teams I need to keep the score for.
+1. As a user I want to be notified if my favourite team scores
+2. As a scorekeeper I want to have an overview of all the teams that I need to keep the scores for.
 
 ### Design challenges
 During this project there were the following design challenges:
@@ -89,10 +89,10 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 ### Used design patterns
 
 #### Matches page - an overview of matches played on the current day
-**Mobile**
+**Mobile view**
 ![Live page](readme/screenshots/matches_live.png)
 
-**Desktop**
+**Desktop view**
 ![Matches live responsive](readme/screenshots/matches_live_responsive.png)
 
 #### Used design patterns
@@ -109,10 +109,12 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 
 #### Tournaments detail page
 
-**Mobile**
+**Mobile view**
+
 ![Tournament matches](readme/screenshots/tournament_matches.png)
 
-**Desktop**
+**Desktop view**
+
 ![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 
@@ -130,35 +132,67 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 #### Browser and device compatibility
 The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the school building of our university. Including an old version of Chrome for Android and the foreign UC Browser.
 
-## Changes made based on user testing and feedback:
-[Screenshot]()
+## Iterations:
+These are the iterations made after continuously testing with test subjects.
+
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Changed design pattern, brought menu back on-canvas and fixed to the bottom.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Changed position of "+" and "-" buttons, to make them easier to tap for the user.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Created a visual difference between divisions by using material design cards.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Added visual feedback when a score has been submitted.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Added visual feedback when a game has finished.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Added some information directly to the scorepage, instead of just under the info tab.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Scrolling on the tournaments page was slow, so we changed the design, which made it easier to scroll.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Added feedback to login.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Added a final score checkbox, so the scorekeeper won't accidentally submit the score as final.
 
-[Screenshot]()
+[Screenshot before]()
+
+[Screenshot after]()
+
 - Added round and tournament to info page.
 
 ## Live Demo:
