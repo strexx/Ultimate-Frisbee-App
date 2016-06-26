@@ -1,9 +1,17 @@
 # Ultimate Frisbee App (UFA)
 **This is the main README of the Ultimate Frisbee App repository.**
+The README is divided into 3 parts:
+1. About the APP
+2. Technical documentation
+3. The contributions (global)
+
+*If you want to read an in-depth README about the individual contributions that have been made for this repository of the project, follow the links below to find their README.*
 
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
+
+----
 
 ## Table of Content
 1. [The app](#the-app)
@@ -29,9 +37,7 @@
   2. [The contributors](#the-contributors)
   3. [The individual contributions](#the-individual-contributions)
 
-
 ----
-
 
 ## The app
 ![Live page](readme/screenshots/matches_live.png)
@@ -203,7 +209,6 @@ These are the iterations that's been made after continuously testing with our te
 [https://www.meesterproef.directzichtbaar.nl](http://www.meesterproef.directzichtbaar.nl)
 
 ----
-
 
 ## Technical documentation
 
@@ -412,9 +417,7 @@ nodemon app.js
 
 Open your browser and go to ``http://localhost:3010``
 
-
 ----
-
 
 ## The contributions
 "A lot of the application's functionality and structure was created as a result of a collaborative effort. The three of us communicated through appear.in and tackled most of the major functionalities as a team. We feel that our workflow and personal growth has had a lot of benefits from this way of working. Our personal development and motivation to work got a boost and in the end helped us to create an even better application."
