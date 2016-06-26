@@ -36,7 +36,7 @@
 ![Live page](readme/screenshots/matches_live.png)
 ![Match detail page](readme/screenshots/match_detail_score.png)
 
-## About the app
+### About the app
 The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of  Communication and Multimedia Design. Christian Schaffner, a frisbee fanatic and the client for this assignment, had the wish to have a mobile app that can keep scores for the Ultimate Frisbee tournaments.
 
 ### The problem
@@ -44,16 +44,16 @@ The problem that exist is the lack of solution for the public who visits the Ult
 
 The client needs to have a fast and secure digital solution to confirm and store the final scores in the Leaguevine API, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
 
-## The design problem
+### The design problem
 How can a webapp allows the client to serve real-time updates about the matches to the public and to make a
 
-## Assignment
+### Assignment
 Built an real-time, progressive enhanced and responsive web application.
 
 ### Target audience
-- The public who want to be updated with the latest scores.
-- The scorekeepers, present at the game who needs to keep score and insert those scores into the system.
-- The client who wants to have the scores stored on a digital platform and updated within the Leaguevine App.
+- **The public** who want to be updated with the latest scores.
+- **The scorekeepers** present at the game who needs to keep score and insert those scores into the system.
+- **The client** who wants to have the scores stored on a digital platform and updated within the Leaguevine App.
 
 ### Use cases
 What are the most important cases of the users for this app?
@@ -86,29 +86,34 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 - A MongoDB database is used to reduce the API calls to the highly vulnerable and slow serving Leaguevine API. The app will do a daily API request to store the matches off the Winmill tournaments and divisions of the current day in the database. Each time a score is updated, the database will be updated. If a scorekeeper confirms the final score of a match, a API post request will be done to the API to update and synchronise the API with the database.
 
 
-## Used design patterns
-### Matches page
+### Used design patterns
+
+#### Matches page - an overview of matches played on the current day
+**Mobile**
 ![Live page](readme/screenshots/matches_live.png)
 
-### Used design patterns
+**Desktop**
+![Matches live responsive](readme/screenshots/matches_live_responsive.png)
+
+#### Used design patterns
 ...
 
 ...
 
 
-### Match detail page / Score page
+#### Match detail page / Score page
 ![Match detail page](readme/screenshots/match_detail_score.png)
 
-### Tournaments page
+#### Tournaments page
 ![Tournaments](readme/screenshots/tournaments.png)
 
-### Tournaments detail page
+#### Tournaments detail page
+
+**Mobile**
 ![Tournament matches](readme/screenshots/tournament_matches.png)
 
-![Matches live responive](readme/screenshots/matches_live_responsive.png)
-
+**Desktop**
 ![Tournaments responive](readme/screenshots/tournaments_responsive.png)
-
 
 
 #### Home: An overview of games of today
@@ -117,17 +122,7 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 #### Update scores of the game I'm watching
 [Screenshots]
 
-### Watch all games in a tournament
-
-### Available offline!
-In able to serve to always serve data to the users, we've made a *Progressive WebApp*, following the Google Developers principles. That means:
-- Instant loading
-- Add to homescreen
-- Fast
-- Secure
-- Responsive
-
-Although not all functionalities are working yet, it's the first step at making the app available all the time.
+#### Watch all games in a tournament
 
 ### Testing
 ![Device Lab](readme/device-lab.png)
