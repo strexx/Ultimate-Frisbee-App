@@ -16,7 +16,8 @@
   7. [The solution](#design-challenges)
   8. [Design patterns](#design-patterns)
   9. [Testing](#testing)
-  10. [Live demo](#live-demo)
+  10. [Final result](#final-result)
+  11. [Live demo](#live-demo)
 2. [Technical documentation](#technical-documentation)
   1. [Main functionalities](#main-functionalities)
   2. [The structure](#the-structure)
@@ -89,42 +90,17 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 ### Used design patterns
 
 #### Matches page - an overview of matches played on the current day
-**Mobile view**
-![Live page](readme/screenshots/matches_live.png)
-
-**Desktop view**
-![Matches live responsive](readme/screenshots/matches_live_responsive.png)
-
-#### Used design patterns
-...
-
-...
-
 
 #### Match detail page / Score page
-![Match detail page](readme/screenshots/match_detail_score.png)
 
 #### Tournaments page
-![Tournaments](readme/screenshots/tournaments.png)
 
 #### Tournaments detail page
-
-**Mobile view**
-
-![Tournament matches](readme/screenshots/tournament_matches.png)
-
-**Desktop view**
-
-![Tournaments responive](readme/screenshots/tournaments_responsive.png)
-
-
-#### Home: An overview of games of today
-[Screenshots]
 
 #### Update scores of the game I'm watching
 [Screenshots]
 
-#### Watch all games in a tournament
+#### View all games in a tournament
 
 ### Testing
 ![Device Lab](readme/device-lab.png)
@@ -133,11 +109,7 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the school building of our university. Including an old version of Chrome for Android and the foreign UC Browser.
 
 ## Iterations:
-These are the iterations made after continuously testing with test subjects.
-
-[Screenshot before]()
-
-[Screenshot after]()
+These are the iterations that's been made after continuously testing with our test subjects.
 
 - Changed design pattern, brought menu back on-canvas and fixed to the bottom.
 
@@ -194,6 +166,33 @@ These are the iterations made after continuously testing with test subjects.
 [Screenshot after]()
 
 - Added round and tournament to info page.
+
+[Screenshot before]()
+
+[Screenshot after]()
+
+
+## Final Results
+
+## Matches page
+##### Mobile
+![Live page](readme/screenshots/matches_live.png)
+##### Desktop
+![Matches live responsive](readme/screenshots/matches_live_responsive.png)
+
+#### Match detail page / Score page
+##### Mobile
+![Match detail page](readme/screenshots/match_detail_score.png)
+
+#### Tournaments page
+##### Mobile
+![Tournaments](readme/screenshots/tournaments.png)
+
+#### Tournaments detail page
+##### Mobile
+![Tournament matches](readme/screenshots/tournament_matches.png)
+##### Desktop
+![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 ## Live Demo:
 [https://www.meesterproef.directzichtbaar.nl](http://www.meesterproef.directzichtbaar.nl)
