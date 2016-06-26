@@ -1,12 +1,13 @@
 # Ultimate Frisbee App (UFA)
-**This is the main README of the Ultimate Frisbee App repository.**
+**This is the main README of the Ultimate Frisbee App project repository.**
+
 The README is divided into 3 parts:
 
-1. About the APP
+1. About the app
 2. Technical documentation
 3. The contributions (global)
 
-*If you want to read an in-depth README about the individual contributions that have been made for this repository of the project, follow the links below to find their README.*
+*If you want to read an in-depth README about the individual contributions that have been made for this repository, please follow the links below to find the README.*
 
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
