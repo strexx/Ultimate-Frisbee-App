@@ -1,6 +1,7 @@
 # Ultimate Frisbee App (UFA)
 **This is the main README of the Ultimate Frisbee App repository.**
 The README is divided into 3 parts:
+
 1. About the APP
 2. Technical documentation
 3. The contributions (global)
