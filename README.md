@@ -1,5 +1,5 @@
 # Ultimate Frisbee App (UFA)
-**This is the main README of the Ultimate Frisbee APP repository.**
+**This is the main README of the Ultimate Frisbee App repository.**
 
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
@@ -9,7 +9,7 @@
 1. [The app](#the-app)
   1. [About the app](#about-the-app)
   2. [The problem](#the-problem)
-  3. [The design problem](#the-design-problem)
+  3. [Design problem](#design-problem)
   4. [Target audience](#target-audience)
   5. [Use cases](#use-cases)
   6. [Design challenges](#design-challenges)
@@ -44,7 +44,7 @@ The problem that exist is the lack of solution for the public who visits the Ult
 
 The client needs to have a fast and secure digital solution to confirm and store the final scores in the Leaguevine API, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
 
-### The design problem
+### Design problem
 How can a webapp allows the client to serve real-time updates about the matches to the public and to make a
 
 ### Assignment
@@ -391,7 +391,7 @@ Open your browser and go to ``http://localhost:3010``
 - [Slack](http://www.slack.com)
 - [Harvest](http://www.harvest.com)
 
-#### Tasks
+#### Overview of tasks done each week (in dutch)
 ![Trello-board](readme/screenshots/trello.png)
 
 ## The Contributors
