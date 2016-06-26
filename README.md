@@ -90,17 +90,22 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 ### Used design patterns
 
 #### Matches page - an overview of matches played on the current day
+![Screenshots showing the patterns]()
 
 #### Match detail page / Score page
+![Screenshots showing the patterns]()
 
 #### Tournaments page
+![Screenshots showing the patterns]()
 
 #### Tournaments detail page
+![Screenshots showing the patterns]()
 
 #### Update scores of the game I'm watching
-[Screenshots]
+![Screenshots showing the patterns]()
 
 #### View all games in a tournament
+![Screenshots showing the patterns]()
 
 ### Testing
 ![Device Lab](readme/device-lab.png)
@@ -113,63 +118,63 @@ These are the iterations that's been made after continuously testing with our te
 
 - Changed design pattern, brought menu back on-canvas and fixed to the bottom.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Changed position of "+" and "-" buttons, to make them easier to tap for the user.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Created a visual difference between divisions by using material design cards.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Added visual feedback when a score has been submitted.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Added visual feedback when a game has finished.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Added some information directly to the scorepage, instead of just under the info tab.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Scrolling on the tournaments page was slow, so we changed the design, which made it easier to scroll.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Added feedback to login.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Added a final score checkbox, so the scorekeeper won't accidentally submit the score as final.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 - Added round and tournament to info page.
 
-[Screenshot before]()
+![Screenshot before]()
 
-[Screenshot after]()
+![Screenshot after]()
 
 
 ## Final Results
