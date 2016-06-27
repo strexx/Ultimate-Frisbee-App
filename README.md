@@ -7,7 +7,7 @@ The README is divided into 3 parts:
 2. Technical documentation
 3. The contributions (global)
 
-*If you want to read an in-depth README about the individual contributions that have been made for this repository, please follow the links below to find the README.*
+*This README has been put together by the three contributors for this repository. Each of us had our share contributing to this README and we worked like a team to set up the main functionalities. If you want to read an in-depth README about the individual contributions that have been made for this repository, please follow the links below.*
 
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
@@ -15,7 +15,7 @@ The README is divided into 3 parts:
 
 ----
 
-## Table of Content
+## Table of content
 1. [The app](#the-app)
   1. [About the app](#about-the-app)
   2. [The problem](#the-problem)
@@ -49,35 +49,41 @@ The README is divided into 3 parts:
 The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of  Communication and Multimedia Design. Christian Schaffner, a frisbee fanatic and the client for this assignment, had the wish to have a mobile app that can keep scores for the Ultimate Frisbee tournaments.
 
 ### The problem
-The problem that exist is the lack of solution for the public who visits the Ultimate Frisbee tournaments that don't have a good resource to continously be updated with the latest scores in the tournaments they visit. They also doesn't have good way to showcase where the matches of a tournament is being held.
+For the public viewers of a Ultimate Frisbee tournament it's difficult to keep tab on when and where a team is playing and what the scores are. There isn't a good resource available to be updated continuously with the latest scores.
 
-The client needs to have a fast and secure digital solution to confirm and store the final scores in the Leaguevine API, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
+For the teams that are playing multiple games a day, it's important to know when and where they are playing.
+
+For the organization of the tournaments there needs to have a fast and secure  solution to confirm and store the (final) scores in the Leaguevine system, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
 
 ### Design problem
-*How can a mobile web application allow the client to receive the final scores of a finished match instantly and at the same time serve the public viewers real-time (score) updates about the matches?*
+*How can a mobile web application allow the organization of the Ultimate Frisbee tournaments to receive the (final) scores of a finished match instantly and at the same time serve the public viewers and the teams with real-time (score) updates and other info about the matches during a tournament.*
 
 ### Assignment
 Built a real-time, progressive enhanced and responsive web application.
 
 ### Target audience
 - **The public** who want to be updated with the latest scores.
-- **The scorekeepers** present at the game who needs to keep score and insert those scores into the system.
+- **The teams** who wants to be updated with the latest scores and know where and when they are playing.
+- **The scorekeepers** who are present at the game and needs to keep score and insert those scores into the system.
 - **The client** who wants to have the scores stored on a digital platform and updated within the Leaguevine App.
 
 ### Use cases
 What are the most important cases of the users for this app?
 
 #### Must haves
-1. As a user I want to view real-time scores about a match or multiple matches that I'm interested in.
-2. As a user I want to have an overview of matches that have been finished, are being played right now or that are upcoming.
-3. As a user I want to update the score of my (favourite) team(s).
+1. As a user I want to have real-time score updates about a match or multiple matches that I'm interested in.
+2. As a user I want to have an overview of the matches that are being played during the tournament and on which field.
+3. As a user I want to update the scores of my (favourite) team(s).
 4. As a user I want to follow my favourite teams
 4. As a scorekeeper of a game I want to confirm the final score, so he score can be updated in the system (Leaguevine API).
 5. As a scorekeeper I want to see the matches that are relevent to me.
 
 #### Could haves
-1. As a user I want to be notified if my favourite team scores
-2. As a scorekeeper I want to have an overview of all the teams that I need to keep the scores for.
+1. As a user I want to be notified if a (favourite) team scores
+2. As a user I want to view the scores on a public screen.
+2. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores for during the tournament.
+3. As a team I want to fill in my sprit scores.
+4. As a client I want to receive the spirit scores into the Leaguevine API.
 
 ### Design challenges
 During this project there were the following design challenges:
@@ -86,13 +92,15 @@ During this project there were the following design challenges:
 - The Leaguevine API, which is very slow, can be overloaded if there are many requests to the server.
 
 ### The design solution
-A mobile-first, responsive, real-time, progressive webapplication made in **Node.js**, **socket.io** and **MongoDB**. *To make the web app a minimal viable product, the app will only display the games of the Windmill tournaments, an event that's being held every year.*
+A mobile-first, responsive, real-time, **progressive webapplication** made in **Node.js** and with the use of **socket.io** and **MongoDB**. *To make the web app a minimal viable product, the app will only display the games of the Windmill tournaments, an event that's being held every year.*
 
 - Node.js is used to keep the application lightweighted, fast, and highly customizeable. It also allows us to make the application progressive enhanced, so viewable to all kinds of users. Some examples of cases would be to have no JavaScript enabled, slow to no internet connection or using a screenreader. It also allows us to make the app real-time, by using a websockets library that can communicate between the client and the server with only the use of JavaScript.
 
 - Socket.io is the websockets JavaScript library used to make the app update the scores real-time to all the users screen without the need to constantly refreshing the page.
 
-- A MongoDB database is used to reduce the API calls to the highly vulnerable and slow serving Leaguevine API. The app will do a daily API request to store the matches off the Winmill tournaments and divisions of the current day in the database. Each time a score is updated, the database will be updated. If a scorekeeper confirms the final score of a match, a API post request will be done to the API to update and synchronise the API with the database.
+- MongoDB is used to create a database to reduce the API calls to the highly vulnerable and slow serving Leaguevine API. The app will do a daily API request to store the matches off the Windmill tournaments and divisions of the current day in the database. Each time a score is updated, the database will be updated. If a scorekeeper confirms the final score of a match, a API post request will be done to the API to update and synchronise the API with the database.
+
+- Progressive webapp is used to make the application work offline, with the Service Worker. If the user has a bad internet connection, he will still be able to visit the webapp and see the most recent scores.
 
 
 ### Used design patterns
@@ -117,11 +125,18 @@ A mobile-first, responsive, real-time, progressive webapplication made in **Node
 
 ### Testing
 ![Device Lab](readme/device-lab.png)
-
-#### Browser and device compatibility
 The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the school building of our university. Including an old version of Chrome for Android and the foreign UC Browser.
 
-## Iterations:
+The application was also tested with 5 test subjects. See below all the found issues and iterations.
+
+#### Browser and device compatibility
+
+#### iPad
+1. The buttons would still show the standard IOS buttons, instead of the buttons we custom created in CSS.
+2. The tabs would not always work
+3. The Tournaments overview page showing all the available tournaments would scroll laggy
+
+#### Iterations:
 These are the iterations that's been made after continuously testing with our test subjects.
 
 - Changed design pattern, brought menu back on-canvas and fixed to the bottom.
@@ -185,21 +200,20 @@ These are the iterations that's been made after continuously testing with our te
 ![Screenshot after]()
 
 
-## Final Results
+## Final Result
 
-## Matches page
-##### Mobile: Matches + Match (score) detail
+#### Mobile: Matches + Match (score) detail
 ![Live page](readme/screenshots/matches_live.png)
 ![Match detail page](readme/screenshots/match_detail_score.png)
 
-##### Desktop: Matches
+#### Desktop: Matches
 ![Matches live responsive](readme/screenshots/matches_live_responsive.png)
 
 #### Mobile: Tournaments overview + Tournament detail
 ![Tournaments](readme/screenshots/tournaments.png)
 ![Tournament matches](readme/screenshots/tournament_matches.png)
 
-##### Desktop: Tournaments
+#### Desktop: Tournaments
 ![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 ## Live Demo:
@@ -280,7 +294,6 @@ These are the iterations that's been made after continuously testing with our te
 ├── readme.md                                   // This readme file
 ```
 
-
 ### Features and packages
 
 #### NPM packages
@@ -301,7 +314,6 @@ path          		 | 0.12.7  | Provides utilities for working with file and direct
 request              | 2.72.0  | Simplified HTTP request client.
 session-file-store   | 0.2.0   | Session file store is a provision for storing session data in the session
 socket.io            | 1.4.6   | Node.js realtime framework server
-
 
 ### Feature list
 
