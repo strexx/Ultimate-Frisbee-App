@@ -188,23 +188,18 @@ These are the iterations that's been made after continuously testing with our te
 ## Final Results
 
 ## Matches page
-##### Mobile
+##### Mobile: Matches + Match (score) detail
 ![Live page](readme/screenshots/matches_live.png)
-##### Desktop
-![Matches live responsive](readme/screenshots/matches_live_responsive.png)
-
-#### Match detail page / Score page
-##### Mobile
 ![Match detail page](readme/screenshots/match_detail_score.png)
 
-#### Tournaments page
-##### Mobile
-![Tournaments](readme/screenshots/tournaments.png)
+##### Desktop: Matches
+![Matches live responsive](readme/screenshots/matches_live_responsive.png)
 
-#### Tournaments detail page
-##### Mobile
+#### Mobile: Tournaments overview + Tournament detail
+![Tournaments](readme/screenshots/tournaments.png)
 ![Tournament matches](readme/screenshots/tournament_matches.png)
-##### Desktop
+
+##### Desktop: Tournaments
 ![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 ## Live Demo:
