@@ -183,14 +183,16 @@ body {
     border-radius: 5px;
     background: #ffffff;
     border-top: 10px solid #f04b51;
+    position: relative;
 }
 .matches__division__title {
     font-weight: 300;
-    font-size: 2em;
-    padding: 0.5em;
-    padding-left: .5em;
-    padding-bottom: 0.1em;
+    font-size: 1.8em;
+    padding: .5em;
     color: #434343;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: solid 2px #ddd;
 }
 .matches__items a {
     padding: 1em 1.2em 1.8em;
@@ -215,7 +217,7 @@ body {
 }
 .matches__item__name {
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 300;
 }
 .matches__item__score {
@@ -824,7 +826,7 @@ body {
 
 @media (min-width: 70em) {
     body {
-        font-size: 95%;
+        font-size: 100%;
 
     }
 
@@ -855,6 +857,12 @@ body {
         flex: 0 1 30em;
         height: 82vh;
         overflow-y: scroll;
+        position: relative;
+    }
+
+    .matches__division__title {
+        position: fixed;
+        width: 30em;
     }
 
     .footer__menu {
