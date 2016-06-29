@@ -41,7 +41,9 @@
 ## STRUCTURE
 --------------------------------------------------------------*/
 
-body {}
+body {
+  font-size: 85%;
+}
 #wrapper {
     min-height: 100vh;
     overflow: hidden;
@@ -151,6 +153,7 @@ body {}
     margin: 0 auto 0.1em;
     fill: grey;
     height: 2.2em;
+    width: auto;
 }
 .footer__menu__link--active .footer__menu__svg {
     fill: #f04b51;
@@ -809,6 +812,50 @@ body {}
         width: 100%;
         opacity: 1;
     }
+}
+
+
+/*--------------------------------------------------------------
+# Favourites
+--------------------------------------------------------------*/
+.favourite-btn {
+  position: relative;
+  display: flex;
+  background: transparent;
+  width: 5em;
+  height: 5em;
+  border: 3px solid #434343;
+  border-radius: 50%;
+}
+
+.favourite-btn.active {
+  background: rgba(231, 76, 60, 1);
+}
+
+#heart {
+  position: relative;
+  width: 2em;
+  height: 2em;
+  margin: auto;
+}
+
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    width: 1.5em;
+    height: 2.5em;
+    background: #f04b51;
+    -moz-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0% 100%;
+}
+
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 85% 80%;
 }
 
 /*--------------------------------------------------------------
