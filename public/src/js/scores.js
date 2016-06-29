@@ -3,7 +3,7 @@
 *********************************************************/
 UFA.scores = (() => {
 
-    var socket = io.connect("http://146.185.135.172:3010"),
+    var socket = io.connect("https://meesterproef.directzichtbaar.nl"),
         submit = document.querySelector("#submit"),
         btns = document.getElementsByTagName("button"),
         inputs = document.getElementsByClassName("match__team__info__input"),
