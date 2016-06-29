@@ -105,6 +105,13 @@ body {
     border-bottom: 4px solid #f04b51;
 }
 
+.header__message {
+  text-align: center;
+  background: #f04b51;
+  padding: 1em;
+  color: white;
+}
+
 /*--------------------------------------------------------------
 ## FOOTER
 --------------------------------------------------------------*/
@@ -215,7 +222,8 @@ body {
 }
 
 .matches__items a {
-    padding: 1em 1.2em 1.8em;
+    padding: 0.9em;
+    padding-right: 0.3em;
     color: inherit;
     display: flex;
     flex-direction: row;
@@ -240,13 +248,21 @@ body {
 }
 
 .matches__item__name {
-    width: 100%;
+    width: 9em;
     font-size: 1em;
     font-weight: 300;
 }
 
+.matches__item__name span {
+    display: block;
+    width: 7em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .matches__item__score {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 500;
     text-align: center;
 }
@@ -256,7 +272,7 @@ body {
     margin: 0.7em 0 0;
 }
 .matches__item__info__time {
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-weight: 500;
     color: #127ea5;
     margin: 0 0 0.35em;
@@ -272,7 +288,7 @@ body {
 
 .matches__item__arrow__right {
   width: 1.5em;
-  margin-top: 1em;
+  margin: 1em 0 0 0;
 }
 
 .matches__divider {
@@ -297,7 +313,7 @@ body {
 
 .matches__item__table__row {
   height: 2em;
-  width: 15em;
+  width: 13em;
   display: block;
 }
 
@@ -1006,14 +1022,6 @@ body {
         width: inherit;
         background: #fff;
         z-index: 999;
-    }
-
-    .matches__item__name span {
-        display: block;
-        width: 10em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .tournaments__items {
