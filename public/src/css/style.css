@@ -153,6 +153,7 @@ body {
     margin: 0 auto 0.1em;
     fill: grey;
     height: 2.2em;
+    width: auto;
 }
 .footer__menu__link--active .footer__menu__svg {
     fill: #f04b51;
