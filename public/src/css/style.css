@@ -943,7 +943,7 @@ body {
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES
 --------------------------------------------------------------*/
-@media (min-width: 45em) {
+@media (min-width: 47em) {
     body {
         font-size: 90%;
 
@@ -970,7 +970,7 @@ body {
 
 }
 
-@media (min-width: 70em) {
+@media (min-width: 60em) {
     body {
         font-size: 100%;
 
@@ -978,7 +978,7 @@ body {
 
     #header, #main {
         float: right;
-        width: 92%;
+        width: calc(100% - 7em);;
     }
 
     #main {
@@ -1037,7 +1037,7 @@ body {
     .footer__menu {
         margin-bottom: 0;
         height: 100%;
-        width: 8%;
+        width: 7em;
         background: rgba(67, 67, 67, 01);
     }
     .footer__menu__row {
@@ -1070,22 +1070,13 @@ body {
 
     .footer__menu__link--active,
     .footer__menu__link:focus,
+    .footer__menu__link:focus .footer__menu__svg,
     .footer__menu__link--active .footer__menu__svg {
       border: none;
       color: #000;
       fill: #000;
       background: #ececec;
-    }
-
-    .footer__menu__link--active::after {
-      content: '';
-      width: 1em;
-      right: -0.2em;
-      bottom: 4.3em;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 10px solid #000;
-      position: absolute;
+      font-weight: 300;
     }
 
     .footer__menu__svg {
