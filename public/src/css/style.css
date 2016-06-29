@@ -977,12 +977,11 @@ body {
 
     .tournaments__item {
         text-align: center;
-        padding: 7em 0;
+        padding: 8em 0;
         position: relative;
         font-size: 1.5em;
         position: relative;
         border-bottom: 0;
-        height: 70vh;
     }
 
     .footer__menu {
