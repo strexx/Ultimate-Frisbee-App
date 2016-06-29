@@ -235,15 +235,15 @@ router.post('/match/score', function(req, res) {
                 } else {
                     updateMatchFromApi(gameID);
                     console.log("Scorekeeper " + userID + " added new score");
-                    var destination = '?message=Match is succesfully updated with final score';
-                    io.emit('redirect', destination);
+                    var destination = '/match/' + gameID + '/?message=Match is succesfully updated with final score';
+                    res.redirect(destination);
                 }
             });
 
         } else {
             console.log("Regular user added new score");
-            var destination = '?message=Match is succesfully updated';
-            io.emit('redirect', destination);
+            var destination = '/match/' + gameID + '?message=Match is succesfully updated';
+            res.redirect(destination);
         }
     });
 });
