@@ -1007,6 +1007,18 @@ body {
         align-items: flex-start;
     }
 
+    .matches__item__table__row {
+        width: 16em;
+    }
+
+    .matches__item__name {
+        width: 15em;
+    }
+
+    .matches__item__name span {
+        width: 10em;
+    }
+
     .matches__division {
         width: 30em;
         position: relative;
