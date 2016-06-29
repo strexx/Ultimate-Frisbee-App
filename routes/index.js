@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     fs = require('fs'),
     request = require('request'),
+    cookieParser = require('cookie-parser'),
     session = require('express-session'),
     dateFormat = require('dateformat'),
     unqiueKeys = require('../modules/uniqueKeys.js')(),
@@ -117,7 +118,7 @@ router.get('/', function(req, res, next) {
         // push objects in new array
         matchesfinal.push({
             "liveCMD": liveCMD
-        },{
+        }, {
             "liveWomen": liveWomen
         }, {
             "liveMixed": liveMixed
@@ -165,7 +166,7 @@ router.get('/match/:gameID', function(req, res) {
                 match.start_time = dateFormat(match.start_time, "HH:MM");
                 matchObject = match;
                 if (matchObject.winner_id)
-                  winner = matchObject.winner_id;
+                    winner = matchObject.winner_id;
             } else {
                 callback();
             }
@@ -197,7 +198,7 @@ router.get('/tournaments', function(req, res) {
         collectionCursor.each(function(err, match) {
             if (match !== null) {
 
-                if (match.tournament !== null){
+                if (match.tournament !== null) {
                     var tournament = match.tournament;
                     var tournamentID = tournament.id;
                     var tournamentName = tournament.name;
@@ -352,7 +353,7 @@ router.get('/tournament/:tournamentID', function(req, res) {
 
         tournamentRounds = tournamentRoundsArray;
 
-        setTimeout(function () {
+        setTimeout(function() {
             res.render('tournament', {
                 title: 'Tournament',
                 matches: tournamentMatches,
@@ -390,5 +391,40 @@ router.get('/logout', function(req, res) {
     delete req.session.user_id;
     res.redirect('/login');
 });
+
+router.get('/favorites', function(req, res, next) {
+    var favoritesCookie = JSON.parse(req.cookies.matchID),
+        favMatches = [],
+        favIDArray = [];
+
+        for (var i=0; i<favoritesCookie.length; i++) {
+             favIDArray.push(parseInt(favoritesCookie[i]));
+        }
+
+    var findMatches = function(db, callback) {
+            var collectionCursor = db.collection('matches').find({
+                id: {$in: favIDArray}
+            });
+
+            collectionCursor.each(function(err, match) {
+
+              if (match != null) {
+                  match.start_time = dateFormat(match.start_time, "HH:MM");
+                  favMatches.push(match);
+              } else {
+                  callback();
+              }
+            });
+    };
+
+    findMatches(db, function() {
+      console.log(favMatches.length);
+        res.render('favorites', {
+            title: 'Favorites',
+            items: favMatches
+        });
+    });
+});
+
 
 module.exports = router;

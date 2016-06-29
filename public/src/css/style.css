@@ -165,6 +165,7 @@ body {
     margin: 0 auto 0.1em;
     fill: grey;
     height: 2.2em;
+    width: auto;
 }
 
 .footer__menu__link--active .footer__menu__svg {
@@ -204,7 +205,9 @@ body {
 .matches__division__title {
     font-weight: 300;
     font-size: 1.6em;
-    padding: .5em;
+    padding: 0.5em;
+    padding-left: 0.7em;
+    padding-bottom: 0.1em;
     color: #434343;
     text-transform: uppercase;
     text-align: center;
@@ -212,7 +215,8 @@ body {
 }
 
 .matches__items a {
-    padding: 1em 1.2em 1.8em;
+    padding: 0.9em;
+    padding-right: 0.3em;
     color: inherit;
     display: flex;
     flex-direction: row;
@@ -233,17 +237,25 @@ body {
 }
 
 .matches__item__shirt__svg {
-    width: 30px;
+    width: 1.5em;
 }
 
 .matches__item__name {
-    width: 100%;
-    font-size: 1.2em;
+    width: 9em;
+    font-size: 1em;
     font-weight: 300;
 }
 
+.matches__item__name span {
+    display: block;
+    width: 7em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .matches__item__score {
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 500;
     text-align: center;
 }
@@ -253,10 +265,10 @@ body {
     margin: 0.7em 0 0;
 }
 .matches__item__info__time {
-    font-size: 2em;
+    font-size: 1.4em;
     font-weight: 500;
     color: #127ea5;
-    margin: 0 0 0.1em;
+    margin: 0 0 0.35em;
 }
 
 .matches__item__info__field {
@@ -265,6 +277,11 @@ body {
     font-weight: 600;
     font-size: 0.9em;
     margin: 0;
+}
+
+.matches__item__arrow__right {
+  width: 1.5em;
+  margin: 1em 0 0 0;
 }
 
 .matches__divider {
@@ -288,7 +305,9 @@ body {
 }
 
 .matches__item__table__row {
-    height: 2em;
+  height: 2em;
+  width: 13em;
+  display: block;
 }
 
 .ranking__item__shirt {
@@ -319,7 +338,7 @@ body {
 }
 
 .ranking__item__info__time {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 500;
     color: #127ea5;
     margin: 0 0 0.1em;
@@ -886,10 +905,54 @@ body {
     }
 }
 
+
+/*--------------------------------------------------------------
+# Favourites
+--------------------------------------------------------------*/
+.favourite-btn {
+  position: relative;
+  display: flex;
+  background: transparent;
+  width: 5em;
+  height: 5em;
+  border: 3px solid #434343;
+  border-radius: 50%;
+}
+
+.favourite-btn.active {
+  background: rgba(231, 76, 60, 1);
+}
+
+#heart {
+  position: relative;
+  width: 2em;
+  height: 2em;
+  margin: auto;
+}
+
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    width: 1.5em;
+    height: 2.5em;
+    background: #f04b51;
+    -moz-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0% 100%;
+}
+
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 85% 80%;
+}
+
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES
 --------------------------------------------------------------*/
-@media (min-width: 45em) {
+@media (min-width: 47em) {
     body {
         font-size: 90%;
 
@@ -901,7 +964,7 @@ body {
         flex-wrap: wrap;
         padding: 2em 1.5em;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: stretch;
         overflow-x: scroll;
     }
 
@@ -916,7 +979,7 @@ body {
 
 }
 
-@media (min-width: 70em) {
+@media (min-width: 60em) {
     body {
         font-size: 100%;
 
@@ -924,7 +987,7 @@ body {
 
     #header, #main {
         float: right;
-        width: 92%;
+        width: calc(100% - 7em);;
     }
 
     #main {
@@ -932,13 +995,9 @@ body {
     }
 
     .matches__items {
-        display: flex;
-        flex-direction: row;
         flex-wrap: nowrap;
-        padding: 2em 1.5em;
         justify-content: space-between;
         align-items: flex-start;
-        overflow-x: scroll;
     }
 
     .matches__division {
@@ -949,21 +1008,13 @@ body {
 
     .matches__container {
         overflow-y: scroll;
-        height: 62vh;
+        height: 65vh;
     }
 
     .matches__division__title {
         width: inherit;
         background: #fff;
         z-index: 999;
-    }
-
-    .matches__item__name span {
-        display: block;
-        width: 10em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .tournaments__items {
@@ -987,7 +1038,7 @@ body {
     .footer__menu {
         margin-bottom: 0;
         height: 100%;
-        width: 8%;
+        width: 7em;
         background: rgba(67, 67, 67, 01);
     }
     .footer__menu__row {
@@ -1020,22 +1071,13 @@ body {
 
     .footer__menu__link--active,
     .footer__menu__link:focus,
+    .footer__menu__link:focus .footer__menu__svg,
     .footer__menu__link--active .footer__menu__svg {
       border: none;
       color: #000;
       fill: #000;
       background: #ececec;
-    }
-
-    .footer__menu__link--active::after {
-      content: '';
-      width: 1em;
-      right: -0.2em;
-      bottom: 4.3em;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 10px solid #000;
-      position: absolute;
+      font-weight: 300;
     }
 
     .footer__menu__svg {
