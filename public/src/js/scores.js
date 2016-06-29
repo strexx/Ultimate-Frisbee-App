@@ -46,7 +46,7 @@ UFA.scores = (() => {
     function changeHomeScores() {
       socket.on("dbupdate", function(json) {
           var data = JSON.parse(json);
-              
+
           // Get new scores
           var updateScoreHome1 = data.team_1_score,
               updateScoreHome2 = data.team_2_score,
