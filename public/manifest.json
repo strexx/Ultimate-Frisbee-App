@@ -3,18 +3,14 @@
   "short_name": "UFA",
   "icons": [{
       "src": "src/img/icons/apple-touch-icon-72x72.png",
-      "sizes": "57x57",
-      "type": "image/png"
-    }, {
-      "src": "src/img/icons/apple-touch-icon-76x76.png",
       "sizes": "72x72",
       "type": "image/png"
     }, {
-      "src": "src/img/icons/apple-touch-icon-114x114.png",
+      "src": "src/img/icons/apple-touch-icon-76x76.png",
       "sizes": "76x76",
       "type": "image/png"
     }, {
-      "src": "src/img/icons/apple-touch-icon-120x120.png",
+      "src": "src/img/icons/apple-touch-icon-114x114.png",
       "sizes": "114x114",
       "type": "image/png"
     }, {
