@@ -946,7 +946,7 @@ body {
         flex-wrap: wrap;
         padding: 2em 1.5em;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: stretch;
         overflow-x: scroll;
     }
 
@@ -977,13 +977,9 @@ body {
     }
 
     .matches__items {
-        display: flex;
-        flex-direction: row;
         flex-wrap: nowrap;
-        padding: 2em 1.5em;
         justify-content: space-between;
         align-items: flex-start;
-        overflow-x: scroll;
     }
 
     .matches__division {
@@ -994,7 +990,7 @@ body {
 
     .matches__container {
         overflow-y: scroll;
-        height: 62vh;
+        height: 65vh;
     }
 
     .matches__division__title {
