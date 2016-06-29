@@ -105,6 +105,13 @@ body {
     border-bottom: 4px solid #f04b51;
 }
 
+.header__message {
+  text-align: center;
+  background: #f04b51;
+  padding: 1em;
+  color: white;
+}
+
 /*--------------------------------------------------------------
 ## FOOTER
 --------------------------------------------------------------*/
