@@ -40,10 +40,10 @@
 /*--------------------------------------------------------------
 ## STRUCTURE
 --------------------------------------------------------------*/
-
 body {
-  font-size: 85%;
+    font-size: 85%;
 }
+
 #wrapper {
     min-height: 100vh;
     overflow: hidden;
@@ -54,19 +54,21 @@ body {
     -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 }
+
 #header {
     z-index: 1;
 }
+
 #main {
     display: block;
     margin-bottom: 75px;
 }
+
 #footer {}
 
 /*--------------------------------------------------------------
 ## HEADER
 --------------------------------------------------------------*/
-
 .header__title {
     font-weight: 300;
     letter-spacing: 5px;
@@ -76,6 +78,7 @@ body {
     text-align: center;
     text-transform: uppercase;
 }
+
 .header__tab__link {
     display: block;
     color: grey;
@@ -87,14 +90,17 @@ body {
     width: 100%;
     border-bottom: 4px solid #cecaca;
 }
+
 .header__tab__link, .footer__menu__link {
     transition: border .4s ease-in-out;
 }
+
 .header__tab__link--active {
     color: #f04b51;
     font-weight: 600;
     border-bottom: 4px solid #f04b51;
 }
+
 .header__tab__link--active:focus {
     border-bottom: 4px solid #f04b51;
 }
@@ -102,7 +108,6 @@ body {
 /*--------------------------------------------------------------
 ## FOOTER
 --------------------------------------------------------------*/
-
 .footer__menu {
     margin-bottom: 0;
     bottom: 0;
@@ -111,6 +116,7 @@ body {
     background-color: #f9f9f9;
     /*box-shadow: 0 11px 11px 12px RGBA(67,67,67,.5);*/
 }
+
 .footer__menu__row, .header__tabs__row {
     list-style-type: none;
     margin: 0;
@@ -120,10 +126,12 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
+
 .footer__menu__list, .header__tab__list {
     text-align: center;
     width: 33.33%;
 }
+
 .footer__menu__link {
     display: inline-block;
     color: #aaa;
@@ -135,13 +143,16 @@ body {
     width: 100%;
     border-top: 4px solid #cecaca;
 }
+
 .footer__menu__link:hover {
     background-color: #ececec;
     background: #ececec;
 }
+
 .footer__menu__link:focus {
     border-top: 4px solid #f04b51;
 }
+
 .footer__menu__link--active {
     color: #f04b51;
     font-weight: 400;
@@ -149,18 +160,22 @@ body {
     font-weight: 600;
     border-top: 4px solid #f04b51;
 }
+
 .footer__menu__svg {
     margin: 0 auto 0.1em;
     fill: grey;
     height: 2.2em;
     width: auto;
 }
+
 .footer__menu__link--active .footer__menu__svg {
     fill: #f04b51;
 }
+
 .footer__menu__text {
     margin: 0.2em 0 0;
 }
+
 .fallback_icon {
     margin: 0 auto .1em;
     fill: grey;
@@ -176,24 +191,29 @@ body {
 /*--------------------------------------------------------------
 ### MATCHES [HOME]
 --------------------------------------------------------------*/
-
 .matches__division {
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16), 0 3px 4px rgba(0, 0, 0, 0.23);
     width: 95%;
-    margin: auto;
+    margin: 0 auto;
     margin-top: 1em;
     border-radius: 5px;
     background: #ffffff;
     border-top: 10px solid #f04b51;
+    position: relative;
 }
+
 .matches__division__title {
     font-weight: 300;
-    font-size: 2em;
+    font-size: 1.6em;
     padding: 0.5em;
     padding-left: 0.7em;
     padding-bottom: 0.1em;
     color: #434343;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: solid 2px #ddd;
 }
+
 .matches__items a {
     padding: 1em 1.2em 1.8em;
     color: inherit;
@@ -201,30 +221,36 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
+
 .matches__item__table {
     width: 70%;
 }
 .matches__item__table__row {
     height: 2em;
 }
+
 .matches__item__shirt {
     position: relative;
     padding-right: .7em;
     top: 0.4em;
 }
+
 .matches__item__shirt__svg {
     width: 1.5em;
 }
+
 .matches__item__name {
     width: 100%;
     font-size: 1em;
     font-weight: 300;
 }
+
 .matches__item__score {
     font-size: 1.1em;
     font-weight: 500;
     text-align: center;
 }
+
 .matches__item__info {
     position: relative;
     margin: 0.7em 0 0;
@@ -235,6 +261,7 @@ body {
     color: #127ea5;
     margin: 0 0 0.35em;
 }
+
 .matches__item__info__field {
     text-align: center;
     text-transform: uppercase;
@@ -256,7 +283,6 @@ body {
 }
 
 /* RANKING PAGE */
-
 .ranking__item {
     padding: 1em 1.2em 1.8em;
     color: inherit;
@@ -264,42 +290,51 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
+
 .ranking__item__table {
     width: 70%;
 }
+
 .matches__item__table__row {
   height: 2em;
   width: 15em;
   display: block;
 }
+
 .ranking__item__shirt {
     position: relative;
     padding-right: .7em;
     top: 0.4em;
 }
+
 .ranking__item__shirt__svg {
     width: 30px;
 }
+
 .ranking__item__name {
     width: 100%;
     font-size: 1.3em;
     font-weight: 300;
 }
+
 .ranking__item__score {
     font-size: 1.3em;
     font-weight: 500;
     text-align: center;
 }
+
 .ranking__item__info {
     position: relative;
     margin: 1.2em 0 0;
 }
+
 .ranking__item__info__time {
     font-size: 1.5em;
     font-weight: 500;
     color: #127ea5;
     margin: 0 0 0.1em;
 }
+
 .ranking__item__info__field {
     text-align: center;
     text-transform: uppercase;
@@ -307,6 +342,7 @@ body {
     font-size: 0.9em;
     margin: 0;
 }
+
 .ranking__divider {
     height: 1px;
     color: grey;
@@ -322,11 +358,12 @@ body {
 /*--------------------------------------------------------------
 #### MATCH [SCORES]
 --------------------------------------------------------------*/
-
 .match__items {}
+
 .match__item {
     padding: 1em;
 }
+
 .match__item__teams {
     width: 100%;
     margin: 2em 0 0;
@@ -335,6 +372,7 @@ body {
     justify-content: space-around;
     text-align: center;
 }
+
 .match__item__team {
     font-family: Lato, Helvetica neue, sans-serif;
     width: 47%;
@@ -343,6 +381,7 @@ body {
     border-radius: 22px;
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16), 0 3px 4px rgba(0, 0, 0, 0.23);
 }
+
 .match__item__team__button {
     width: 100%;
     font-weight: 700 !important;
@@ -355,19 +394,23 @@ body {
     box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
     transition: box-shadow 0.1s ease-out, color 0.1s ease;
 }
+
 .match__item__team__button:hover {
     color: #fff;
     border: 2px solid rgba(49, 48, 43, 0.3);
     box-shadow: inset 0 0 0 10em rgba(49, 48, 43, 0.3);
 }
+
 .match__item__team__button__minus {
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
 }
+
 .match__item__team__button__plus {
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
 }
+
 .match__item__team__info {
     display: flex;
     flex-direction: column;
@@ -375,18 +418,21 @@ body {
     justify-content: center;
     padding-top: 2em;
 }
+
 .match__item__team__info__name {
     font-size: 1.5em;
     text-transform: uppercase;
     height: 2em;
     text-align: center;
 }
+
 .match__item__team__info__score {
     font-weight: 300;
     font-size: 4em;
     margin-bottom: 0.3em;
     padding: 0.2em 0;
 }
+
 .match__item__team__info__time {
     font-size: 1.4em;
     font-weight: 600;
@@ -394,6 +440,7 @@ body {
     height: 1em;
     margin-bottom: 1.3em;
 }
+
 .match__item__team__info__field {
     font-size: 1.4em;
     font-weight: 600;
@@ -401,6 +448,7 @@ body {
     height: 1em;
     margin-bottom: 1.3em;
 }
+
 .match__team__info__input {
     border: 1px solid rgba(49, 48, 43, .3);
     color: #000;
@@ -411,7 +459,6 @@ body {
 }
 
 /* Submit */
-
 .match__item__submit {
     display: flex;
     flex-direction: column;
@@ -419,6 +466,7 @@ body {
     text-align: center;
     width: 100%;
 }
+
 .match__item__submit__input {
     font-family: 'OpenSansBold', sans-serif;
     font-weight: bold;
@@ -438,15 +486,18 @@ body {
     box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
     transition: box-shadow 0.1s ease-out, color 0.1s ease;
 }
+
 .match__item__submit__input:hover {
     box-shadow: inset 0 0 0 10em rgba(49, 48, 43, 0.3);
     color: #fff;
 }
+
 .match__item__submit input[type=checkbox]+ label {
     margin: 3em 0 0 0;
     cursor: pointer;
     height: 0.5em;
 }
+
 .match__item__submit input[type=checkbox]+ label::before {
     /*Will function as styled checkbox*/
     content: '\a0';
@@ -461,6 +512,7 @@ body {
     text-indent: .10em;
     line-height: 1.1;
 }
+
 .match__item__submit input[type=checkbox]:checked+ label::before {
     font-family: FontAwesome;
     content: '\f00c';
@@ -473,6 +525,7 @@ body {
     position: absolute;
     clip: rect(0, 0, 0, 0);
 }
+
 .match__item__final__label {
     width: 100%;
     background: #434343;
@@ -494,7 +547,6 @@ body {
 /*--------------------------------------------------------------
 #### MATCH [INFO]
 --------------------------------------------------------------*/
-
 .match__item__title {
     font-size: 1.5em;
     margin-bottom: .5em;
@@ -502,11 +554,13 @@ body {
     border-bottom: 1px solid #000;
     width: 6.25em;
 }
+
 .match__item__info {
     font-size: 1em;
     margin-bottom: 1em;
     width: 100%;
 }
+
 .match__item__info td {
     text-align: right;
 }
@@ -514,7 +568,6 @@ body {
 /*--------------------------------------------------------------
 #### MATCH [LOCATION]
 --------------------------------------------------------------*/
-
 .match__item__location__image {
     margin: 2em auto;
     display: block;
@@ -523,8 +576,8 @@ body {
 /*--------------------------------------------------------------
 ## TOURNAMENTS
 --------------------------------------------------------------*/
-
 .tournaments__items {}
+
 .tournaments__item {
     text-align: center;
     padding: 7em 0;
@@ -533,50 +586,51 @@ body {
     position: relative;
     border-bottom: solid 4px #fff;
 }
+
 .tournaments__items a .tournaments__item h2 {
     color: #fff;
 }
+
 .tournaments__items a .tournaments__item:hover h2 {
     color: #000;
 }
-.tournaments__items a:first-of-type .tournaments__item h2 {
-    color: black;
-}
 
 .tournaments__items a:first-of-type .tournaments__item {
-    background: #ffcc00;
-}
-
-.tournaments__items a:first-of-type .tournaments__item h2:hover {
-    color: white;
+    background: #F47983;
+    color: black;
 }
 
 .tournaments__items a:nth-of-type(2) .tournaments__item {
     background: #9b59b6;
     color: #fff;
 }
+
 .tournaments__items a:nth-of-type(3) .tournaments__item {
-    background: #F47983;
-    color: #fff;
-}
-.tournaments__items a:last-of-type .tournaments__item {
     background: #2980b9;
     color: #fff;
 }
+
+.tournaments__items a:last-of-type .tournaments__item {
+    background: #ffcc00;
+}
+
 .tournaments__items a .tournaments__item:hover {
     background: #ddd;
+    color: #fff;
+}
+.tournaments__items a:first-of-type .tournaments__item h2:hover {
     color: #fff;
 }
 
 /*--------------------------------------------------------------
 ### LOGIN
 --------------------------------------------------------------*/
-
 .login__fieldset {
     border: 0;
     margin: 0;
     padding: 0;
 }
+
 .login__form {
     position: relative;
     top: 50%;
@@ -587,6 +641,7 @@ body {
     border-radius: 4px;
     border: 1px solid #ccc;
 }
+
 .login__title {
     position: relative;
     width: 100%;
@@ -596,6 +651,7 @@ body {
     color: #fff;
     font-size: 20px;
 }
+
 .login__title:after {
     content: "";
     background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
@@ -609,11 +665,13 @@ body {
     right: 0;
     position: absolute;
 }
+
 .login__input {
     position: relative;
     width: 90%;
     margin: 15px auto;
 }
+
 .login__input span {
     position: absolute;
     display: block;
@@ -622,6 +680,7 @@ body {
     top: 8px;
     font-size: 20px;
 }
+
 .login__input input {
     width: 100%;
     padding: 10px 5px 10px 40px;
@@ -631,13 +690,16 @@ body {
     transition: 0.2s ease-out;
     color: #a1a1a1;
 }
+
 .login__input input:focus {
     outline: 0;
     border-color: #FF7052;
 }
+
 .input-border {
     border-color: #2ecc71;
 }
+
 .login__submit {
     width: 45px;
     height: 45px;
@@ -652,11 +714,13 @@ body {
     box-shadow: 0px 0px 0px 7px #fff;
     transition: 0.2s ease-out;
 }
+
 .login__submit:hover, .login__submit:focus {
     background: #f04b51;
     color: #fff;
     outline: 0;
 }
+
 .login__feedback {
     position: absolute;
     bottom: -80px;
@@ -668,9 +732,7 @@ body {
     padding: 10px 0;
     font-size: 12px;
 }
-.is-visible {
-    opacity: 1;
-}
+
 .login__feedback:before {
     bottom: 100%;
     left: 50%;
@@ -685,6 +747,7 @@ body {
     border-width: 10px;
     margin-left: -10px;
 }
+
 .login__feedback_error {
     position: absolute;
     bottom: -80px;
@@ -696,6 +759,7 @@ body {
     font-size: 12px;
     line-height: 2;
 }
+
 .login__feedback_error:before {
     bottom: 100%;
     left: 50%;
@@ -710,10 +774,12 @@ body {
     border-width: 10px;
     margin-left: -10px;
 }
+
 .fa-exclamation-circle {
     margin: .1em .4em 0 0;
     font-size: 1.2em;
 }
+
 .fa-lock {
     margin: .1em .4em 0 0;
     font-size: 1.2em;
@@ -722,7 +788,6 @@ body {
 /*--------------------------------------------------------------
 ### SPLASH SCREEN
 --------------------------------------------------------------*/
-
 #splash {
     display: none;
     position: relative;
@@ -732,11 +797,13 @@ body {
     z-index: 10;
     padding: 0.4em;
 }
+
 #splash.active {
   display: flex;
   position: fixed;
   width: 100%;
 }
+
 .splash__text {
     margin: 0;
     color: white;
@@ -744,6 +811,7 @@ body {
     font-size: 2em;
     position: relative;
 }
+
 .splash__text:after {
     display: block;
     position: absolute;
@@ -756,6 +824,7 @@ body {
     content: "";
     animation: underlineTitle 0.5s 3s ease forwards;
 }
+
 .splash__top__bar {
     content: '';
     position: absolute;
@@ -766,6 +835,7 @@ body {
     background: #FFFFFF;
     animation: slideRight 1.5s ease-in-out, shrink 1.5s 1.5s ease-in-out forwards;
 }
+
 .splash__bottom__bar {
     content: '';
     position: absolute;
@@ -776,6 +846,7 @@ body {
     background: #ffffff;
     animation: slideLeft 1.5s ease-in-out, shrink 1.5s 1.5s ease-in-out forwards;
 }
+
 @keyframes slideRight {
     0% {
         transform: translateX(-100%);
@@ -788,6 +859,7 @@ body {
         transform: translateX(0%);
     }
 }
+
 @keyframes slideLeft {
     0% {
         transform: translateX(100%);
@@ -800,6 +872,7 @@ body {
         transform: translateX(0%)
     }
 }
+
 @keyframes shrink {
     0% {
         height: 40%;
@@ -808,6 +881,7 @@ body {
         height: 0%;
     }
 }
+
 @keyframes underlineTitle {
     0% {
         width: 0;
@@ -869,17 +943,95 @@ body {
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES
 --------------------------------------------------------------*/
+@media (min-width: 45em) {
+    body {
+        font-size: 90%;
 
-@media (min-width: 32em) {}
-@media (min-width: 55em) {}
-@media (min-width: 78em) {
+    }
+
+    .matches__items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 2em 1.5em;
+        justify-content: space-between;
+        align-items: stretch;
+        overflow-x: scroll;
+    }
+
+    .matches__division {
+        width: 49%;
+        position: relative;
+    }
+
+    .matches__division:first-of-type {
+        margin-right: 1%;
+    }
+
+}
+
+@media (min-width: 70em) {
+    body {
+        font-size: 100%;
+
+    }
+
     #header, #main {
         float: right;
         width: 92%;
     }
 
+    #main {
+        margin: 0 0 0;
+    }
+
+    .matches__items {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
     .matches__division {
-      width: 65%;
+        width: 30em;
+        position: relative;
+        margin: 0 2em;
+    }
+
+    .matches__container {
+        overflow-y: scroll;
+        height: 65vh;
+    }
+
+    .matches__division__title {
+        width: inherit;
+        background: #fff;
+        z-index: 999;
+    }
+
+    .matches__item__name span {
+        display: block;
+        width: 10em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .tournaments__items {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .tournaments__items a {
+        flex: 1 0 50%;
+    }
+
+    .tournaments__item {
+        text-align: center;
+        padding: 8em 0;
+        position: relative;
+        font-size: 1.5em;
+        position: relative;
+        border-bottom: 0;
     }
 
     .footer__menu {
@@ -896,38 +1048,45 @@ body {
     .footer__menu__list {
         width: 100%;
         display: block;
-        margin: 2em auto;
+        margin: 0 auto;
     }
 
     .footer__menu__link {
         border: none;
         color: #ffffff;
+        padding: 3em 0;
+        position: relative;
     }
-
 
     .footer__menu__text {
       margin: .5em 0 0;
       display: block;
     }
 
+    .footer__menu__link:hover, .footer__menu__link:hover .footer__menu__svg {
+        color: #000;
+        fill: #000;
+    }
+
     .footer__menu__link--active,
-    .footer__menu__link:focus {
+    .footer__menu__link:focus,
+    .footer__menu__link--active .footer__menu__svg {
       border: none;
-      color: #f04b51;
+      color: #000;
+      fill: #000;
+      background: #ececec;
     }
 
     .footer__menu__link--active::after {
       content: '';
-      bottom: 2.5em;
       width: 1em;
-      float: right;
-      right: -0.26em;
-      position: relative;
+      right: -0.2em;
+      bottom: 4.3em;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 10px solid #f9f9f9;
+      border-right: 10px solid #000;
+      position: absolute;
     }
-
 
     .footer__menu__svg {
       fill: #ffffff;

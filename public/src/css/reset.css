@@ -118,16 +118,16 @@ button {
 # MODIFIERS
 --------------------------------------------------------------*/
 .is-visible {
-    display: block;
+    display: block !important;
     opacity: 1;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .inactive {
-    display: none;
+    display: none !important;
 }
 
 
@@ -148,9 +148,10 @@ body, button, input, select, textarea  {
     font-weight: 300;
 }
 
-.fonts-loaded .division h1,
+.fonts-loaded .matches__division__title,
 .fonts-loaded .final-label {
-    font-family: "Roboto Slab", serif;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 200;
 }
 
 p {
