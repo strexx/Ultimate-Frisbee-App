@@ -6,25 +6,31 @@
             {{#if dayOne}}
                 <div class="matches__division">
                     <h1 class="matches__division__title">{{dayOne.1.start_date}}</h1>
+                    <div class="matches__container">
                     {{#each dayOne}}
                         {{> content_matches}}
                     {{/each}}
+                    </div>
                 </div>
             {{/if}}
             {{#if dayTwo}}
                 <div class="matches__division">
                     <h1 class="matches__division__title">{{dayTwo.1.start_date}}</h1>
+                    <div class="matches__container">
                     {{#each dayTwo}}
                         {{> content_matches}}
                     {{/each}}
+                    </div>
                 </div>
             {{/if}}
             {{#if dayThree}}
                 <div class="matches__division">
                     <h1 class="matches__division__title">{{dayThree.1.start_date}}</h1>
+                    <div class="matches__container">
                     {{#each dayThree}}
                         {{> content_matches}}
                     {{/each}}
+                    </div>
                 </div>
             {{/if}}
         {{/matches}}
@@ -33,9 +39,11 @@
         {{#each rounds}}
             <div class="matches__division">
                 <h1 class="matches__division__title">Round {{round_number}}</h1>
+                <div class="matches__container">
                 {{#each games}}
                     {{> content_matches}}
                 {{/each}}
+                </div>
             </div>
         {{/each}}
     </section>
@@ -43,9 +51,11 @@
         {{#each ranking}}
             <div class="matches__division">
                 <h1 class="matches__division__title">Round {{round_number}}</h1>
+                <div class="matches__container">
                 {{#each standings}}
                     {{> content_rankings}}
                 {{/each}}
+                </div>
             </div>
         {{/each}}
     </section>
