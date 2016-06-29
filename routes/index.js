@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     fs = require('fs'),
     request = require('request'),
+    cookieParser = require('cookie-parser'),
     session = require('express-session'),
     dateFormat = require('dateformat'),
     unqiueKeys = require('../modules/uniqueKeys.js')(),
@@ -73,6 +74,11 @@ router.get('/', function(req, res, next) {
             return obj.tournament_id == "20060";
         });
 
+        var recentCMD = recentMatches.filter(function(obj) {
+            return obj.tournament_id == "20297";
+        });
+
+
         // Filter on live matches
         var liveWomen = liveMatches.filter(function(obj) {
             return obj.tournament_id == "20058";
@@ -85,6 +91,11 @@ router.get('/', function(req, res, next) {
         var liveOpen = liveMatches.filter(function(obj) {
             return obj.tournament_id == "20060";
         });
+
+        var liveCMD = liveMatches.filter(function(obj) {
+            return obj.tournament_id == "20297";
+        });
+
 
         // Filter on upcoming matches
         var upcomingWomen = upcomingMatches.filter(function(obj) {
@@ -99,13 +110,22 @@ router.get('/', function(req, res, next) {
             return obj.tournament_id == "20060";
         });
 
+        var upcomingCMD = upcomingMatches.filter(function(obj) {
+            return obj.tournament_id == "20297";
+        });
+
+
         // push objects in new array
         matchesfinal.push({
+            "liveCMD": liveCMD
+        }, {
             "liveWomen": liveWomen
         }, {
             "liveMixed": liveMixed
         }, {
             "liveOpen": liveOpen
+        }, {
+            "recentCMD": recentCMD
         }, {
             "recentWomen": recentWomen
         }, {
@@ -113,14 +133,14 @@ router.get('/', function(req, res, next) {
         }, {
             "recentOpen": recentOpen
         }, {
+            "upcomingCMD": upcomingCMD
+        }, {
             "upcomingWomen": upcomingWomen
         }, {
             "upcomingMixed": upcomingMixed
         }, {
             "upcomingOpen": upcomingOpen
         });
-
-        //console.log(newMatchesArray);
 
         res.render('matches', {
             title: 'Matches',
@@ -133,7 +153,9 @@ router.get('/', function(req, res, next) {
 router.get('/match/:gameID', function(req, res) {
     var gameID = parseInt(req.params.gameID),
         session = req.session.user_id,
-        matchObject;
+        matchObject,
+        winner = null,
+        feedbackMsg = req.query.message;
 
     var findMatches = function(db, callback) {
         var collectionCursor = db.collection('matches').find({
@@ -143,6 +165,8 @@ router.get('/match/:gameID', function(req, res) {
             if (match != null) {
                 match.start_time = dateFormat(match.start_time, "HH:MM");
                 matchObject = match;
+                if (matchObject.winner_id)
+                    winner = matchObject.winner_id;
             } else {
                 callback();
             }
@@ -154,9 +178,12 @@ router.get('/match/:gameID', function(req, res) {
             title: 'Match',
             items: matchObject,
             user: session,
-            gameID: gameID
+            gameID: gameID,
+            winner: winner,
+            feedbackMsg: feedbackMsg
         });
     });
+
 });
 
 router.get('/tournaments', function(req, res) {
@@ -171,14 +198,14 @@ router.get('/tournaments', function(req, res) {
         collectionCursor.each(function(err, match) {
             if (match !== null) {
 
-              if (match.tournament !== null){
+                if (match.tournament !== null) {
                     var tournament = match.tournament;
                     var tournamentID = tournament.id;
                     var tournamentName = tournament.name;
 
                     tournamentIDs.push(tournamentID);
                     tournamentNames.push(tournamentName);
-                  }
+                }
             } else {
                 callback();
             }
@@ -326,7 +353,7 @@ router.get('/tournament/:tournamentID', function(req, res) {
 
         tournamentRounds = tournamentRoundsArray;
 
-        setTimeout(function () {
+        setTimeout(function() {
             res.render('tournament', {
                 title: 'Tournament',
                 matches: tournamentMatches,
@@ -364,5 +391,40 @@ router.get('/logout', function(req, res) {
     delete req.session.user_id;
     res.redirect('/login');
 });
+
+router.get('/favorites', function(req, res, next) {
+    var favoritesCookie = JSON.parse(req.cookies.matchID),
+        favMatches = [],
+        favIDArray = [];
+
+        for (var i=0; i<favoritesCookie.length; i++) {
+             favIDArray.push(parseInt(favoritesCookie[i]));
+        }
+
+    var findMatches = function(db, callback) {
+            var collectionCursor = db.collection('matches').find({
+                id: {$in: favIDArray}
+            });
+
+            collectionCursor.each(function(err, match) {
+
+              if (match != null) {
+                  match.start_time = dateFormat(match.start_time, "HH:MM");
+                  favMatches.push(match);
+              } else {
+                  callback();
+              }
+            });
+    };
+
+    findMatches(db, function() {
+      console.log(favMatches.length);
+        res.render('favorites', {
+            title: 'Favorites',
+            items: favMatches
+        });
+    });
+});
+
 
 module.exports = router;

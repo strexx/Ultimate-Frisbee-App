@@ -6,7 +6,7 @@ UFA.router = (() => {
         var ID = window.location.pathname.split('/')[2];
 
         if (window.location.pathname == '/') {
-            // UFA.sw.init();
+            //UFA.sw.init();
             UFA.page.matchesLive();
             console.log("Matches");
         } else if (window.location.pathname == '/login/') {
@@ -39,7 +39,7 @@ UFA.router = (() => {
                     UFA.page.matchInfo();
                     break;
                 case "#scores":
-                    UFA.page.matchScores(gameID);
+                    UFA.page.matchScores();
                     break;
                 case "#location":
                     UFA.page.matchLocation();

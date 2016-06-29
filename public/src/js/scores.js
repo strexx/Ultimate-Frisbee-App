@@ -19,8 +19,15 @@ UFA.scores = (() => {
             var updateScore1 = data.team_1_score,
                 updateScore2 = data.team_2_score;
 
-            if(data.gameID == gameID)
+            if(data.game_id == gameID)
               replaceScores(updateScore1, updateScore2);
+        });
+
+        socket.on('redirect', function(destination) {
+          if(destination)
+            window.location.href = destination
+          else
+            location.reload();
         });
 
         // If JS is enabled, fire these functions to add enhanced functionality
@@ -29,7 +36,9 @@ UFA.scores = (() => {
         scoreButtonListeners();
 
         if (!document.querySelector("#user_id")) {
+          if(document.querySelector("#submit")) {
             hideFormSubmit();
+          }
             hideCheckBoxes();
         }
     }
@@ -42,7 +51,7 @@ UFA.scores = (() => {
           var updateScoreHome1 = data.team_1_score,
               updateScoreHome2 = data.team_2_score,
               // Get article with match id
-              target = document.getElementById(data.gameID),
+              target = document.getElementById(data.game_id),
               tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
               tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
 
@@ -103,7 +112,12 @@ UFA.scores = (() => {
             score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
             score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
             gameID = window.location.pathname.split('/')[2],
-            isFinal = false;
+            isFinal = false,
+            scoreBtn = true,
+            userID = null;
+
+        if (document.querySelector("#user_id"))
+            userID = document.querySelector("#user_id").value;
 
         if (buttonId === "team__home__minus") {
             var score1HTML = score1.innerHTML;
@@ -111,7 +125,7 @@ UFA.scores = (() => {
             var newScore = Number(score1HTML) - 1;
             //score1.innerHTML = newScore;
 
-            addScore(newScore, score2, gameID, isFinal, false);
+            addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
 
         } else if (buttonId === "team__away__minus") {
             var score2HTML = score2.innerHTML;
@@ -119,7 +133,7 @@ UFA.scores = (() => {
             var newScore = Number(score2HTML) - 1;
             //score2.innerHTML = newScore;
 
-            addScore(score1, newScore, gameID, isFinal, false);
+            addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
 
         } else if (buttonId === "team__home__plus") {
             var score1HTML = score1.innerHTML;
@@ -127,7 +141,7 @@ UFA.scores = (() => {
             var newScore = Number(score1HTML) + 1;
             //score1.innerHTML = newScore;
 
-            addScore(newScore, score2, gameID, isFinal, false);
+            addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
 
         } else if (buttonId === "team__away__plus") {
             var score2HTML = score2.innerHTML;
@@ -135,7 +149,7 @@ UFA.scores = (() => {
             var newScore = Number(score2HTML) + 1;
             //score2.innerHTML = newScore;
 
-            addScore(score1, newScore, gameID, isFinal, false);
+            addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
         }
     }
 
@@ -147,6 +161,7 @@ UFA.scores = (() => {
                 score2 = document.querySelector(".match__item__team__away .match__item__team__info__score").innerHTML,
                 checkFinal = document.querySelector("#check:checked"),
                 isFinal = false,
+                scoreBtn = false,
                 userID = null;
 
             if (document.querySelector("#user_id"))
@@ -155,13 +170,13 @@ UFA.scores = (() => {
             if (checkFinal && checkFinal.value == "true")
                 isFinal = true;
 
-            addScore(score1, score2, gameID, isFinal, userID);
+            addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
             //UFA.ux.showLoader();
         });
     }
 
     // Add score (min or plus for teams) stream to socket
-    function addScore(score1, score2, gameID, isFinal, userID) {
+    function addScore(score1, score2, gameID, isFinal, userID, scoreBtn) {
         // Send score to socket
         socket.emit('addScore', {
             score1: score1,
@@ -169,6 +184,7 @@ UFA.scores = (() => {
             gameID: gameID,
             isFinal: isFinal,
             userID: userID,
+            scoreBtn: scoreBtn,
             time: Date.now()
         });
     }
