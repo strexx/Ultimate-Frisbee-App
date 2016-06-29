@@ -982,7 +982,7 @@ body {
         font-size: 1.5em;
         position: relative;
         border-bottom: 0;
-        height: 45vh;
+        height: 70vh;
     }
 
     .footer__menu {
@@ -1020,9 +1020,12 @@ body {
     }
 
     .footer__menu__link--active,
-    .footer__menu__link:focus {
+    .footer__menu__link:focus,
+    .footer__menu__link--active .footer__menu__svg {
       border: none;
-      color: #f04b51;
+      color: #000;
+      fill: #000;
+      background: #ececec;
     }
 
     .footer__menu__link--active::after {
@@ -1032,18 +1035,11 @@ body {
       bottom: 4.3em;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 10px solid #fff;
+      border-right: 10px solid #000;
       position: absolute;
     }
 
     .footer__menu__svg {
       fill: #ffffff;
-    }
-}
-
-
-@media (min-width: 90em) {
-    .matches__container {
-        height: 73vh;
     }
 }
