@@ -27,7 +27,7 @@ UFA.fontFaceObserver = (() => {
 
         Promise.all(fontObservers)
             .then(function() {
-                document.documentElement.className += "fonts-loaded";
+                document.documentElement.className += " fonts-loaded";
             }, function() {
                 console.log('Fonts not available');
             });
