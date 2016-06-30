@@ -442,7 +442,6 @@ body {
 ### MATCH (SCORE PAGE)
 --------------------------------------------------------------*/
 
-
 /*--------------------------------------------------------------
 #### MATCH [SCORES]
 --------------------------------------------------------------*/
@@ -453,12 +452,14 @@ body {
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
+    min-height: 20em;
+    height: 70vh;
 }
 
 .match__item__team {
-    font-family: Lato, Helvetica neue, sans-serif;
-    flex-direction: column;
-    justify-content: space-around;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
     padding: 0 .5em;
 }
 
@@ -474,7 +475,7 @@ body {
 .match__item__team__button__top .match__item__team__button {
     font-weight: 700 !important;
     font-size: 3.7em !important;
-    margin-bottom: .5em;
+    margin-bottom: .3em;
 }
 
 .match__item__team__button__bottom .match__item__team__button {
@@ -488,20 +489,14 @@ body {
     box-shadow: inset 0 0 0 10em rgba(49, 48, 43, 0.3);*/
 }
 
-.match__item__team__button__bottom {
-    margin-top: 1em;
-}
-
 .match__item__team__info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 30vh;
-    height: 50vh;
 }
 
 .match__item__team__info__name {
-    font-size: 1.2em;
+    font-size: 2em;
     text-transform: uppercase;
     height: 2em;
     text-align: center;
@@ -509,8 +504,7 @@ body {
 
 .match__item__team__info__score {
     font-weight: 300;
-    font-size: 10em;
-    margin-bottom: 0.3em;
+    font-size: 6em;
 }
 
 .match__item__team__info__time {
@@ -1035,6 +1029,10 @@ body {
         margin-right: 1%;
     }
 
+    .match__item__team__info__score {
+        font-size: 8em;
+    }
+
     .tournaments__items {
         display: flex;
         flex-flow: row wrap;
@@ -1087,13 +1085,13 @@ body {
     }
 
     .matches__division__title {
-        width: inherit;
+        width: 100%;
         background: #fff;
         z-index: 999;
     }
 
     .match__item__team__info__score {
-        font-size: 12em;
+        font-size: 15em;
     }
 
     .footer__menu {
