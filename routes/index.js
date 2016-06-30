@@ -47,7 +47,29 @@ router.get('/', function(req, res, next) {
             if (matchesToday[key].start_time !== undefined) {
                 matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
             }
-            //console.log(matchesToday[key].start_time);
+            for (var key in matchesToday) {
+                var teamName_1 = matchesToday[key].team_1;
+                var teamName_2 = matchesToday[key].team_2;
+
+                console.log(teamName_2);
+
+                if (matchesToday[key].start_time !== undefined) {
+                    matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
+                }
+                //console.log(matchesToday[key].start_time);
+
+                for(var anotherKey in teamName_1) {
+                    if(teamName_1[anotherKey].short_name.indexOf("Test") !== -1) {
+                        teamName_1[anotherKey].short_name.replace("Test ", "")
+                    }
+                }
+
+                for(var anotherKey in teamName_2) {
+                    if(teamName_2[anotherKey].short_name.indexOf("Test") !== -1) {
+                        teamName_2[anotherKey].short_name.replace("Test ", "")
+                    }
+                }
+            }
         }
 
         // Filter on time
