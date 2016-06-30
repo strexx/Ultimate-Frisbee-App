@@ -1,0 +1,18 @@
+{{> header_favorites}}
+
+<main id="main" role="main">
+  {{#if items }}
+        <section id="live" class="matches__items">
+                <div class="matches__division">
+                    <!-- <h1 class="matches__division__title">MY FAVORITES</h1> -->
+                    {{#each items}}
+                        {{> content_matches}}
+                    {{/each}}
+                </div>
+        </section>
+  {{ else }}
+        <h1 class="header__message">{{ message }}</h1>
+  {{/if}}
+</main>
+
+{{> footer_favorites}}

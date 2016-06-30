@@ -3,85 +3,133 @@
 <main id="main" role="main">
     <section id="live" class="matches__items">
         {{#items}}
+            {{#if liveCMD}}
+                <div class="matches__division">
+                    <h1 class="matches__division__title">CMD Amsterdam</h1>
+                    <div class="matches__container">
+                        {{#each liveCMD}}
+                            {{> content_matches}}
+                        {{/each}}
+                    </div>
+                </div>
+            {{/if}}
             {{#if liveWomen}}
-            <div class="matches__division">
-                <h1 class="matches__division__title">Women</h1>
-                {{#each liveWomen}}
-                    {{> content_matches}}
-                {{/each}}
-            </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Women</h1>
+                    <div class="matches__container">
+                        {{#each liveWomen}}
+                            {{> content_matches}}
+                        {{/each}}
+                    </div>
+                </div>
             {{/if}}
             {{#if liveOpen}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Open</h1>
-                {{#each liveOpen}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Open</h1>
+                    <div class="matches__container">
+                        {{#each liveOpen}}
+                            {{> content_matches}}
+                        {{/each}}
+                    </div>
+                </div>
             {{/if}}
             {{#if liveMixed}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Mixed</h1>
-                {{#each liveMixed}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Mixed</h1>
+                    <div class="matches__container">
+                    {{#each liveMixed}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
             {{/if}}
         {{/items}}
     </section>
     <section id="recent" class="matches__items">
         {{#items}}
+            {{#if recentCMD}}
+                <div class="matches__division">
+                    <h1 class="matches__division__title">CMD Amsterdam</h1>
+                    <div class="matches__container">
+                    {{#each recentCMD}}
+                        {{> content_matches}}
+                    {{/each}}
+                </div>
+                </div>
+            {{/if}}
             {{#if recentWomen}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Women</h1>
-                {{#each recentWomen}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Women</h1>
+                    <div class="matches__container">
+                    {{#each recentWomen}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
             {{/if}}
             {{#if recentOpen}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Open</h1>
-                {{#each recentOpen}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Open</h1>
+                    <div class="matches__container">
+                    {{#each recentOpen}}
+                        {{> content_matches}}
+                    {{/each}}
+                </div>
+                </div>
             {{/if}}
             {{#if recentMixed}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Mixed</h1>
-                {{#each recentMixed}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Mixed</h1>
+                    <div class="matches__container">
+                    {{#each recentMixed}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
             {{/if}}
         {{/items}}
     </section>
     <section id="upcoming" class="matches__items">
         {{#items}}
+            {{#if upcomingCMD}}
+                <div class="matches__division">
+                    <h1 class="matches__division__title">CMD Amsterdam</h1>
+                    <div class="matches__container">
+                    {{#each upcomingCMD}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
+            {{/if}}
             {{#if upcomingWomen}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Women</h1>
-                {{#each upcomingWomen}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Women</h1>
+                    <div class="matches__container">
+                    {{#each upcomingWomen}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
             {{/if}}
             {{#if upcomingOpen}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Open</h1>
-                {{#each upcomingOpen}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Open</h1>
+                    <div class="matches__container">
+                    {{#each upcomingOpen}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
             {{/if}}
             {{#if upcomingMixed}}
-              <div class="matches__division">
-                <h1 class="matches__division__title">Mixed</h1>
-                {{#each upcomingMixed}}
-                    {{> content_matches}}
-                {{/each}}
-              </div>
+                <div class="matches__division">
+                    <h1 class="matches__division__title">Mixed</h1>
+                    <div class="matches__container">
+                    {{#each upcomingMixed}}
+                        {{> content_matches}}
+                    {{/each}}
+                    </div>
+                </div>
             {{/if}}
         {{/items}}
     </section>

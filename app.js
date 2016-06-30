@@ -9,6 +9,7 @@ var express = require('express'),
     fileStore = require('session-file-store')(session),
     server = require('http').createServer(app),
     routes = require('./routes/index'),
+    cookieParser = require('cookie-parser'),
     api = require('./routes/api');
 
 // include connections
@@ -42,6 +43,8 @@ app.use(session({
         secure: false
     }
 }));
+
+app.use(cookieParser());
 
 // set routes
 app.use('/', routes);

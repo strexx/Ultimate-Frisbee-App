@@ -51,7 +51,7 @@ UFA.scores = (() => {
           var updateScoreHome1 = data.team_1_score,
               updateScoreHome2 = data.team_2_score,
               // Get article with match id
-              target = document.getElementById(data.gameID),
+              target = document.getElementById(data.game_id),
               tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
               tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
 
