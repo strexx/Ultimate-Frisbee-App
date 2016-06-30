@@ -3,6 +3,8 @@
 *********************************************************/
 UFA.router = (() => {
     function init() {
+        UFA.ux.toggleMenu();
+        
         var ID = window.location.pathname.split('/')[2];
 
         if (window.location.pathname == '/') {
