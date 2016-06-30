@@ -60,6 +60,10 @@ UFA.page = (() => {
         UFA.ux.toggleMenu();
     }
 
+    function favorites () {
+      UFA.ux.toggleMenu();
+    }
+
     return {
         matchesRecent: matchesRecent,
         matchesLive: matchesLive,
@@ -71,7 +75,8 @@ UFA.page = (() => {
         tournamentMatches: tournamentMatches,
         tournamentRounds: tournamentRounds,
         tournamentRanking: tournamentRanking,
-        login: login
+        login: login,
+        favorites: favorites
     };
 
 })();
