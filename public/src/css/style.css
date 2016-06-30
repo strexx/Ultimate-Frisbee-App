@@ -314,7 +314,6 @@ body {
     font-size: 1.6em;
     padding: 0.5em;
     padding-left: 0.7em;
-    padding-bottom: 0.1em;
     color: #434343;
     text-transform: uppercase;
     text-align: center;
@@ -1089,7 +1088,7 @@ body {
     }
 
     .matches__division {
-        width: 30em;
+        min-width: 30em;
         position: relative;
         margin: 0 2em;
     }
