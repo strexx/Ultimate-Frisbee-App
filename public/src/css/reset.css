@@ -148,10 +148,15 @@ body, button, input, select, textarea  {
     font-weight: 300;
 }
 
+
+.fonts-loaded .match__item__team {
+    font-family: 'Lato', 'Helvetica neue', sans-serif;
+}
+
 .fonts-loaded .matches__division__title,
 .fonts-loaded .final-label {
     font-family: 'Roboto Slab', serif;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 p {
