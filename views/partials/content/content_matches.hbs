@@ -1,49 +1,40 @@
 <article class="matches__item" id="{{id}}">
+    <button class="favorite__btn" name="favorite" value="{{id}}">
+      <svg class="favorite__btn__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      	 width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+      <g>
+      	<g id="star">
+      		<polygon class="favorite__btn__svg__path" points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472
+      			139.103,318.011 97.41,497.25 		"/>
+      	</g>
+      </g>
+      </svg>
+    </button>
     <a href="/match/{{id}}/">
-        <table class="matches__item__table">
-            <tr class="matches__item__table__row">
-                <td class="matches__item__shirt">
-                    <svg class="matches__item__shirt__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 446.58 446.58" style="enable-background:new 0 0 446.58 446.58;" xml:space="preserve">
-                        <path style="fill:#010002;" d="M350.657,395.571H95.919c-3.294,0-5.967-2.667-5.967-5.967V192.596l-19.285,19.285
-                    			c-2.238,2.238-6.2,2.238-8.437,0L1.75,151.407c-2.333-2.333-2.333-6.104,0-8.437l89.378-89.378
-                    			c1.086-1.539,2.834-2.584,4.797-2.584h60.737c3.294,0,5.967,2.673,5.967,5.967c0,33.45,27.215,60.665,60.665,60.665
-                    			s60.665-27.215,60.665-60.665c0-3.294,2.667-5.967,5.967-5.967h60.737c2.178,0,4.087,1.17,5.126,2.912l89.044,89.05
-                    			c1.122,1.122,1.748,2.637,1.748,4.219s-0.627,3.103-1.748,4.219l-60.486,60.474c-2.333,2.333-6.104,2.333-8.437,0l-19.285-19.285
-                    			v197.008C356.623,392.904,353.95,395.571,350.657,395.571z M101.886,383.638h242.798V178.192c0-2.411,1.45-4.589,3.682-5.513
-                    			c2.232-0.925,4.797-0.412,6.504,1.295l25.252,25.252l52.043-52.037L347.93,62.942h-52.288
-                    			c-3.043,37.257-34.333,66.632-72.354,66.632s-69.311-29.381-72.354-66.632H98.652l-84.246,84.246l52.043,52.043L91.7,173.974
-                    			c1.707-1.707,4.266-2.214,6.504-1.295c2.232,0.925,3.682,3.103,3.682,5.513C101.886,178.192,101.886,383.638,101.886,383.638z" />
-                    </svg>
-                </td>
-                <td class="matches__item__name"><span>{{team_1.short_name}}</span></td>
-                <td class="matches__item__score team_1_score_realtime">{{team_1_score}}</td>
-            </tr>
-            <tr class="matches__item__table__row">
-                <td class="matches__item__shirt">
-                    <svg class="matches__item__shirt__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 446.58 446.58" style="enable-background:new 0 0 446.58 446.58;" xml:space="preserve">
-                        <path style="fill:#010002;" d="M350.657,395.571H95.919c-3.294,0-5.967-2.667-5.967-5.967V192.596l-19.285,19.285
-                    			c-2.238,2.238-6.2,2.238-8.437,0L1.75,151.407c-2.333-2.333-2.333-6.104,0-8.437l89.378-89.378
-                    			c1.086-1.539,2.834-2.584,4.797-2.584h60.737c3.294,0,5.967,2.673,5.967,5.967c0,33.45,27.215,60.665,60.665,60.665
-                    			s60.665-27.215,60.665-60.665c0-3.294,2.667-5.967,5.967-5.967h60.737c2.178,0,4.087,1.17,5.126,2.912l89.044,89.05
-                    			c1.122,1.122,1.748,2.637,1.748,4.219s-0.627,3.103-1.748,4.219l-60.486,60.474c-2.333,2.333-6.104,2.333-8.437,0l-19.285-19.285
-                    			v197.008C356.623,392.904,353.95,395.571,350.657,395.571z M101.886,383.638h242.798V178.192c0-2.411,1.45-4.589,3.682-5.513
-                    			c2.232-0.925,4.797-0.412,6.504,1.295l25.252,25.252l52.043-52.037L347.93,62.942h-52.288
-                    			c-3.043,37.257-34.333,66.632-72.354,66.632s-69.311-29.381-72.354-66.632H98.652l-84.246,84.246l52.043,52.043L91.7,173.974
-                    			c1.707-1.707,4.266-2.214,6.504-1.295c2.232,0.925,3.682,3.103,3.682,5.513C101.886,178.192,101.886,383.638,101.886,383.638z" />
-                    </svg>
-                </td>
-                <td class="matches__item__name"><span>{{team_2.short_name}}</span></td>
-                <td class="matches__item__score team_2_score_realtime">{{team_2_score}}</td>
-            </tr>
-        </table>
-        <div class="matches__item__info">
-            <p class="matches__item__info__time">{{start_time}}</p>
-            <p class="matches__item__info__field">{{game_site.name}}</p>
+        <div class="matches__content__wrapper">
+            <table class="matches__item__table">
+                <tr class="matches__item__table__row">
+                    <td class="matches__item__name"><span>{{team_1.short_name}}</span></td>
+                    <td class="matches__item__score team_1_score_realtime">{{team_1_score}}</td>
+                </tr>
+                <tr class="matches__item__table__row">
+                    <td class="matches__item__name"><span>{{team_2.short_name}}</span></td>
+                    <td class="matches__item__score team_2_score_realtime">{{team_2_score}}</td>
+                </tr>
+            </table>
+            <div class="matches__item__info">
+                <p class="matches__item__info__time">{{start_time}}</p>
+                <p class="matches__item__info__field">{{game_site.name}}</p>
+            </div>
         </div>
-        <svg class="matches__item__arrow__right" enable-background="new 0 0 512 512" id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M383,266.5c-2.6,0-5.3-1-7.3-3l-254-245.5c-4.2-4-4.3-10.7-0.3-14.9c4-4.2,10.7-4.3,14.9-0.3l254,245.5   c4.2,4,4.3,10.7,0.3,14.9C388.5,265.5,385.8,266.5,383,266.5z" fill="#6A6E7C"/><path d="M129,512c-2.8,0-5.5-1.1-7.6-3.2c-4-4.2-3.9-10.9,0.3-14.9l254-245.5c4.2-4,10.9-3.9,14.9,0.3   c4,4.2,3.9,10.9-0.3,14.9L136.3,509C134.3,511,131.6,512,129,512z" fill="#6A6E7C"/></g></svg>
+        <div class="arrow__wrapper">
+            <svg class="matches__item__arrow__right" enable-background="new 0 0 512 512" id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g>
+                    <path d="M383,266.5c-2.6,0-5.3-1-7.3-3l-254-245.5c-4.2-4-4.3-10.7-0.3-14.9c4-4.2,10.7-4.3,14.9-0.3l254,245.5   c4.2,4,4.3,10.7,0.3,14.9C388.5,265.5,385.8,266.5,383,266.5z" fill="#6A6E7C" />
+                    <path d="M129,512c-2.8,0-5.5-1.1-7.6-3.2c-4-4.2-3.9-10.9,0.3-14.9l254-245.5c4.2-4,10.9-3.9,14.9,0.3   c4,4.2,3.9,10.9-0.3,14.9L136.3,509C134.3,511,131.6,512,129,512z" fill="#6A6E7C" />
+                </g>
+            </svg>
+        </div>
     </a>
-    <!-- <button class="favourite-btn" name="favourite" value="{{id}}">
-      <span id="heart"><span>
-    </button> -->
 </article>
 <hr class="matches__divider" />

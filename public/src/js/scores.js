@@ -5,7 +5,7 @@ UFA.scores = (() => {
 
     var socket = io.connect("https://meesterproef.directzichtbaar.nl"),
         submit = document.querySelector("#submit"),
-        btns = document.getElementsByTagName("button"),
+        btns = document.querySelectorAll(".match__item__form button"),
         inputs = document.getElementsByClassName("match__team__info__input"),
         checkboxes = document.getElementsByClassName("match__item__submit__checkbox"),
         gameID = window.location.pathname.split('/')[2],
@@ -76,6 +76,10 @@ UFA.scores = (() => {
                 return function(e) {
                     e.preventDefault();
                     changeScore(index);
+                    button.classList.add("pop--active");
+                    setTimeout(function () {
+                      button.classList.remove("pop--active");
+                    }, 1000)
                 };
             }(button), false);
         });

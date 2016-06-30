@@ -30,7 +30,7 @@
       "sizes": "180x180",
       "type": "image/png"
     }],
-  "start_url": "/index.html",
+  "start_url": "/#live",
   "display": "standalone",
   "background_color": "#f04b51",
   "theme_color": "#f04b51"

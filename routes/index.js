@@ -47,7 +47,6 @@ router.get('/', function(req, res, next) {
             if (matchesToday[key].start_time !== undefined) {
                 matchesToday[key].start_time = matchesToday[key].start_time.split(" ")[1];
             }
-            //console.log(matchesToday[key].start_time);
         }
 
         // Filter on time

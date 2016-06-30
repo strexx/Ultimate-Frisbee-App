@@ -6,14 +6,16 @@ UFA.fontFaceObserver = (() => {
     function init() {
         var fontFamilies = {
             'Lato': [{
-                weight: 400
+                weight: 100
             }, {
                 weight: 300
+            }, {
+                weight: 400
             }, {
                 weight: 700
             }],
             'Roboto Slab': [{
-                weight: 300
+                weight: 100
             }]
         };
 
