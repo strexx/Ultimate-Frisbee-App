@@ -1,11 +1,8 @@
 /*Flexbox fallback*/
 
-
 /*Header*/
 
-
 /*header and footer menus*/
-
 .no-flexbox .footer__menu__row, .no-flexbox .header__tabs__row {
     display: block;
     width: 100%;
@@ -18,7 +15,6 @@
 }
 
 /*Splash Screen*/
-
 .no-flexbox #splash.active {
     display: block;
 }
@@ -40,13 +36,11 @@
 }
 
 /*Tournaments page*/
-
 .no-flexbox .ranking__item__info {
     bottom: 0.7em;
 }
 
 /*Score page*/
-
 .no-flexbox .match__item__teams {
     display: block;
 }
