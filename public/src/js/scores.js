@@ -76,6 +76,10 @@ UFA.scores = (() => {
                 return function(e) {
                     e.preventDefault();
                     changeScore(index);
+                    button.classList.add("pop--active");
+                    setTimeout(function () {
+                      button.classList.remove("pop--active");
+                    }, 1000)
                 };
             }(button), false);
         });
