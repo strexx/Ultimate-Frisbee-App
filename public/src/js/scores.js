@@ -82,6 +82,7 @@ UFA.scores = (() => {
 
       if(activeProgress === true) {
         clearInterval(id);
+        width = 0;
         progressBar.style.width = 0 + '%';
         // Set score in label
         queue_score_1.innerHTML = score1;
@@ -106,6 +107,7 @@ UFA.scores = (() => {
           addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
 
           setTimeout(function() {
+            width = 0;
             messageLabel.innerHTML = "";
             progressBar.style.width = 0 + '%';
             hideElem(progressElem);
@@ -113,8 +115,6 @@ UFA.scores = (() => {
 
             queue_score_1.innerHTML = score1;
             queue_score_2.innerHTML = score2;
-
-            // console.log(activeProgress);
 
           }, 1000);
 
