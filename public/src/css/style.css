@@ -60,6 +60,7 @@ body {
 }
 
 #main {
+    display: block;
     margin-bottom: 5em;
 }
 
