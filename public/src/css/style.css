@@ -193,13 +193,12 @@ body {
 }
 
 /*Animate menu*/
-
 .arrow__up__container {
   position: relative;
   display: flex;
   background: #cecaca;
-  width: 3em;
-  height: 1.7em;
+  width: 4em;
+  height: 2em;
   border: 3px solid #cecaca;
   border-radius: 50% 50% 0 0;
   border-bottom: 0;
@@ -1040,6 +1039,10 @@ body {
 
     .match__item__team__info__score {
         font-size: 8em;
+    }
+
+    .matches__item__name span {
+        width: 8em;
     }
 
     .tournaments__items {

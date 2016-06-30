@@ -24,17 +24,17 @@
 							<!-- <span class="match__item__team__info__time">{{items.start_time}}</span> -->
 						</div>
 
-						{{#unless winner}}
 						<div class="match__items__team__buttons">
-							<div class="match__item__team__button__top">
-								<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
-							</div>
+							{{#unless winner}}
+								<div class="match__item__team__button__top">
+									<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
+								</div>
 
-							<div class="match__item__team__button__bottom">
-								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
-							</div>
+								<div class="match__item__team__button__bottom">
+									<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
+								</div>
+							{{/unless}}
 						</div>
-						{{/unless}}
 
 					</div>
 
@@ -47,17 +47,17 @@
 							<!-- <span class="match__item__team__info__field">{{items.game_site.name}}</span> -->
 						</div>
 
-						{{#unless winner}}
 						<div class="match__item__team__buttons">
-							<div class="match__item__team__button__top">
-								<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
-							</div>
+							{{#unless winner}}
+								<div class="match__item__team__button__top">
+									<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
+								</div>
 
-							<div class="match__item__team__button__bottom">
-								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
-							</div>
+								<div class="match__item__team__button__bottom">
+									<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
+								</div>
+							{{/unless}}
 						</div>
-						{{/unless}}
 
 					</div>
 				</section>
