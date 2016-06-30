@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 >>> ABOUT:
 ----------------------------------------------------------------
-    AUTHOR:         Senny Kalidien, Melvin Reijnoudt, Fons Hettema
+    AUTHOR(S):      Senny Kalidien, Melvin Reijnoudt, Fons Hettema
     PROJECT:        Meesterproef
     VERSION:        1.0
     EXTERNAL CSS:   reset.css, fonts.css
@@ -12,6 +12,7 @@
 >>> COLORS:
 ----------------------------------------------------------------
     BACKGROUND:     #ffffff;
+    ALT BG:         #434343;
     NORMAL TEXT:    #1e1e1e;
     ANCHORS:        #e64a55;
     BUTTONS:        #e64a55;
@@ -711,22 +712,22 @@ body {
 }
 
 .tournaments__items a:first-of-type .tournaments__item {
-    background: #F47983;
+    background: #ffcc00;
     color: black;
 }
 
 .tournaments__items a:nth-of-type(2) .tournaments__item {
-    background: #9b59b6;
+    background: #F47983;
     color: #fff;
 }
 
 .tournaments__items a:nth-of-type(3) .tournaments__item {
-    background: #2980b9;
+    background: #9b59b6;
     color: #fff;
 }
 
 .tournaments__items a:last-of-type .tournaments__item {
-    background: #ffcc00;
+    background: #2980b9;
 }
 
 .tournaments__items a .tournaments__item:hover {
@@ -1009,12 +1010,6 @@ body {
         opacity: 1;
     }
 }
-
-
-/*--------------------------------------------------------------
-# Favourites
---------------------------------------------------------------*/
-
 
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES
