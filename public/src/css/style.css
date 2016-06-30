@@ -120,7 +120,7 @@ body {
     bottom: 0;
     position: fixed;
     width: 100%;
-    transition: transform 1.5s 0.3s;
+    transition: transform 1s 0.3s;
 }
 
 .footer__menu__row, .header__tabs__row {
@@ -238,15 +238,12 @@ body {
   display: flex;
   justify-content: center;
   background: transparent;
-  width: 3em;
-  height: 4.8em;
+  width: 4em;
+  height: 4.5em;
   border: none;
-  border-radius: 10px;
 }
 
-/*.favorite__btn__img*/
 .favorite__btn__svg {
-/*   position: absolute; */
   display: block;
   width: 2em;
   margin: auto;
@@ -255,7 +252,6 @@ body {
 .favorite__btn__svg__path {
   fill: lightgrey;
 }
-
 
 .matches__division {
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16), 0 3px 4px rgba(0, 0, 0, 0.23);
@@ -286,19 +282,18 @@ body {
 }
 
 .matches__content__wrapper {
-  padding-top: .4em;
-  padding-right: 0;
-  padding-left: 0;
-  color: inherit;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-      justify-content: flex-end;
+    padding-top: .4em;
+    padding-right: 0;
+    padding-left: 0;
+    color: inherit;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .matches__items a {
     color: inherit;
-    width: 75%;
+    width: calc(100% - 5.5em);
 }
 
 .matches__item__table {
@@ -306,7 +301,6 @@ body {
 }
 .matches__item__table__row {
     height: 2em;
-    width: 10em;
     display: block;
 }
 
@@ -321,7 +315,6 @@ body {
 }
 
 .matches__item__name {
-    width: 8em;
     font-size: 1em;
     font-weight: 300;
 }
@@ -336,6 +329,7 @@ body {
 
 .matches__item__score {
     font-size: 1em;
+    width: 100%;
     font-weight: 500;
     text-align: center;
 }
@@ -452,7 +446,6 @@ body {
 /*--------------------------------------------------------------
 #### MATCH [SCORES]
 --------------------------------------------------------------*/
-
 .match__item__teams {
     width: 100%;
     margin: 1em 0 0;
@@ -464,20 +457,29 @@ body {
 
 .match__item__team {
     font-family: Lato, Helvetica neue, sans-serif;
-    max-width: 20em;
     flex-direction: column;
     justify-content: space-around;
+    padding: 0 .5em;
 }
 
 .match__item__team__button {
     width: 100%;
-    font-weight: 700 !important;
-    font-size: 2.7em !important;
     background: transparent;
     color: #434343;
     line-height: 1;
     box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
     transition: box-shadow 0.1s ease-out, color 0.1s ease;
+}
+
+.match__item__team__button__top .match__item__team__button {
+    font-weight: 700 !important;
+    font-size: 3.7em !important;
+    margin-bottom: .5em;
+}
+
+.match__item__team__button__bottom .match__item__team__button {
+    font-weight: 700 !important;
+    font-size: 2.4em !important;
 }
 
 .match__item__team__button:hover {
@@ -494,12 +496,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    max-height: 13em;
+    min-height: 30vh;
+    height: 50vh;
 }
 
 .match__item__team__info__name {
-    font-size: 1em;
+    font-size: 1.2em;
     text-transform: uppercase;
     height: 2em;
     text-align: center;
@@ -507,9 +509,8 @@ body {
 
 .match__item__team__info__score {
     font-weight: 300;
-    font-size: 4em;
+    font-size: 10em;
     margin-bottom: 0.3em;
-    padding: 0.2em 0;
 }
 
 .match__item__team__info__time {
@@ -1074,18 +1075,6 @@ body {
         align-items: flex-start;
     }
 
-    .matches__item__table__row {
-        width: 16em;
-    }
-
-    .matches__item__name {
-        width: 15em;
-    }
-
-    .matches__item__name span {
-        width: 10em;
-    }
-
     .matches__division {
         width: 30em;
         position: relative;
@@ -1101,6 +1090,10 @@ body {
         width: inherit;
         background: #fff;
         z-index: 999;
+    }
+
+    .match__item__team__info__score {
+        font-size: 12em;
     }
 
     .footer__menu {
@@ -1128,7 +1121,8 @@ body {
     .footer__menu__link {
         border: none;
         color: #ffffff;
-        padding: 3em 0;
+        padding: 2em 0;
+        margin-bottom: 0.1em;
         position: relative;
     }
 
@@ -1158,7 +1152,9 @@ body {
     }
 
     .arrow__up__container {
-      display: none;
+      display: none !important;
     }
+
+
 
 }
