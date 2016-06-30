@@ -61,7 +61,7 @@ body {
 
 #main {
     display: block;
-    margin-bottom: 75px;
+    margin-bottom: 5em;
 }
 
 #footer {}
@@ -678,7 +678,7 @@ body {
 .login__input {
     position: relative;
     width: 90%;
-    margin: 15px auto;
+    margin: 1em auto;
 }
 
 .login__input span {
@@ -955,7 +955,6 @@ body {
 @media (min-width: 47em) {
     body {
         font-size: 90%;
-
     }
 
     .matches__items {
@@ -977,6 +976,23 @@ body {
         margin-right: 1%;
     }
 
+    .tournaments__items {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .tournaments__items a {
+        flex: 1 0 50%;
+    }
+
+    .tournaments__item {
+        text-align: center;
+        padding: 25% 0;
+        position: relative;
+        font-size: 1.5em;
+        position: relative;
+        border-bottom: 0;
+    }
 }
 
 @media (min-width: 60em) {
@@ -1015,24 +1031,6 @@ body {
         width: inherit;
         background: #fff;
         z-index: 999;
-    }
-
-    .tournaments__items {
-        display: flex;
-        flex-flow: row wrap;
-    }
-
-    .tournaments__items a {
-        flex: 1 0 50%;
-    }
-
-    .tournaments__item {
-        text-align: center;
-        padding: 8em 0;
-        position: relative;
-        font-size: 1.5em;
-        position: relative;
-        border-bottom: 0;
     }
 
     .footer__menu {
