@@ -119,8 +119,7 @@ body {
     bottom: 0;
     position: fixed;
     width: 100%;
-    background-color: #f9f9f9;
-    /*box-shadow: 0 11px 11px 12px RGBA(67,67,67,.5);*/
+    transition: transform 1.5s 0.3s;
 }
 
 .footer__menu__row, .header__tabs__row {
@@ -131,6 +130,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #f9f9f9;
 }
 
 .footer__menu__list, .header__tab__list {
@@ -171,7 +171,7 @@ body {
     margin: 0 auto 0.1em;
     fill: grey;
     height: 2.2em;
-    width: auto;
+    width: 2.2em;
 }
 
 .footer__menu__link--active .footer__menu__svg {
@@ -180,7 +180,7 @@ body {
 
 .footer__menu__text {
     margin: 0.2em 0 0;
-    font-size: 0.7em;
+    font-size: 0.9em;
 }
 
 .fallback_icon {
@@ -189,6 +189,39 @@ body {
     height: 2.2em;
     display: block;
 }
+
+/*Animate menu*/
+
+.arrow__up__container {
+  position: relative;
+  display: flex;
+  background: #cecaca;
+  width: 3em;
+  height: 1.7em;
+  border: 3px solid #cecaca;
+  border-radius: 50% 50% 0 0;
+  border-bottom: 0;
+  margin: auto;
+
+}
+
+.matches__item__arrow__up {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin: auto;
+  transition: transform 1.5s 0.3s;
+}
+
+.footer__menu.active {
+  transform: translateY(4em);
+}
+
+.footer__menu.active .matches__item__arrow__up {
+  transform: rotate(180deg);
+}
+
+
 
 /*--------------------------------------------------------------
 ## CONTENT
@@ -232,7 +265,7 @@ body {
     background: #ffffff;
     border-top: 10px solid #f04b51;
     position: relative;
-        max-width: 30em;
+    max-width: 30em;
 }
 
 .matches__division__title {
@@ -1076,11 +1109,16 @@ body {
         height: 100%;
         width: 7em;
         background: rgba(67, 67, 67, 01);
+        transition: none;
+    }
+    .footer__menu.active {
+      transform: none;
     }
     .footer__menu__row {
         flex-direction: column;
         justify-content: center;
         height: 100%;
+        background: #434343;
     }
     .footer__menu__list {
         width: 100%;
@@ -1119,4 +1157,9 @@ body {
     .footer__menu__svg {
       fill: #ffffff;
     }
+
+    .arrow__up__container {
+      display: none;
+    }
+
 }
