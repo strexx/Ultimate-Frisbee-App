@@ -10,7 +10,8 @@ UFA.scores = (() => {
         checkboxes = document.getElementsByClassName("match__item__submit__checkbox"),
         gameID = window.location.pathname.split('/')[2],
         team1_score_span = document.getElementById("team__home__info__score__span"),
-        team2_score_span = document.getElementById("team__away__info__score__span");
+        team2_score_span = document.getElementById("team__away__info__score__span"),
+        activeProgress = false;
 
     function init() {
         socket.on("dbupdate", function(json) {
@@ -41,6 +42,87 @@ UFA.scores = (() => {
           }
             hideCheckBoxes();
         }
+    }
+
+    function showElem(el) {
+      el.classList.remove("hidden");
+      el.classList.add("is-visible");
+    }
+
+    function hideElem(el) {
+      el.classList.remove("is-visible");
+      el.classList.add("hidden");
+    }
+
+    function moveBar(score1, score2) {
+
+      // Get needed elements
+      var progressElem = document.getElementById("progress"),
+          progressBar = document.getElementById("progressBar"),
+          label = document.getElementById("label-progress"),
+          messageLabel = document.getElementById("messageLabel"),
+          width = 0,
+          id = setInterval(frame, 20),
+          old_score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
+          old_score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
+          queue_score_1 = document.querySelector('#queue_score_1'),
+          queue_score_2 = document.querySelector('#queue_score_2'),
+          gameID = window.location.pathname.split('/')[2],
+          isFinal = false,
+          scoreBtn = true,
+          userID = null;
+
+      // console.log(activeProgress);
+
+      // Show progress bar
+      showElem(progressElem);
+
+      queue_score_1.innerHTML = score1;
+      queue_score_2.innerHTML = score2;
+
+      if(activeProgress === true) {
+        clearInterval(id);
+        progressBar.style.width = 0 + '%';
+        // Set score in label
+        queue_score_1.innerHTML = score1;
+        queue_score_2.innerHTML = score2;
+
+        console.log(score1);
+        console.log(score2);
+
+        setInterval(frame, 20);
+      }
+
+      function frame() {
+        activeProgress = true;
+
+        // console.log(activeProgress);
+
+        if (width >= 100) {
+          clearInterval(id);
+
+          messageLabel.innerHTML = "Score updated to: ";
+
+          addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
+
+          setTimeout(function() {
+            messageLabel.innerHTML = "";
+            progressBar.style.width = 0 + '%';
+            hideElem(progressElem);
+            activeProgress = false;
+
+            queue_score_1.innerHTML = score1;
+            queue_score_2.innerHTML = score2;
+
+            // console.log(activeProgress);
+
+          }, 1000);
+
+        } else {
+          width++;
+          progressBar.style.width = width + '%';
+        }
+      }
     }
 
     function changeHomeScores() {
@@ -125,7 +207,19 @@ UFA.scores = (() => {
             var newScore = Number(score1HTML) - 1;
             //score1.innerHTML = newScore;
 
-            addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+            if(activeProgress == true) {
+              var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+              var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+              var newQueueScore = Number(queue_score_1) - 1;
+
+              moveBar(newQueueScore, queue_score_2);
+
+            } else {
+                moveBar(newScore, score2);
+            }
+
+            // addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
 
         } else if (buttonId === "team__away__minus") {
             var score2HTML = score2.innerHTML;
@@ -133,7 +227,19 @@ UFA.scores = (() => {
             var newScore = Number(score2HTML) - 1;
             //score2.innerHTML = newScore;
 
-            addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+            if(activeProgress == true) {
+              var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+              var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+              var newQueueScore = Number(queue_score_2) - 1;
+
+              moveBar(queue_score_1, newQueueScore);
+
+            } else {
+                moveBar(score1, newScore);
+            }
+
+            // addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
 
         } else if (buttonId === "team__home__plus") {
             var score1HTML = score1.innerHTML;
@@ -141,7 +247,19 @@ UFA.scores = (() => {
             var newScore = Number(score1HTML) + 1;
             //score1.innerHTML = newScore;
 
-            addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+            if(activeProgress == true) {
+              var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+              var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+              var newQueueScore = Number(queue_score_1) + 1;
+
+              moveBar(newQueueScore, queue_score_2);
+
+            } else {
+                moveBar(newScore, score2);
+            }
+
+            // addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
 
         } else if (buttonId === "team__away__plus") {
             var score2HTML = score2.innerHTML;
@@ -149,7 +267,19 @@ UFA.scores = (() => {
             var newScore = Number(score2HTML) + 1;
             //score2.innerHTML = newScore;
 
-            addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+            if(activeProgress == true) {
+              var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+              var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+              var newQueueScore = Number(queue_score_2) + 1;
+
+              moveBar(queue_score_1, newQueueScore);
+
+            } else {
+                moveBar(score1, newScore);
+            }
+
+            // addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
         }
     }
 
