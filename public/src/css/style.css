@@ -252,10 +252,57 @@ body {
   margin: auto;
 }
 
+
+/*animations favorite*/
+.pop--active .favorite__btn__svg,
+.match__item__team__button.pop--active{
+    animation: pop 0.5s ease-in forwards;
+}
+
+/*.favorite__btn.active .favorite__btn__svg {
+    animation: pop 0.5s ease-in forwards;
+}*/
+
 .favorite__btn__svg__path {
   fill: lightgrey;
 }
 
+.pop--active .favorite__btn__svg__path{
+  animation: fill 0.5s ease-in forwards;
+}
+
+@keyframes pop {
+  0% {
+    fill: grey;
+  }
+
+  60% {
+    transform: scale(1,0.7);
+  }
+
+  80% {
+     transform: scale(1,1.2);
+   }
+
+  100% {
+    fill: yellow;
+    transform: scale(1,1);
+
+  }
+
+}
+
+@keyframes fill {
+  0% {
+    fill: lightgrey;
+  }
+
+  100% {
+    fill: rgba(253, 216, 74, 1);
+  }
+
+}
+/*End animations favorite*/
 
 .matches__division {
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16), 0 3px 4px rgba(0, 0, 0, 0.23);
@@ -927,7 +974,6 @@ body {
 @keyframes slideRight {
     0% {
         transform: translateX(-100%);
-        height: 40%;
     }
     67% {
         transform: translateX(0%);
@@ -940,7 +986,6 @@ body {
 @keyframes slideLeft {
     0% {
         transform: translateX(100%);
-        height: 40%;
     }
     67% {
         transform: translateX(0%);
@@ -952,10 +997,11 @@ body {
 
 @keyframes shrink {
     0% {
-        height: 40%;
+      height: 40%;
     }
+
     100% {
-        height: 0%;
+      height: 0;
     }
 }
 
@@ -977,35 +1023,7 @@ body {
 /*--------------------------------------------------------------
 # Favourites
 --------------------------------------------------------------*/
-.favorite__btn.active .favorite__btn__svg__path{
-  fill: rgba(253, 216, 74, 1);
-}
 
-#heart {
-  position: relative;
-  width: 2em;
-  height: 2em;
-  margin: auto;
-}
-
-#heart:before,
-#heart:after {
-    position: absolute;
-    content: "";
-    width: 1.5em;
-    height: 2.5em;
-    background: #f04b51;
-    -moz-border-radius: 20px 20px 0 0;
-    border-radius: 20px 20px 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0% 100%;
-}
-
-#heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 85% 80%;
-}
 
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES

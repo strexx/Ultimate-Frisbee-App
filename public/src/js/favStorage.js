@@ -33,7 +33,7 @@ UFA.favorites = (() => {
     [].forEach.call(newArrayID, (ID) => {
         var _favoriteButtonID = document.querySelector('.favorite__btn[value="' + ID + '"]');
         if (_favoriteButtonID) {
-            _favoriteButtonID.classList.add('active');
+            _favoriteButtonID.classList.add('pop--active');
         }
     });
 
@@ -49,7 +49,7 @@ UFA.favorites = (() => {
         arrayID.push(clickedID);
 
         // Remove class
-        this.classList.remove('active');
+        this.classList.remove('pop--active');
 
         /*  CHECK FOR DUPLICATED ID's - src: https://jsfiddle.net/BumbleB2na/XvgTb/1/ */
         for (var h = 0; h < newArrayID.length; h++) {
@@ -75,7 +75,7 @@ UFA.favorites = (() => {
         [].forEach.call(newArrayID, (ID) => {
             var _favoriteButtonID = document.querySelector('.favorite__btn[value="' + ID + '"]');
             if (_favoriteButtonID) {
-                _favoriteButtonID.classList.add('active');
+                _favoriteButtonID.classList.add('pop--active');
             }
         });
 
