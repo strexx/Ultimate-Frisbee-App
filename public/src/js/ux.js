@@ -8,7 +8,10 @@ UFA.ux = (() => {
         splashScreen = document.querySelector("#splash"),
         loginSubmitBtn = document.querySelector('.login__submit'),
         placeholder = document.querySelector('.login__submit i'),
-        feedback = document.querySelector('.login__feedback');
+        feedback = document.querySelector('.login__feedback'),
+        arrowUp = document.querySelector('.matches__item__arrow__up'),
+        arrowUpContainer = document.querySelector('.arrow__up__container'),
+        footerMenu = document.querySelector('.footer__menu');
 
     // toggle tabs + section
     function toggleClass() {
@@ -57,14 +60,9 @@ UFA.ux = (() => {
 
 
     function toggleMenu () {
-      var arrowUp = document.querySelector('.matches__item__arrow__up'),
-          arrowUpContainer = document.querySelector('.arrow__up__container'),
-          footerMenu = document.querySelector('.footer__menu');
-
-
           setTimeout(function() {
               footerMenu.classList.add('active');
-          }, 500)
+          }, 2000)
 
           arrowUpContainer.addEventListener('click', function() {
               footerMenu.classList.toggle('active');
