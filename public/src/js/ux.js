@@ -55,6 +55,24 @@ UFA.ux = (() => {
 
     }
 
+
+    function toggleMenu () {
+      var arrowUp = document.querySelector('.matches__item__arrow__up'),
+          arrowUpContainer = document.querySelector('.arrow__up__container'),
+          footerMenu = document.querySelector('.footer__menu');
+
+
+          setTimeout(function() {
+              footerMenu.classList.add('active');
+          }, 500)
+
+          arrowUpContainer.addEventListener('click', function() {
+              footerMenu.classList.toggle('active');
+          });
+
+
+    }
+
     // loaders
     function showLoader() {
         loader.classList.add("active");
@@ -95,10 +113,12 @@ UFA.ux = (() => {
     return {
         toggleClass: toggleClass,
         toggleSection: toggleSection,
+        toggleMenu: toggleMenu,
         showLoader: showLoader,
         hideLoader: hideLoader,
         splashVisited: splashVisited,
-        loginSubmit: loginSubmit
+        loginSubmit: loginSubmit,
+
     };
 
 })();
