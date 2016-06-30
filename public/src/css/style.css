@@ -988,7 +988,7 @@ body {
         padding: 2em 1.5em;
         justify-content: space-between;
         align-items: stretch;
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 
     .matches__division {
