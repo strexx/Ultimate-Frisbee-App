@@ -977,7 +977,7 @@ body {
 # Favourites
 --------------------------------------------------------------*/
 .favorite__btn.active .favorite__btn__svg__path{
-  fill: rgba(231, 76, 60, 1);
+  fill: rgba(253, 216, 74, 1);
 }
 
 #heart {
