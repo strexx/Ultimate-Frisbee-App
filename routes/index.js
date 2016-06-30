@@ -393,37 +393,55 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/favorites', function(req, res, next) {
-    var favoritesCookie = JSON.parse(req.cookies.matchID),
-        favMatches = [],
-        favIDArray = [];
 
-        for (var i=0; i<favoritesCookie.length; i++) {
-             favIDArray.push(parseInt(favoritesCookie[i]));
-        }
+    // Empty arrays to assign matches from database
+    var favMatches = [],
+    favIDArray = [];
 
-    var findMatches = function(db, callback) {
-            var collectionCursor = db.collection('matches').find({
-                id: {$in: favIDArray}
-            });
+    // Check if there are favorites set
+    if(req.cookies.matchID) {
 
-            collectionCursor.each(function(err, match) {
+      var favoritesCookie = JSON.parse(req.cookies.matchID);
 
-              if (match != null) {
-                  match.start_time = dateFormat(match.start_time, "HH:MM");
-                  favMatches.push(match);
-              } else {
-                  callback();
-              }
-            });
-    };
+      for (var i=0; i<favoritesCookie.length; i++) {
+           favIDArray.push(parseInt(favoritesCookie[i]));
+      }
 
-    findMatches(db, function() {
-      console.log(favMatches.length);
-        res.render('favorites', {
-            title: 'Favorites',
-            items: favMatches
-        });
-    });
+      // Find matches with favorite ID's
+      var findMatches = function(db, callback) {
+              var collectionCursor = db.collection('matches').find({
+                  id: {$in: favIDArray}
+              });
+
+              collectionCursor.each(function(err, match) {
+
+                if (match != null) {
+                    match.start_time = dateFormat(match.start_time, "HH:MM");
+                    favMatches.push(match);
+                } else {
+                    callback();
+                }
+              });
+      };
+
+      // Render favorite matches
+      findMatches(db, function() {
+          res.render('favorites', {
+              title: 'Favorites',
+              items: favMatches
+          });
+      });
+
+    } else {
+
+      // Show message when no favorites are added
+      var message = "No favorites added yet";
+
+      res.render('favorites', {
+          title: 'Favorites',
+          message: message
+      });
+    }
 });
 
 

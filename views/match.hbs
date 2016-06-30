@@ -17,12 +17,6 @@
 
 					<!-- TEAMS HOME -->
 					<div class="match__item__team match__item__team__home">
-						{{#unless winner}}
-							<div class="match__item__team__button__top">
-								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
-							</div>
-						{{/unless}}
-
 						<div class="match__item__team__info">
 							<span class="match__item__team__info__name">{{items.team_1.short_name}}</span>
 							<span id="team__home__info__score__span" class="match__item__team__info__score hidden">{{items.team_1_score}}</span>
@@ -31,8 +25,12 @@
 						</div>
 
 						{{#unless winner}}
-							<div class="match__item__team__button__bottom">
+							<div class="match__item__team__button__top">
 								<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
+							</div>
+
+							<div class="match__item__team__button__bottom">
+								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
 							</div>
 						{{/unless}}
 
@@ -40,12 +38,6 @@
 
 					<!-- TEAMS AWAY -->
 					<div class="match__item__team match__item__team__away">
-						{{#unless winner}}
-							<div class="match__item__team__button__top">
-								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
-							</div>
-						{{/unless}}
-
 						<div class="match__item__team__info">
 							<span class="match__item__team__info__name">{{items.team_2.short_name}}</span>
 							<span id="team__away__info__score__span" class="match__item__team__info__score hidden">{{items.team_2_score}}</span>
@@ -54,8 +46,12 @@
 						</div>
 
 						{{#unless winner}}
-							<div class="match__item__team__button__bottom">
+							<div class="match__item__team__button__top">
 								<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
+							</div>
+
+							<div class="match__item__team__button__bottom">
+								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
 							</div>
 						{{/unless}}
 
