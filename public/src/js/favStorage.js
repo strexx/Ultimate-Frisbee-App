@@ -23,22 +23,22 @@ UFA.favorites = (() => {
         }
 
 
-    // Create a new variable newArrayID for dynamic adding favourites.
+    // Create a new variable newArrayID for dynamic adding favorites.
     var newArrayID = arrayID;
 
     // Find button
-    var _favouriteButton = document.querySelectorAll('.favourite-btn');
+    var _favoriteButton = document.querySelectorAll('.favorite__btn');
 
     // Check if ID is stored in array and make button active
     [].forEach.call(newArrayID, (ID) => {
-        var _favouriteButtonID = document.querySelector('.favourite-btn[value="' + ID + '"]');
-        if (_favouriteButtonID) {
-            _favouriteButtonID.classList.add('active');
+        var _favoriteButtonID = document.querySelector('.favorite__btn[value="' + ID + '"]');
+        if (_favoriteButtonID) {
+            _favoriteButtonID.classList.add('active');
         }
     });
 
-    // Favourite button eventlistener
-    [].forEach.call(_favouriteButton, (button) => {
+    // favorite button eventlistener
+    [].forEach.call(_favoriteButton, (button) => {
         //var buttonID = button.getAttribute('data-id');
         button.addEventListener('click', storeID, false);
     });
@@ -73,9 +73,9 @@ UFA.favorites = (() => {
 
         // Check if ID is stored in array and make button active
         [].forEach.call(newArrayID, (ID) => {
-            var _favouriteButtonID = document.querySelector('.favourite-btn[value="' + ID + '"]');
-            if (_favouriteButtonID) {
-                _favouriteButtonID.classList.add('active');
+            var _favoriteButtonID = document.querySelector('.favorite__btn[value="' + ID + '"]');
+            if (_favoriteButtonID) {
+                _favoriteButtonID.classList.add('active');
             }
         });
 
