@@ -54,7 +54,7 @@ this.addEventListener('fetch', function(event) {
                     return response;
                 } else {
                     //if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
-                        return fetch(event.request);
+                        //return fetch(event.request);
                     //} else {
                         console.log('response not in cache, fetching it');
                         return fetchAndCache(event);
