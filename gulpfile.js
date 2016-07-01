@@ -31,7 +31,7 @@ var outputPath = {
 	Default Gulp tasks [add return before src to async tasks]
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'lib', 'images', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'lib', 'images']);
 
 // JS scripts task
 gulp.task('scripts',['clean-scripts'], function() {
