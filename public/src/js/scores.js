@@ -2,17 +2,19 @@
 	DATA REQUEST
 *********************************************************/
 UFA.scores = (() => {
-
     var socket = io.connect("http://localhost:3010"),
         submit = document.querySelector("#submit"),
+        /* Match */
         btns = document.querySelectorAll(".match__item__form button"),
         inputs = document.getElementsByClassName("match__team__info__input"),
         checkboxes = document.getElementsByClassName("match__item__submit__checkbox"),
         gameID = window.location.pathname.split('/')[2],
-        team1_score_span = document.getElementById("team__home__info__score__span"),
-        team2_score_span = document.getElementById("team__away__info__score__span");
+        team1_score_span = document.getElementsByClassName("team__home__info__score"),
+        team2_score_span = document.getElementsByClassName("team__away__info__score"),
+        /* Matches */
+        matchesBtns = document.querySelectorAll(".match__item__form button");
 
-    function init() {
+    function matchInit() {
         socket.on("dbupdate", function(json) {
             var data = JSON.parse(json);
 
@@ -63,8 +65,8 @@ UFA.scores = (() => {
 
     // Update scores
     function replaceScores(score1, score2) {
-        team1_score_span.innerHTML = score1;
-        team2_score_span.innerHTML = score2;
+        team1_score_span[0].innerHTML = score1;
+        team2_score_span[0].innerHTML = score2;
     };
 
     // Add plus and minus button click events
@@ -87,10 +89,10 @@ UFA.scores = (() => {
 
     // Show normal scores instead of inputs
     function showScores() {
-        team1_score_span.classList.remove("hidden");
-        team2_score_span.classList.remove("hidden");
-        team1_score_span.classList.add("is-visible");
-        team2_score_span.classList.add("is-visible");
+        team1_score_span[0].classList.remove("hidden");
+        team2_score_span[0].classList.remove("hidden");
+        team1_score_span[0].classList.add("is-visible");
+        team2_score_span[0].classList.add("is-visible");
     }
 
     // Hide inputs when JS is disabled
@@ -194,10 +196,17 @@ UFA.scores = (() => {
     }
 
 
+    function matchesInit() {
+
+
+    }
+
+
     // Return functions
     return {
-        init: init,
-        changeHomeScores: changeHomeScores
+        matchInit: matchInit,
+        changeHomeScores: changeHomeScores,
+        matchesInit: matchesInit
     };
 
 })();
