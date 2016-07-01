@@ -341,7 +341,7 @@ body {
 }
 
 .matches__item__table {
-    width: 70%;
+    width: 60%;
 }
 .matches__item__table__row {
     height: 2em;
@@ -425,7 +425,7 @@ body {
   height: 0;
 	width: 100%;
   opacity: 1;
-  background: lightgrey;
+  background: #f9f9f9;
   -webkit-transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
 	transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
 
@@ -435,8 +435,10 @@ body {
 .matches__item__morph__content {
   opacity: 0;
   transition: opacity 0.4s 0s;
-  transform: translateY(3em);
   z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 /*div containing everything  */
@@ -449,6 +451,28 @@ body {
 .matches__item__morph__container.active .matches__item__morph__content{
    transition: opacity 0.4s 0.5s;
    opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+### MATCHES BUTTONS
+--------------------------------------------------------------*/
+.matches__item__buttons {
+  display: flex;
+  height: 2em;
+  flex-direction: row;
+}
+
+.matches__item__team__button {
+    width: 2em;
+    background: transparent;
+    color: #434343;
+    line-height: 1;
+    box-shadow: inset 20em 0 0 0 rgba(49,48,43,0);
+    transition: box-shadow .1s ease-out,color .1s ease;
+    font-weight: 700 !important;
+    font-size: 1.5em !important;
+    margin-bottom: .3em;
 }
 
 
@@ -538,7 +562,6 @@ body {
     justify-content: space-between;
     padding: 0 .5em;
 }
-
 .match__item__team__button {
     width: 100%;
     background: transparent;
@@ -1059,6 +1082,7 @@ body {
         justify-content: space-between;
         align-items: stretch;
         overflow-x: auto;
+        overflow-y: hidden;
     }
 
     .matches__division {
