@@ -10,8 +10,7 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch'),
-    copy = require('gulp-copy'),
-    filesize = require('gulp-filesize'),
+    imageop = require('gulp-image-optimization'),
     sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
@@ -32,10 +31,10 @@ var outputPath = {
 	Default Gulp tasks [add return before src to async tasks]
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'copy-lib']);
+gulp.task('default', ['scripts', 'styles', 'lib', 'images', 'watch']);
 
 // JS scripts task
-gulp.task('scripts', function() {
+gulp.task('scripts',['clean-scripts'], function() {
     return gulp.src(inputPath.js)
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -48,7 +47,7 @@ gulp.task('scripts', function() {
 });
 
 // CSS styles task
-gulp.task('styles', function() {
+gulp.task('styles',['clean-styles'], function() {
     return gulp.src(inputPath.css)
         .pipe(sourcemaps.init())
         .pipe(autoprefixer({browsers: ['last 2 versions', 'ie 6-8']}))
@@ -58,9 +57,19 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(outputPath.css))
 });
 
+gulp.task('images',['clean-img'], function (cb) {
+    gulp.src(['./src/img/*.png', './src/img/*.jpg', './src/img/*.gif', './src/img/*.jpeg', './src/img/*.ico']).pipe(imageop({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    }))
+    .pipe(gulp.dest(outputPath.img)).on('end', cb).on('error', cb);
+});
+
 // Copy files task
-gulp.task('copy-lib', function() {
-    return gulp.src([inputPath.lib])
+gulp.task('lib',['clean-lib'], function() {
+    return gulp
+    gulp.src([inputPath.lib])
         .pipe(gulp.dest((outputPath.lib)));
 });
 
@@ -74,6 +83,13 @@ gulp.task('clean-scripts', function() {
 
 gulp.task('clean-styles', function() {
     gulp.src(outputPath.css, {
+            read: false
+        })
+        .pipe(clean());
+});
+
+gulp.task('clean-img', function() {
+    gulp.src(outputPath.img, {
             read: false
         })
         .pipe(clean());
@@ -115,6 +131,6 @@ gulp.task('critical', function(cb) { //src: http://fourkitchens.com/blog/article
         dest: './public/dist/css/critical.css',
         minify: true,
         extract: false
-            //ignore: ['font-face']
+        //ignore: ['font-face']
     });
 });
