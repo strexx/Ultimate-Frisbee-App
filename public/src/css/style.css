@@ -322,6 +322,7 @@ body {
 
 .matches__item {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .matches__content__wrapper {
@@ -399,9 +400,6 @@ body {
 
 .arrow__wrapper {
   display: flex;
-  width: 100%;
-  height: 1em;
-  text-align: center;
   margin-bottom: 0.4em;
 }
 
@@ -418,6 +416,41 @@ body {
     background-color: #e0e0e0;
     border: none;
 }
+
+/*div containing all hidden elements  */
+.matches__item__morph__container {
+	position: relative;
+	top: 0;
+	left: 0;
+  height: 0;
+	width: 100%;
+  opacity: 1;
+  background: lightgrey;
+  -webkit-transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
+	transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
+
+}
+
+/*hidden content before transition */
+.matches__item__morph__content {
+  opacity: 0;
+  transition: opacity 0.4s 0s;
+  transform: translateY(3em);
+  z-index: 2;
+}
+
+/*div containing everything  */
+.matches__item__morph__container.active {
+  height: 5em;
+}
+
+
+/*hidden content after transition */
+.matches__item__morph__container.active .matches__item__morph__content{
+   transition: opacity 0.4s 0.5s;
+   opacity: 1;
+}
+
 
 /* RANKING PAGE */
 .ranking__item {
