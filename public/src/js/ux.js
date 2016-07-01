@@ -11,7 +11,8 @@ UFA.ux = (() => {
         feedback = document.querySelector('.login__feedback'),
         arrowUp = document.querySelector('.matches__item__arrow__up'),
         arrowUpContainer = document.querySelector('.arrow__up__container'),
-        footerMenu = document.querySelector('.footer__menu');
+        footerMenu = document.querySelector('.footer__menu'),
+        matchesItemLinks = document.querySelectorAll('.matches__item__link');
 
     // toggle tabs + section
     function toggleClass() {
@@ -71,6 +72,20 @@ UFA.ux = (() => {
 
     }
 
+
+    function toggleDropdown () {
+      [].forEach.call(matchesItemLinks, (link) => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log(this.nextElementSibling);
+            var morphContainer = this.nextElementSibling;
+
+            morphContainer.classList.toggle('active');
+
+        });
+      })
+    }
+
     // loaders
     function showLoader() {
         loader.classList.add("active");
@@ -116,6 +131,7 @@ UFA.ux = (() => {
         hideLoader: hideLoader,
         splashVisited: splashVisited,
         loginSubmit: loginSubmit,
+        toggleDropdown: toggleDropdown
 
     };
 

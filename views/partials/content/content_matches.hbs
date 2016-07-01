@@ -1,16 +1,15 @@
 <article class="matches__item" id="{{id}}">
     <button class="favorite__btn" name="favorite" value="{{id}}">
-      <svg class="favorite__btn__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      	 width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
-      <g>
-      	<g id="star">
-      		<polygon class="favorite__btn__svg__path" points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472
-      			139.103,318.011 97.41,497.25 		"/>
-      	</g>
-      </g>
-      </svg>
+        <svg class="favorite__btn__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+            <g>
+                <g id="star">
+                    <polygon class="favorite__btn__svg__path" points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472
+      			139.103,318.011 97.41,497.25 		" />
+                </g>
+            </g>
+        </svg>
     </button>
-    <a href="/match/{{id}}/">
+    <a href="/match/{{id}}/" class="matches__item__link">
         <div class="matches__content__wrapper">
             <table class="matches__item__table">
                 <tr class="matches__item__table__row">
@@ -26,15 +25,29 @@
                 <p class="matches__item__info__time">{{start_time}}</p>
                 <p class="matches__item__info__field">{{game_site.name}}</p>
             </div>
-        </div>
-        <div class="arrow__wrapper">
-            <svg class="matches__item__arrow__right" enable-background="new 0 0 512 512" id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g>
-                    <path d="M383,266.5c-2.6,0-5.3-1-7.3-3l-254-245.5c-4.2-4-4.3-10.7-0.3-14.9c4-4.2,10.7-4.3,14.9-0.3l254,245.5   c4.2,4,4.3,10.7,0.3,14.9C388.5,265.5,385.8,266.5,383,266.5z" fill="#6A6E7C" />
-                    <path d="M129,512c-2.8,0-5.5-1.1-7.6-3.2c-4-4.2-3.9-10.9,0.3-14.9l254-245.5c4.2-4,10.9-3.9,14.9,0.3   c4,4.2,3.9,10.9-0.3,14.9L136.3,509C134.3,511,131.6,512,129,512z" fill="#6A6E7C" />
-                </g>
-            </svg>
+            <div class="arrow__wrapper">
+                <svg class="matches__item__arrow__right" enable-background="new 0 0 512 512" id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g>
+                        <path d="M383,266.5c-2.6,0-5.3-1-7.3-3l-254-245.5c-4.2-4-4.3-10.7-0.3-14.9c4-4.2,10.7-4.3,14.9-0.3l254,245.5   c4.2,4,4.3,10.7,0.3,14.9C388.5,265.5,385.8,266.5,383,266.5z" fill="#6A6E7C" />
+                        <path d="M129,512c-2.8,0-5.5-1.1-7.6-3.2c-4-4.2-3.9-10.9,0.3-14.9l254-245.5c4.2-4,10.9-3.9,14.9,0.3   c4,4.2,3.9,10.9-0.3,14.9L136.3,509C134.3,511,131.6,512,129,512z" fill="#6A6E7C" />
+                    </g>
+                </svg>
+            </div>
         </div>
     </a>
+    <div class="matches__item__morph__container">
+        <div class="matches__item__morph__content">
+            <div class="matches__item__buttons matches__item__home__buttons">
+                <button class="matches__item__team__button matches__item__team__button__plus" name="team__home__plus" id="team__home__plus">+</button>
+                <button class="matches__item__team__button matches__item__team__button__minus" name="team_home_minus" id="team__home__minus">-</button>
+            </div>
+            <div class="matches__item__buttons matches__item__away__buttons">
+                <button class="matches__item__team__button matches__item__team__button__plus" name="team__away__plus" id="team__away__plus">+</button>
+
+                <button class="matches__item__team__button matches__item__team__button__minus" name="team_away_minus" id="team__away__minus">-</button>
+            </div>
+
+        </div>
+    </div>
 </article>
 <hr class="matches__divider" />

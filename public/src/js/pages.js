@@ -5,16 +5,19 @@ UFA.page = (() => {
 
     function matchesRecent() {
         UFA.ux.toggleClass();
+        UFA.ux.toggleDropdown();
     }
 
     function matchesLive() {
         UFA.scores.changeHomeScores();
         UFA.ux.splashVisited();
         UFA.ux.toggleClass();
+        UFA.ux.toggleDropdown();
     }
 
     function matchesUpcoming() {
         UFA.ux.toggleClass();
+        UFA.ux.toggleDropdown();
     }
 
     function matchInfo() {
@@ -50,7 +53,7 @@ UFA.page = (() => {
     }
 
     function favorites () {
-        
+
     }
 
     return {
