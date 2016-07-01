@@ -9,8 +9,8 @@ var gulp = require('gulp'),
     critical = require('critical'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
+    image = require('gulp-image'),
     watch = require('gulp-watch'),
-    imageop = require('gulp-image-optimization'),
     sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
@@ -22,7 +22,7 @@ var inputPath = {
 var outputPath = {
     'css': './public/dist/css/',
     'js': './public/dist/js/',
-    'img': './public/dist/img/',
+    'img': './public/dist/img/icons',
     'lib': './public/dist/lib/'
 };
 
@@ -35,7 +35,7 @@ gulp.task('default', ['scripts', 'styles', 'lib', 'images', 'watch']);
 
 // JS scripts task
 gulp.task('scripts',['clean-scripts'], function() {
-    return gulp.src(inputPath.js)
+    gulp.src(inputPath.js)
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
@@ -48,7 +48,7 @@ gulp.task('scripts',['clean-scripts'], function() {
 
 // CSS styles task
 gulp.task('styles',['clean-styles'], function() {
-    return gulp.src(inputPath.css)
+    gulp.src(inputPath.css)
         .pipe(sourcemaps.init())
         .pipe(autoprefixer({browsers: ['last 2 versions', 'ie 6-8']}))
         .pipe(concat('style.min.css'))
@@ -57,19 +57,15 @@ gulp.task('styles',['clean-styles'], function() {
         .pipe(gulp.dest(outputPath.css))
 });
 
-gulp.task('images',['clean-img'], function (cb) {
-    gulp.src(['./src/img/*.png', './src/img/*.jpg', './src/img/*.gif', './src/img/*.jpeg', './src/img/*.ico']).pipe(imageop({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true
-    }))
-    .pipe(gulp.dest(outputPath.img)).on('end', cb).on('error', cb);
+gulp.task('images', ['clean-images'], function () {
+    gulp.src('./public/src/img/icons/*.png')
+        .pipe(image())
+        .pipe(gulp.dest(outputPath.img));
 });
 
 // Copy files task
-gulp.task('lib',['clean-lib'], function() {
-    return gulp
-    gulp.src([inputPath.lib])
+gulp.task('lib', function() {
+    return gulp.src([inputPath.lib])
         .pipe(gulp.dest((outputPath.lib)));
 });
 
@@ -88,7 +84,7 @@ gulp.task('clean-styles', function() {
         .pipe(clean());
 });
 
-gulp.task('clean-img', function() {
+gulp.task('clean-images', function() {
     gulp.src(outputPath.img, {
             read: false
         })
