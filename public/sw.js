@@ -17,8 +17,6 @@ this.addEventListener('install', function (event) {
         '/dist/img/icons/logout.png',
         '/dist/img/icons/favorites.png',
         '/sw.js',
-        'https://fonts.googleapis.com/css?family=Lato:100,300,400,700',
-        'https://fonts.googleapis.com/css?family=Roboto+Slab:300',
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
       ]);
     })
@@ -69,8 +67,8 @@ this.addEventListener('fetch', function(event) {
 //     event.respondWith(
 //         caches.match(event.request).then(function(res) {
 //             return res || fetch(event.request).then(function(response) {
-//                 if (event.request.url.indexOf("socket.io") == -1) { // ignore socket polling
-//                     return fetchAndCache(event);
+//                 if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
+//                        return fetchAndCache(event);
 //                 }
 //             });
 //         })
