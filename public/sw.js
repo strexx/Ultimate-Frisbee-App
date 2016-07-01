@@ -47,22 +47,14 @@ this.addEventListener('activate', function(event) {
 
 this.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request)
-            .then(function(response) {
-                if(response) {
-                    //console.log('found cached response', response);
-                    return response;
-                } else {
-                    //if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
-                        //return fetch(event.request);
-                    //} else {
-                        return fetch(event.request).then(function() {
-                            console.log('response not in cache, fetching it');
-                            return fetchAndCache(event);
-                        });
-                    //}
-                }
-            })
+        caches.match(event.request).then(function(res) {
+            return res || fetch(event.request).then(function(response) {
+                //if (event.request.url.indexOf("socket.io") == -1) { // ignore socket polling
+                    console.log('response not in cache, fetching it');
+                    return fetchAndCache(event);
+                //}
+            });
+        })
     );
 });
 
