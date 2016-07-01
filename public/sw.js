@@ -10,8 +10,13 @@ this.addEventListener('install', function (event) {
         '/dist/js/app.min.js',
         '/dist/lib/fontfaceobserver.min.js',
         '/dist/lib/socket.io.min.js',
+        '/dist/lib/modernizr.js',
+        '/dist/img/icons/matches.png',
+        '/dist/img/icons/tournaments.png',
+        '/dist/img/icons/login.png',
+        '/dist/img/icons/logout.png',
         '/sw.js',
-        'https://fonts.googleapis.com/css?family=Lato:400,300,700',
+        'https://fonts.googleapis.com/css?family=Lato:100,300,400,700',
         'https://fonts.googleapis.com/css?family=Roboto+Slab:300',
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
       ]);
@@ -48,12 +53,12 @@ this.addEventListener('fetch', function(event) {
                     //console.log('found cached response', response);
                     return response;
                 } else {
-                    if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
+                    //if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
                         return fetch(event.request);
-                    } else {
+                    //} else {
                         console.log('response not in cache, fetching it');
                         return fetchAndCache(event);
-                    }
+                    //}
                 }
             })
     );
