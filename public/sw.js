@@ -59,7 +59,7 @@ this.addEventListener('fetch', function(event) {
                         return fetch(event.request).then(function() {
                             console.log('response not in cache, fetching it');
                             return fetchAndCache(event);
-                        )};
+                        });
                     //}
                 }
             })
