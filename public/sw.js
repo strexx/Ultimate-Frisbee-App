@@ -49,10 +49,10 @@ this.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(res) {
             return res || fetch(event.request).then(function(response) {
-                //if (event.request.url.indexOf("socket.io") == -1) { // ignore socket polling
+                if (event.request.url.indexOf("socket.io") == -1) { // ignore socket polling
                     console.log('response not in cache, fetching it');
                     return fetchAndCache(event);
-                //}
+                }
             });
         })
     );
