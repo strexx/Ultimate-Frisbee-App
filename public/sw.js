@@ -55,8 +55,8 @@ this.addEventListener('fetch', function(event) {
                     return fetch(event.request);
                 } else {
                     console.log('response not in cache, fetching it');
-                    return fetch(event.request);
-                    //return fetchAndCache(event);
+                    //return fetch(event.request);
+                    return fetchAndCache(event);
                 }
             }
         })
