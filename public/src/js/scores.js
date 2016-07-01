@@ -5,7 +5,7 @@ UFA.scores = (() => {
 
     var socket = io.connect("http://localhost:3010"),
         submit = document.querySelector("#submit"),
-        btns = document.getElementsByTagName("button"),
+        btns = document.querySelectorAll(".match__item__form button"),
         inputs = document.getElementsByClassName("match__team__info__input"),
         checkboxes = document.getElementsByClassName("match__item__submit__checkbox"),
         gameID = window.location.pathname.split('/')[2],

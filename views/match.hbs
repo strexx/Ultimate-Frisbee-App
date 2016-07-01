@@ -17,43 +17,47 @@
 
 					<!-- TEAMS HOME -->
 					<div class="match__item__team match__item__team__home">
+						<span class="match__item__team__info__name">{{items.team_1.short_name}}</span>
 						<div class="match__item__team__info">
-							<span class="match__item__team__info__name">{{items.team_1.short_name}}</span>
 							<span id="team__home__info__score__span" class="match__item__team__info__score hidden">{{items.team_1_score}}</span>
 							<input type="number" id="team1-input" class="match__team__info__input" name="score_team_1" min="0" max="99" value="{{items.team_1_score}}" />
-							<span class="match__item__team__info__time">{{items.start_time}}</span>
+							<!-- <span class="match__item__team__info__time">{{items.start_time}}</span> -->
 						</div>
 
-						{{#unless winner}}
-							<div class="match__item__team__button__top">
-								<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
-							</div>
+						<div class="match__items__team__buttons">
+							{{#unless winner}}
+								<div class="match__item__team__button__top">
+									<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
+								</div>
 
-							<div class="match__item__team__button__bottom">
-								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
-							</div>
-						{{/unless}}
+								<div class="match__item__team__button__bottom">
+									<button class="match__item__team__button match__item__team__button__minus hidden" name="team_home_minus" id="team__home__minus">-</button>
+								</div>
+							{{/unless}}
+						</div>
 
 					</div>
 
 					<!-- TEAMS AWAY -->
 					<div class="match__item__team match__item__team__away">
+						<span class="match__item__team__info__name">{{items.team_2.short_name}}</span>
 						<div class="match__item__team__info">
-							<span class="match__item__team__info__name">{{items.team_2.short_name}}</span>
 							<span id="team__away__info__score__span" class="match__item__team__info__score hidden">{{items.team_2_score}}</span>
 							<input type="number" id="team2-input" class="match__team__info__input" name="score_team_2" min="0" max="99" value="{{items.team_2_score}}" />
-							<span class="match__item__team__info__field">{{items.game_site.name}}</span>
+							<!-- <span class="match__item__team__info__field">{{items.game_site.name}}</span> -->
 						</div>
 
-						{{#unless winner}}
-							<div class="match__item__team__button__top">
-								<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
-							</div>
+						<div class="match__item__team__buttons">
+							{{#unless winner}}
+								<div class="match__item__team__button__top">
+									<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
+								</div>
 
-							<div class="match__item__team__button__bottom">
-								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
-							</div>
-						{{/unless}}
+								<div class="match__item__team__button__bottom">
+									<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
+								</div>
+							{{/unless}}
+						</div>
 
 					</div>
 				</section>
@@ -63,7 +67,7 @@
 						{{#if user }}
 							<input type="hidden" id="user_id" name="userID" value="{{ user }}" />
 							<input type="checkbox" id="check" name="isFinal" class="match__item__submit__checkbox" value="true" />
-							<label class="match__item__final" for="check"> Final score</label>
+							<label class="match__item__final" for="check">Final score</label>
 						{{/if }}
 						<input type="hidden" id="gameID" name="gameID" value="{{ gameID }}" />
 						<input class="match__item__submit__input" type="submit" id="submit" name="submit" value="Submit result" onClick="return confirm('Are you sure');" />
