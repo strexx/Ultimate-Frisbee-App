@@ -8,7 +8,11 @@ UFA.ux = (() => {
         splashScreen = document.querySelector("#splash"),
         loginSubmitBtn = document.querySelector('.login__submit'),
         placeholder = document.querySelector('.login__submit i'),
-        feedback = document.querySelector('.login__feedback');
+        feedback = document.querySelector('.login__feedback'),
+        arrowUp = document.querySelector('.matches__item__arrow__up'),
+        arrowUpContainer = document.querySelector('.arrow__up__container'),
+        footerMenu = document.querySelector('.footer__menu'),
+        matchesItemLinks = document.querySelectorAll('.matches__item__link');
 
     // toggle tabs + section
     function toggleClass() {
@@ -55,6 +59,33 @@ UFA.ux = (() => {
 
     }
 
+
+    function toggleMenu () {
+          setTimeout(function() {
+              footerMenu.classList.add('active');
+          }, 2000)
+
+          arrowUpContainer.addEventListener('click', function() {
+              footerMenu.classList.toggle('active');
+          });
+
+
+    }
+
+
+    function toggleDropdown () {
+      [].forEach.call(matchesItemLinks, (link) => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log(this.nextElementSibling);
+            var morphContainer = this.nextElementSibling;
+
+            morphContainer.classList.toggle('active');
+
+        });
+      })
+    }
+
     // loaders
     function showLoader() {
         loader.classList.add("active");
@@ -95,10 +126,13 @@ UFA.ux = (() => {
     return {
         toggleClass: toggleClass,
         toggleSection: toggleSection,
+        toggleMenu: toggleMenu,
         showLoader: showLoader,
         hideLoader: hideLoader,
         splashVisited: splashVisited,
-        loginSubmit: loginSubmit
+        loginSubmit: loginSubmit,
+        toggleDropdown: toggleDropdown
+
     };
 
 })();

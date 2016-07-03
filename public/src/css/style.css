@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 >>> ABOUT:
 ----------------------------------------------------------------
-    AUTHOR:         Senny Kalidien, Melvin Reijnoudt, Fons Hettema
+    AUTHOR(S):      Senny Kalidien, Melvin Reijnoudt, Fons Hettema
     PROJECT:        Meesterproef
     VERSION:        1.0
     EXTERNAL CSS:   reset.css, fonts.css
@@ -12,6 +12,7 @@
 >>> COLORS:
 ----------------------------------------------------------------
     BACKGROUND:     #ffffff;
+    ALT BG:         #434343;
     NORMAL TEXT:    #1e1e1e;
     ANCHORS:        #e64a55;
     BUTTONS:        #e64a55;
@@ -61,6 +62,7 @@ body {
 
 #main {
     display: block;
+    margin-bottom: 5em;
 }
 
 #footer {}
@@ -119,8 +121,7 @@ body {
     bottom: 0;
     position: fixed;
     width: 100%;
-    background-color: #f9f9f9;
-    /*box-shadow: 0 11px 11px 12px RGBA(67,67,67,.5);*/
+    transition: transform 1s 0.3s;
 }
 
 .footer__menu__row, .header__tabs__row {
@@ -131,6 +132,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #f9f9f9;
 }
 
 .footer__menu__list, .header__tab__list {
@@ -170,8 +172,8 @@ body {
 .footer__menu__svg {
     margin: 0 auto 0.1em;
     fill: grey;
-    height: 2.2em;
-    width: auto;
+    height: 2em;
+    width: 2em;
 }
 
 .footer__menu__link--active .footer__menu__svg {
@@ -180,7 +182,7 @@ body {
 
 .footer__menu__text {
     margin: 0.2em 0 0;
-    font-size: 0.7em;
+    font-size: 0.9em;
 }
 
 .fallback_icon {
@@ -190,10 +192,39 @@ body {
     display: block;
 }
 
+/*Animate menu*/
+.arrow__up__container {
+  position: relative;
+  display: flex;
+  background: #cecaca;
+  width: 4em;
+  height: 2em;
+  border: 3px solid #cecaca;
+  border-radius: 50% 50% 0 0;
+  border-bottom: 0;
+  margin: auto;
+
+}
+
+.matches__item__arrow__up {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin: auto;
+  transition: transform 1.5s 0.3s;
+}
+
+.footer__menu.active {
+  transform: translateY(4em);
+}
+
+.footer__menu.active .matches__item__arrow__up {
+  transform: rotate(180deg);
+}
+
 /*--------------------------------------------------------------
 ## CONTENT
 --------------------------------------------------------------*/
-
 
 /*--------------------------------------------------------------
 ### MATCHES [HOME]
@@ -204,24 +235,67 @@ body {
   display: flex;
   justify-content: center;
   background: transparent;
-  width: 3em;
-  height: 4.8em;
+  width: 4em;
+  height: 4.5em;
   border: none;
-  border-radius: 10px;
 }
 
-/*.favorite__btn__img*/
 .favorite__btn__svg {
-/*   position: absolute; */
   display: block;
   width: 2em;
   margin: auto;
 }
 
+
+/*animations favorite*/
+.pop--active .favorite__btn__svg,
+.match__item__team__button.pop--active{
+    animation: pop 0.5s ease-in forwards;
+}
+
+/*.favorite__btn.active .favorite__btn__svg {
+    animation: pop 0.5s ease-in forwards;
+}*/
+
 .favorite__btn__svg__path {
   fill: lightgrey;
 }
 
+.pop--active .favorite__btn__svg__path{
+  animation: fill 0.5s ease-in forwards;
+}
+
+@keyframes pop {
+  0% {
+    fill: grey;
+  }
+
+  60% {
+    transform: scale(1,0.7);
+  }
+
+  80% {
+     transform: scale(1,1.2);
+   }
+
+  100% {
+    fill: yellow;
+    transform: scale(1,1);
+
+  }
+
+}
+
+@keyframes fill {
+  0% {
+    fill: lightgrey;
+  }
+
+  100% {
+    fill: rgba(253, 216, 74, 1);
+  }
+
+}
 
 .matches__division {
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16), 0 3px 4px rgba(0, 0, 0, 0.23);
@@ -232,7 +306,7 @@ body {
     background: #ffffff;
     border-top: 10px solid #f04b51;
     position: relative;
-        max-width: 30em;
+    max-width: 30em;
 }
 
 .matches__division__title {
@@ -240,7 +314,6 @@ body {
     font-size: 1.6em;
     padding: 0.5em;
     padding-left: 0.7em;
-    padding-bottom: 0.1em;
     color: #434343;
     text-transform: uppercase;
     text-align: center;
@@ -249,30 +322,29 @@ body {
 
 .matches__item {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .matches__content__wrapper {
-  padding-top: .4em;
-  padding-right: 0;
-  padding-left: 0;
-  color: inherit;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-      justify-content: flex-end;
+    padding-top: .4em;
+    padding-right: 0;
+    padding-left: 0;
+    color: inherit;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .matches__items a {
     color: inherit;
-    width: 75%;
+    width: calc(100% - 5.5em);
 }
 
 .matches__item__table {
-    width: 70%;
+    width: 60%;
 }
 .matches__item__table__row {
     height: 2em;
-    width: 10em;
     display: block;
 }
 
@@ -287,7 +359,6 @@ body {
 }
 
 .matches__item__name {
-    width: 8em;
     font-size: 1em;
     font-weight: 300;
 }
@@ -302,6 +373,7 @@ body {
 
 .matches__item__score {
     font-size: 1em;
+    width: 100%;
     font-weight: 500;
     text-align: center;
 }
@@ -328,9 +400,6 @@ body {
 
 .arrow__wrapper {
   display: flex;
-  width: 100%;
-  height: 1em;
-  text-align: center;
   margin-bottom: 0.4em;
 }
 
@@ -348,6 +417,7 @@ body {
     border: none;
 }
 
+<<<<<<< HEAD
 /* Progress Bar */
 
 #progress {
@@ -374,6 +444,92 @@ body {
 
 .hide-visible {
   opacity: 0;
+=======
+/*div containing all hidden elements  */
+.matches__item__morph__container {
+	position: relative;
+	top: 0;
+	left: 0;
+  height: 0;
+	width: 100%;
+  opacity: 1;
+  background: #f9f9f9;
+  -webkit-transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
+	transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
+
+}
+
+/*hidden content before transition */
+.matches__item__morph__content {
+  opacity: 0;
+  transition: opacity 0.4s 0s;
+  z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  height: 100%;
+}
+
+/*div containing everything  */
+.matches__item__morph__container.active {
+  height: 5em;
+}
+
+
+/*hidden content after transition */
+.matches__item__morph__container.active .matches__item__morph__content{
+   transition: opacity 0.4s 0.5s;
+   opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+### MATCHES BUTTONS
+--------------------------------------------------------------*/
+.matches__item__side {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.7em;
+  flex: 1 0 33%;
+  align-items: center;
+}
+
+.matches__item__side h2 {
+  text-align: center;
+}
+
+.matches__item__buttons {
+  display: flex;
+  height: 2em;
+  flex-direction: row;
+  padding-top: 0.3em;
+}
+
+.matches__item__team__button {
+    width: 2em;
+    background: transparent;
+    color: #434343;
+    line-height: 1;
+    box-shadow: inset 20em 0 0 0 rgba(49,48,43,0);
+    transition: box-shadow .1s ease-out,color .1s ease;
+    font-weight: 700 !important;
+    font-size: 1.5em !important;
+    margin-bottom: .3em;
+}
+
+.more__info {
+  display: flex;
+  position: relative;
+  flex: 1 0 15%;
+  flex-direction: column;
+  margin: auto;
+  flex: 1 0 10%;
+  align-items: center;
+}
+
+.info__svg {
+  width: 1.7em;
+  height: 1.7em;
 }
 
 /* RANKING PAGE */
@@ -442,11 +598,9 @@ body {
 ### MATCH (SCORE PAGE)
 --------------------------------------------------------------*/
 
-
 /*--------------------------------------------------------------
 #### MATCH [SCORES]
 --------------------------------------------------------------*/
-
 .match__item__teams {
     width: 100%;
     margin: 1em 0 0;
@@ -454,24 +608,34 @@ body {
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
+    min-height: 20em;
+    height: 70vh;
 }
 
 .match__item__team {
-    font-family: Lato, Helvetica neue, sans-serif;
-    max-width: 20em;
-    flex-direction: column;
-    justify-content: space-around;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 0 .5em;
 }
-
 .match__item__team__button {
     width: 100%;
-    font-weight: 700 !important;
-    font-size: 2.7em !important;
     background: transparent;
     color: #434343;
     line-height: 1;
     box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
     transition: box-shadow 0.1s ease-out, color 0.1s ease;
+}
+
+.match__item__team__button__top .match__item__team__button {
+    font-weight: 700 !important;
+    font-size: 3.7em !important;
+    margin-bottom: .3em;
+}
+
+.match__item__team__button__bottom .match__item__team__button {
+    font-weight: 700 !important;
+    font-size: 2.4em !important;
 }
 
 .match__item__team__button:hover {
@@ -480,20 +644,14 @@ body {
     box-shadow: inset 0 0 0 10em rgba(49, 48, 43, 0.3);*/
 }
 
-.match__item__team__button__bottom {
-    margin-top: 1em;
-}
-
 .match__item__team__info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    max-height: 13em;
 }
 
 .match__item__team__info__name {
-    font-size: 1em;
+    font-size: 2em;
     text-transform: uppercase;
     height: 2em;
     text-align: center;
@@ -501,9 +659,7 @@ body {
 
 .match__item__team__info__score {
     font-weight: 300;
-    font-size: 4em;
-    margin-bottom: 0.3em;
-    padding: 0.2em 0;
+    font-size: 6em;
 }
 
 .match__item__team__info__time {
@@ -667,22 +823,22 @@ body {
 }
 
 .tournaments__items a:first-of-type .tournaments__item {
-    background: #F47983;
+    background: #ffcc00;
     color: black;
 }
 
 .tournaments__items a:nth-of-type(2) .tournaments__item {
-    background: #9b59b6;
+    background: #F47983;
     color: #fff;
 }
 
 .tournaments__items a:nth-of-type(3) .tournaments__item {
-    background: #2980b9;
+    background: #9b59b6;
     color: #fff;
 }
 
 .tournaments__items a:last-of-type .tournaments__item {
-    background: #ffcc00;
+    background: #2980b9;
 }
 
 .tournaments__items a .tournaments__item:hover {
@@ -740,7 +896,7 @@ body {
 .login__input {
     position: relative;
     width: 90%;
-    margin: 15px auto;
+    margin: 1em auto;
 }
 
 .login__input span {
@@ -921,7 +1077,6 @@ body {
 @keyframes slideRight {
     0% {
         transform: translateX(-100%);
-        height: 40%;
     }
     67% {
         transform: translateX(0%);
@@ -934,7 +1089,6 @@ body {
 @keyframes slideLeft {
     0% {
         transform: translateX(100%);
-        height: 40%;
     }
     67% {
         transform: translateX(0%);
@@ -946,10 +1100,11 @@ body {
 
 @keyframes shrink {
     0% {
-        height: 40%;
+      height: 40%;
     }
+
     100% {
-        height: 0%;
+      height: 0;
     }
 }
 
@@ -967,47 +1122,12 @@ body {
     }
 }
 
-
-/*--------------------------------------------------------------
-# Favourites
---------------------------------------------------------------*/
-.favorite__btn.active .favorite__btn__svg__path{
-  fill: rgba(231, 76, 60, 1);
-}
-
-#heart {
-  position: relative;
-  width: 2em;
-  height: 2em;
-  margin: auto;
-}
-
-#heart:before,
-#heart:after {
-    position: absolute;
-    content: "";
-    width: 1.5em;
-    height: 2.5em;
-    background: #f04b51;
-    -moz-border-radius: 20px 20px 0 0;
-    border-radius: 20px 20px 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0% 100%;
-}
-
-#heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 85% 80%;
-}
-
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES
 --------------------------------------------------------------*/
 @media (min-width: 47em) {
     body {
         font-size: 90%;
-
     }
 
     .matches__items {
@@ -1017,7 +1137,8 @@ body {
         padding: 2em 1.5em;
         justify-content: space-between;
         align-items: stretch;
-        overflow-x: scroll;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     .matches__division {
@@ -1029,6 +1150,31 @@ body {
         margin-right: 1%;
     }
 
+    .match__item__team__info__score {
+        font-size: 8em;
+    }
+
+    .matches__item__name span {
+        width: 8em;
+    }
+
+    .tournaments__items {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .tournaments__items a {
+        flex: 1 0 50%;
+    }
+
+    .tournaments__item {
+        text-align: center;
+        padding: 25% 0;
+        position: relative;
+        font-size: 1.5em;
+        position: relative;
+        border-bottom: 0;
+    }
 }
 
 @media (min-width: 60em) {
@@ -1052,20 +1198,8 @@ body {
         align-items: flex-start;
     }
 
-    .matches__item__table__row {
-        width: 16em;
-    }
-
-    .matches__item__name {
-        width: 15em;
-    }
-
-    .matches__item__name span {
-        width: 10em;
-    }
-
     .matches__division {
-        width: 30em;
+        min-width: 30em;
         position: relative;
         margin: 0 2em;
     }
@@ -1076,27 +1210,13 @@ body {
     }
 
     .matches__division__title {
-        width: inherit;
+        width: 100%;
         background: #fff;
         z-index: 999;
     }
 
-    .tournaments__items {
-        display: flex;
-        flex-flow: row wrap;
-    }
-
-    .tournaments__items a {
-        flex: 1 0 50%;
-    }
-
-    .tournaments__item {
-        text-align: center;
-        padding: 8em 0;
-        position: relative;
-        font-size: 1.5em;
-        position: relative;
-        border-bottom: 0;
+    .match__item__team__info__score {
+        font-size: 15em;
     }
 
     .footer__menu {
@@ -1104,11 +1224,16 @@ body {
         height: 100%;
         width: 7em;
         background: rgba(67, 67, 67, 01);
+        transition: none;
+    }
+    .footer__menu.active {
+      transform: none;
     }
     .footer__menu__row {
         flex-direction: column;
         justify-content: center;
         height: 100%;
+        background: #434343;
     }
     .footer__menu__list {
         width: 100%;
@@ -1119,7 +1244,8 @@ body {
     .footer__menu__link {
         border: none;
         color: #ffffff;
-        padding: 3em 0;
+        padding: 2em 0;
+        margin-bottom: 0.1em;
         position: relative;
     }
 
@@ -1146,5 +1272,9 @@ body {
 
     .footer__menu__svg {
       fill: #ffffff;
+    }
+
+    .arrow__up__container {
+      display: none !important;
     }
 }

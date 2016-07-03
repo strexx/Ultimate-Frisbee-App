@@ -3,6 +3,8 @@
 *********************************************************/
 UFA.router = (() => {
     function init() {
+        UFA.ux.toggleMenu();
+        
         var ID = window.location.pathname.split('/')[2];
 
         if (window.location.pathname == '/') {
@@ -21,6 +23,9 @@ UFA.router = (() => {
         } else if (window.location.pathname == '/tournament/' + ID + '/') {
             UFA.page.tournamentMatches();
             console.log("Tournament");
+        } else if (window.location.pathname == '/favorites/') {
+            UFA.page.favorites();
+            console.log("Favorites");
         }
 
         // Check if hash has changed and toggle actives on links

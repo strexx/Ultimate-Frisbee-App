@@ -9,9 +9,8 @@ var gulp = require('gulp'),
     critical = require('critical'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
+    image = require('gulp-image'),
     watch = require('gulp-watch'),
-    copy = require('gulp-copy'),
-    filesize = require('gulp-filesize'),
     sourcemaps = require('gulp-sourcemaps');
 
 var inputPath = {
@@ -23,7 +22,7 @@ var inputPath = {
 var outputPath = {
     'css': './public/dist/css/',
     'js': './public/dist/js/',
-    'img': './public/dist/img/',
+    'img': './public/dist/img/icons',
     'lib': './public/dist/lib/'
 };
 
@@ -32,11 +31,11 @@ var outputPath = {
 	Default Gulp tasks [add return before src to async tasks]
 --------------------------------------------------------------*/
 // Gulp default task
-gulp.task('default', ['scripts', 'styles', 'copy-lib']);
+gulp.task('default', ['scripts', 'styles', 'lib', 'images', 'watch']);
 
 // JS scripts task
-gulp.task('scripts', function() {
-    return gulp.src(inputPath.js)
+gulp.task('scripts',['clean-scripts'], function() {
+    gulp.src(inputPath.js)
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
@@ -48,8 +47,8 @@ gulp.task('scripts', function() {
 });
 
 // CSS styles task
-gulp.task('styles', function() {
-    return gulp.src(inputPath.css)
+gulp.task('styles',['clean-styles'], function() {
+    gulp.src(inputPath.css)
         .pipe(sourcemaps.init())
         .pipe(autoprefixer({browsers: ['last 2 versions', 'ie 6-8']}))
         .pipe(concat('style.min.css'))
@@ -58,8 +57,14 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(outputPath.css))
 });
 
+gulp.task('images', ['clean-images'], function () {
+    gulp.src('./public/src/img/icons/*.png')
+        .pipe(image())
+        .pipe(gulp.dest(outputPath.img));
+});
+
 // Copy files task
-gulp.task('copy-lib', function() {
+gulp.task('lib', function() {
     return gulp.src([inputPath.lib])
         .pipe(gulp.dest((outputPath.lib)));
 });
@@ -74,6 +79,13 @@ gulp.task('clean-scripts', function() {
 
 gulp.task('clean-styles', function() {
     gulp.src(outputPath.css, {
+            read: false
+        })
+        .pipe(clean());
+});
+
+gulp.task('clean-images', function() {
+    gulp.src(outputPath.img, {
             read: false
         })
         .pipe(clean());
@@ -115,6 +127,6 @@ gulp.task('critical', function(cb) { //src: http://fourkitchens.com/blog/article
         dest: './public/dist/css/critical.css',
         minify: true,
         extract: false
-            //ignore: ['font-face']
+        //ignore: ['font-face']
     });
 });
