@@ -83,8 +83,9 @@ UFA.scores = (() => {
       queue_score_2.innerHTML = score2;
 
       if(activeProgress === true) {
-        clearInterval(id);
+        console.log(activeProgress);
         width = 0;
+        // clearInterval(id);
         progressBar.style.width = 0 + '%';
         // Set score in label
         queue_score_1.innerHTML = score1;
@@ -93,32 +94,28 @@ UFA.scores = (() => {
         console.log(score1);
         console.log(score2);
 
-        setInterval(frame, 20);
+        // setInterval(frame, 20);
       }
 
       function frame() {
         activeProgress = true;
 
-        // console.log(activeProgress);
-
-        if (width >= 100) {
+        if (width == 100) {
+          width = 0;
           clearInterval(id);
-
           messageLabel.innerHTML = "Score updated to: ";
 
           addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
 
-          setTimeout(function() {
-            width = 0;
-            messageLabel.innerHTML = "";
-            progressBar.style.width = 0 + '%';
-            // hideElem(progressElem);
-            activeProgress = false;
+          hideElem(progressElem);
+          messageLabel.innerHTML = "";
+          queue_score_1.innerHTML = "";
+          queue_score_2.innerHTML = "";
+          progressBar.style.width = 0 + '%';
+          activeProgress = false;
 
-            queue_score_1.innerHTML = score1;
-            queue_score_2.innerHTML = score2;
-
-          }, 1000);
+          queue_score_1.innerHTML = score1;
+          queue_score_2.innerHTML = score2;
 
         } else {
           width++;
