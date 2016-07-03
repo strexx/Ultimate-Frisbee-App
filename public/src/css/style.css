@@ -417,7 +417,6 @@ body {
     border: none;
 }
 
-<<<<<<< HEAD
 /* Progress Bar */
 
 #progress {
@@ -439,12 +438,8 @@ body {
 #label-progress {
   text-align: center;
   color: #fff;
-  width: 14em;
 }
 
-.hide-visible {
-  opacity: 0;
-=======
 /*div containing all hidden elements  */
 .matches__item__morph__container {
 	position: relative;

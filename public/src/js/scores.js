@@ -9,9 +9,7 @@ UFA.scores = (() => {
         inputs = document.getElementsByClassName("match__team__info__input"),
         checkboxes = document.getElementsByClassName("match__item__submit__checkbox"),
         gameID = window.location.pathname.split('/')[2],
-        // team1_score_span = document.getElementById("team__home__info__score__span"),
-        // team2_score_span = document.getElementById("team__away__info__score__span"),
-        activeProgress = false;
+        activeProgress = false,
         team1_score_span = document.getElementsByClassName("team__home__info__score"),
         team2_score_span = document.getElementsByClassName("team__away__info__score"),
         /* Matches */
@@ -114,7 +112,7 @@ UFA.scores = (() => {
             width = 0;
             messageLabel.innerHTML = "";
             progressBar.style.width = 0 + '%';
-            hideElem(progressElem);
+            // hideElem(progressElem);
             activeProgress = false;
 
             queue_score_1.innerHTML = score1;
