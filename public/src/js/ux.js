@@ -77,7 +77,6 @@ UFA.ux = (() => {
       [].forEach.call(matchesItemLinks, (link) => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log(this.nextElementSibling);
             var morphContainer = this.nextElementSibling;
 
             morphContainer.classList.toggle('active');

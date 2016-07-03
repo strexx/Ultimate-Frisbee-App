@@ -137,7 +137,7 @@ body {
 
 .footer__menu__list, .header__tab__list {
     text-align: center;
-    width: 33.33%;
+    width: 100%;
 }
 
 .footer__menu__link {
@@ -229,7 +229,6 @@ body {
 /*--------------------------------------------------------------
 ### MATCHES [HOME]
 --------------------------------------------------------------*/
-
 .favorite__btn {
   position: relative;
   display: flex;
@@ -338,6 +337,7 @@ body {
 .matches__items a {
     color: inherit;
     width: calc(100% - 5.5em);
+    display: block;
 }
 
 .matches__item__table {
@@ -638,8 +638,14 @@ body {
 }
 
 .match__item__team__info__score {
-    font-weight: 300;
-    font-size: 6em;
+    font-weight: 300 !important;
+    font-size: 6em !important;
+    text-align: center;
+}
+
+.match__item__team__info__score[readonly] {
+    border: 0;
+    background: #f9f9f9;
 }
 
 .match__item__team__info__time {
@@ -1131,7 +1137,7 @@ body {
     }
 
     .match__item__team__info__score {
-        font-size: 8em;
+        font-size: 8em !important;
     }
 
     .matches__item__name span {
@@ -1196,7 +1202,7 @@ body {
     }
 
     .match__item__team__info__score {
-        font-size: 15em;
+        font-size: 15em !important;
     }
 
     .footer__menu {
