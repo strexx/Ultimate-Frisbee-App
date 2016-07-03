@@ -439,6 +439,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  height: 100%;
 }
 
 /*div containing everything  */
@@ -457,10 +458,23 @@ body {
 /*--------------------------------------------------------------
 ### MATCHES BUTTONS
 --------------------------------------------------------------*/
+.matches__item__side {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.7em;
+  flex: 1 0 33%;
+  align-items: center;
+}
+
+.matches__item__side h2 {
+  text-align: center;
+}
+
 .matches__item__buttons {
   display: flex;
   height: 2em;
   flex-direction: row;
+  padding-top: 0.3em;
 }
 
 .matches__item__team__button {
@@ -475,6 +489,20 @@ body {
     margin-bottom: .3em;
 }
 
+.more__info {
+  display: flex;
+  position: relative;
+  flex: 1 0 15%;
+  flex-direction: column;
+  margin: auto;
+  flex: 1 0 10%;
+  align-items: center;
+}
+
+.info__svg {
+  width: 1.7em;
+  height: 1.7em;
+}
 
 /* RANKING PAGE */
 .ranking__item {

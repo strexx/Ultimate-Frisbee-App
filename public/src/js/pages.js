@@ -4,18 +4,21 @@
 UFA.page = (() => {
 
     function matchesRecent() {
+        UFA.scores.matchesInit();
         UFA.ux.toggleClass();
         UFA.ux.toggleDropdown();
     }
 
     function matchesLive() {
         UFA.scores.changeHomeScores();
+        UFA.scores.matchesInit();
         UFA.ux.splashVisited();
         UFA.ux.toggleClass();
         UFA.ux.toggleDropdown();
     }
 
     function matchesUpcoming() {
+        UFA.scores.matchesInit();
         UFA.ux.toggleClass();
         UFA.ux.toggleDropdown();
     }
@@ -25,7 +28,7 @@ UFA.page = (() => {
     }
 
     function matchScores() {
-        UFA.scores.init();
+        UFA.scores.matchInit();
         UFA.ux.toggleClass();
     }
 
