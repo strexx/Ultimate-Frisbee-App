@@ -10,8 +10,8 @@ UFA.page = (() => {
     }
 
     function matchesLive() {
-        UFA.scores.changeHomeScores();
         UFA.scores.matchesInit();
+        UFA.scores.changeHomeScores();
         UFA.ux.splashVisited();
         UFA.ux.toggleClass();
         UFA.ux.toggleDropdown();
