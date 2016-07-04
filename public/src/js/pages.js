@@ -4,17 +4,23 @@
 UFA.page = (() => {
 
     function matchesRecent() {
+        UFA.scores.matchesInit();
         UFA.ux.toggleClass();
+        UFA.ux.toggleDropdown();
     }
 
     function matchesLive() {
+        UFA.scores.matchesInit();
         UFA.scores.changeHomeScores();
         UFA.ux.splashVisited();
         UFA.ux.toggleClass();
+        UFA.ux.toggleDropdown();
     }
 
     function matchesUpcoming() {
+        UFA.scores.matchesInit();
         UFA.ux.toggleClass();
+        UFA.ux.toggleDropdown();
     }
 
     function matchInfo() {
@@ -22,7 +28,7 @@ UFA.page = (() => {
     }
 
     function matchScores() {
-        UFA.scores.init();
+        UFA.scores.matchInit();
         UFA.ux.toggleClass();
     }
 
@@ -50,7 +56,7 @@ UFA.page = (() => {
     }
 
     function favorites () {
-        
+
     }
 
     return {

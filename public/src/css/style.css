@@ -137,7 +137,7 @@ body {
 
 .footer__menu__list, .header__tab__list {
     text-align: center;
-    width: 33.33%;
+    width: 100%;
 }
 
 .footer__menu__link {
@@ -229,7 +229,6 @@ body {
 /*--------------------------------------------------------------
 ### MATCHES [HOME]
 --------------------------------------------------------------*/
-
 .favorite__btn {
   position: relative;
   display: flex;
@@ -322,6 +321,7 @@ body {
 
 .matches__item {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .matches__content__wrapper {
@@ -337,10 +337,11 @@ body {
 .matches__items a {
     color: inherit;
     width: calc(100% - 5.5em);
+    display: block;
 }
 
 .matches__item__table {
-    width: 70%;
+    width: 60%;
 }
 .matches__item__table__row {
     height: 2em;
@@ -377,6 +378,10 @@ body {
     text-align: center;
 }
 
+.queue_label {
+  color: grey;
+}
+
 .matches__item__info {
     position: relative;
     /*margin: 0.3em 0.3em 0;*/
@@ -399,9 +404,6 @@ body {
 
 .arrow__wrapper {
   display: flex;
-  width: 100%;
-  height: 1em;
-  text-align: center;
   margin-bottom: 0.4em;
 }
 
@@ -419,9 +421,176 @@ body {
     border: none;
 }
 
+/* Progress Bar */
+
+#progress {
+  position: relative;
+  height: 2em;
+  width: 15em;
+  background-color: #ddd;
+  color: #fff;
+  margin: 1em auto;
+}
+
+#progressBar {
+  padding: .3em;
+  height: 100%;
+  background-color: #4caf50;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#progress.is-visible #progressBar {
+  animation: fillBar 10s;
+}
+
+@-webkit-keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+@-moz-keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+@-o-keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+@keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+#label-progress {
+  text-align: center;
+  color: #fff;
+  height: 1em;
+  padding-top: 0.3em;
+  z-index: 1;
+  position: relative;
+}
+
+/* Progress Bar Matches Page */
+
+.progress {
+    width: 0%;
+    height: 0.3em;
+    background: #90ee90;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+}
+
+.progress.is-visible {
+  animation: fillBar 8s;
+}
+
+.cancelScore.is-visible {
+    position: absolute;
+    bottom: -45px;
+    width: 100%;
+    padding: .5em 0;
+    background: #f00;
+    color: #fff;
+}
+
+.cancelScoreMatches {
+    padding: .5em;
+    background: #f00;
+    color: #fff;
+}
+
+/*div containing all hidden elements  */
+.matches__item__morph__container {
+	position: relative;
+	top: 0;
+	left: 0;
+  height: 0;
+	width: 100%;
+  opacity: 1;
+  background: #f9f9f9;
+  -webkit-transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
+	transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
+
+}
+
+/*hidden content before transition */
+.matches__item__morph__content {
+  opacity: 0;
+  transition: opacity 0.4s 0s;
+  z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  height: 100%;
+}
+
+/*div containing everything  */
+.matches__item__morph__container.active {
+  height: 5em;
+}
+
+
+/*hidden content after transition */
+.matches__item__morph__container.active .matches__item__morph__content{
+   transition: opacity 0.4s 0.5s;
+   opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+### MATCHES BUTTONS
+--------------------------------------------------------------*/
+.matches__item__side {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.7em;
+  flex: 1 0 33%;
+  align-items: center;
+}
+
+.matches__item__side h2 {
+  text-align: center;
+}
+
+.matches__item__buttons {
+  display: flex;
+  height: 2em;
+  flex-direction: row;
+  padding-top: 0.3em;
+}
+
+.matches__item__team__button {
+    width: 2em;
+    background: transparent;
+    color: #434343;
+    line-height: 1;
+    box-shadow: inset 20em 0 0 0 rgba(49,48,43,0);
+    transition: box-shadow .1s ease-out,color .1s ease;
+    font-weight: 700 !important;
+    font-size: 1.5em !important;
+    margin-bottom: .3em;
+}
+
+.more__info {
+  display: flex;
+  position: relative;
+  flex: 1 0 15%;
+  flex-direction: column;
+  margin: auto;
+  flex: 1 0 10%;
+  align-items: center;
+}
+
+.info__svg {
+  width: 1.7em;
+  height: 1.7em;
+}
+
 /* RANKING PAGE */
 .ranking__item {
-    padding: 1em 1.2em 1.8em;
+    padding: 1em 1.2em 0.5em;
     color: inherit;
     display: flex;
     flex-direction: row;
@@ -444,8 +613,16 @@ body {
 
 .ranking__item__name {
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 300;
+}
+
+.ranking__item__name span {
+    width: 8em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
 }
 
 .ranking__item__score {
@@ -456,21 +633,21 @@ body {
 
 .ranking__item__info {
     position: relative;
-    margin: 1.2em 0 0;
+    /*margin: 1.2em 0 0;*/
 }
 
 .ranking__item__info__time {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 500;
     color: #127ea5;
-    margin: 0 0 0.1em;
+    margin: 0 0 .1em;
 }
 
 .ranking__item__info__field {
     text-align: center;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 0.7em;
     margin: 0;
 }
 
@@ -505,7 +682,6 @@ body {
     justify-content: space-between;
     padding: 0 .5em;
 }
-
 .match__item__team__button {
     width: 100%;
     background: transparent;
@@ -546,8 +722,14 @@ body {
 }
 
 .match__item__team__info__score {
-    font-weight: 300;
-    font-size: 6em;
+    font-weight: 300 !important;
+    font-size: 6em !important;
+    text-align: center;
+}
+
+.match__item__team__info__score[readonly] {
+    border: 0;
+    background: #f9f9f9;
 }
 
 .match__item__team__info__time {
@@ -1026,6 +1208,7 @@ body {
         justify-content: space-between;
         align-items: stretch;
         overflow-x: auto;
+        overflow-y: hidden;
     }
 
     .matches__division {
@@ -1038,7 +1221,7 @@ body {
     }
 
     .match__item__team__info__score {
-        font-size: 8em;
+        font-size: 8em !important;
     }
 
     .matches__item__name span {
@@ -1103,7 +1286,7 @@ body {
     }
 
     .match__item__team__info__score {
-        font-size: 15em;
+        font-size: 15em !important;
     }
 
     .footer__menu {

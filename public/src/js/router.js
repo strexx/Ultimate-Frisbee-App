@@ -4,12 +4,12 @@
 UFA.router = (() => {
     function init() {
         UFA.ux.toggleMenu();
-        
+
         var ID = window.location.pathname.split('/')[2];
 
         if (window.location.pathname == '/') {
-            UFA.sw.init();
             UFA.page.matchesLive();
+            UFA.sw.init();
             console.log("Matches");
         } else if (window.location.pathname == '/login/') {
             UFA.page.login();

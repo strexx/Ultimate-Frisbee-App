@@ -5,7 +5,7 @@ this.addEventListener('install', function (event) {
     caches.open(currentCacheName).then(function(cache) {
       console.log('Caching: ' + currentCacheName);
       return cache.addAll([
-        './',
+		'/',
         '/dist/css/style.min.css',
         '/dist/js/app.min.js',
         '/dist/lib/fontfaceobserver.min.js',
@@ -45,17 +45,26 @@ this.addEventListener('activate', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
+    var request = event.request;
+    var acceptHeader = request.headers.get('Accept');
+    var resourceType = 'static';
+    var cacheKey;
+
+    if (acceptHeader.indexOf('text/html') !== -1) {
+        resourceType = 'content';
+    }
+
     event.respondWith(
         caches.match(event.request).then(function(response) {
-            if(response) {
-                //console.log('found cached response', response);
+            if (response) {
+				if (resourceType === 'content') {
+					return fetchAndCache(event);
+				}
                 return response;
             } else {
-                if (event.request.url.indexOf("socket.io") !== -1) { // ignore socket polling
+                if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
                     return fetch(event.request);
                 } else {
-                    console.log('response not in cache, fetching it');
-                    //return fetch(event.request);
                     return fetchAndCache(event);
                 }
             }
@@ -63,24 +72,14 @@ this.addEventListener('fetch', function(event) {
     );
 });
 
-// this.addEventListener('fetch', function(event) {
-//     event.respondWith(
-//         caches.match(event.request).then(function(res) {
-//             return res || fetch(event.request).then(function(response) {
-//                 if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
-//                        return fetchAndCache(event);
-//                 }
-//             });
-//         })
-//     );
-// });
-
 function fetchAndCache(event) {
     return fetch(event.request).then(function(response) {
-        return caches.open('UFA-other-1.0').then(function(cache) {
-            console.log('fetched and caching', event.request);
-            cache.put(event.request, response.clone());
-            return response;
-        });
+		if(response.ok){
+	        return caches.open('UFA-other-1.0').then(function(cache) {
+	            console.log('fetched and caching', event.request);
+	            cache.put(event.request, response.clone());
+	            return response;
+	        });
+		}
     });
-};
+}
