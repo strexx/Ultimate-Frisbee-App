@@ -2,9 +2,11 @@
 	DATA REQUEST
 *********************************************************/
 UFA.scores = (() => {
+
+    var socket = io.connect("http://localhost:3010");
+
     function matchInit() {
-        var socket = io.connect("http://localhost:3010"),
-            submit = document.querySelector("#submit"),
+        var submit = document.querySelector("#submit"),
             /* Match */
             btns = document.querySelectorAll(".match__item__form button"),
             inputs = document.getElementsByClassName("match__team__info__input"),
@@ -181,7 +183,7 @@ UFA.scores = (() => {
             var updateScoreHome1 = data.team_1_score,
                 updateScoreHome2 = data.team_2_score,
                 // Get article with match id
-                target = document.getElementById(data.game_id),
+                target = document.getElementById("match-" + data.game_id),
                 tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
                 tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
 
@@ -193,6 +195,108 @@ UFA.scores = (() => {
 
 
     function matchesInit() {
+
+      var btns = document.querySelectorAll(".matches__item__morph__container button");
+
+      scoreButtonListeners();
+
+      socket.on("dbupdate", function(json) {
+          var data = JSON.parse(json);
+
+          console.log(data);
+
+          // Get new scores
+          var updateScoreHome1 = data.team_1_score,
+              updateScoreHome2 = data.team_2_score,
+              // Get article with match id
+              target = document.getElementById("match-" + data.game_id),
+              tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
+              tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
+
+          // Assign to html
+          tdTeam1.innerHTML = updateScoreHome1;
+          tdTeam2.innerHTML = updateScoreHome2;
+      });
+
+      // Add plus and minus button click events
+      function scoreButtonListeners() {
+          [].forEach.call(btns, function(button) {
+              button.classList.remove("hidden");
+              button.classList.add("is-visible");
+              button.addEventListener('click', function(index) {
+                  return function(e) {
+                      e.preventDefault();
+                      changeScore(index);
+                      button.classList.add("pop--active");
+                      setTimeout(function() {
+                          button.classList.remove("pop--active");
+                      }, 1000)
+                  };
+              }(button), false);
+          });
+      }
+
+      // Fire real time event to socket
+      function changeScore(item) {
+          var buttonId = item.id,
+              gameID = item.getAttribute("data-id"),
+              article = document.querySelector('#match-' + gameID),
+              score1 = article.querySelector('.team_1_score_realtime'),
+              score2 = article.querySelector('.team_2_score_realtime'),
+              isFinal = false,
+              scoreBtn = true,
+              userID = null;
+
+          if (document.querySelector("#user_id"))
+              userID = document.querySelector("#user_id").value;
+
+          if (buttonId === "team__home__minus") {
+              var score1HTML = score1.innerHTML;
+              var score2 = Number(score2.innerHTML);
+              var newScore = Number(score1HTML) - 1;
+              //score1.value = newScore;
+
+              addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+
+          } else if (buttonId === "team__away__minus") {
+              var score2HTML = score2.innerHTML;
+              var score1 = Number(score1.innerHTML);
+              var newScore = Number(score2HTML) - 1;
+              //score2.value = newScore;
+
+              addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+
+          } else if (buttonId === "team__home__plus") {
+              var score1HTML = score1.innerHTML;
+              var score2 = Number(score2.innerHTML);
+              var newScore = Number(score1HTML) + 1;
+              //score1.value = newScore;
+
+              addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+
+          } else if (buttonId === "team__away__plus") {
+              var score2HTML = score2.innerHTML;
+              var score1 = Number(score1.innerHTML);
+              var newScore = Number(score2HTML) + 1;
+              //score2.value = newScore;
+
+              addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+          }
+      }
+
+      // Add score (min or plus for teams) stream to socket
+      function addScore(score1, score2, gameID, isFinal, userID, scoreBtn) {
+          // Send score to socket
+          socket.emit('addScore', {
+              score1: score1,
+              score2: score2,
+              gameID: gameID,
+              isFinal: isFinal,
+              userID: userID,
+              scoreBtn: scoreBtn,
+              time: Date.now()
+          });
+      }
 
     }
 
