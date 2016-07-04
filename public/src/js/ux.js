@@ -12,7 +12,8 @@ UFA.ux = (() => {
         arrowUp = document.querySelector('.matches__item__arrow__up'),
         arrowUpContainer = document.querySelector('.arrow__up__container'),
         footerMenu = document.querySelector('.footer__menu'),
-        matchesItemLinks = document.querySelectorAll('.matches__item__link');
+        matchesItemLinks = document.querySelectorAll('.matches__item__link'),
+        morphContainers = document.querySelectorAll('.matches__item__morph__container');
 
     // toggle tabs + section
     function toggleClass() {
@@ -28,7 +29,7 @@ UFA.ux = (() => {
         // Add active class to new hash
         if (hash !== "") {
             var hashName = hash.substr(1)
-            var link = document.querySelector('.header__tab__list__'+hashName+ ' .header__tab__link');
+            var link = document.querySelector('.header__tab__list__' + hashName + ' .header__tab__link');
             link.classList.add('header__tab__link--active');
         } else {
             links[1].classList.add('header__tab__link--active');
@@ -60,30 +61,50 @@ UFA.ux = (() => {
     }
 
 
-    function toggleMenu () {
-          setTimeout(function() {
-              footerMenu.classList.add('active');
-          }, 2000)
+    function toggleMenu() {
+        setTimeout(function() {
+            footerMenu.classList.add('active');
+        }, 2000)
 
-          arrowUpContainer.addEventListener('click', function() {
-              footerMenu.classList.toggle('active');
-          });
-
-
-    }
-
-
-    function toggleDropdown () {
-      [].forEach.call(matchesItemLinks, (link) => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            var morphContainer = this.nextElementSibling;
-
-            morphContainer.classList.toggle('active');
-
+        arrowUpContainer.addEventListener('click', function() {
+            footerMenu.classList.toggle('active');
         });
-      })
+
+
     }
+
+
+    function toggleDropdown() {
+        [].forEach.call(matchesItemLinks, (link) => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var arrowsDropdowns = document.querySelectorAll('.matches__item__arrow__dropdown');
+
+                [].forEach.call(arrowsDropdowns, (singleArrow) => {
+                  var arrowDropdown = this.querySelector('.matches__item__arrow__dropdown');
+
+                    if (singleArrow == arrowDropdown) {
+                        singleArrow.classList.toggle('active');
+                    } else {
+                        singleArrow.classList.remove('active');
+                    }
+                });
+
+                [].forEach.call(morphContainers, (singleContainer) => {
+                    var morphContainer = this.nextElementSibling;
+
+                    if (singleContainer == morphContainer) {
+                        // arrowDropdown.classList.toggle('active');
+                        singleContainer.classList.toggle('active');
+                    } else {
+                        singleContainer.classList.remove('active');
+                        // arrowDropdown.classList.toggle('active');
+                    }
+                });
+            });
+        })
+    }
+
 
     // loaders
     function showLoader() {

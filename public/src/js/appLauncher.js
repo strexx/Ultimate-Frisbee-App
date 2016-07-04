@@ -25,4 +25,6 @@ UFA.launcher = ( () => {
 })();
 
 // Feature detection
-UFA.launcher.init();
+if ((document.querySelectorAll || document.querySelector)) {
+    UFA.launcher.init();
+}
