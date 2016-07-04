@@ -861,18 +861,22 @@ body {
 /*--------------------------------------------------------------
 #### MATCH [INFO]
 --------------------------------------------------------------*/
+
+#info .match__item {
+  text-align: center;
+}
+
 .match__item__title {
-    font-size: 1.5em;
-    margin-bottom: .5em;
-    font-weight: 700;
-    border-bottom: 1px solid #000;
-    width: 6.25em;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 0.7em;
 }
 
 .match__item__info {
-    font-size: 1em;
-    margin-bottom: 1em;
-    width: 100%;
+  font-size: 1em;
+  width: 20em;
+  padding: 0em 1em;
+  margin: 0 auto;
 }
 
 .match__item__info td {
@@ -1261,6 +1265,16 @@ body {
         font-size: 1.5em;
         position: relative;
         border-bottom: 0;
+    }
+
+    .match__item__title {
+      width: 18em;
+      text-align: left;
+      margin: 0 auto;
+    }
+
+    .match__item__info {
+      width: 27em;
     }
 }
 
