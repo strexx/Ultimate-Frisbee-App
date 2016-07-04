@@ -63,8 +63,6 @@ UFA.scores = (() => {
           progressBar = document.getElementById("progressBar"),
           label = document.getElementById("label-progress"),
           messageLabel = document.getElementById("messageLabel"),
-          width = 0,
-          id = setInterval(frame, 20),
           old_score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
           old_score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
           queue_score_1 = document.querySelector('#queue_score_1'),
@@ -72,56 +70,36 @@ UFA.scores = (() => {
           gameID = window.location.pathname.split('/')[2],
           isFinal = false,
           scoreBtn = true,
-          userID = null;
+          userID = null,
+          timer = setTimeout(load, 5000);
 
-      // console.log(activeProgress);
+          clearTimeout(timer);
+          setTimeout(load, 5000);
 
-      // Show progress bar
-      showElem(progressElem);
-
-      queue_score_1.innerHTML = score1;
-      queue_score_2.innerHTML = score2;
-
-      if(activeProgress === true) {
-        console.log(activeProgress);
-        width = 0;
-        // clearInterval(id);
-        progressBar.style.width = 0 + '%';
-        // Set score in label
-        queue_score_1.innerHTML = score1;
-        queue_score_2.innerHTML = score2;
-
-        console.log(score1);
-        console.log(score2);
-
-        // setInterval(frame, 20);
-      }
-
-      function frame() {
-        activeProgress = true;
-
-        if (width == 100) {
-          width = 0;
-          clearInterval(id);
-          messageLabel.innerHTML = "Score updated to: ";
-
-          addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
-
+          // Hide progress bar
           hideElem(progressElem);
-          messageLabel.innerHTML = "";
-          queue_score_1.innerHTML = "";
-          queue_score_2.innerHTML = "";
-          progressBar.style.width = 0 + '%';
-          activeProgress = false;
 
+          setTimeout(function() {
+            // Show progress bar
+            showElem(progressElem);
+          }, 50);
+
+          activeProgress = true;
+
+          messageLabel.innerHTML = "Score updated to: ";
           queue_score_1.innerHTML = score1;
           queue_score_2.innerHTML = score2;
 
-        } else {
-          width++;
-          progressBar.style.width = width + '%';
-        }
-      }
+          function load() {
+            // Add scores to database
+            addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
+            // Hide progress bar
+            hideElem(progressElem);
+            // Set active to false
+            activeProgress = false;
+
+            console.log("Finished: " + Date.now());
+          }
     }
 
     function changeHomeScores() {
