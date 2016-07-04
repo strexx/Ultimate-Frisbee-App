@@ -3,7 +3,7 @@ var currentCacheName = 'UFA-static-1.0';
 this.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(currentCacheName).then(function(cache) {
-      console.log('Caching: ' + currentCacheName);
+      //console.log('Caching: ' + currentCacheName);
       return cache.addAll([
 		'/',
 		'/tournaments/',
@@ -15,7 +15,7 @@ this.addEventListener('install', function (event) {
 });
 
 this.addEventListener('activate', function(event) {
-	console.log('delete old caches');
+	//console.log('delete old caches');
 	event.waitUntil(
 		caches.keys().then(function(cacheNames) {
 			return Promise.all(
@@ -27,7 +27,7 @@ this.addEventListener('activate', function(event) {
 						return cacheName !== currentCacheName;
 					})
 					.map(function(cacheName) {
-						console.log('deleted cache', cacheName);
+						//console.log('deleted cache', cacheName);
 						return caches.delete(cacheName);
 					})
 			);
@@ -40,7 +40,7 @@ this.addEventListener('fetch', function(event) {
     var acceptHeader = request.headers.get('Accept');
     var resourceType = 'static';
 
-    console.log(acceptHeader);
+    //console.log(acceptHeader);
 
     if (acceptHeader.indexOf('text/html') !== -1) {
         resourceType = 'content';
@@ -69,7 +69,7 @@ function fetchFromCache (event) {
     if (!response) {
       throw Error(`${event.request.url} not found in cache`);
     }
-	console.log(response);
+	//console.log(response);
     return response;
   });
 }
