@@ -417,6 +417,56 @@ body {
     border: none;
 }
 
+/* Progress Bar */
+
+#progress {
+  position: relative;
+  height: 2em;
+  width: 15em;
+  background-color: #ddd;
+  color: #fff;
+  margin: 1em auto;
+}
+
+#progressBar {
+  padding: .3em;
+  height: 100%;
+  background-color: #4caf50;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#progress.is-visible #progressBar {
+  animation: fillBar 10s;
+}
+
+@-webkit-keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+@-moz-keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+@-o-keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+@keyframes fillBar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+#label-progress {
+  text-align: center;
+  color: #fff;
+  height: 1em;
+  padding-top: 0.3em;
+  z-index: 1;
+  position: relative;
+}
+
 /*div containing all hidden elements  */
 .matches__item__morph__container {
 	position: relative;

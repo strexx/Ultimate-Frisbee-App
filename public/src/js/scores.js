@@ -3,7 +3,9 @@
 *********************************************************/
 UFA.scores = (() => {
 
-    var socket = io.connect("http://localhost:3010");
+    var socket = io.connect("http://localhost:3010"),
+        timer,
+        activeProgress = false;
 
     function matchInit() {
         var submit = document.querySelector("#submit"),
@@ -92,13 +94,14 @@ UFA.scores = (() => {
 
         // Fire real time event to socket
         function changeScore(item) {
-            var buttonId = item.id,
-                score1 = document.querySelector('.team__home__info__score'),
-                score2 = document.querySelector('.team__away__info__score'),
-                gameID = window.location.pathname.split('/')[2],
-                isFinal = false,
-                scoreBtn = true,
-                userID = null;
+
+          var buttonId = item.id,
+              score1 = document.querySelector('.team__home__info__score'),
+              score2 = document.querySelector('.team__away__info__score'),
+              gameID = window.location.pathname.split('/')[2],
+              isFinal = false,
+              scoreBtn = true,
+              userID = null;
 
             if (document.querySelector("#user_id"))
                 userID = document.querySelector("#user_id").value;
@@ -109,23 +112,55 @@ UFA.scores = (() => {
                 var newScore = Number(score1HTML) - 1;
                 //score1.value = newScore;
 
-                addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+                //score1.innerHTML = newScore;
+
+                if(activeProgress == true) {
+                  var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+                  var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+                  var newQueueScore = Number(queue_score_1) - 1;
+
+                  moveBar(newQueueScore, queue_score_2);
+
+                } else {
+                    moveBar(newScore, score2);
+                }
 
             } else if (buttonId === "team__away__minus") {
                 var score2HTML = score2.value;
                 var score1 = Number(score1.value);
                 var newScore = Number(score2HTML) - 1;
-                //score2.value = newScore;
+                //score2.innerHTML = newScore;
 
-                addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+                if(activeProgress == true) {
+                  var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+                  var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+                  var newQueueScore = Number(queue_score_2) - 1;
+
+                  moveBar(queue_score_1, newQueueScore);
+
+                } else {
+                    moveBar(score1, newScore);
+                }
 
             } else if (buttonId === "team__home__plus") {
                 var score1HTML = score1.value;
                 var score2 = Number(score2.value);
                 var newScore = Number(score1HTML) + 1;
-                //score1.value = newScore;
+                //score1.innerHTML = newScore;
 
-                addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+                if(activeProgress == true) {
+                  var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+                  var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+                  var newQueueScore = Number(queue_score_1) + 1;
+
+                  moveBar(newQueueScore, queue_score_2);
+
+                } else {
+                    moveBar(newScore, score2);
+                }
 
             } else if (buttonId === "team__away__plus") {
                 var score2HTML = score2.value;
@@ -133,8 +168,61 @@ UFA.scores = (() => {
                 var newScore = Number(score2HTML) + 1;
                 //score2.value = newScore;
 
-                addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+                if(activeProgress == true) {
+                  var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
+                  var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
+
+                  var newQueueScore = Number(queue_score_2) + 1;
+
+                  moveBar(queue_score_1, newQueueScore);
+
+                } else {
+                    moveBar(score1, newScore);
+                }
             }
+        }
+
+        function moveBar(score1, score2) {
+
+          // Get needed elements
+          var progressElem = document.getElementById("progress"),
+              progressBar = document.getElementById("progressBar"),
+              label = document.getElementById("label-progress"),
+              messageLabel = document.getElementById("messageLabel"),
+              old_score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
+              old_score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
+              queue_score_1 = document.querySelector('#queue_score_1'),
+              queue_score_2 = document.querySelector('#queue_score_2'),
+              gameID = window.location.pathname.split('/')[2],
+              isFinal = false,
+              scoreBtn = true,
+              userID = null;
+
+              window.clearTimeout(timer);
+              timer = window.setTimeout(load, 5000);
+
+              // Hide progress bar
+              hideElem(progressElem);
+
+              window.setTimeout(function() {
+                // Show progress bar
+                showElem(progressElem);
+              }, 50);
+
+              activeProgress = true;
+
+              messageLabel.innerHTML = "Score updated to: ";
+              queue_score_1.innerHTML = score1;
+              queue_score_2.innerHTML = score2;
+
+              function load() {
+                // Add scores to database
+                addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
+                // Hide progress bar
+                hideElem(progressElem);
+                // Set active to false
+                activeProgress = false;
+              }
         }
 
         // If submitted by scorekeeper
@@ -193,113 +281,164 @@ UFA.scores = (() => {
         });
     }
 
+    function showElem(el) {
+      el.classList.remove("hidden");
+      el.classList.add("is-visible");
+    }
+
+    function hideElem(el) {
+      el.classList.remove("is-visible");
+      el.classList.add("hidden");
+    }
 
     function matchesInit() {
 
-      var btns = document.querySelectorAll(".matches__item__morph__container button");
+        var btns = document.querySelectorAll(".matches__item__morph__container button");
 
-      scoreButtonListeners();
+        scoreButtonListeners();
 
-      socket.on("dbupdate", function(json) {
-          var data = JSON.parse(json);
+        socket.on("dbupdate", function(json) {
+            var data = JSON.parse(json);
 
-          console.log(data);
+            console.log(data);
 
-          // Get new scores
-          var updateScoreHome1 = data.team_1_score,
-              updateScoreHome2 = data.team_2_score,
-              // Get article with match id
-              target = document.getElementById("match-" + data.game_id),
-              tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
-              tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
+            // Get new scores
+            var updateScoreHome1 = data.team_1_score,
+                updateScoreHome2 = data.team_2_score,
+                // Get article with match id
+                target = document.getElementById("match-" + data.game_id),
+                tdTeam1 = target.getElementsByClassName("team_1_score_realtime")[0],
+                tdTeam2 = target.getElementsByClassName("team_2_score_realtime")[0];
 
-          // Assign to html
-          tdTeam1.innerHTML = updateScoreHome1;
-          tdTeam2.innerHTML = updateScoreHome2;
-      });
+            // Assign to html
+            tdTeam1.innerHTML = updateScoreHome1;
+            tdTeam2.innerHTML = updateScoreHome2;
+        });
 
-      // Add plus and minus button click events
-      function scoreButtonListeners() {
-          [].forEach.call(btns, function(button) {
-              button.classList.remove("hidden");
-              button.classList.add("is-visible");
-              button.addEventListener('click', function(index) {
-                  return function(e) {
-                      e.preventDefault();
-                      changeScore(index);
-                      button.classList.add("pop--active");
-                      setTimeout(function() {
-                          button.classList.remove("pop--active");
-                      }, 1000)
-                  };
-              }(button), false);
-          });
-      }
+        // Add plus and minus button click events
+        function scoreButtonListeners() {
+            [].forEach.call(btns, function(button) {
+                button.classList.remove("hidden");
+                button.classList.add("is-visible");
+                button.addEventListener('click', function(index) {
+                    return function(e) {
+                        e.preventDefault();
+                        changeScore(index);
+                        button.classList.add("pop--active");
+                        setTimeout(function() {
+                            button.classList.remove("pop--active");
+                        }, 1000)
+                    };
+                }(button), false);
+            });
+        }
 
-      // Fire real time event to socket
-      function changeScore(item) {
-          var buttonId = item.id,
-              gameID = item.getAttribute("data-id"),
-              article = document.querySelector('#match-' + gameID),
-              score1 = article.querySelector('.team_1_score_realtime'),
-              score2 = article.querySelector('.team_2_score_realtime'),
+        // Fire real time event to socket
+        function changeScore(item) {
+            var buttonId = item.id,
+                gameID = item.getAttribute("data-id"),
+                article = document.querySelector('#match-' + gameID),
+                score1 = article.querySelector('.team_1_score_realtime'),
+                score2 = article.querySelector('.team_2_score_realtime'),
+                isFinal = false,
+                scoreBtn = true,
+                userID = null;
+
+            if (document.querySelector("#user_id"))
+                userID = document.querySelector("#user_id").value;
+
+            if (buttonId === "team__home__minus") {
+                var score1HTML = score1.innerHTML;
+                var score2 = Number(score2.innerHTML);
+                var newScore = Number(score1HTML) - 1;
+                //score1.value = newScore;
+
+                addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+
+            } else if (buttonId === "team__away__minus") {
+                var score2HTML = score2.innerHTML;
+                var score1 = Number(score1.innerHTML);
+                var newScore = Number(score2HTML) - 1;
+                //score2.value = newScore;
+
+                addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+
+            } else if (buttonId === "team__home__plus") {
+                var score1HTML = score1.innerHTML;
+                var score2 = Number(score2.innerHTML);
+                var newScore = Number(score1HTML) + 1;
+                //score1.value = newScore;
+
+                addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+
+            } else if (buttonId === "team__away__plus") {
+                var score2HTML = score2.innerHTML;
+                var score1 = Number(score1.innerHTML);
+                var newScore = Number(score2HTML) + 1;
+                //score2.value = newScore;
+
+                addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+            }
+        }
+
+        function moveBarMatches(score1, score2) {
+
+          // Get needed elements
+          var progressElem = document.getElementById("progress"),
+              progressBar = document.getElementById("progressBar"),
+              label = document.getElementById("label-progress"),
+              messageLabel = document.getElementById("messageLabel"),
+              old_score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
+              old_score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
+              queue_score_1 = document.querySelector('#queue_score_1'),
+              queue_score_2 = document.querySelector('#queue_score_2'),
+              gameID = window.location.pathname.split('/')[2],
               isFinal = false,
               scoreBtn = true,
               userID = null;
 
-          if (document.querySelector("#user_id"))
-              userID = document.querySelector("#user_id").value;
+              window.clearTimeout(timer);
+              timer = window.setTimeout(load, 5000);
 
-          if (buttonId === "team__home__minus") {
-              var score1HTML = score1.innerHTML;
-              var score2 = Number(score2.innerHTML);
-              var newScore = Number(score1HTML) - 1;
-              //score1.value = newScore;
+              // Hide progress bar
+              hideElem(progressElem);
 
-              addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+              window.setTimeout(function() {
+                // Show progress bar
+                showElem(progressElem);
+              }, 50);
 
-          } else if (buttonId === "team__away__minus") {
-              var score2HTML = score2.innerHTML;
-              var score1 = Number(score1.innerHTML);
-              var newScore = Number(score2HTML) - 1;
-              //score2.value = newScore;
+              activeProgress = true;
 
-              addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+              messageLabel.innerHTML = "Score updated to: ";
+              queue_score_1.innerHTML = score1;
+              queue_score_2.innerHTML = score2;
 
-          } else if (buttonId === "team__home__plus") {
-              var score1HTML = score1.innerHTML;
-              var score2 = Number(score2.innerHTML);
-              var newScore = Number(score1HTML) + 1;
-              //score1.value = newScore;
+              function load() {
+                // Add scores to database
+                addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
+                // Hide progress bar
+                hideElem(progressElem);
+                // Set active to false
+                activeProgress = false;
+              }
+        }
 
-              addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
-
-          } else if (buttonId === "team__away__plus") {
-              var score2HTML = score2.innerHTML;
-              var score1 = Number(score1.innerHTML);
-              var newScore = Number(score2HTML) + 1;
-              //score2.value = newScore;
-
-              addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
-          }
-      }
-
-      // Add score (min or plus for teams) stream to socket
-      function addScore(score1, score2, gameID, isFinal, userID, scoreBtn) {
-          // Send score to socket
-          socket.emit('addScore', {
-              score1: score1,
-              score2: score2,
-              gameID: gameID,
-              isFinal: isFinal,
-              userID: userID,
-              scoreBtn: scoreBtn,
-              time: Date.now()
-          });
-      }
+        // Add score (min or plus for teams) stream to socket
+        function addScore(score1, score2, gameID, isFinal, userID, scoreBtn) {
+            // Send score to socket
+            socket.emit('addScore', {
+                score1: score1,
+                score2: score2,
+                gameID: gameID,
+                isFinal: isFinal,
+                userID: userID,
+                scoreBtn: scoreBtn,
+                time: Date.now()
+            });
+        }
 
     }
-
 
     // Return functions
     return {

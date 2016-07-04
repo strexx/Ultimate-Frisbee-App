@@ -53,14 +53,20 @@
 									<button class="match__item__team__button match__item__team__button__plus hidden" name="team__away__plus" id="team__away__plus">+</button>
 								</div>
 
-								<div class="match__item__team__button__bottom">
-									<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
+							<div class="match__item__team__button__bottom">
+								<button class="match__item__team__button match__item__team__button__minus hidden" name="team_away_minus" id="team__away__minus">-</button>
 								</div>
 							{{/unless}}
 						</div>
-
 					</div>
+
 				</section>
+
+				<!-- Progress Bar -->
+				<div id="progress" class="hidden">
+					<div id="label-progress"><span id="messageLabel"></span><span id="queue_score_1"></span> - <span id="queue_score_2"></span></div>
+					<div id="progressBar"></div>
+				</div>
 
 				{{#unless winner}}
 					<div class="match__item__submit">
