@@ -56,7 +56,7 @@ UFA.page = (() => {
     }
 
     function favorites () {
-
+        // UFA.ux.toggleDropdown();
     }
 
     return {

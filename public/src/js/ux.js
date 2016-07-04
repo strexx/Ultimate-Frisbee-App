@@ -78,8 +78,9 @@ UFA.ux = (() => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             var morphContainer = this.nextElementSibling;
-
+            var arrowDropdown = this.querySelector('.matches__item__arrow__dropdown');
             morphContainer.classList.toggle('active');
+            arrowDropdown.classList.toggle('active');
 
         });
       })
