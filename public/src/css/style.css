@@ -462,18 +462,30 @@ body {
 .progress.is-visible {
     animation: fillBar 8s;
 }
+
 .cancelScore.is-visible {
     position: absolute;
     bottom: -45px;
     width: 100%;
     padding: .5em 0;
-    background: #f00;
+    background: #f04b51;
     color: #fff;
 }
+
+.cancelScore:hover {
+    background: #dfdede;
+    color: black;
+}
+
 .cancelScoreMatches {
     padding: .5em;
-    background: #f00;
+    background: #f04b51;
     color: #fff;
+}
+
+.cancelScoreMatches:hover {
+    background: #dfdede;
+    color: black;
 }
 
 /*div containing all hidden elements  */
