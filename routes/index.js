@@ -398,7 +398,7 @@ router.get('/favorites', function(req, res, next) {
     favIDArray = [];
 
     // Check if there are favorites set
-    if(req.cookies.matchID) {
+    if(req.cookies.matchID && req.cookies.matchID != '[]') {
 
       var favoritesCookie = JSON.parse(req.cookies.matchID);
 

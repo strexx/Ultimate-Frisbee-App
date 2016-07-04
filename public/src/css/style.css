@@ -506,7 +506,7 @@ body {
 
 /* RANKING PAGE */
 .ranking__item {
-    padding: 1em 1.2em 1.8em;
+    padding: 1em 1.2em 0.5em;
     color: inherit;
     display: flex;
     flex-direction: row;
@@ -529,8 +529,16 @@ body {
 
 .ranking__item__name {
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 300;
+}
+
+.ranking__item__name span {
+    width: 8em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
 }
 
 .ranking__item__score {
@@ -541,21 +549,21 @@ body {
 
 .ranking__item__info {
     position: relative;
-    margin: 1.2em 0 0;
+    /*margin: 1.2em 0 0;*/
 }
 
 .ranking__item__info__time {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 500;
     color: #127ea5;
-    margin: 0 0 0.1em;
+    margin: 0 0 .1em;
 }
 
 .ranking__item__info__field {
     text-align: center;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 0.7em;
     margin: 0;
 }
 
