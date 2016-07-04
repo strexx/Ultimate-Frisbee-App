@@ -19,6 +19,7 @@
   "homepage": "https://meesterproef.directzichtbaar.nl",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.3",
     "dateformat": "^1.0.12",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
@@ -42,9 +43,8 @@
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
-    "gulp-copy": "0.0.2",
     "gulp-cssnano": "^2.1.1",
-    "gulp-filesize": "0.0.6",
+    "gulp-image": "^2.0.1",
     "gulp-nodemon": "^2.0.7",
     "gulp-notify": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",

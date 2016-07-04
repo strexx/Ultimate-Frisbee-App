@@ -1,9 +1,8 @@
-<article class="matches__item">
-    <a href="/match/{{id}}/">
-        <table class="matches__item__table">
-            <tr class="matches__item__table__row">
-                <td class="matches__item__shirt">
-                    <svg class="matches__item__shirt__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 446.58 446.58" style="enable-background:new 0 0 446.58 446.58;" xml:space="preserve">
+<article class="ranking__item">
+        <table class="ranking__item__table">
+            <tr class="ranking__item__table__row">
+                <td class="ranking__item__shirt">
+                    <svg class="ranking__item__shirt__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 446.58 446.58" style="enable-background:new 0 0 446.58 446.58;" xml:space="preserve">
                         <path style="fill:#010002;" d="M350.657,395.571H95.919c-3.294,0-5.967-2.667-5.967-5.967V192.596l-19.285,19.285
                     			c-2.238,2.238-6.2,2.238-8.437,0L1.75,151.407c-2.333-2.333-2.333-6.104,0-8.437l89.378-89.378
                     			c1.086-1.539,2.834-2.584,4.797-2.584h60.737c3.294,0,5.967,2.673,5.967,5.967c0,33.45,27.215,60.665,60.665,60.665
@@ -15,15 +14,14 @@
                     			c1.707-1.707,4.266-2.214,6.504-1.295c2.232,0.925,3.682,3.103,3.682,5.513C101.886,178.192,101.886,383.638,101.886,383.638z" />
                     </svg>
                 </td>
-                <td class="matches__item__name">{{team.short_name}}</td>
+                <td class="ranking__item__name"><span>{{team.short_name}}</span></td>
                 <td class="wins">W {{wins}}</td>
                 <td class="losses">L {{losses}}</td>
             </tr>
         </table>
-        <div class="matches__item__info">
-            <p class="matches__item__info__time">{{ranking}}</p>
-            <p class="matches__item__info__field">{{swiss_score}}</p>
+        <div class="ranking__item__info">
+            <p class="ranking__item__info__time">{{ranking}}</p>
+            <p class="ranking__item__info__field">{{swiss_score}}</p>
         </div>
-    </a>
 </article>
-<hr class="matches__divider" />
+<hr class="ranking__divider" />
