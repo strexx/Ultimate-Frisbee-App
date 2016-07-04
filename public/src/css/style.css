@@ -572,14 +572,9 @@ body {
 .ranking__item__table {
     width: 66%;
 }
-<<<<<<< HEAD
-=======
-
 .ranking__item__table td {
     vertical-align: top;
 }
-
->>>>>>> origin/master
 .ranking__item__shirt {
     position: relative;
     padding-right: .7em;
@@ -812,13 +807,10 @@ body {
 #### MATCH [INFO]
 --------------------------------------------------------------*/
 
-<<<<<<< HEAD
-=======
 #info .match__item {
   text-align: center;
 }
 
->>>>>>> origin/master
 .match__item__title {
   font-size: 1.5em;
   font-weight: 700;
@@ -1280,6 +1272,10 @@ body {
     }
     .arrow__up__container {
         display: none !important;
+    }
+
+    .ranking__item__name span {
+        width: 10em;
     }
 
     .ranking__item__name span {
