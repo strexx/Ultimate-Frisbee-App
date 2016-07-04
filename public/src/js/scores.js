@@ -189,6 +189,7 @@ UFA.scores = (() => {
               progressBar = document.getElementById("progressBar"),
               label = document.getElementById("label-progress"),
               messageLabel = document.getElementById("messageLabel"),
+              cancelButton = document.querySelector(".cancelScore"),
               old_score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
               old_score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
               queue_score_1 = document.querySelector('#queue_score_1'),
@@ -199,7 +200,18 @@ UFA.scores = (() => {
               userID = null;
 
               window.clearTimeout(timer);
-              timer = window.setTimeout(load, 5000);
+              timer = window.setTimeout(load, 8000);
+
+              cancelButton.addEventListener('click', function(index) {
+                  return function(e) {
+                      e.preventDefault();
+
+                      window.clearTimeout(timer);
+                      hideElem(progressElem);
+                      activeProgress = false;
+                  };
+              }(cancelButton), false);
+
 
               // Hide progress bar
               hideElem(progressElem);
@@ -318,8 +330,6 @@ UFA.scores = (() => {
         // Add plus and minus button click events
         function scoreButtonListeners() {
             [].forEach.call(btns, function(button) {
-                button.classList.remove("hidden");
-                button.classList.add("is-visible");
                 button.addEventListener('click', function(index) {
                     return function(e) {
                         e.preventDefault();
@@ -428,12 +438,45 @@ UFA.scores = (() => {
               progressElem = article.querySelector(".progress"),
               queue_score_1 = article.querySelector('.queue_score_1'),
               queue_score_2 = article.querySelector('.queue_score_2'),
+              cancelButton = article.querySelector(".cancelScoreMatches"),
+              moreInfo = article.querySelector(".more__info"),
               isFinal = false,
               scoreBtn = true,
               userID = null;
 
               window.clearTimeout(timer);
-              timer = window.setTimeout(load, 5000);
+              timer = window.setTimeout(load, 8000);
+
+
+              cancelButton.classList.remove("hidden");
+              cancelButton.classList.add("is-visible");
+
+              moreInfo.classList.remove("is-visible");
+              moreInfo.classList.add("hidden");
+
+
+              cancelButton.addEventListener('click', function(index) {
+                  return function(e) {
+                      e.preventDefault();
+
+                      window.clearTimeout(timer);
+                      hideElem(progressElem);
+                      activeProgress = false;
+
+                      // Hide progress bar
+                      queue_score_1.classList.remove("is-visible");
+                      queue_score_1.classList.add("hidden");
+                      queue_score_2.classList.remove("is-visible");
+                      queue_score_2.classList.add("hidden");
+
+                      this.classList.remove("is-visible");
+                      this.classList.add("hidden");
+
+                      moreInfo.classList.remove("hidden");
+                      moreInfo.classList.add("is-visible");
+
+                  };
+              }(cancelButton), false);
 
               // Hide progress bar
               hideElem(progressElem);
@@ -462,6 +505,12 @@ UFA.scores = (() => {
                 queue_score_1.classList.add("hidden");
                 queue_score_2.classList.remove("is-visible");
                 queue_score_2.classList.add("hidden");
+
+                cancelButton.classList.remove("is-visible");
+                cancelButton.classList.add("hidden");
+
+                moreInfo.classList.remove("hidden");
+                moreInfo.classList.add("is-visible");
 
                 hideElem(progressElem);
                 // Set active to false

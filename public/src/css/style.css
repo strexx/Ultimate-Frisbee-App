@@ -474,16 +474,31 @@ body {
 /* Progress Bar Matches Page */
 
 .progress {
-  width: 0%;
-  height: 0.3em;
-  background: #90ee90;
-  bottom: 0;
-  position: absolute;
-  left: 0;
+    width: 0%;
+    height: 0.3em;
+    background: #90ee90;
+    bottom: 0;
+    position: absolute;
+    left: 0;
 }
 
 .progress.is-visible {
-  animation: fillBar 10s;
+  animation: fillBar 8s;
+}
+
+.cancelScore.is-visible {
+    position: absolute;
+    bottom: -45px;
+    width: 100%;
+    padding: .5em 0;
+    background: #f00;
+    color: #fff;
+}
+
+.cancelScoreMatches {
+    padding: .5em;
+    background: #f00;
+    color: #fff;
 }
 
 /*div containing all hidden elements  */
