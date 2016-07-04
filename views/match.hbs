@@ -100,10 +100,12 @@
 					<th>Field</th>
 					<td>{{items.game_site.name}}</td>
 				</tr>
-				<tr>
-					<th>Round</th>
-					<td>{{items.pool_round}}</td>
-				</tr>
+				{{#if items.pool_round }}
+					<tr>
+						<th>Round</th>
+						<td>{{items.pool_round.round_number}}</td>
+					</tr>
+				{{/if}}
 				<tr>
 					<th>Tournament</th>
 					<td>{{items.tournament.name}}</td>
