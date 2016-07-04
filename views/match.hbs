@@ -24,7 +24,7 @@
 							<!-- <span class="match__item__team__info__time">{{items.start_time}}</span> -->
 						</div>
 
-						<div class="match__items__team__buttons">
+						<div class="match__item__team__buttons">
 							{{#unless winner}}
 								<div class="match__item__team__button__top">
 									<button class="match__item__team__button match__item__team__button__plus hidden" name="team__home__plus" id="team__home__plus">+</button>
@@ -100,27 +100,25 @@
 					<th>Field</th>
 					<td>{{items.game_site.name}}</td>
 				</tr>
-				<tr>
-					<th>Round</th>
-					<td>{{items.pool_round}}</td>
-				</tr>
+				{{#if items.pool_round }}
+					<tr>
+						<th>Round</th>
+						<td>{{items.pool_round.round_number}}</td>
+					</tr>
+				{{/if}}
 				<tr>
 					<th>Tournament</th>
 					<td>{{items.tournament.name}}</td>
 				</tr>
 			</table>
 
-		</article>
-	</section>
-
-
-	<section id="location" class="match_items">
-		<article class="match__item">
 			<div class="match__item__location">
 				<img class="match__item__location__image" src="{{ items.game_site.event_site.image_400 }}" alt="Map" />
 			</div>
+
 		</article>
 	</section>
+
 </main>
 
 {{> footer_matches}}

@@ -109,6 +109,10 @@ UFA.scores = (() => {
                 var score1HTML = score1.value;
                 var score2 = Number(score2.value);
                 var newScore = Number(score1HTML) - 1;
+
+                if(newScore < 1) {
+                  newScore = 0;
+                }
                 //score1.value = newScore;
 
                 //score1.innerHTML = newScore;
@@ -118,6 +122,10 @@ UFA.scores = (() => {
                   var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
 
                   var newQueueScore = Number(queue_score_1) - 1;
+
+                  if(newQueueScore < 1) {
+                    newQueueScore = 0;
+                  }
 
                   moveBar(newQueueScore, queue_score_2);
 
@@ -131,11 +139,19 @@ UFA.scores = (() => {
                 var newScore = Number(score2HTML) - 1;
                 //score2.innerHTML = newScore;
 
+                if(newScore < 1) {
+                  newScore = 0;
+                }
+
                 if(activeProgress == true) {
                   var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
                   var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
 
                   var newQueueScore = Number(queue_score_2) - 1;
+
+                  if(newQueueScore < 1) {
+                    newQueueScore = 0;
+                  }
 
                   moveBar(queue_score_1, newQueueScore);
 
@@ -149,11 +165,19 @@ UFA.scores = (() => {
                 var newScore = Number(score1HTML) + 1;
                 //score1.innerHTML = newScore;
 
+                if(newScore < 1) {
+                  newScore = 0;
+                }
+
                 if(activeProgress == true) {
                   var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
                   var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
 
                   var newQueueScore = Number(queue_score_1) + 1;
+
+                  if(newQueueScore < 1) {
+                    newQueueScore = 0;
+                  }
 
                   moveBar(newQueueScore, queue_score_2);
 
@@ -167,11 +191,19 @@ UFA.scores = (() => {
                 var newScore = Number(score2HTML) + 1;
                 //score2.value = newScore;
 
+                if(newScore < 1) {
+                  newScore = 0;
+                }
+
                 if(activeProgress == true) {
                   var queue_score_1 = document.querySelector('#queue_score_1').innerHTML;
                   var queue_score_2 = document.querySelector('#queue_score_2').innerHTML;
 
                   var newQueueScore = Number(queue_score_2) + 1;
+
+                  if(newQueueScore < 1) {
+                    newQueueScore = 0;
+                  }
 
                   moveBar(queue_score_1, newQueueScore);
 
@@ -362,11 +394,19 @@ UFA.scores = (() => {
                     var newScore = Number(score1HTML) - 1;
                     //score1.innerHTML = newScore;
 
+                    if(newScore < 1) {
+                      newScore = 0;
+                    }
+
                     if(activeProgress == true) {
                       var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
                       var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
 
                       var newQueueScore = Number(queue_score_1) - 1;
+
+                      if(newQueueScore < 1) {
+                        newQueueScore = 0;
+                      }
 
                       moveBarMatches(newQueueScore, queue_score_2, gameID);
 
@@ -380,11 +420,19 @@ UFA.scores = (() => {
                     var newScore = Number(score2HTML) - 1;
                     //score2.innerHTML = newScore;
 
+                    if(newScore < 1) {
+                      newScore = 0;
+                    }
+
                     if(activeProgress == true) {
                       var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
                       var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
 
                       var newQueueScore = Number(queue_score_2) - 1;
+
+                      if(newQueueScore < 1) {
+                        newQueueScore = 0;
+                      }
 
                       moveBarMatches(queue_score_1, newQueueScore, gameID);
 
@@ -398,11 +446,19 @@ UFA.scores = (() => {
                     var newScore = Number(score1HTML) + 1;
                     //score1.innerHTML = newScore;
 
+                    if(newScore < 1) {
+                      newScore = 0;
+                    }
+
                     if(activeProgress == true) {
                       var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
                       var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
 
                       var newQueueScore = Number(queue_score_1) + 1;
+
+                      if(newQueueScore < 1) {
+                        newQueueScore = 0;
+                      }
 
                       moveBarMatches(newQueueScore, queue_score_2, gameID);
 
@@ -416,11 +472,19 @@ UFA.scores = (() => {
                     var newScore = Number(score2HTML) + 1;
                     //score2.innerHTML = newScore;
 
+                    if(newScore < 1) {
+                      newScore = 0;
+                    }
+
                     if(activeProgress == true) {
                       var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
                       var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
 
                       var newQueueScore = Number(queue_score_2) + 1;
+
+                      if(newQueueScore < 1) {
+                        newQueueScore = 0;
+                      }
 
                       moveBarMatches(queue_score_1, newQueueScore, gameID);
 
