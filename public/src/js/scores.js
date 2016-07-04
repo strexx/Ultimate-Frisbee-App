@@ -13,7 +13,8 @@ UFA.scores = (() => {
         team1_score_span = document.getElementsByClassName("team__home__info__score"),
         team2_score_span = document.getElementsByClassName("team__away__info__score"),
         /* Matches */
-        matchesBtns = document.querySelectorAll(".match__item__form button");
+        matchesBtns = document.querySelectorAll(".match__item__form button"),
+        timer;
 
     function matchInit() {
         socket.on("dbupdate", function(json) {
@@ -70,16 +71,15 @@ UFA.scores = (() => {
           gameID = window.location.pathname.split('/')[2],
           isFinal = false,
           scoreBtn = true,
-          userID = null,
-          timer = setTimeout(load, 5000);
+          userID = null;
 
-          clearTimeout(timer);
-          setTimeout(load, 5000);
+          window.clearTimeout(timer);
+          timer = window.setTimeout(load, 5000);
 
           // Hide progress bar
           hideElem(progressElem);
 
-          setTimeout(function() {
+          window.setTimeout(function() {
             // Show progress bar
             showElem(progressElem);
           }, 50);
@@ -97,8 +97,6 @@ UFA.scores = (() => {
             hideElem(progressElem);
             // Set active to false
             activeProgress = false;
-
-            console.log("Finished: " + Date.now());
           }
     }
 
