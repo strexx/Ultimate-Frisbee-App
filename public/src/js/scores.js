@@ -2,7 +2,7 @@
 	DATA REQUEST
 *********************************************************/
 UFA.scores = (() => {
-    var socket = io.connect("http://localhost:3010"),
+    var socket = io.connect("https://meesterproef.directzichtbaar.nl"),
         timer,
         activeProgress = false;
 
