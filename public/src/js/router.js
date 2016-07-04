@@ -9,7 +9,7 @@ UFA.router = (() => {
 
         if (window.location.pathname == '/') {
             UFA.page.matchesLive();
-            UFA.sw.init();
+            //UFA.sw.init();
             console.log("Matches");
         } else if (window.location.pathname == '/login/') {
             UFA.page.login();
