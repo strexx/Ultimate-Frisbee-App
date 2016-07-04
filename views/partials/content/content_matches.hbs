@@ -42,6 +42,10 @@
     </a>
     <div class="matches__item__morph__container">
         <div class="matches__item__morph__content">
+          {{#if winner}}
+  					<h1 class="match__item__final__label">This game has finished</h1>
+  				{{/if}}
+          	{{#unless winner}}
             <section class="matches__item__side matches__item__home">
                 <h2>Home</h2>
                 <div class="matches__item__buttons matches__item__home__buttons">
@@ -56,6 +60,7 @@
                     <button class="matches__item__team__button matches__item__team__button__plus" data-id="{{id}}" name="team__away__plus" id="team__away__plus">+</button>
                 </div>
             </section>
+            {{/unless}}
             <a href="/match/{{id}}/" class="more__info">
                 <svg class="info__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="612px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
                     <g>

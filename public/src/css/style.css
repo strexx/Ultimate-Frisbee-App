@@ -41,10 +41,10 @@
 /*--------------------------------------------------------------
 ## STRUCTURE
 --------------------------------------------------------------*/
+
 body {
     font-size: 85%;
 }
-
 #wrapper {
     min-height: 100vh;
     overflow: hidden;
@@ -55,21 +55,19 @@ body {
     -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);*/
 }
-
 #header {
     z-index: 1;
 }
-
 #main {
     display: block;
     margin-bottom: 5em;
 }
-
 #footer {}
 
 /*--------------------------------------------------------------
 ## HEADER
 --------------------------------------------------------------*/
+
 .header__title {
     font-weight: 300;
     letter-spacing: 5px;
@@ -79,7 +77,6 @@ body {
     text-align: center;
     text-transform: uppercase;
 }
-
 .header__tab__link {
     display: block;
     color: grey;
@@ -91,31 +88,28 @@ body {
     width: 100%;
     border-bottom: 8px solid #cecaca;
 }
-
 .header__tab__link, .footer__menu__link {
     transition: border .4s ease-in-out;
 }
-
 .header__tab__link--active {
     color: #f04b51;
     font-weight: 600;
     border-bottom: 8px solid #f04b51;
 }
-
 .header__tab__link--active:focus {
     border-bottom: 8px solid #f04b51;
 }
-
 .header__message {
-  text-align: center;
-  background: #f04b51;
-  padding: 1em;
-  color: white;
+    text-align: center;
+    background: #f04b51;
+    padding: 1em;
+    color: white;
 }
 
 /*--------------------------------------------------------------
 ## FOOTER
 --------------------------------------------------------------*/
+
 .footer__menu {
     margin-bottom: 0;
     bottom: 0;
@@ -124,7 +118,6 @@ body {
     transition: transform 1s 0.3s;
     z-index: 2;
 }
-
 .footer__menu__row, .header__tabs__row {
     list-style-type: none;
     margin: 0;
@@ -135,12 +128,10 @@ body {
     justify-content: space-around;
     background-color: #f9f9f9;
 }
-
 .footer__menu__list, .header__tab__list {
     text-align: center;
     width: 100%;
 }
-
 .footer__menu__link {
     display: inline-block;
     color: #aaa;
@@ -152,16 +143,13 @@ body {
     width: 100%;
     border-top: 4px solid #cecaca;
 }
-
 .footer__menu__link:hover {
     background-color: #ececec;
     background: #ececec;
 }
-
 .footer__menu__link:focus {
     border-top: 4px solid #f04b51;
 }
-
 .footer__menu__link--active {
     color: #f04b51;
     font-weight: 400;
@@ -169,23 +157,19 @@ body {
     font-weight: 600;
     border-top: 4px solid #f04b51;
 }
-
 .footer__menu__svg {
     margin: 0 auto 0.1em;
     fill: grey;
     height: 2em;
     width: 2em;
 }
-
 .footer__menu__link--active .footer__menu__svg {
     fill: #f04b51;
 }
-
 .footer__menu__text {
     margin: 0.2em 0 0;
     font-size: 0.9em;
 }
-
 .fallback_icon {
     margin: 0 auto .1em;
     fill: grey;
@@ -194,62 +178,59 @@ body {
 }
 
 /*Animate menu*/
+
 .arrow__up__container {
-  position: relative;
-  display: flex;
-  background: #cecaca;
-  width: 4em;
-  height: 2em;
-  border: 3px solid #cecaca;
-  border-radius: 50% 50% 0 0;
-  border-bottom: 0;
-  margin: auto;
-
+    position: relative;
+    display: flex;
+    background: #cecaca;
+    width: 4em;
+    height: 2em;
+    border: 3px solid #cecaca;
+    border-radius: 50% 50% 0 0;
+    border-bottom: 0;
+    margin: auto;
 }
-
 .matches__item__arrow__up {
-  position: relative;
-  width: 1em;
-  height: 1em;
-  margin: auto;
-  transition: transform 1.5s 0.3s;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    margin: auto;
+    transition: transform 1.5s 0.3s;
 }
-
 .footer__menu.active {
-  transform: translateY(4em);
+    transform: translateY(4em);
 }
-
 .footer__menu.active .matches__item__arrow__up {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /*--------------------------------------------------------------
 ## CONTENT
 --------------------------------------------------------------*/
 
+
 /*--------------------------------------------------------------
 ### MATCHES [HOME]
 --------------------------------------------------------------*/
+
 .favorite__btn {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  background: transparent;
-  width: 4em;
-  height: 4.5em;
-  border: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    width: 4em;
+    height: 4.5em;
+    border: none;
 }
-
 .favorite__btn__svg {
-  display: block;
-  width: 2em;
-  margin: auto;
+    display: block;
+    width: 2em;
+    margin: auto;
 }
-
 
 /*animations favorite*/
-.pop--active .favorite__btn__svg,
-.match__item__team__button.pop--active{
+
+.pop--active .favorite__btn__svg, .match__item__team__button.pop--active {
     animation: pop 0.5s ease-in forwards;
 }
 
@@ -258,45 +239,34 @@ body {
 }*/
 
 .favorite__btn__svg__path {
-  fill: lightgrey;
-}
-
-.pop--active .favorite__btn__svg__path{
-  animation: fill 0.5s ease-in forwards;
-}
-
-@keyframes pop {
-  0% {
-    fill: grey;
-  }
-
-  60% {
-    transform: scale(1,0.7);
-  }
-
-  80% {
-     transform: scale(1,1.2);
-   }
-
-  100% {
-    fill: yellow;
-    transform: scale(1,1);
-
-  }
-
-}
-
-@keyframes fill {
-  0% {
     fill: lightgrey;
-  }
-
-  100% {
-    fill: rgba(253, 216, 74, 1);
-  }
-
 }
-
+.pop--active .favorite__btn__svg__path {
+    animation: fill 0.5s ease-in forwards;
+}
+@keyframes pop {
+    0% {
+        fill: grey;
+    }
+    60% {
+        transform: scale(1, 0.7);
+    }
+    80% {
+        transform: scale(1, 1.2);
+    }
+    100% {
+        fill: yellow;
+        transform: scale(1, 1);
+    }
+}
+@keyframes fill {
+    0% {
+        fill: lightgrey;
+    }
+    100% {
+        fill: rgba(253, 216, 74, 1);
+    }
+}
 .matches__division {
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.16), 0 3px 4px rgba(0, 0, 0, 0.23);
     width: 95%;
@@ -308,7 +278,6 @@ body {
     position: relative;
     max-width: 30em;
 }
-
 .matches__division__title {
     font-weight: 300;
     font-size: 1.6em;
@@ -319,16 +288,13 @@ body {
     text-align: center;
     border-bottom: solid 2px #ddd;
 }
-
 .matches__item {
-  display: flex;
-  flex-flow: row wrap;
+    display: flex;
+    flex-flow: row wrap;
 }
-
-#favorites .matches__division{
-  margin: auto;
+#favorites .matches__division {
+    margin: auto;
 }
-
 .matches__content__wrapper {
     padding-top: .4em;
     padding-right: 0;
@@ -338,15 +304,12 @@ body {
     flex-flow: row wrap;
     justify-content: space-between;
 }
-
-
 .matches__items a {
     color: inherit;
     width: calc(100% - 5.5em);
     display: block;
     z-index: 1;
 }
-
 .matches__item__table {
     width: 60%;
 }
@@ -354,22 +317,18 @@ body {
     height: 2em;
     display: block;
 }
-
 .matches__item__shirt {
     position: relative;
     padding-right: .7em;
     top: 0.4em;
 }
-
 .matches__item__shirt__svg {
     width: 1.5em;
 }
-
 .matches__item__name {
     font-size: 1em;
     font-weight: 300;
 }
-
 .matches__item__name span {
     display: block;
     width: 7em;
@@ -377,18 +336,15 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .matches__item__score {
     font-size: 1em;
     width: 100%;
     font-weight: 500;
     text-align: center;
 }
-
 .queue_label {
-  color: grey;
+    color: grey;
 }
-
 .matches__item__info {
     position: relative;
     /*margin: 0.3em 0.3em 0;*/
@@ -400,7 +356,6 @@ body {
     color: #127ea5;
     margin: 0 0 0.35em;
 }
-
 .matches__item__info__field {
     text-align: center;
     text-transform: uppercase;
@@ -408,28 +363,23 @@ body {
     font-size: 0.9em;
     margin: 0;
 }
-
 .arrow__wrapper {
-  display: flex;
-  margin-bottom: 0.4em;
-  -webkit-backface-visibility: hidden;
+    display: flex;
+    margin-bottom: 0.4em;
+    -webkit-backface-visibility: hidden;
 }
-
 .matches__item__arrow__dropdown {
-  width: 1em;
-  right: .5em;
-  margin: auto;
-  transition: transform 0.5s ease-out;
+    width: 1em;
+    right: .5em;
+    margin: auto;
+    transition: transform 0.5s ease-out;
 }
-
 .matches__item__arrow__dropdown.active {
-  transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
-
 #favorites .matches__item__arrow__dropdown {
-  transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
-
 .matches__divider {
     height: 1px;
     color: grey;
@@ -440,51 +390,63 @@ body {
 /* Progress Bar */
 
 #progress {
-  position: relative;
-  height: 2em;
-  width: 15em;
-  background-color: #ddd;
-  color: #fff;
-  margin: 1em auto;
+    position: relative;
+    height: 2em;
+    width: 15em;
+    background-color: #ddd;
+    color: #fff;
+    margin: 1em auto;
 }
-
 #progressBar {
-  padding: .3em;
-  height: 100%;
-  background-color: #4caf50;
-  position: absolute;
-  top: 0;
-  left: 0;
+    padding: .3em;
+    height: 100%;
+    background-color: #4caf50;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-
 #progress.is-visible #progressBar {
-  animation: fillBar 10s;
+    animation: fillBar 10s;
 }
-
 @-webkit-keyframes fillBar {
-  0%   { width: 0%; }
-  100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 @-moz-keyframes fillBar {
-  0%   { width: 0%; }
-  100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 @-o-keyframes fillBar {
-  0%   { width: 0%; }
-  100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 @keyframes fillBar {
-  0%   { width: 0%; }
-  100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
-
 #label-progress {
-  text-align: center;
-  color: #fff;
-  height: 1em;
-  padding-top: 0.3em;
-  z-index: 1;
-  position: relative;
+    text-align: center;
+    color: #fff;
+    height: 1em;
+    padding-top: 0.3em;
+    z-index: 1;
+    position: relative;
 }
 
 /* Progress Bar Matches Page */
@@ -497,11 +459,9 @@ body {
     position: absolute;
     left: 0;
 }
-
 .progress.is-visible {
-  animation: fillBar 8s;
+    animation: fillBar 8s;
 }
-
 .cancelScore.is-visible {
     position: absolute;
     bottom: -45px;
@@ -510,7 +470,6 @@ body {
     background: #f00;
     color: #fff;
 }
-
 .cancelScoreMatches {
     padding: .5em;
     background: #f00;
@@ -518,93 +477,91 @@ body {
 }
 
 /*div containing all hidden elements  */
-.matches__item__morph__container {
-	position: relative;
-	top: 0;
-	left: 0;
-  height: 0;
-	width: 100%;
-  opacity: 1;
-  background: #f9f9f9;
-  -webkit-transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
-	transition: height 0.5s cubic-bezier(0.7,0,0.3,1);
 
+.matches__item__morph__container {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    opacity: 1;
+    background: #f9f9f9;
+    -webkit-transition: height 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: height 0.5s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 /*hidden content before transition */
+
 .matches__item__morph__content {
-  opacity: 0;
-  transition: opacity 0.4s 0s;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s 0s;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    height: 100%;
 }
 
 /*div containing everything  */
-.matches__item__morph__container.active {
-  height: 5em;
-}
 
+.matches__item__morph__container.active {
+    height: 5em;
+}
 
 /*hidden content after transition */
-.matches__item__morph__container.active .matches__item__morph__content{
-   transition: opacity 0.4s 0.5s;
-   opacity: 1;
-}
 
+.matches__item__morph__container.active .matches__item__morph__content {
+    transition: opacity 0.4s 0.5s;
+    opacity: 1;
+}
 
 /*--------------------------------------------------------------
 ### MATCHES BUTTONS
 --------------------------------------------------------------*/
+
 .matches__item__side {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0.7em;
-  flex: 1 0 33%;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.7em;
+    flex: 1 0 33%;
+    align-items: center;
 }
-
 .matches__item__side h2 {
-  text-align: center;
+    text-align: center;
 }
-
 .matches__item__buttons {
-  display: flex;
-  height: 2em;
-  flex-direction: row;
-  padding-top: 0.3em;
+    display: flex;
+    height: 2em;
+    flex-direction: row;
+    padding-top: 0.3em;
 }
-
 .matches__item__team__button {
     width: 2em;
     background: transparent;
     color: #434343;
     line-height: 1;
-    box-shadow: inset 20em 0 0 0 rgba(49,48,43,0);
-    transition: box-shadow .1s ease-out,color .1s ease;
+    box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
+    transition: box-shadow .1s ease-out, color .1s ease;
     font-weight: 700 !important;
     font-size: 1.5em !important;
     margin-bottom: .3em;
 }
-
 .more__info {
-  display: flex;
-  position: relative;
-  flex: 1 0 15%;
-  flex-direction: column;
-  margin: auto;
-  flex: 1 0 10%;
-  align-items: center;
+    display: flex;
+    position: relative;
+    flex: 1 0 15%;
+    flex-direction: column;
+    margin: auto;
+    flex: 1 0 10%;
+    align-items: center;
 }
-
 .info__svg {
-  width: 1.7em;
-  height: 1.7em;
-  margin: auto;
+    width: 1.7em;
+    height: 1.7em;
+    margin: auto;
 }
 
 /* RANKING PAGE */
+
 .ranking__item {
     padding: 1em 1.2em 0.5em;
     color: inherit;
@@ -612,53 +569,52 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
-
 .ranking__item__table {
     width: 66%;
 }
+<<<<<<< HEAD
+=======
 
+.ranking__item__table td {
+    vertical-align: top;
+}
+
+>>>>>>> origin/master
 .ranking__item__shirt {
     position: relative;
     padding-right: .7em;
-    top: 0.4em;
+    top: -0.4em;
 }
-
 .ranking__item__shirt__svg {
     width: 30px;
 }
-
 .ranking__item__name {
     width: 100%;
     font-size: 1em;
     font-weight: 300;
 }
-
 .ranking__item__name span {
-    width: 8em;
+    width: 5em;
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
     white-space: nowrap;
 }
-
 .ranking__item__score {
     font-size: 1.3em;
     font-weight: 500;
     text-align: center;
 }
-
 .ranking__item__info {
     position: relative;
     /*margin: 1.2em 0 0;*/
 }
-
 .ranking__item__info__time {
     font-size: 1.2em;
     font-weight: 500;
     color: #127ea5;
     margin: 0 0 .1em;
 }
-
 .ranking__item__info__field {
     text-align: center;
     text-transform: uppercase;
@@ -666,7 +622,6 @@ body {
     font-size: 0.7em;
     margin: 0;
 }
-
 .ranking__divider {
     height: 1px;
     color: grey;
@@ -678,9 +633,11 @@ body {
 ### MATCH (SCORE PAGE)
 --------------------------------------------------------------*/
 
+
 /*--------------------------------------------------------------
 #### MATCH [SCORES]
 --------------------------------------------------------------*/
+
 .match__item__teams {
     width: 100%;
     margin: 1em 0 0;
@@ -689,15 +646,19 @@ body {
     justify-content: space-around;
     text-align: center;
     min-height: 20em;
-    /*height: 70vh;*/
+    height: 70vh;
 }
-
 .match__item__team {
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     justify-content: space-between;
     padding: 0 .5em;
 }
+/*.match__item__team__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}*/
 .match__item__team__button {
     width: 100%;
     background: transparent;
@@ -705,50 +666,47 @@ body {
     line-height: 1;
     box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
     transition: box-shadow 0.1s ease-out, color 0.1s ease;
+    max-width: 5em;
+    margin: auto;
 }
-
-.match__item__team__button__top .match__item__team__button {
+.match__item__team__button__top .match__item__team__button,
+.match__item__team__button__bottom .match__item__team__button {
     font-weight: 700 !important;
     font-size: 3.7em !important;
     margin-bottom: .3em;
 }
 
-.match__item__team__button__bottom .match__item__team__button {
-    font-weight: 700 !important;
-    font-size: 2.4em !important;
+.match__item__team__button__plus:hover {
+    color: #4caf50;
 }
 
-.match__item__team__button:hover {
-    /*color: #fff;
-    border: 2px solid rgba(49, 48, 43, 0.3);
-    box-shadow: inset 0 0 0 10em rgba(49, 48, 43, 0.3);*/
+.match__item__team__button__minus:hover {
+    color: #f04b51;
 }
+
 
 .match__item__team__info {
     display: flex;
     /*flex-direction: column;*/
     align-items: center;
 }
-
 .match__item__team__info__name {
     font-size: 2em;
     text-transform: uppercase;
     height: 2em;
     text-align: center;
+    z-index: 1;
 }
-
 .match__item__team__info__score {
     font-weight: 300 !important;
     font-size: 6em !important;
     text-align: center;
 }
-
 .match__item__team__info__score[readonly] {
     border: 0;
     background: #f9f9f9;
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
-
 .match__item__team__info__time {
     font-size: 1.4em;
     font-weight: 600;
@@ -756,7 +714,6 @@ body {
     height: 1em;
     margin-bottom: 1.3em;
 }
-
 .match__item__team__info__field {
     font-size: 1.4em;
     font-weight: 600;
@@ -764,7 +721,6 @@ body {
     height: 1em;
     margin-bottom: 1.3em;
 }
-
 .match__team__info__input {
     border: 1px solid rgba(49, 48, 43, .3);
     color: #000;
@@ -774,6 +730,7 @@ body {
 }
 
 /* Submit */
+
 .match__item__submit {
     display: flex;
     flex-direction: column;
@@ -781,7 +738,6 @@ body {
     text-align: center;
     width: 100%;
 }
-
 .match__item__submit__input {
     font-family: 'OpenSansBold', sans-serif;
     font-weight: bold;
@@ -800,18 +756,15 @@ body {
     box-shadow: inset 20em 0 0 0 rgba(49, 48, 43, 0);
     transition: box-shadow 0.1s ease-out, color 0.1s ease;
 }
-
 .match__item__submit__input:hover {
     box-shadow: inset 0 0 0 10em rgba(49, 48, 43, 0.3);
     color: #fff;
 }
-
 .match__item__submit input[type=checkbox]+ label {
     margin: 3em 0 0 0;
     cursor: pointer;
     height: 0.5em;
 }
-
 .match__item__submit input[type=checkbox]+ label::before {
     /*Will function as styled checkbox*/
     content: '\a0';
@@ -826,7 +779,6 @@ body {
     text-indent: .10em;
     line-height: 1.1;
 }
-
 .match__item__submit input[type=checkbox]:checked+ label::before {
     font-family: FontAwesome;
     content: '\f00c';
@@ -839,7 +791,6 @@ body {
     position: absolute;
     clip: rect(0, 0, 0, 0);
 }
-
 .match__item__final__label {
     width: 100%;
     background: #434343;
@@ -848,33 +799,37 @@ body {
     height: 2em;
     line-height: 2em;
 }
-
 .match__item__success__label {
-  width: 100%;
-  background: lightgreen;
-  color: #ffffff;
-  text-align: center;
-  height: 2em;
-  line-height: 2em;
+    width: 100%;
+    background: lightgreen;
+    color: #ffffff;
+    text-align: center;
+    height: 2em;
+    line-height: 2em;
 }
 
 /*--------------------------------------------------------------
 #### MATCH [INFO]
 --------------------------------------------------------------*/
+
+<<<<<<< HEAD
+=======
+#info .match__item {
+  text-align: center;
+}
+
+>>>>>>> origin/master
 .match__item__title {
-    font-size: 1.5em;
-    margin-bottom: .5em;
-    font-weight: 700;
-    border-bottom: 1px solid #000;
-    width: 6.25em;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 0.7em;
 }
-
 .match__item__info {
-    font-size: 1em;
-    margin-bottom: 1em;
-    width: 100%;
+  font-size: 1em;
+  width: 20em;
+  padding: 0em 1em;
+  margin: 0 auto;
 }
-
 .match__item__info td {
     text-align: right;
 }
@@ -882,6 +837,7 @@ body {
 /*--------------------------------------------------------------
 #### MATCH [LOCATION]
 --------------------------------------------------------------*/
+
 .match__item__location__image {
     margin: 2em auto;
     display: block;
@@ -890,8 +846,8 @@ body {
 /*--------------------------------------------------------------
 ## TOURNAMENTS
 --------------------------------------------------------------*/
-.tournaments__items {}
 
+.tournaments__items {}
 .tournaments__item {
     text-align: center;
     padding: 7em 0;
@@ -900,34 +856,27 @@ body {
     position: relative;
     border-bottom: solid 4px #fff;
 }
-
 .tournaments__items a .tournaments__item h2 {
     color: #fff;
 }
-
 .tournaments__items a .tournaments__item:hover h2 {
     color: #000;
 }
-
 .tournaments__items a:first-of-type .tournaments__item {
     background: #ffcc00;
     color: black;
 }
-
 .tournaments__items a:nth-of-type(2) .tournaments__item {
     background: #F47983;
     color: #fff;
 }
-
 .tournaments__items a:nth-of-type(3) .tournaments__item {
     background: #9b59b6;
     color: #fff;
 }
-
 .tournaments__items a:last-of-type .tournaments__item {
     background: #2980b9;
 }
-
 .tournaments__items a .tournaments__item:hover {
     background: #ddd;
     color: #fff;
@@ -939,12 +888,12 @@ body {
 /*--------------------------------------------------------------
 ### LOGIN
 --------------------------------------------------------------*/
+
 .login__fieldset {
     border: 0;
     margin: 0;
     padding: 0;
 }
-
 .login__form {
     position: relative;
     top: 50%;
@@ -955,7 +904,6 @@ body {
     border-radius: 4px;
     border: 1px solid #ccc;
 }
-
 .login__title {
     position: relative;
     width: 100%;
@@ -965,7 +913,6 @@ body {
     color: #fff;
     font-size: 20px;
 }
-
 .login__title:after {
     content: "";
     background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
@@ -979,13 +926,11 @@ body {
     right: 0;
     position: absolute;
 }
-
 .login__input {
     position: relative;
     width: 90%;
     margin: 1em auto;
 }
-
 .login__input span {
     position: absolute;
     display: block;
@@ -994,7 +939,6 @@ body {
     top: 8px;
     font-size: 20px;
 }
-
 .login__input input {
     width: 100%;
     padding: 10px 5px 10px 40px;
@@ -1004,16 +948,13 @@ body {
     transition: 0.2s ease-out;
     color: #a1a1a1;
 }
-
 .login__input input:focus {
     outline: 0;
     border-color: #FF7052;
 }
-
 .input-border {
     border-color: #2ecc71;
 }
-
 .login__submit {
     width: 45px;
     height: 45px;
@@ -1028,13 +969,11 @@ body {
     box-shadow: 0px 0px 0px 7px #fff;
     transition: 0.2s ease-out;
 }
-
 .login__submit:hover, .login__submit:focus {
     background: #f04b51;
     color: #fff;
     outline: 0;
 }
-
 .login__feedback {
     position: absolute;
     bottom: -80px;
@@ -1046,7 +985,6 @@ body {
     padding: 10px 0;
     font-size: 12px;
 }
-
 .login__feedback:before {
     bottom: 100%;
     left: 50%;
@@ -1061,7 +999,6 @@ body {
     border-width: 10px;
     margin-left: -10px;
 }
-
 .login__feedback_error {
     position: absolute;
     bottom: -80px;
@@ -1073,7 +1010,6 @@ body {
     font-size: 12px;
     line-height: 2;
 }
-
 .login__feedback_error:before {
     bottom: 100%;
     left: 50%;
@@ -1088,12 +1024,10 @@ body {
     border-width: 10px;
     margin-left: -10px;
 }
-
 .fa-exclamation-circle {
     margin: .1em .4em 0 0;
     font-size: 1.2em;
 }
-
 .fa-lock {
     margin: .1em .4em 0 0;
     font-size: 1.2em;
@@ -1102,6 +1036,7 @@ body {
 /*--------------------------------------------------------------
 ### SPLASH SCREEN
 --------------------------------------------------------------*/
+
 #splash {
     display: none;
     position: relative;
@@ -1111,13 +1046,11 @@ body {
     z-index: 10;
     padding: 0.4em;
 }
-
 #splash.active {
-  display: flex;
-  position: fixed;
-  width: 100%;
+    display: flex;
+    position: fixed;
+    width: 100%;
 }
-
 .splash__text {
     margin: 0;
     color: white;
@@ -1125,7 +1058,6 @@ body {
     font-size: 2em;
     position: relative;
 }
-
 .splash__text:after {
     display: block;
     position: absolute;
@@ -1138,7 +1070,6 @@ body {
     content: "";
     animation: underlineTitle 0.5s 3s ease forwards;
 }
-
 .splash__top__bar {
     content: '';
     position: absolute;
@@ -1149,7 +1080,6 @@ body {
     background: #FFFFFF;
     animation: slideRight 1.5s ease-in-out, shrink 1.5s 1.5s ease-in-out forwards;
 }
-
 .splash__bottom__bar {
     content: '';
     position: absolute;
@@ -1160,7 +1090,6 @@ body {
     background: #ffffff;
     animation: slideLeft 1.5s ease-in-out, shrink 1.5s 1.5s ease-in-out forwards;
 }
-
 @keyframes slideRight {
     0% {
         transform: translateX(-100%);
@@ -1172,7 +1101,6 @@ body {
         transform: translateX(0%);
     }
 }
-
 @keyframes slideLeft {
     0% {
         transform: translateX(100%);
@@ -1184,17 +1112,14 @@ body {
         transform: translateX(0%)
     }
 }
-
 @keyframes shrink {
     0% {
-      height: 40%;
+        height: 40%;
     }
-
     100% {
-      height: 0;
+        height: 0;
     }
 }
-
 @keyframes underlineTitle {
     0% {
         width: 0;
@@ -1212,11 +1137,11 @@ body {
 /*--------------------------------------------------------------
 # EXTRA CSS: MEDIA QUERIES
 --------------------------------------------------------------*/
+
 @media (min-width: 47em) {
     body {
         font-size: 90%;
     }
-
     .matches__items {
         display: flex;
         flex-direction: row;
@@ -1227,33 +1152,26 @@ body {
         overflow-x: auto;
         overflow-y: hidden;
     }
-
     .matches__division {
         width: 49%;
         position: relative;
     }
-
     .matches__division:first-of-type {
         margin-right: 1%;
     }
-
     .match__item__team__info__score {
         font-size: 8em !important;
     }
-
     .matches__item__name span {
         width: 8em;
     }
-
     .tournaments__items {
         display: flex;
         flex-flow: row wrap;
     }
-
     .tournaments__items a {
         flex: 1 0 50%;
     }
-
     .tournaments__item {
         text-align: center;
         padding: 25% 0;
@@ -1262,50 +1180,58 @@ body {
         position: relative;
         border-bottom: 0;
     }
-}
 
+    .match__item__title {
+      width: 18em;
+      text-align: left;
+      margin: 0 auto;
+    }
+
+    .match__item__info {
+      width: 27em;
+    }
+
+    .ranking__item__name span {
+        width: 7em;
+    }
+}
 @media (min-width: 60em) {
     body {
         font-size: 100%;
-
     }
-
     #header, #main {
         float: right;
-        width: calc(100% - 7em);;
+        width: calc(100% - 7em);
+        ;
     }
-
     #main {
         margin: 0 0 0;
     }
-
     .matches__items {
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: flex-start;
     }
-
     .matches__division {
         min-width: 30em;
         position: relative;
         margin: 0 2em;
     }
-
     .matches__container {
         overflow-y: scroll;
         height: 65vh;
     }
-
     .matches__division__title {
         width: 100%;
         background: #fff;
         z-index: 999;
     }
-
+    .match__item__teams {
+        min-height: 25em;
+    }
     .match__item__team__info__score {
         font-size: 15em !important;
     }
-
     .footer__menu {
         margin-bottom: 0;
         height: 100%;
@@ -1314,7 +1240,7 @@ body {
         transition: none;
     }
     .footer__menu.active {
-      transform: none;
+        transform: none;
     }
     .footer__menu__row {
         flex-direction: column;
@@ -1327,7 +1253,6 @@ body {
         display: block;
         margin: 0 auto;
     }
-
     .footer__menu__link {
         border: none;
         color: #ffffff;
@@ -1335,33 +1260,29 @@ body {
         margin-bottom: 0.1em;
         position: relative;
     }
-
     .footer__menu__text {
-      margin: .5em 0 0;
-      display: block;
+        margin: .5em 0 0;
+        display: block;
     }
-
     .footer__menu__link:hover, .footer__menu__link:hover .footer__menu__svg {
         color: #000;
         fill: #000;
     }
-
-    .footer__menu__link--active,
-    .footer__menu__link:focus,
-    .footer__menu__link:focus .footer__menu__svg,
-    .footer__menu__link--active .footer__menu__svg {
-      border: none;
-      color: #000;
-      fill: #000;
-      background: #ececec;
-      font-weight: 300;
+    .footer__menu__link--active, .footer__menu__link:focus, .footer__menu__link:focus .footer__menu__svg, .footer__menu__link--active .footer__menu__svg {
+        border: none;
+        color: #000;
+        fill: #000;
+        background: #ececec;
+        font-weight: 300;
     }
-
     .footer__menu__svg {
-      fill: #ffffff;
+        fill: #ffffff;
+    }
+    .arrow__up__container {
+        display: none !important;
     }
 
-    .arrow__up__container {
-      display: none !important;
+    .ranking__item__name span {
+        width: 10em;
     }
 }
