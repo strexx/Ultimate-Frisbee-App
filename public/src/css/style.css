@@ -617,10 +617,14 @@ body {
     width: 66%;
 }
 
+.ranking__item__table td {
+    vertical-align: top;
+}
+
 .ranking__item__shirt {
     position: relative;
     padding-right: .7em;
-    top: 0.4em;
+    top: -0.4em;
 }
 
 .ranking__item__shirt__svg {
@@ -634,7 +638,7 @@ body {
 }
 
 .ranking__item__name span {
-    width: 8em;
+    width: 5em;
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
@@ -1276,6 +1280,10 @@ body {
     .match__item__info {
       width: 27em;
     }
+
+    .ranking__item__name span {
+        width: 7em;
+    }
 }
 
 @media (min-width: 60em) {
@@ -1377,5 +1385,9 @@ body {
 
     .arrow__up__container {
       display: none !important;
+    }
+
+    .ranking__item__name span {
+        width: 10em;
     }
 }
