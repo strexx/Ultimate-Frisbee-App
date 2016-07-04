@@ -1,4 +1,4 @@
-var currentCacheName = 'UFA-assets-1.0';
+var currentCacheName = 'UFA-static-1.0';
 
 this.addEventListener('install', function (event) {
   event.waitUntil(
@@ -6,18 +6,9 @@ this.addEventListener('install', function (event) {
       console.log('Caching: ' + currentCacheName);
       return cache.addAll([
 		'/',
-        '/dist/css/style.min.css',
-        '/dist/js/app.min.js',
-        '/dist/lib/fontfaceobserver.min.js',
-        '/dist/lib/socket.io.min.js',
-        '/dist/lib/modernizr.js',
-        '/dist/img/icons/matches.png',
-        '/dist/img/icons/tournaments.png',
-        '/dist/img/icons/login.png',
-        '/dist/img/icons/logout.png',
-        '/dist/img/icons/favorites.png',
-        '/sw.js',
-        'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
+		'/tournaments/',
+		'/favorites/',
+		'/login/'
       ]);
     })
   );
@@ -30,7 +21,7 @@ this.addEventListener('activate', function(event) {
 			return Promise.all(
 				cacheNames
 					.filter(function(cacheName) {
-						return cacheName.startsWith('UFA-assets-1.');
+						return cacheName.startsWith('UFA-.');
 					})
 					.filter(function(cacheName) {
 						return cacheName !== currentCacheName;
@@ -48,38 +39,48 @@ this.addEventListener('fetch', function(event) {
     var request = event.request;
     var acceptHeader = request.headers.get('Accept');
     var resourceType = 'static';
-    var cacheKey;
+
+    console.log(acceptHeader);
 
     if (acceptHeader.indexOf('text/html') !== -1) {
         resourceType = 'content';
     }
 
-    event.respondWith(
-        caches.match(event.request).then(function(response) {
-            if (response) {
-				if (resourceType === 'content') {
-					return fetchAndCache(event);
-				}
-                return response;
-            } else {
-                if (event.request.url.indexOf("socket.io") != -1) { // ignore socket polling
-                    return fetch(event.request);
-                } else {
-                    return fetchAndCache(event);
-                }
-            }
-        })
-    );
+    if (resourceType === 'content') {
+        event.respondWith(
+            fetch(request)
+            .then(response => fetchAndCache(request, response))
+            .catch(() => fetchFromCache(event))
+        );
+    }
+	else {
+		if (request.url.indexOf("socket.io") == -1) { // ignore socket polling
+	        event.respondWith(
+	            fetchFromCache(event)
+	            .catch(() => fetch(request))
+	            .then(response => fetchAndCache(request, response))
+	        );
+		}
+    }
 });
 
-function fetchAndCache(event) {
-    return fetch(event.request).then(function(response) {
-		if(response.ok){
-	        return caches.open('UFA-other-1.0').then(function(cache) {
-	            console.log('fetched and caching', event.request);
-	            cache.put(event.request, response.clone());
-	            return response;
-	        });
-		}
-    });
+function fetchFromCache (event) {
+  return caches.match(event.request).then(response => {
+    if (!response) {
+      throw Error(`${event.request.url} not found in cache`);
+    }
+	console.log(response);
+    return response;
+  });
+}
+
+function fetchAndCache(request, response) {
+	if (response.ok) {
+		var copy = response.clone();
+        caches.open('UFA-other-1.0').then(function(cache) {
+			//console.log('fetched and caching', request);
+            cache.put(request, copy);
+        });
+	}
+	return response;
 }
