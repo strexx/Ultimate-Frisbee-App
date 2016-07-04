@@ -378,6 +378,10 @@ body {
     text-align: center;
 }
 
+.queue_label {
+  color: grey;
+}
+
 .matches__item__info {
     position: relative;
     /*margin: 0.3em 0.3em 0;*/
@@ -465,6 +469,21 @@ body {
   padding-top: 0.3em;
   z-index: 1;
   position: relative;
+}
+
+/* Progress Bar Matches Page */
+
+.progress {
+  width: 0%;
+  height: 0.3em;
+  background: #90ee90;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+}
+
+.progress.is-visible {
+  animation: fillBar 10s;
 }
 
 /*div containing all hidden elements  */

@@ -347,52 +347,87 @@ UFA.scores = (() => {
             if (document.querySelector("#user_id"))
                 userID = document.querySelector("#user_id").value;
 
-            if (buttonId === "team__home__minus") {
-                var score1HTML = score1.innerHTML;
-                var score2 = Number(score2.innerHTML);
-                var newScore = Number(score1HTML) - 1;
-                //score1.value = newScore;
+                if (buttonId === "team__home__minus") {
+                    var score1HTML = score1.innerHTML;
+                    var score2 = Number(score2.innerHTML);
+                    var newScore = Number(score1HTML) - 1;
+                    //score1.innerHTML = newScore;
 
-                addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+                    if(activeProgress == true) {
+                      var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
+                      var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
 
-            } else if (buttonId === "team__away__minus") {
-                var score2HTML = score2.innerHTML;
-                var score1 = Number(score1.innerHTML);
-                var newScore = Number(score2HTML) - 1;
-                //score2.value = newScore;
+                      var newQueueScore = Number(queue_score_1) - 1;
 
-                addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
+                      moveBarMatches(newQueueScore, queue_score_2, gameID);
 
-            } else if (buttonId === "team__home__plus") {
-                var score1HTML = score1.innerHTML;
-                var score2 = Number(score2.innerHTML);
-                var newScore = Number(score1HTML) + 1;
-                //score1.value = newScore;
+                    } else {
+                        moveBarMatches(newScore, score2, gameID);
+                    }
 
-                addScore(newScore, score2, gameID, isFinal, userID, scoreBtn);
+                } else if (buttonId === "team__away__minus") {
+                    var score2HTML = score2.innerHTML;
+                    var score1 = Number(score1.innerHTML);
+                    var newScore = Number(score2HTML) - 1;
+                    //score2.innerHTML = newScore;
 
-            } else if (buttonId === "team__away__plus") {
-                var score2HTML = score2.innerHTML;
-                var score1 = Number(score1.innerHTML);
-                var newScore = Number(score2HTML) + 1;
-                //score2.value = newScore;
+                    if(activeProgress == true) {
+                      var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
+                      var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
 
-                addScore(score1, newScore, gameID, isFinal, userID, scoreBtn);
-            }
+                      var newQueueScore = Number(queue_score_2) - 1;
+
+                      moveBarMatches(queue_score_1, newQueueScore, gameID);
+
+                    } else {
+                        moveBarMatches(score1, newScore, gameID);
+                    }
+
+                } else if (buttonId === "team__home__plus") {
+                    var score1HTML = score1.innerHTML;
+                    var score2 = Number(score2.innerHTML);
+                    var newScore = Number(score1HTML) + 1;
+                    //score1.innerHTML = newScore;
+
+                    if(activeProgress == true) {
+                      var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
+                      var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
+
+                      var newQueueScore = Number(queue_score_1) + 1;
+
+                      moveBarMatches(newQueueScore, queue_score_2, gameID);
+
+                    } else {
+                        moveBarMatches(newScore, score2, gameID);
+                    }
+
+                } else if (buttonId === "team__away__plus") {
+                    var score2HTML = score2.innerHTML;
+                    var score1 = Number(score1.innerHTML);
+                    var newScore = Number(score2HTML) + 1;
+                    //score2.innerHTML = newScore;
+
+                    if(activeProgress == true) {
+                      var queue_score_1 = article.querySelector('.queue_score_1').innerHTML;
+                      var queue_score_2 = article.querySelector('.queue_score_2').innerHTML;
+
+                      var newQueueScore = Number(queue_score_2) + 1;
+
+                      moveBarMatches(queue_score_1, newQueueScore, gameID);
+
+                    } else {
+                        moveBarMatches(score1, newScore, gameID);
+                    }
+                }
         }
 
-        function moveBarMatches(score1, score2) {
+        function moveBarMatches(score1, score2, gameID) {
 
           // Get needed elements
-          var progressElem = document.getElementById("progress"),
-              progressBar = document.getElementById("progressBar"),
-              label = document.getElementById("label-progress"),
-              messageLabel = document.getElementById("messageLabel"),
-              old_score1 = document.querySelector('.match__item__team__home .match__item__team__info__score'),
-              old_score2 = document.querySelector('.match__item__team__away .match__item__team__info__score'),
-              queue_score_1 = document.querySelector('#queue_score_1'),
-              queue_score_2 = document.querySelector('#queue_score_2'),
-              gameID = window.location.pathname.split('/')[2],
+          var article = document.querySelector('#match-' + gameID),
+              progressElem = article.querySelector(".progress"),
+              queue_score_1 = article.querySelector('.queue_score_1'),
+              queue_score_2 = article.querySelector('.queue_score_2'),
               isFinal = false,
               scoreBtn = true,
               userID = null;
@@ -410,14 +445,24 @@ UFA.scores = (() => {
 
               activeProgress = true;
 
-              messageLabel.innerHTML = "Score updated to: ";
               queue_score_1.innerHTML = score1;
               queue_score_2.innerHTML = score2;
+
+              queue_score_1.classList.remove("hidden");
+              queue_score_1.classList.add("is-visible");
+
+              queue_score_2.classList.remove("hidden");
+              queue_score_2.classList.add("is-visible");
 
               function load() {
                 // Add scores to database
                 addScore(score1, score2, gameID, isFinal, userID, scoreBtn);
                 // Hide progress bar
+                queue_score_1.classList.remove("is-visible");
+                queue_score_1.classList.add("hidden");
+                queue_score_2.classList.remove("is-visible");
+                queue_score_2.classList.add("hidden");
+
                 hideElem(progressElem);
                 // Set active to false
                 activeProgress = false;

@@ -15,10 +15,12 @@
                 <tr class="matches__item__table__row">
                     <td class="matches__item__name"><span>{{team_1.short_name}}</span></td>
                     <td class="matches__item__score team_1_score_realtime">{{team_1_score}}</td>
+                    <td><span class="queue_score_1 queue_label hidden"></span></td>
                 </tr>
                 <tr class="matches__item__table__row">
                     <td class="matches__item__name"><span>{{team_2.short_name}}</span></td>
                     <td class="matches__item__score team_2_score_realtime">{{team_2_score}}</td>
+                    <td><span class="queue_score_2 queue_label hidden"></span></td>
                 </tr>
             </table>
             <div class="matches__item__info">
@@ -62,6 +64,8 @@
                 </svg>
                 </span>
             </a>
+            <!-- Progress Bar -->
+            <div class="progress" class=""></div>
         </div>
     </div>
 </article>
