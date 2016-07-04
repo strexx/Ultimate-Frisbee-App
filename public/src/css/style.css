@@ -689,7 +689,7 @@ body {
     justify-content: space-around;
     text-align: center;
     min-height: 20em;
-    height: 70vh;
+    /*height: 70vh;*/
 }
 
 .match__item__team {
@@ -726,7 +726,7 @@ body {
 
 .match__item__team__info {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     align-items: center;
 }
 
@@ -746,6 +746,7 @@ body {
 .match__item__team__info__score[readonly] {
     border: 0;
     background: #f9f9f9;
+    -moz-appearance:textfield;
 }
 
 .match__item__team__info__time {
