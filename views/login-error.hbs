@@ -24,14 +24,16 @@
 
             </fieldset>
 
-            <div class="login__feedback login__feedback_error is-visible">
-                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>{{ error }}
-            </div>
+            {{#if error}}
+              <div class="login__feedback_error">
+                  <i class="fa fa-exclamation-circle" aria-hidden="true"></i>{{ error }}
+              </div>
+            {{/if}}
 
         </form>
 
     </section>
-    
+
 </main>
 
 {{> footer_login}}
