@@ -226,6 +226,8 @@ To make the application more personal and quick in use, we added the favorites f
 ####Update scores on matches page
 Before, the user had to click on a match which sent them to a detail page where he or she could update the score. This meant that they had to leave the matches (overview) page in order to update scores. To prevent this, we decided to provide the user with a way of updating scores on the matches page. We did this by creating a dropdown. When a user clicks on a match, a dropdown containing buttons appears. Here the user can update the scores without having to leave the page. If they want to, they can still go to the detail page. This detail page now has a new main functionality and purpose, it serves as a way for tournaments (and users) to focus on one game and show a live scoreboard. 
 
+![Dropdown](readme/partial_screenshots/dropdown.gif)
+
 ####Detail page design
 The detail page had some design issues, something we struggled with for a long time. After brainstorming about this a lot, we decided to keep its design as clean and minimalistic as possible. Taking away all visual distractions. The buttons are now placed beneath each other, and there is more focus on the scores.
 
