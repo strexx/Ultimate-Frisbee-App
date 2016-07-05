@@ -71,19 +71,35 @@ Build a real-time, progressive enhanced and responsive web application, in which
 What are the most important cases of the users for this app?
 
 #### Must haves
-1. As a user I want to have real-time score updates about a match or multiple matches that I'm interested in.
+1. As a user I want to have real-time score updates about a match or multiple matches (that I'm interested in).
 2. As a user I want to have an overview of the matches that are being played during the tournament and on which field.
+<<<<<<< Updated upstream
 3. As a user I want to update the scores of my (favorite) team(s).
 4. As a user I want to follow my favorite matches.
 4. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
 5. As a scorekeeper I want to see the matches that are relevant to me.
+=======
+3. As a user I want to update the scores of my (favourite) team(s).
+4. As a user I want to follow my favourite teams. *
+5. As a user I want to be able to visit the app, even if I have a bad internet connection.
+6. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
+7. As a scorekeeper I want to see the matches that are relevant to me.
+Localstorage
+>>>>>>> Stashed changes
 
 #### Could haves
 1. As a user I want to be notified if a (favorite) team scores.
 2. As a user I want to view the scores on a public screen.
+<<<<<<< Updated upstream
 2. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores of during the tournament.
 3. As a team I want to fill in my spirit scores.
 4. As a client I want to receive the spirit scores into the Leaguevine API.
+=======
+3. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores for during the tournament.
+4. As a team I want to fill in my sprit scores.
+5. As a client I want to receive the spirit scores into the Leaguevine API.
+
+>>>>>>> Stashed changes
 
 ### Design challenges
 During this project there were the following design challenges:
