@@ -196,6 +196,29 @@ These are the iterations that've been made after continuously testing with our t
 
 ![Screenshot after](readme/screenshots_redesign/match_detail_mobile.png)
 
+###UI changes after feedback
+####Added feedback when changing score
+When a user changes a score, there is always a possibility of something going wrong. The user can press the wrong button, or press the button too often. By providing the user with time to change the score or cancel the changes before it actually updates, you minimize the chances of false scores being displayed. To tackle this, we created a loading bar which indicates how far along the update is. If the bar is full, the score will be updated. This gives the user time to change the score before it is actually shown, or cancel the update in its entirety.
+
+####Added favorites
+To make the application more personal and quick in use, we added the favorites feature. The user can add matches to favorites by tapping of clicking the star. The star will animate and turn yellow, indicating that the match has been added to favorites. The matches that are added to favorites are stored in a cookie and also shown on a new page, the favorites page. Here the user sees the matches they added to favorites, so they can get a much quicker overview of the matches they want to keep track of.
+
+####Update scores on matches page
+Before, the user had to click on a match which sent them to a detail page where he or she could update the score. This meant that they had to leave the matches (overview) page in order to update scores. To prevent this, we decided to provide the user with a way of updating scores on the matches page. We did this by creating a dropdown. When a user clicks on a match, a dropdown containing buttons appears. Here the user can update the scores without having to leave the page. If they want to, they can still go to the detail page. This detail page now has a new main functionality and purpose, it serves as a way for tournaments (and users) to focus on one game and show a live scoreboard. 
+
+####Detail page design
+The detail page had some design issues, something we struggled with for a long time. After brainstorming about this a lot, we decided to keep its design as clean and minimalistic as possible. Taking away all visual distractions. The buttons are now placed beneath each other, and there is more focus on the scores.
+
+Before there were three tabs, we reduced this to two because the information showed on the "location" and the "info" tab could easily be merged together. This way the user has all the information he or she needs in one view, instead of two.
+
+####Hide menu
+When the user opens a page, the menu is shown at first. After a short delay the user will see the menu slide down, out of sight. There is still a button with an arrow which gives the user visual feedback and the ability to bring the menu back up. By doing this we were able to free space which allows the user to focus more on the main content instead of on the menu. The menu is still available within one tap, and by watching it slide down the user gets a better idea of where the menu went and what's beneath the arrow.
+
+####Desktop view
+Before we received feedback on the UI, the application barely had a desktop view. It was basically the same view as on mobile, which meant that the user had to scroll down a lot. This isn't very user friendly so we decided to change this. We decided to place the division blocks next to each other, also adding a horizontal scrollbar (like Trello). This way the user has a much better overview of matches that are being played.
+
+####Animations
+To make the application feel more alive, we added a couple of small functional animations. Take for example the favorite button. When favoriting a match, the star will animate and change color. This is a fun and useful way of showing the user that they tapped the button and an action has been executed.
 
 ## Final Result
 
