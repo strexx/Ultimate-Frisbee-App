@@ -54,7 +54,7 @@ this.addEventListener('fetch', function(event) {
         );
     }
 	else {
-		if (request.url.indexOf("socket.io") == -1) { // ignore socket polling
+		if (request.url.indexOf("transport=polling") == -1) { // ignore socket polling
 	        event.respondWith(
 	            fetchFromCache(event)
 	            .catch(() => fetch(request))
