@@ -200,8 +200,12 @@ These are the iterations that've been made after continuously testing with our t
 ####Added feedback when changing score
 When a user changes a score, there is always a possibility of something going wrong. The user can press the wrong button, or press the button too often. By providing the user with time to change the score or cancel the changes before it actually updates, you minimize the chances of false scores being displayed. To tackle this, we created a loading bar which indicates how far along the update is. If the bar is full, the score will be updated. This gives the user time to change the score before it is actually shown, or cancel the update in its entirety.
 
+![Update feedback](readme/partial_screenshots/update-feedback.png)
+
 ####Added favorites
 To make the application more personal and quick in use, we added the favorites feature. The user can add matches to favorites by tapping of clicking the star. The star will animate and turn yellow, indicating that the match has been added to favorites. The matches that are added to favorites are stored in a cookie and also shown on a new page, the favorites page. Here the user sees the matches they added to favorites, so they can get a much quicker overview of the matches they want to keep track of.
+
+![Update feedback](readme/partial_screenshots/favorites-page.png)
 
 ####Update scores on matches page
 Before, the user had to click on a match which sent them to a detail page where he or she could update the score. This meant that they had to leave the matches (overview) page in order to update scores. To prevent this, we decided to provide the user with a way of updating scores on the matches page. We did this by creating a dropdown. When a user clicks on a match, a dropdown containing buttons appears. Here the user can update the scores without having to leave the page. If they want to, they can still go to the detail page. This detail page now has a new main functionality and purpose, it serves as a way for tournaments (and users) to focus on one game and show a live scoreboard. 
