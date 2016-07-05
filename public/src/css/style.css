@@ -713,6 +713,7 @@ body {
     border: 0;
     background: #f9f9f9;
     -moz-appearance: textfield;
+    margin: auto;
 }
 .match__item__team__info__time {
     font-size: 1.4em;
