@@ -49,23 +49,23 @@ The README is divided into 3 parts:
 The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of  Communication and Multimedia Design. Christian Schaffner, a frisbee fanatic and the client for this assignment, had the wish to have a mobile app that can keep scores for the Ultimate Frisbee tournaments.
 
 ### The problem
-For the public viewers of a Ultimate Frisbee tournament it's difficult to keep tab on when and where a team is playing and what the scores are. There isn't a good resource available to be updated continuously with the latest scores.
+For the public viewers of an Ultimate Frisbee tournament it's difficult to keep tab on when and where a team is playing and what the scores are. There isn't a good resource available to be updated continuously with the latest scores.
 
 For the teams that are playing multiple games a day, it's important to know when and where they are playing.
 
-For the organization of the tournaments there needs to have a fast and secure  solution to confirm and store the (final) scores in the Leaguevine system, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
+For the organization of the tournaments there needs to be a fast and secure  solution to confirm and store the (final) scores in the Leaguevine system, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
 
 ### Design problem
 *How can a mobile web application allow the organization of the Ultimate Frisbee tournaments to receive the (final) scores of a finished match instantly and at the same time serve the public viewers and the teams with real-time (score) updates and other info about the matches during a tournament.*
 
 ### Assignment
-Built a real-time, progressive enhanced and responsive web application.
+Build a real-time, progressive enhanced and responsive web application, in which Ultimate Frisbee fans can check and update scores.
 
 ### Target audience
-- **The public** who want to be updated with the latest scores.
-- **The teams** who wants to be updated with the latest scores and know where and when they are playing.
-- **The scorekeepers** who are present at the game and needs to keep score and insert those scores into the system.
-- **The client** who wants to have the scores stored on a digital platform and updated within the Leaguevine App.
+- **The public** that wants to be updated with the latest scores.
+- **The teams** that want to be updated with the latest scores and know where and when they are playing.
+- **The scorekeepers** who are present at the game and need to keep score and insert those scores into the system.
+- **The client** who wants to have the scores stored on a digital platform and updated within the Leaguevine API.
 
 ### Use cases
 What are the most important cases of the users for this app?
@@ -73,34 +73,34 @@ What are the most important cases of the users for this app?
 #### Must haves
 1. As a user I want to have real-time score updates about a match or multiple matches that I'm interested in.
 2. As a user I want to have an overview of the matches that are being played during the tournament and on which field.
-3. As a user I want to update the scores of my (favourite) team(s).
-4. As a user I want to follow my favourite teams
-4. As a scorekeeper of a game I want to confirm the final score, so he score can be updated in the system (Leaguevine API).
-5. As a scorekeeper I want to see the matches that are relevent to me.
+3. As a user I want to update the scores of my (favorite) team(s).
+4. As a user I want to follow my favorite matches.
+4. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
+5. As a scorekeeper I want to see the matches that are relevant to me.
 
 #### Could haves
-1. As a user I want to be notified if a (favourite) team scores
+1. As a user I want to be notified if a (favorite) team scores.
 2. As a user I want to view the scores on a public screen.
-2. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores for during the tournament.
-3. As a team I want to fill in my sprit scores.
+2. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores of during the tournament.
+3. As a team I want to fill in my spirit scores.
 4. As a client I want to receive the spirit scores into the Leaguevine API.
 
 ### Design challenges
 During this project there were the following design challenges:
 - The user can experience *bad* to *no* mobile internet connection at some locations of the Ultimate Frisbee tournaments.
-- The user isn't always aware where the matches are being played
+- The user isn't always aware of where the matches are being played.
 - The Leaguevine API, which is very slow, can be overloaded if there are many requests to the server.
 
 ### The design solution
-A mobile-first, responsive, real-time, **progressive webapplication** made in **Node.js** and with the use of **socket.io** and **MongoDB**. *To make the web app a minimal viable product, the app will only display the games of the Windmill tournaments, an event that's being held every year.*
+A mobile-first, responsive, real-time, **progressive web application** made in **Node.js**, with the use of **socket.io** and **MongoDB**. *To make the web app a minimum viable product, the app will only display the games of the WindMill tournaments, an event that's being held every year.*
 
-- Node.js is used to keep the application lightweighted, fast, and highly customizeable. It also allows us to make the application progressive enhanced, so viewable to all kinds of users. Some examples of cases would be to have no JavaScript enabled, slow to no internet connection or using a screenreader. It also allows us to make the app real-time, by using a websockets library that can communicate between the client and the server with only the use of JavaScript.
+- Node.js is used to keep the application lightweight, fast, and highly customizable. It also allows us to make the application progressive enhanced, so   it's viewable for all kinds of users. Some examples of cases would be to have no JavaScript enabled, slow to no internet connection or using a screenreader. It also allows us to make the app real-time, by using a websocket library that can communicate between the client and the server with only the use of JavaScript.
 
-- Socket.io is the websockets JavaScript library used to make the app update the scores real-time to all the users screen without the need to constantly refreshing the page.
+- Socket.io is the websocket JavaScript library used to make the app update the scores real-time to all the users without the need of constantly refreshing the page.
 
-- MongoDB is used to create a database to reduce the API calls to the highly vulnerable and slow serving Leaguevine API. The app will do a daily API request to store the matches off the Windmill tournaments and divisions of the current day in the database. Each time a score is updated, the database will be updated. If a scorekeeper confirms the final score of a match, a API post request will be done to the API to update and synchronise the API with the database.
+- MongoDB is used to create a database to reduce the API calls to the highly vulnerable and slow serving Leaguevine API. The app will do a daily API request to store the matches from the Windmill tournaments and divisions of the current day in the database. Each time a score is updated, the database will be updated. If a scorekeeper confirms the final score of a match, an API post request will be done to the API to update and synchronize the API with the database.
 
-- Progressive webapp is used to make the application work offline, with the Service Worker. If the user has a bad internet connection, he will still be able to visit the webapp and see the most recent scores.
+- Progressive web app is used to make the application work offline, this is done with a Service Worker. If the user has a bad internet connection, he will still be able to visit the webapp and see the most recent scores.
 
 
 ### Used design patterns
@@ -125,19 +125,19 @@ A mobile-first, responsive, real-time, **progressive webapplication** made in **
 
 ### Testing
 ![Device Lab](readme/device-lab.png)
-The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the school building of our university. Including an old version of Chrome for Android and the foreign UC Browser.
+The application was tested on a multitude of devices and browsers on our own machines and in the device lab at the school building of our university. The tested browsers include an old version of Chrome for Android 2.3 and the foreign UC Browser.
 
-The application was also tested with 5 test subjects. See below all the found issues and iterations.
+The application was also tested with 5 test subjects. Below you can find all the found issues and iterations.
 
 #### Browser and device compatibility
 
 #### iPad
 1. The buttons would still show the standard IOS buttons, instead of the buttons we custom created in CSS.
-2. The tabs would not always work
-3. The Tournaments overview page showing all the available tournaments would scroll laggy
+2. The tabs would not always work.
+3. The Tournaments overview page showing all the available tournaments would scroll laggy.
 
 #### Iterations:
-These are the iterations that's been made after continuously testing with our test subjects.
+These are the iterations that've been made after continuously testing with our test subjects.
 
 - Changed design pattern, brought menu back on-canvas and fixed to the bottom.
 
@@ -305,8 +305,8 @@ body-parser          | 1.15.0  | Body parsing middleware for node.js
 dateformat        	 | 1.0.12  | Date formatting for node.js
 express              | 4.13.4  | Fast, unopinionated, minimalist web framework
 express-session      | 1.13.0  | Session middleware for Express
-gsap 				 | 4.0.0   | Animation library
-hbs      			 | 2.2.3   | Express.js template engine plugin for Handlebars
+gsap 				 	 | 4.0.0   | Animation library
+hbs      			 	 | 2.2.3   | Express.js template engine plugin for Handlebars
 jsonfile             | 1.1.2   | Easily read/write JSON files.
 mongodb              | 2.1.21  | The official MongoDB driver for node.js
 password-hash        | 1.2.2   | Password hashing and verification for node.js
@@ -372,7 +372,7 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 
 
 ### How to install
-A small tutorial how to install the Node application on your own local machine.
+A small tutorial on how to install the Node application on your own local machine.
 
 **Git repository**:
 [https://github.com/strexx/Ultimate-Frisbee-App.git](https://github.com/strexx/Ultimate-Frisbee-App.git)
@@ -418,7 +418,7 @@ The app will be listening to port 3010. Open the browser and go to either ``http
 gulp watch
 ```
 
-#### 1 - Use nodemon to automatically refresh the page on any changes
+#### 2 - Use nodemon to automatically refresh the page on any changes
 
 ```
 nodemon app.js
