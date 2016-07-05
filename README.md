@@ -47,9 +47,6 @@ The README is divided into 3 parts:
 ----
 
 ## The app
-![Live page](readme/screenshots/matches_live.png)
-![Match detail page](readme/screenshots/match_detail_score.png)
-
 ### About the app
 The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of  Communication and Multimedia Design. Christian Schaffner, a frisbee fanatic and the client for this assignment, had the wish to have a mobile app that can keep scores for the Ultimate Frisbee tournaments.
 
@@ -180,18 +177,23 @@ To make the application feel more alive, we added a couple of small functional a
 
 ## Final Results
 #### Mobile view - Matches + Match detail
-![Live page](readme/screenshots/matches_live.png)
-![Match detail page](readme/screenshots/match_detail_score.png)
+![Live page](readme/screenshots_redesign/matches_live.png)
+![Match detail page](readme/screenshots_redesign/match_detail_score.png)
 
-#### Desktop view - Matches
-![Matches live responsive](readme/screenshots/matches_live_responsive.png)
+#### Desktop view - Matches + match detail
+![Matches live responsive](readme/screenshots_redesign/matches_live_responsive.png)
+![Matches live responsive](readme/screenshots_redesign/matches_detail_live_responsive.png)
 
 #### Mobile view - Tournaments overview + Tournament detail
-![Tournaments](readme/screenshots/tournaments.png)
-![Tournament matches](readme/screenshots/tournament_matches.png)
+![Tournaments](readme/screenshots_redesign/tournaments.png)
+![Tournament matches](readme/screenshots_redesign/tournament_matches.png)
 
 #### Desktop view - Tournaments
-![Tournaments responive](readme/screenshots/tournaments_responsive.png)
+![Tournaments responive](readme/screenshots_redesign/tournaments_responsive.png)
+
+#### Mobile view - Favorites + Login
+![Favorites](readme/screenshots_redesign/favorites.png)
+![Login](readme/screenshots_redesign/login.png)
 
 ----
 
