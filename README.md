@@ -13,6 +13,10 @@ The README is divided into 3 parts:
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
 
+**Live demo**
+
+[https://www.meesterproef.directzichtbaar.nl](http://www.meesterproef.directzichtbaar.nl)
+
 ----
 
 ## Table of content
@@ -23,11 +27,12 @@ The README is divided into 3 parts:
   4. [Target audience](#target-audience)
   5. [Use cases](#use-cases)
   6. [Design challenges](#design-challenges)
-  7. [The solution](#design-challenges)
-  8. [Design patterns](#design-patterns)
+  7. [The solution](#design-solution)
+  8. [First version](#first-version)
   9. [Testing](#testing)
-  10. [Final result](#final-result)
-  11. [Live demo](#live-demo)
+  10. [Interations](#iterations)
+  11. [Final results](#final-results)
+  12. [Live demo](#live-demo)
 2. [Technical documentation](#technical-documentation)
   1. [Main functionalities](#main-functionalities)
   2. [The structure](#the-structure)
@@ -73,8 +78,8 @@ What are the most important cases of the users for this app?
 #### Must haves
 1. As a user I want to have real-time score updates about a match or multiple matches (that I'm interested in).
 2. As a user I want to have an overview of the matches that are being played during the tournament and on which field.
-3. As a user I want to update the scores of my (favourite) team(s).
-4. As a user I want to follow my favourite teams. *
+3. As a user I want to update the scores of my (favorite) team(s).
+4. As a user I want to follow my favorite teams.
 5. As a user I want to be able to visit the app, even if I have a bad internet connection.
 6. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
 7. As a scorekeeper I want to see the matches that are relevant to me.
@@ -92,7 +97,7 @@ During this project there were the following design challenges:
 - The user isn't always aware of where the matches are being played.
 - The Leaguevine API, which is very slow, can be overloaded if there are many requests to the server.
 
-### The design solution
+### Design solution
 A mobile-first, responsive, real-time, **progressive web application** made in **Node.js**, with the use of **socket.io** and **MongoDB**. *To make the web app a minimum viable product, the app will only display the games of the WindMill tournaments, an event that's being held every year.*
 
 - Node.js is used to keep the application lightweight, fast, and highly customizable. It also allows us to make the application progressive enhanced, so   it's viewable for all kinds of users. Some examples of cases would be to have no JavaScript enabled, slow to no internet connection or using a screenreader. It also allows us to make the app real-time, by using a websocket library that can communicate between the client and the server with only the use of JavaScript.
@@ -103,26 +108,20 @@ A mobile-first, responsive, real-time, **progressive web application** made in *
 
 - Progressive web app is used to make the application work offline, this is done with a Service Worker. If the user has a bad internet connection, he will still be able to visit the webapp and see the most recent scores.
 
+### First version
+#### Mobile view - Matches + Match detail
+![Live page](readme/screenshots/matches_live.png)
+![Match detail page](readme/screenshots/match_detail_score.png)
 
-### Used design patterns
+#### Desktop view - Matches
+![Matches live responsive](readme/screenshots/matches_live_responsive.png)
 
-#### Matches page - an overview of matches played on the current day
-![Screenshots showing the patterns]()
+#### Mobile view - Tournaments overview + Tournament detail
+![Tournaments](readme/screenshots/tournaments.png)
+![Tournament matches](readme/screenshots/tournament_matches.png)
 
-#### Match detail page / Score page
-![Screenshots showing the patterns]()
-
-#### Tournaments page
-![Screenshots showing the patterns]()
-
-#### Tournaments detail page
-![Screenshots showing the patterns]()
-
-#### Update scores of the game I'm watching
-![Screenshots showing the patterns]()
-
-#### View all games in a tournament
-![Screenshots showing the patterns]()
+#### Desktop view - Tournaments
+![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 ### Testing
 ![Device Lab](readme/device-lab.png)
@@ -132,127 +131,67 @@ The application was also tested with 5 test subjects. Below you can find all the
 
 #### Browser and device compatibility
 
-#### iPad
+#### Tablet
 1. The buttons would still show the standard IOS buttons, instead of the buttons we custom created in CSS.
 2. The tabs would not always work.
 3. The Tournaments overview page showing all the available tournaments would scroll laggy.
 
-#### Iterations:
-These are the iterations that've been made after continuously testing with our test subjects.
+### Iterations:
+These are the iterations that've been made after continuously testing with our test subjects and receiving feedback from our teachers.
 
-- Changed design pattern, brought menu back on-canvas and fixed to the bottom.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/mobile-menu.png)
-
-![Screenshot after](readme/screenshots_redesign/mobile-menu-2.png)
-
-- Changed position of "+" and "-" buttons, to make them easier to tap for the user.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/match_scores_mobile.png)
-
-- Created a visual difference between divisions by using material design cards.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/matches_big.png)
-
-- Added visual feedback when a score has been submitted.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/matches_mobile_progress.png)
-
-- Added visual feedback when a game has finished.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/match_mobile_finalscore.png)
-
-
-- Scrolling on the tournaments page was slow, so we changed the design, which made it easier to scroll.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/tournaments_mobile.png)
-
-- Added feedback to login.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/login-error-feedback.png)
-
-- Added a final score checkbox, so the scorekeeper won't accidentally submit the score as final.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/match_mobile_finalscore.png)
-
-- Added round and tournament to info page.
-
-![Screenshot before]()
-
-![Screenshot after](readme/screenshots_redesign/match_detail_mobile.png)
-
-###UI changes after feedback
-####Added feedback when changing score
+#### Added feedback when changing score
 When a user changes a score, there is always a possibility of something going wrong. The user can press the wrong button, or press the button too often. By providing the user with time to change the score or cancel the changes before it actually updates, you minimize the chances of false scores being displayed. To tackle this, we created a loading bar which indicates how far along the update is. If the bar is full, the score will be updated. This gives the user time to change the score before it is actually shown, or cancel the update in its entirety.
 
 ![Update feedback](readme/partial_screenshots/update-feedback.gif)
 
-####Added favorites
+#### Added favorites
 To make the application more personal and quick in use, we added the favorites feature. The user can add matches to favorites by tapping of clicking the star. The star will animate and turn yellow, indicating that the match has been added to favorites. The matches that are added to favorites are stored in a cookie and also shown on a new page, the favorites page. Here the user sees the matches they added to favorites, so they can get a much quicker overview of the matches they want to keep track of.
 
 ![Update feedback](readme/partial_screenshots/favorites-page.png)
 
-####Update scores on matches page
+#### Update scores on matches page
 Before, the user had to click on a match which sent them to a detail page where he or she could update the score. This meant that they had to leave the matches (overview) page in order to update scores. To prevent this, we decided to provide the user with a way of updating scores on the matches page. We did this by creating a dropdown. When a user clicks on a match, a dropdown containing buttons appears. Here the user can update the scores without having to leave the page. If they want to, they can still go to the detail page. This detail page now has a new main functionality and purpose, it serves as a way for tournaments (and users) to focus on one game and show a live scoreboard.
 
 ![Dropdown](readme/partial_screenshots/dropdown.gif)
 
-####Detail page design
+![Dropdown](readme/partial_screenshots/update-feedback-home.gif)
+
+#### Detail page design
 The detail page had some design issues, something we struggled with for a long time. After brainstorming about this a lot, we decided to keep its design as clean and minimalistic as possible. Taking away all visual distractions. The buttons are now placed beneath each other, and there is more focus on the scores.
 
 Before there were three tabs, we reduced this to two because the information showed on the "location" and the "info" tab could easily be merged together. This way the user has all the information he or she needs in one view, instead of two.
 
 ![Dropdown](readme/partial_screenshots/detail-page.png)
 
-####Hide menu
+#### Hide menu
 When the user opens a page, the menu is shown at first. After a short delay the user will see the menu slide down, out of sight. There is still a button with an arrow which gives the user visual feedback and the ability to bring the menu back up. By doing this we were able to free space which allows the user to focus more on the main content instead of on the menu. The menu is still available within one tap, and by watching it slide down the user gets a better idea of where the menu went and what's beneath the arrow.
 
 ![Dropdown](readme/partial_screenshots/menu-animation.gif)
 
-####Desktop view
-Before we received feedback on the UI, the application barely had a desktop view. It was basically the same view as on mobile, which meant that the user had to scroll down a lot. This isn't very user friendly so we decided to change this. We decided to place the division blocks next to each other, also adding a horizontal scrollbar (like Trello). This way the user has a much better overview of matches that are being played.
+#### Desktop view
+Before we received feedback on the UI, the application barely had a desktop view. It was basically the same view as on mobile, which meant that the user had to scroll down a lot. This isn't very user friendly so we decided to change this. We decided to place the division blocks next to each other, also adding a horizontal scrollbar (like Trello). This way the user has a much better overview of matches that are being played. The design is inspired by Google's material design.
 
 ![Dropdown](readme/partial_screenshots/desktop-view.gif)
 
-####Animations
+#### Animations
 To make the application feel more alive, we added a couple of small functional animations. Take for example the favorite button. When favoriting a match, the star will animate and change color. This is a fun and useful way of showing the user that they tapped the button and an action has been executed.
 
 ![Dropdown](readme/partial_screenshots/small-animation.gif)
 
-## Final Result
-
-#### Mobile: Matches + Match (score) detail
+## Final Results
+#### Mobile view - Matches + Match detail
 ![Live page](readme/screenshots/matches_live.png)
 ![Match detail page](readme/screenshots/match_detail_score.png)
 
-#### Desktop: Matches
+#### Desktop view - Matches
 ![Matches live responsive](readme/screenshots/matches_live_responsive.png)
 
-#### Mobile: Tournaments overview + Tournament detail
+#### Mobile view - Tournaments overview + Tournament detail
 ![Tournaments](readme/screenshots/tournaments.png)
 ![Tournament matches](readme/screenshots/tournament_matches.png)
 
-#### Desktop: Tournaments
+#### Desktop view - Tournaments
 ![Tournaments responive](readme/screenshots/tournaments_responsive.png)
-
-## Live Demo:
-[https://www.meesterproef.directzichtbaar.nl](http://www.meesterproef.directzichtbaar.nl)
 
 ----
 
