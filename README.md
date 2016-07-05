@@ -143,61 +143,58 @@ These are the iterations that've been made after continuously testing with our t
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/mobile-menu.png)
+
+![Screenshot after](readme/screenshots_redesign/mobile-menu-2.png)
 
 - Changed position of "+" and "-" buttons, to make them easier to tap for the user.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/match_scores_mobile.png)
 
 - Created a visual difference between divisions by using material design cards.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/matches_big.png)
 
 - Added visual feedback when a score has been submitted.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/matches_mobile_progress.png)
 
 - Added visual feedback when a game has finished.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/match_mobile_finalscore.png)
 
-- Added some information directly to the scorepage, instead of just under the info tab.
-
-![Screenshot before]()
-
-![Screenshot after]()
 
 - Scrolling on the tournaments page was slow, so we changed the design, which made it easier to scroll.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/tournaments_mobile.png)
 
 - Added feedback to login.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/login-error-feedback.png)
 
 - Added a final score checkbox, so the scorekeeper won't accidentally submit the score as final.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/match_mobile_finalscore.png)
 
 - Added round and tournament to info page.
 
 ![Screenshot before]()
 
-![Screenshot after]()
+![Screenshot after](readme/screenshots_redesign/match_detail_mobile.png)
 
 
 ## Final Result
