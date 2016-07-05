@@ -218,14 +218,22 @@ The detail page had some design issues, something we struggled with for a long t
 
 Before there were three tabs, we reduced this to two because the information showed on the "location" and the "info" tab could easily be merged together. This way the user has all the information he or she needs in one view, instead of two.
 
+![Dropdown](readme/partial_screenshots/detail-page.png)
+
 ####Hide menu
 When the user opens a page, the menu is shown at first. After a short delay the user will see the menu slide down, out of sight. There is still a button with an arrow which gives the user visual feedback and the ability to bring the menu back up. By doing this we were able to free space which allows the user to focus more on the main content instead of on the menu. The menu is still available within one tap, and by watching it slide down the user gets a better idea of where the menu went and what's beneath the arrow.
+
+![Dropdown](readme/partial_screenshots/menu-animation.gif)
 
 ####Desktop view
 Before we received feedback on the UI, the application barely had a desktop view. It was basically the same view as on mobile, which meant that the user had to scroll down a lot. This isn't very user friendly so we decided to change this. We decided to place the division blocks next to each other, also adding a horizontal scrollbar (like Trello). This way the user has a much better overview of matches that are being played.
 
+![Dropdown](readme/partial_screenshots/desktop-view.gif)
+
 ####Animations
 To make the application feel more alive, we added a couple of small functional animations. Take for example the favorite button. When favoriting a match, the star will animate and change color. This is a fun and useful way of showing the user that they tapped the button and an action has been executed.
+
+![Dropdown](readme/partial_screenshots/small-animation.gif)
 
 ## Final Result
 
