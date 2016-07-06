@@ -11,7 +11,7 @@ The README is divided into 3 parts:
 
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App/blob/master/README_fons.md)
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
-- [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
+- [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/EW/tree/master/projects/meesterproef)
 
 **Live demo**
 
@@ -434,4 +434,4 @@ Open your browser and go to ``http://localhost:3010``
 ### The individual contributions
 - [Read the individual readme of Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App)
 - [Read the individual readme of Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
-- [Read the individual readme of Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
+- [Read the individual readme of Senny Kalidien](https://github.com/sennykalidien/EW/tree/master/projects/meesterproef#tasks-per-week)
