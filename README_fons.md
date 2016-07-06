@@ -1,11 +1,12 @@
 # Individual readme
 
-*This is the individual README of Fons Hettema for the Ultimate Frisbee Project. In this document you'll see what I have contributed to this project for each course during the minor Everything Web. These courses were all related to modern web development standards. If you want to read an in-depth README about the other individual contributions by Melvin Reijnoudt and Senny Kalidien, please follow the links below:*
+**Important:** this is the **individual README** of Fons Hettema for the Ultimate Frisbee Project. In this document you'll see what I have contributed to this project for each course during the minor Everything Web on a weekly basis. These courses are all related to (modern) web development standards. If you want to read an in-depth README about the other individual contributions by Melvin Reijnoudt and Senny Kalidien, please follow the links below:
 
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
 
 ------
+
 
 # Ultimate Frisbee App (UFA)
 The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of Communication and Multimedia Design. This app is a web app, built in the popular platform Node.js. It's currently designed to show the latest matches for the Windmill Tournaments, which is a yearly event. The app uses the Leaguevine API for getting the scores and updating the score.
@@ -92,29 +93,22 @@ We used Trello to manage and keep track of our tasks based on the MoSCow method.
 
 #### Week 6
 
-- Briefing meeting with client (Christian Schaffner)
-- Created sitemap for the application
-- Sketch iterations of pages we need
-- Converted sketches to wireframes
-- Created Design Brief deliverable
-- Created a debriefing
-- Created repository
-- Created Trello board with cards
-- Created Google Drive for file sharing
-- Presented wireframes and first concept to Christian
+- Fixed bug for realtime scores on the matches page 
+- Fixed 505 Bad Gateway error when adding score without javascript
+- Helped creating the favorites page with cookies
+- Added manifest.json and touch icons for progressive web app purposes
+- Started with progressbar and it's realtime functionality on scorepage
 
 #### Week 7
 
-- Briefing meeting with client (Christian Schaffner)
-- Created sitemap for the application
-- Sketch iterations of pages we need
-- Converted sketches to wireframes
-- Created Design Brief deliverable
-- Created a debriefing
-- Created repository
-- Created Trello board with cards
-- Created Google Drive for file sharing
-- Presented wireframes and first concept to Christian
+- Added responsive tournament ranking page
+- Finished progressbar and it's realtime functionality on scorepage
+- Added progressbar and it's realtime functionality on matches page
+- Helped setting up service worker right
+- Added cross-browser CSS fixes
+- Added some minor feature detections
+- Fixed feedback errors for login page
+- Rewrote the general and individual readme of this project
 
 #### Weekly tasks
 
@@ -130,7 +124,7 @@ Besides these commits I also contributed to a lot of commits done by Melvin and 
 ### CSS to the rescue
 
 #### Flexbox
-I have worked with Flexbox to create layouts and position elements. We also created a fallback file to servefor older browsers that don't support flexbox. This file is located in ``/public/src/css/flexboxfallback.css``.
+I have worked with Flexbox to create layouts and position elements. We also created a fallback file to serve for older browsers that don't support flexbox. This file is located in ``/public/src/css/flexboxfallback.css``.
 
 #### Mobile First approach
 I've developed all my features working on a small mobile-screen in my browser. Using this approach you will think in core features and content first to implement. This really helped me to decide on some different and difficult design choices.
@@ -238,6 +232,53 @@ var matchesToday = matches._filter(function(obj) {
 #### Font face observer
 Font Face Observer is a small @font-face loader and monitor compatible with any web font service. For this project I've setup font face observer to show fonts when they are loaded. We use **Lato** and **Roboto Slab** from the Google Fonts library in our project.
 
+```
+/*********************************************************
+	FONT FACE OBSERVER [with multiple fonts]
+*********************************************************/
+
+UFA.fontFaceObserver = (() => {
+
+    function init() {
+        var fontFamilies = {
+            'Lato': [{
+                weight: 100
+            }, {
+                weight: 300
+            }, {
+                weight: 400
+            }, {
+                weight: 700
+            }],
+            'Roboto Slab': [{
+                weight: 100
+            }]
+        };
+
+        var fontObservers = [];
+
+        Object.keys(fontFamilies).forEach(function(family) {
+            fontObservers.push(fontFamilies[family].map(function(config) {
+                return new FontFaceObserver(family, config).check()
+            }));
+        });
+
+        Promise.all(fontObservers)
+            .then(function() {
+                document.documentElement.className += " fonts-loaded";
+            }, function() {
+                console.log('Fonts not available');
+            });
+    }
+
+    return {
+        init: init
+    };
+
+})();
+```
+
+
 #### Block Element Modifier (BEM) notation
 When working alone on a single project, organizing styles usually isn't a big concern. Because we work on a large, more complex project, we used BEM to organize our code. According to a lot of developers this is key to efficiency. Not only in how much time it takes, but also in how much code you write, and how much a browser has to load.
 
@@ -250,12 +291,14 @@ When working alone on a single project, organizing styles usually isn't a big co
 
 #### SocketIO
 
-![Socket.IO](readme/logos/socket-io.png)
+<!--![Socket.IO](readme/logos/socket-io.png)-->
 
-We decided to use the SocketIO real time engine because it works on every platform, browser or device, focusing equally on reliability and speed. SocketIO listens to events fired from client-side. I've setup and used this for live data results on match pages.
+We decided to use the SocketIO real time engine because it works on every platform, browser or device, focusing equally on reliability and speed. SocketIO listens to events fired from client-side. I've setup and used this for live data results on the matches page and the match score page.
+
+![Match-page](readme/screenshots_redesign/match_detail_score.png)
+![Match-page](readme/screenshots_redesign/matches_live.png)
 
 Below is a piece of code which I wrote for the realtime functionality on the scorepage using socket.io.
-
 
 ```
 // Server side: if addScore is fired, broadcast socket with data
@@ -331,9 +374,15 @@ The application was tested on a multitude of devices and browsers on our own mac
 
 "A lot of the application's functionality and structure was created as a result of a collaborative effort. The three of us communicated through appear.in and tackled most of the major functionalities as a team. We feel that our workflow and personal growth has had a lot of benefits from this way of working. Our personal development and motivation to work got a boost and in the end helped us to create an even better application."
 
+# General readme
+*For a general README about this project with more information about the project, a technical description and our workflow go to the following link:*
+
+- [Go to general README of this project](https://github.com/strexx/Ultimate-Frisbee-App)
+
 **Live demo**
 
 [https://www.meesterproef.directzichtbaar.nl](http://www.meesterproef.directzichtbaar.nl)
+
 
 ### Contributors
 - [Fons Hettema](https://github.com/strexx)
