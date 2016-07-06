@@ -25,6 +25,8 @@ We used Trello to manage and keep track of our tasks based on the MoSCow method.
 ![MoSCow](readme/screenshots/MoSCow.png)
 ![Trello-board](readme/screenshots/trello.png)
 
+The list below is a short summary of the tasks I've contributed on a weekly basis, as well as a list of course related features I implemented or worked with.
+
 #### Week 1
 
 - Briefing meeting with client (Christian Schaffner)
@@ -295,13 +297,38 @@ When working alone on a single project, organizing styles usually isn't a big co
 
 We decided to use the SocketIO real time engine because it works on every platform, browser or device, focusing equally on reliability and speed. SocketIO listens to events fired from client-side. I've setup and used this for live data results on the matches page and the match score page.
 
-![Match-page](readme/screenshots_redesign/match_detail_score.png)
-![Match-page](readme/screenshots_redesign/matches_live.png)
+![Match detail page](readme/screenshots_redesign/match_detail_score.png)
+![Matches page](readme/screenshots_redesign/matches_live.png)
 
-Below is a piece of code which I wrote for the realtime functionality on the scorepage using socket.io.
+Below is a piece of code that makes connection with the server and creates a socket you can use. Therefore I need to make use of the socket.io library from the website and put in our lib folder named as ``socket-io.js``.
 
 ```
-// Server side: if addScore is fired, broadcast socket with data
+// Server side
+
+function init(server) {
+    var io = require('socket.io').listen(server);
+
+    io.on('connection', function(socket) {
+		// If connected with socket
+        console.log("Connected with socket.io");
+
+		// Include lib
+		require('../lib/socket-io.js')(io, socket);
+
+        // If disconnected with socket
+        socket.on("disconnect", function() {
+            console.log("Connection lost with socket.io");
+        });
+    });
+}
+
+module.exports = init;
+```
+
+On the server side I listen to a socket and "bound" a function to it. When this function is fired on the client side we fetch data from it and send this to another socket named "dbupdate" which broadcasts to the client. Below is a piece of code that demonstrates this.
+
+```
+// Server side
 
 socket.on('addScore', function(data) {
 
@@ -319,9 +346,17 @@ socket.on('addScore', function(data) {
 });
 ```
 
-```
-// Client side: get postdata and update scores
+On the client side we define a socket that connects with the server and store this connection in a variable which I then use later in the code to channel and send data. Note that ``socket.on`` will fetch data from a socket that emits data from a function using ``socket.emit``.
 
+So in the next part you see that I listen to the ``dbupdate`` function using the socket connection variable. This fetches data from the ``addScore`` function I've earlier used to send data. After this I update the scores client side with the data channeled through sockets so that it will be displayed for everybody that is on that page, which is the realtime aspect.
+
+```
+// Client side
+
+// Make connection with server and put it in variable
+var socket = io.connect("http://localhost:3010");
+
+// Listen to the dbupdate function fired
 socket.on("dbupdate", function(json) {
 	var data = JSON.parse(json);
 	
@@ -331,12 +366,32 @@ socket.on("dbupdate", function(json) {
 	if(data.game_id == gameID)
 	  replaceScores(updateScore1, updateScore2);
 });
+
+// Add score (min or plus for teams) stream to socket
+function addScore(score1, score2, gameID, isFinal, userID, scoreBtn) {
+    // Send score to socket
+    socket.emit('addScore', {
+        score1: score1,
+        score2: score2,
+        gameID: gameID,
+        isFinal: isFinal,
+        userID: userID,
+        scoreBtn: scoreBtn,
+        time: Date.now()
+    });
+}
+        
 ```
+
+In week 6 and 7 I've added some UX enhancements for visual feedback. To solve the problem of multiple users adding scores at the same time, I've created a progressbar that queues new updates. It takes a couple of seconds before the score is updated and you have the possibility to cancel your update. You can see the queued score next to the actual score before submitting a new score. If someone else is adding score at the same time, you can still undo your added scores by pressing the cancel button.
+
+![Match-page](readme/partial_screenshots/update-feedback-home.gif)
+![Match-page](readme/partial_screenshots/update-feedback.gif)
 
 #### MongoDB
 Along with Senny, I've implemented and setup MongoDB on local machine and remote server. The reason we used MongoDB is because it's highly scalable and we had never worked with MongoDB on a Node Server. So this was a challenge for us. We spent a lot of time with this because we wanted this to work on a remote database. We created a droplet on Digital Ocean and tried to install this from multiple web tutorials. However this wasn't as easy as we thought and struggled with this for a couple of days. We were happy when we finally set this up.
 
-The code below is a function I wrote for adding a match to the matches collection
+The code below is a function I wrote for adding a match to the matches collection.
 
 ```
 function addMatch(data) {
@@ -360,6 +415,13 @@ When using MongoDB you need to work with collections. Therefore we created user,
 
 #### Progressive enhancement
 Made the application's core functionality available without JavaScript. The user gets a better experience with extra functionalities if JavaScript is turned on or the browser supports it. For the scorepage I've created the core functionality by showing input fields instead of plus and min buttons to add scores.
+
+```
+// Feature detection
+if ((document.querySelectorAll || document.querySelector)) {
+    UFA.launcher.init();
+}
+```
 
 #### Accessibility
 For this project we've done some minor accessibility fixes. For example on the login page I've made it possible to tab through the input fields and add an active class to the submit button when reached in the hierarchy. We also added some aria-elements to define roles described by their characteristics.
