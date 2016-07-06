@@ -151,7 +151,6 @@ body, button, input, select, textarea  {
 .fonts-loaded input,
 .fonts-loaded select,
 .fonts-loaded textarea {
-    font-size: 16px;
     font-family: 'Lato', 'Helvetica neue', sans-serif;
     font-weight: 300;
 }
