@@ -9,7 +9,7 @@ The README is divided into 3 parts:
 
 *This README has been put together by the three contributors for this repository. Each of us had our share contributing to this README and we worked like a team to set up the main functionalities. If you want to read an in-depth README about the individual contributions that have been made for this repository, please follow the links below.*
 
-- [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App)
+- [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App/blob/master/README_fons.md)
 - [Go to the individual README of contributor Melvin Reijnoudt](https://github.com/melvinr/Ultimate-Frisbee-App)
 - [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
 
