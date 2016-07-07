@@ -9,12 +9,12 @@
 
 # Table of contents
 
-1. [Ultimate Frisbee App](#ultimate-frisbee-app)
-2. [Tasks per week](#tasks-per-week)
-3. [Used techniques from courses in minor](#used-techniques-from-courses-in-minor)
-4. [Teamwork makes a dream work](#teamwork-makes-a-dream-work)
-5. [Install this app](#install-this-app)
-6. [General readme](#general-readme)
+1. [Ultimate Frisbee App](#1-ultimate-frisbee-app)
+2. [Tasks per week](#2-tasks-per-week)
+3. [Used techniques from courses in minor](#3-used-techniques-from-courses-in-minor)
+4. [Teamwork makes a dream work](#4-teamwork-makes-a-dream-work)
+5. [Install this app](#5-install-this-app)
+6. [General readme](#6-general-readme)
 
 
 # 1. Ultimate Frisbee App
@@ -360,8 +360,6 @@ When working alone on a single project, organizing styles usually isn't a big co
 
 #### SocketIO
 
-<!--![Socket.IO](readme/logos/socket-io.png)-->
-
 We decided to use the SocketIO real time engine because it works on every platform, browser or device, focusing equally on reliability and speed. SocketIO listens to events fired from client-side. I've setup and used this for live data results on the matches page and the match score page.
 
 ![Match detail page](readme/screenshots_redesign/match_detail_score.png)
@@ -545,7 +543,7 @@ The app will be listening to port 3010. Open the browser and go to either ``http
 ### How to develop
 - Changes to the server side files can be modified in the folders of the root.
 - Changes to the client side CSS and JS can be made in the public folder.
-- HTML can be changed in the views folder
+- HTML can be changed in the views folder.
 
 #### 1 - Use gulp watch to let Gulp watch for any changes
 ```
