@@ -7,18 +7,83 @@
 
 ------
 
+# Table of contents
 
-# Ultimate Frisbee App (UFA)
-The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of Communication and Multimedia Design. This app is a web app, built in the popular platform Node.js. It's currently designed to show the latest matches for the Windmill Tournaments, which is a yearly event. The app uses the Leaguevine API for getting the scores and updating the score.
+1. [Ultimate Frisbee App](#ultimate-frisbee-app)
+2. [Tasks per week](#tasks-per-week)
+3. [Used techniques from courses in minor](#used-techniques-from-courses-in-minor)
+4. [Teamwork makes a dream work](#teamwork-makes-a-dream-work)
+5. [Install this app](#install-this-app)
+6. [General readme](#general-readme)
 
-When using the app it will allow you to post scores to the app in real-time, which other users are able to see live without ever refreshing the page. That is just one of the many strenghts of this web app...
+
+# 1. Ultimate Frisbee App
 
 **Live demo**
 
 [https://www.meesterproef.directzichtbaar.nl](http://www.meesterproef.directzichtbaar.nl)
 
+### About the app
+The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of Communication and Multimedia Design. This app is a web app, built in the popular platform Node.js. It's currently designed to show the latest matches for the Windmill Tournaments, which is a yearly event. The app uses the Leaguevine API for getting the scores and updating the score.
 
-## Tasks per week
+When using the app it will allow you to post scores to the app in real-time, which other users are able to see live without ever refreshing the page. That is just one of the many strenghts of this web app...
+
+### The problem
+For the public viewers of an Ultimate Frisbee tournament it's difficult to keep tab on when and where a team is playing and what the scores are. There isn't a good resource available to be updated continuously with the latest scores.
+
+For the teams that are playing multiple games a day, it's important to know when and where they are playing.
+
+For the organization of the tournaments there needs to be a fast and secure  solution to confirm and store the (final) scores in the Leaguevine system, which is used to create leagues, tournaments, teams, games and calculation of the ranking, rounds and points.
+
+### Design problem
+*How can a mobile web application allow the organization of the Ultimate Frisbee tournaments to receive the (final) scores of a finished match instantly and at the same time serve the public viewers and the teams with real-time (score) updates and other info about the matches during a tournament.*
+
+### Assignment
+Build a real-time, progressive enhanced and responsive web application, in which Ultimate Frisbee fans can check and update scores.
+
+### Target audience
+- **The public** that wants to be updated with the latest scores.
+- **The teams** that want to be updated with the latest scores and know where and when they are playing.
+- **The scorekeepers** who are present at the game and need to keep score and insert those scores into the system.
+- **The client** who wants to have the scores stored on a digital platform and updated within the Leaguevine API.
+
+### Use cases
+What are the most important cases of the users for this app?
+
+#### Must haves
+1. As a user I want to have real-time score updates about a match or multiple matches (that I'm interested in).
+2. As a user I want to have an overview of the matches that are being played during the tournament and on which field.
+3. As a user I want to update the scores of my (favorite) team(s).
+4. As a user I want to follow my favorite teams.
+5. As a user I want to be able to visit the app, even if I have a bad internet connection.
+6. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
+7. As a scorekeeper I want to see the matches that are relevant to me.
+
+#### Could haves
+1. As a user I want to be notified if a (favorite) team scores.
+2. As a user I want to view the scores on a public screen.
+3. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores for during the tournament.
+4. As a team I want to fill in my sprit scores.
+5. As a client I want to receive the spirit scores into the Leaguevine API.
+
+### Design challenges
+During this project there were the following design challenges:
+- The user can experience *slow* to *no* mobile internet connection at some locations of the Ultimate Frisbee tournaments.
+- The user isn't always aware of where the matches are being played.
+- The Leaguevine API, which is very slow, can be overloaded if there are many requests to the server.
+
+### Design solution
+A mobile-first, responsive, real-time, **progressive web application** made in **Node.js**, with the use of **socket.io** and **MongoDB**. *To make the web app a minimum viable product, the app will only display the games of the WindMill tournaments, an event that's being held every year.*
+
+- Node.js is used to keep the application lightweight, fast, and highly customizable. It also allows us to make the application progressive enhanced, so   it's viewable for all kinds of users. Some examples of cases would be to have no JavaScript enabled, slow to no internet connection or using a screenreader. It also allows us to make the app real-time, by using a websocket library that can communicate between the client and the server with only the use of JavaScript.
+
+- Socket.io is the websocket JavaScript library used to make the app update the scores real-time to all the users without the need of constantly refreshing the page.
+
+- MongoDB is used to create a database to reduce the API calls to the highly vulnerable and slow serving Leaguevine API. The app will do a daily API request to store the matches from the Windmill tournaments and divisions of the current day in the database. Each time a score is updated, the database will be updated. If a scorekeeper confirms the final score of a match, an API post request will be done to the API to update and synchronize the API with the database.
+
+- Progressive web app is used to make the application work offline, this is done with a Service Worker. If the user has a slow internet connection, he will still be able to visit the webapp and see the most recent scores.
+
+## 2. Tasks per week
 
 We used Trello to manage and keep track of our tasks based on the MoSCow method. Therefore we assigned labels to each task with their own level of priority. In the screenshot you see a sneak peek of what everybody's tasks were each week.
 
@@ -118,7 +183,7 @@ The list below is a short summary of the tasks I've contributed on a weekly basi
 - Update Harvest with working hours
 - Update trello board with tasks (MoSCow)
 
-## Used techniques from courses in minor
+## 3. Used techniques from courses in minor
 
 Things I've done to contribute to this project can be found at https://github.com/strexx/Ultimate-Frisbee-App/commits?author=strexx.
 Besides these commits I also contributed to a lot of commits done by Melvin and Senny. Below you see an overview with detailed descriptions of what I've done for each course in this project covered in the minor.
@@ -217,6 +282,8 @@ function request(url) {
 #### Array functions
 - Manipulate arrays with underscore functions like ``._filter`` and ``._map``.
 
+This filter function will search for records with a specific date and returns these records in an array.
+
 ```
 // Filter on today's date
 var matchesToday = matches._filter(function(obj) {
@@ -232,7 +299,7 @@ var matchesToday = matches._filter(function(obj) {
 ###Performance Matters
 
 #### Font face observer
-Font Face Observer is a small @font-face loader and monitor compatible with any web font service. For this project I've setup font face observer to show fonts when they are loaded. We use **Lato** and **Roboto Slab** from the Google Fonts library in our project.
+Font Face Observer is a small @font-face loader and monitor compatible with any web font service. For this project I've setup font face observer to show fonts when they are loaded. We use **Lato** and **Roboto Slab** from the Google Fonts library in our project. In the piece of code below I've created a function where you can store all the font-families in an array which fontfaceobserver will load after all CSS is processed. When these fonts are loaded a class will be added to the html element, which will load parts of the CSS containing these fonts.
 
 ```
 /*********************************************************
@@ -432,11 +499,133 @@ The application was tested on a multitude of devices and browsers on our own mac
 ![Device Lab](readme/device-lab.png)
 
 
-## Teamwork makes a dream work
+## 4. Teamwork makes a dream work
 
-"A lot of the application's functionality and structure was created as a result of a collaborative effort. The three of us communicated through appear.in and tackled most of the major functionalities as a team. We feel that our workflow and personal growth has had a lot of benefits from this way of working. Our personal development and motivation to work got a boost and in the end helped us to create an even better application."
+Working with Senny and Melvin is such a great experience. Having two motivated, smart and fun people to work with really makes my work much more enjoyable. It was a great pleasure to work with both of them. We have learned a lot working together by facing challenges we probably wouldn't accomplish on our own. When someone was struggling with a piece of design or code we would always stand in to help each other.
 
-# General readme
+A lot of the application's functionality and structure was created as a result of a collaborative effort. The three of us communicated through appear.in and tackled most of the major functionalities as a team. We feel that our workflow and personal growth has had a lot of benefits from this way of working. Our personal development and motivation to work got a boost and in the end helped us to create an even better application.
+
+## 5. Install this app
+A small tutorial on how to install the Node application on your own local machine.
+
+**Git repository**:
+[https://github.com/strexx/Ultimate-Frisbee-App.git](https://github.com/strexx/Ultimate-Frisbee-App.git)
+
+#### 1 - Clone the repository
+```
+git clone https://github.com/strexx/Ultimate-Frisbee-App.git
+```
+
+#### 2 - Navigate to the cloned repository
+
+```
+cd <path/to/file>
+```
+
+#### 3 - Install the node modules and packages
+```
+npm install
+```
+
+#### 4 - Start Gulp to create a dist folder with concatenated and minified files
+
+```
+gulp
+```
+
+#### 5 - Start the application
+```
+npm start
+```
+
+#### 6 - View the app in the browser
+The app will be listening to port 3010. Open the browser and go to either ``http://127.0.0.1:3010`` or ``http://localhost:3010``
+
+
+### How to develop
+- Changes to the server side files can be modified in the folders of the root.
+- Changes to the client side CSS and JS can be made in the public folder.
+- HTML can be changed in the views folder
+
+#### 1 - Use gulp watch to let Gulp watch for any changes
+```
+gulp watch
+```
+
+#### 2 - Use nodemon to automatically refresh the page on any changes
+
+```
+nodemon app.js
+```
+
+Open your browser and go to ``http://localhost:3010``
+
+### Structure of this app
+```
+├── connections                                 // Folder with database and socket.io connections setup
+|    ├── database.js                            // Database connection setup
+|    ├── socket.js                              // Web Sockets connection setup
+├── lib                                         // Library folder
+|    ├── mongodb.js                             // General database calls
+|    ├── socket-io.js                           // Socket listeners with functionality
+├── modules                                     // General modules setup
+|    ├── formatDigits.js                        // Time formatting
+|    ├── multiRequest.js                        // Multiple HTTP-requests handler
+|    ├── uniqueKeys.js                          // Get unique values from an array
+├── node_modules                                // Node modules
+├── public                                      // Client side folder
+|    ├── src                                    // Source folder
+|    |    |── css                               // Styling for the application
+|    |    |   ├── reset.css                     // Styling reset
+|    |    |   ├── styles.css                    // Styling main file
+|    |    ├── images                            // All images used in the application
+|    |    ├── js                                // All client-side JavaScript logic
+|    |    |   ├── appLauncher.js                // Main js file for launching app flow
+|    |    |   ├── fontFaceObserver.js           // Font Face Observer functionality
+|    |    |   ├── pages.js                      // Pages functionality
+|    |    |   ├── router.js                     // Router functionality
+|    |    |   ├── scores.js                     // Scores functionality
+|    |    |   ├── serverWorker.js               // Service Worker functionality
+|    |    |   ├── tools.js                      // Tools functionality
+|    |    |   ├── ux.js                         // Ux behaviour functionality
+|    |    ├── lib                               // Library folder
+|    |    |   ├── fontfaceobserver.min.js       // Font Face Observer library
+|    |    |   ├── modernizr.js                  // Modernizr library
+|    |    |   ├── socket.io.min.js              // Socket.io library
+|    ├── index.html                             // Basic HTML file for critical css
+|    ├── sw.js                                  // Main Service Worker file
+├── routes                                      // Routes folder
+|    ├── api.js                                 // Servers api file with requests and database storage
+|    ├── index.js                               // Page routing, rendering and data logic
+├── scripts                                     // Scripts folder
+|    ├── deploy                                 // Jenkins deploy bash script for server deployment
+├── sessions                                    // All sessions stored when user logging in
+├── views                                       // All views of the application, rendered with handlebars.
+|    ├── partials                               // Partials
+|    |    |── content                           // Partials content
+|    |    |   ├── content_matches.hbs
+|    |    |   ├── content_ranking.hbs
+|    |    ├── footer                            // Partials footer
+|    |    |   ├── footer_login.hbs
+|    |    |   ├── footer_matches.hbs
+|    |    |   ├── footer_tournaments.hbs
+|    |    ├── header                            // Partials header
+|    |    |   ├── header_login.hbs
+|    |    |   ├── header_match.hbs
+|    |    |   ├── header_matches.hbs
+|    |    |   ├── header_tournament.hbs
+|    |    |   ├── header_tournaments.hbs
+|    |    ├── loader.hbs
+|    |    ├── scripts.hbs
+|    |    ├── splash.hbs
+├── .gitignore                                  // Git ignore file
+├── app.js                                      // Application bootstrap
+├── gulpfile.js                                 // Gulp task managing configuration file
+├── package.js                                  // Node.js installation file with dependencies
+├── readme.md                                   // This readme file
+```
+
+# 6. General readme
 *For a general README about this project with more information about the project, a technical description and our workflow go to the following link:*
 
 - [Go to general README of this project](https://github.com/strexx/Ultimate-Frisbee-App)
