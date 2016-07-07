@@ -183,8 +183,8 @@ body {
     position: relative;
     display: flex;
     background: #cecaca;
-    width: 4em;
-    height: 2em;
+    width: 6em;
+    height: 3em;
     border: 3px solid #cecaca;
     border-radius: 50% 50% 0 0;
     border-bottom: 0;
@@ -713,6 +713,7 @@ body {
     border: 0;
     background: #f9f9f9;
     -moz-appearance: textfield;
+    margin: auto;
 }
 .match__item__team__info__time {
     font-size: 1.4em;
@@ -983,8 +984,7 @@ body {
     bottom: -80px;
     width: 100%;
     text-align: center;
-    color: blac;
-    opacity: 0;
+    color: black;
     background: #eee;
     padding: 10px 0;
     font-size: 12px;
